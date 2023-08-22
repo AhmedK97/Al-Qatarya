@@ -16,7 +16,7 @@
     @inertiaHead
 </head>
 
-<body class="bg-red-50">
+<body class="bg-red-50 font-tajawal debug-screens">
 
     @inertia
 

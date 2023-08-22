@@ -1,4 +1,5 @@
 {
+    "home.call_us": "Call Us",
     "home.company_name": "Al-Qatarya",
     "(and :count more error)": "(and :count more error)",
     "(and :count more errors)": "(and :count more errors)",
@@ -188,11 +189,10 @@
     "You may not delete your personal team.": "You may not delete your personal team.",
     "You may not leave a team that you created.": "You may not leave a team that you created.",
     "Your email address is unverified.": "Your email address is unverified.",
-    "home.services" : "Service",
-    "home.about" : "About",
-    "home.contact" : "Contact",
-    "home.admin" : "Admin",
+    "home.services": "Service",
+    "home.about": "About",
+    "home.contact": "Contact",
+    "home.admin": "Admin",
     "home.faq": "FAQ",
     "home.blogs": "Blogs"
-
 }
