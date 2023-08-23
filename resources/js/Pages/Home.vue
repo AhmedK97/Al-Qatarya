@@ -6,6 +6,8 @@ import BannerSlider from "@/Components/BannerSlider.vue";
 import Pagination from "@/Components/Pagination.vue";
 import BlogsCards from "@/Components/BlogsCards.vue";
 import Services from "@/Components/Services.vue";
+import WhyUs from "@/Components/WhyUs.vue";
+import WhoWeAre from "@/Components/WhoWeAre.vue";
 // import "@lottiefiles/lottie-player";
 import "@ebcom/dotlottie-player";
 
@@ -16,16 +18,6 @@ const props = defineProps({
     services: Object,
     blogs: Object,
 });
-
-// mounted() {
-//     // Find the element by its ID
-//     const lottiePlayButton = document.getElementById('lottie-play-button');
-
-//     // Trigger a click event on the element
-//     if (lottiePlayButton) {
-//         lottiePlayButton.click();
-//     }
-// },
 
 const lottiePlayButton = onMounted(() => {
     // Find the element by its ID
@@ -43,121 +35,17 @@ const lottiePlayButton = onMounted(() => {
         <!-- hero section -->
         <BannerSlider />
 
-        <!-- <div
-            class="px-4 mx-auto mt-5 text-3xl md:py-28 max-w-7xl sm:px-6 lg:px-8s"
-        >
-            <section class="flex flex-col md:flex-row">
-                <div class="flex flex-col items-center justify-center">
-                    <div class="space-y-6 text-center">
-                        <div class="space-y-6">
-                            <h1 class="font-bold text-amber-800">
-                                شركة القطريه للعوازل
-                            </h1>
-                            <p class="text-2xl leading-relaxed">
-                                توفر شركة القطريه مجموعة مدربة و متميزة من
-                                الفنيين لتوفير أعلي مستويات بتقنية عالية و بأقل
-                                وقت ممكن
-                            </p>
-                        </div>
-                        <div>
-                            <a
-                                href="#contact-us"
-                                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            >
-                                تواصل معنا</a
-                            >
-
-                            <Link
-                                :href="route('about')"
-                                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            >
-                                اقرا المزيد</Link
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <img
-                        src="/storage/images/hero-img.webp"
-                        alt="image description"
-                        width="800"
-                        height="600"
-                    />
-                </div>
-            </section>
-        </div> -->
-
         <!-- services  -->
-        <Services :services="services" />
+        <Services class="mt-20 md:mt-40" :services="services" />
 
         <!-- why  -->
-        <section class="mt-40">
-            <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s">
-                <div class="max-w-screen-xl px-4 py-8 mx-auto sm:py-16 lg:px-6">
-                    <p
-                        class="mb-10 text-4xl font-black text-center text-gray-900"
-                    >
-                        <span
-                            class="text-transparent underline bg-clip-text bg-gradient-to-r to-amber-600 from-black underline-offset-4 decoration-5 decoration-red-700"
-                            >لماذا القطريه هي الافضل
-                        </span>
-                    </p>
-                    <div
-                        class="grid grid-cols-1 gap-8 mt-8 text-center justify-items-center md:grid-cols-3"
-                    >
-                        <div>
-                            <img
-                                class="w-1/4 m-auto rounded-lg"
-                                loading="lazy"
-                                src="/storage/images/award.png"
-                                alt="office content 1"
-                            />
-                            <string class="text-2xl font-bold"
-                                >أمهر الفنيين</string
-                            >
-                            <p class="mt-5 text-xl font-semibold leading-10">
-                                فريق العمل لدى شركة أبيار مدرب علي اعلي مستوي
-                                ويتمتع بالخبرة في أداء الأعمال.
-                            </p>
-                        </div>
-                        <div>
-                            <img
-                                class="w-1/4 m-auto rounded-lg"
-                                loading="lazy"
-                                src="/storage/images/tools.png"
-                                alt="office content 2"
-                            />
-                            <string class="text-2xl font-bold"
-                                >أفضل المعدات</string
-                            >
-                            <p class="mt-5 text-xl font-semibold leading-10">
-                                تستخدم شركة أبيار أفضل المعدات الحديثة على أعلى
-                                مستوى في الكويت
-                            </p>
-                        </div>
-                        <div>
-                            <img
-                                class="w-1/4 m-auto rounded-lg"
-                                loading="lazy"
-                                src="/storage/images/money.png"
-                                alt="office content 1"
-                            />
-                            <string class="text-2xl font-bold"
-                                >أسعار منافسة</string
-                            >
-                            <p class="mt-5 text-xl font-semibold leading-10">
-                                نحن نلتزم دائما بتقديم أفضل خدمة بأرخص سعر وأعلى
-                                كفاءة في الكويت
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <WhyUs class="mt-20 md:mt-40" />
+
+        <!-- who we are -->
+        <WhoWeAre class="mt-20 md:mt-40" />
 
         <!-- contact us -->
-        <section class="mt-40" id="contact-us">
+        <section class="mt-20 md:mt-40" id="contact-us">
             <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s">
                 <div class="px-4 py-8 mx-auto lg:py-16">
                     <p
