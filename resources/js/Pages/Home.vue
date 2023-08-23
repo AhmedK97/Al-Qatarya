@@ -5,6 +5,7 @@ import Slider from "@/Pages/Slider.vue";
 import BannerSlider from "@/Components/BannerSlider.vue";
 import Pagination from "@/Components/Pagination.vue";
 import BlogsCards from "@/Components/BlogsCards.vue";
+import Services from "@/Components/Services.vue";
 // import "@lottiefiles/lottie-player";
 import "@ebcom/dotlottie-player";
 
@@ -39,10 +40,7 @@ const lottiePlayButton = onMounted(() => {
 
 <template>
     <AppLayout title="القطرىة">
-        <!-- <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s"> -->
-
         <!-- hero section -->
-
         <BannerSlider />
 
         <!-- <div
@@ -91,57 +89,10 @@ const lottiePlayButton = onMounted(() => {
         </div> -->
 
         <!-- services  -->
-        <section class="bg-red-50">
-            <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s">
-                <p class="text-4xl font-black text-center text-gray-900">
-                    <span
-                        class="text-transparent underline bg-clip-text bg-gradient-to-r to-amber-600 from-black underline-offset-4 decoration-5 decoration-red-700"
-                        >خدماتنا لعملائنا الكرام</span
-                    >
-                </p>
-                <!-- slider -->
-                <p
-                    class="p-5 text-xl font-semibold leading-snug text-center text-green-600 border my-7"
-                >
-                    نحن نقدر أهمية العمل كما أن شركتنا تتميز بالصدق والجودة
-                    والمستوي الرفيع بين منافسيها وفريق العمل مدرب علي اعلي مستوي
-                    ويتمتع بالخبرة في اداء الاعمال وصيانة المنازل.
-                </p>
-                <slider :services="services"></slider>
-                <!-- <div class="items-center max-w-screen-xl gap-16 px-4 mx-auto mt-8 lg:grid lg:px-6">
-                    <div class="grid grid-cols-2 gap-8 mt-8 text-center sm:grid-cols-4 lg:grid-cols-5">
-                        <div>
-                            <img class="w-full rounded-lg max-h-[20rem]" src="/storage/images/1-2.png" alt="عزل حراري">
-                            <string class="text-xl font-bold text-amber-800">عزل حراري</string>
-                        </div>
-                        <div>
-                            <img class="w-full mt-4 rounded-lg max-h-[20rem] lg:mt-10" src="/storage/images/1-3.png"
-                                alt="خدمات غسيل وعزل الخزانات">
-                            <string class="text-xl font-bold text-amber-800">خدمات غسيل وعزل الخزانات</string>
-                        </div>
-                        <div>
-                            <img class="w-full rounded-lg max-h-[20rem]" src="/storage/images/1-3.png"
-                                alt="office content 1">
-                            <string class="text-xl font-bold text-amber-800">sadas</string>
-                        </div>
-                        <div>
-                            <img class="w-full mt-4 rounded-lg max-h-[20rem] lg:mt-10" src="/storage/images/1-3.png"
-                                alt="office content 2">
-                            <string class="text-xl font-bold text-amber-800">sadas</string>
-                        </div>
-                        <div>
-                            <img class="w-full rounded-lg max-h-[20rem]" src="/storage/images/1-3.png"
-                                alt="office content 1">
-                            <string class="text-xl">sadas</string>
-                        </div>
-                    </div>
-
-                </div> -->
-            </div>
-        </section>
+        <Services :services="services" />
 
         <!-- why  -->
-        <section class="bg-red-50">
+        <section class="mt-40">
             <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s">
                 <div class="max-w-screen-xl px-4 py-8 mx-auto sm:py-16 lg:px-6">
                     <p
@@ -206,7 +157,7 @@ const lottiePlayButton = onMounted(() => {
         </section>
 
         <!-- contact us -->
-        <section class="bg-red-50" id="contact-us">
+        <section class="mt-40" id="contact-us">
             <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s">
                 <div class="px-4 py-8 mx-auto lg:py-16">
                     <p
@@ -374,8 +325,6 @@ const lottiePlayButton = onMounted(() => {
                 </div>
             </div>
         </section>
-
-        <!-- </div> -->
 
         <!-- blogs -->
 
