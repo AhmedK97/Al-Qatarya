@@ -2,6 +2,7 @@
     <section class="container mx-auto max-w-7xl">
         <div
             class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row ltr:space-x-reverse"
+            v-motion-slide-visible-once-right
         >
             <img
                 src="/storage/images/banner1.png"
@@ -30,20 +31,17 @@
                 <div
                     class="flex justify-center mt-32 space-x-4 lg:space-x-12 rtl:space-x-reverse"
                 >
-                    <Counter>
-                        <template #number> 100 </template>
+                    <Counter :targetNumber="100" :intervalSpeed="20">
                         <template #title>
                             {{ $t("who.we.are-counter") }}
                         </template>
                     </Counter>
-                    <Counter>
-                        <template #number> 100 </template>
+                    <Counter :targetNumber="2500" :intervalSpeed="0.1">
                         <template #title>
                             {{ $t("who.we.are-counter") }}
                         </template>
                     </Counter>
-                    <Counter>
-                        <template #number> 100 </template>
+                    <Counter :targetNumber="139" :intervalSpeed="20">
                         <template #title>
                             {{ $t("who.we.are-counter") }}
                         </template>

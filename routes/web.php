@@ -4,6 +4,7 @@ use App\Http\Controllers\aboutController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
+use App\Http\Controllers\IndexContactUsController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowServiceController;
 use Illuminate\Support\Facades\Route;
@@ -23,16 +24,17 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about', aboutController::class)->name('about');
 
-Route::get('/faq' , FaqController::class)->name('show.faq');
+Route::get('/faq', FaqController::class)->name('show.faq');
 
 Route::get('/blogs', IndexBlogController::class)->name('blogs');
 
-Route::get('/{slug}' , ShowServiceController::class)->name('service');
+Route::get('/contact-us', IndexContactUsController::class)->name('show.contact');
 
+Route::get('/{slug}', ShowServiceController::class)->name('service');
 
-Route::get('/blogs/{slug}' , ShowBlogController::class)->name('show.blogs');
+Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
+
 
 
 
 // To do show all services in one page
-

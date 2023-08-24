@@ -2,10 +2,17 @@
     <section class="container mx-auto max-w-7xl">
         <div
             class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row rtl:space-x-reverse"
+            v-motion-slide-visible-once-left
+            :enter="{
+                transition: {
+                    delay: 5000,
+                },
+            }"
         >
             <img
                 src="/storage/images/banner1.png"
                 class="md:w-[45%] md:h-[600px] rounded-lg"
+                loading="lazy"
                 alt=""
             />
             <div class="">
@@ -35,6 +42,7 @@
                             <img
                                 src="/storage/images/check.svg"
                                 class="w-6"
+                                loading="lazy"
                                 alt=""
                             />
                             <p
@@ -49,6 +57,7 @@
                             <img
                                 src="/storage/images/check.svg"
                                 class="w-6"
+                                loading="lazy"
                                 alt=""
                             />
                             <p
@@ -65,6 +74,7 @@
                             <img
                                 src="/storage/images/check.svg"
                                 class="w-6"
+                                loading="lazy"
                                 alt=""
                             />
                             <p
@@ -79,6 +89,7 @@
                             <img
                                 src="/storage/images/check.svg"
                                 class="w-6"
+                                loading="lazy"
                                 alt=""
                             />
                             <p

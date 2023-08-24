@@ -5,91 +5,158 @@ import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <footer class="p-4 border-gray-100 bg-amber-800 md:p-8 lg:p-10">
-        <div class="max-w-screen-xl mx-auto text-center">
-            <a
-                href="#"
-                class="flex items-center justify-center mb-4 text-2xl font-semibold text-white"
-            >
-                <ApplicationMark class="w-10 h-10 mr-3" />
-                <h1 class="mx-4">شركه القطريه للعوازل</h1>
-            </a>
-
-            <ul
-                class="flex flex-wrap items-center justify-center mb-6 text-white"
-            >
-                <li>
-                    <Link
-                        :href="route('about')"
-                        class="mr-4 hover:underline md:mr-6"
-                        >عن القطريه</Link
-                    >
-                </li>
-                <li>
-                    <Link
-                        :href="route('blogs')"
-                        class="mr-4 hover:underline md:mr-6"
-                        >المدونه</Link
-                    >
-                </li>
-                <li>
-                    <Link
-                        :href="route('show.faq')"
-                        class="mr-4 hover:underline md:mr-6"
-                        >{{ $t("home.faq") }}</Link
-                    >
-                </li>
-                <li>
+    <footer class="bg-secondary-900">
+        <div
+            class="container flex justify-between max-w-6xl mx-auto space-x-12 py-14 rtl:space-x-reverse"
+        >
+            <div class="flex flex-col space-y-4">
+                <p class="text-2xl font-bold text-rose-900">عن الشركة</p>
+                <div class="relative">
+                    <hr
+                        class="h-0.5 border-0 rounded-full bg-gray-900 opacity-10"
+                    />
+                    <hr
+                        class="absolute top-0 w-10 h-1 border-0 rounded-full -translate-y-1/3 bg-rose-900"
+                    />
+                </div>
+                <p class="font-medium leading-relaxed text-gray-100 text-md">
+                    - كافة اعمال العزل المائي و الحراري للاسطح بانواعها - عزل
+                    حمامات السباحة و البحيرات - عزل ضد الحريق - عزل الارضيات ضد
+                    الكيماويات والتآكل - عزل الصوت
+                </p>
+                <div
+                    class="flex justify-center px-2 py-4 text-white rounded-full w-44 bg-rose-900"
+                >
                     <Link
                         :href="
                             '/' +
                             $page.props.locale[0].currentLocaleCode +
-                            '#contact-us'
+                            '/about'
                         "
-                        class="mr-4 hover:underline md:mr-6"
-                        >{{ $t("home.contact") }}</Link
                     >
-                </li>
-            </ul>
-            <span class="text-sm text-white sm:text-center"
-                >© 2022-2023 <a href="#" class="hover:underline"></a>All Rights
-                Reserved
-            </span>
-        </div>
-
-        <!-- fixed-buttons for telephone -->
-        <div
-            class="fixed bottom-0 z-10 flex flex-col items-center justify-center mb-4 mr-4 rtl:right-0 md:mr-8 md:mb-8"
-        >
-            <!-- telephone icon -->
-            <div class="bg-white rounded-full shadow-lg w-14 h-14">
-                <a
-                    href="tel:01000000000"
-                    class="flex items-center justify-center w-full h-full"
-                >
-                    <dotlottie-player
-                        src="/storage/images/lottiefiles/phone.lottie"
-                        style="width: 30px"
-                        autoplay
-                        loop
-                    >
-                    </dotlottie-player>
-                </a>
+                        {{ $t("why.us-read.more") }}
+                    </Link>
+                </div>
+                <div class="flex p-5 space-x-6 rtl:space-x-reverse">
+                    <img
+                        src="/storage/images/facebook-ham.svg"
+                        class="w-5 h-5"
+                        alt=""
+                    />
+                    <img
+                        src="/storage/images/instagram-ham.svg"
+                        class="w-5 h-5"
+                        alt=""
+                    />
+                    <img
+                        src="/storage/images/twitter-ham.svg"
+                        class="w-5 h-5"
+                        alt=""
+                    />
+                </div>
             </div>
-            <!-- whatsapp icon -->
-            <div class="mt-4 bg-white rounded-full shadow-lg w-14 h-14">
-                <a
-                    href="https://wa.me/01000000000"
-                    class="flex items-center justify-center w-full h-full"
+            <!-- <div class="flex flex-col space-y-4">
+                <p class="text-2xl font-bold text-rose-900">خارطة الموقع</p>
+                <div class="relative">
+                    <hr
+                        class="h-0.5 border-0 rounded-full bg-gray-900 opacity-10"
+                    />
+                    <hr
+                        class="absolute top-0 w-10 h-1 border-0 rounded-full -translate-y-1/3 bg-rose-900"
+                    />
+                </div>
+                <div>
+                    <div class="flex items-center p-5">
+                        <div>
+                            <div class="">
+                                <Link :href="route('blogs')" class="text-right">
+                                    {{ $t("home.blogs") }}
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-5">
+                        <div>
+                            <div class="">
+                                <Link :href="route('show.faq')">
+                                    {{ $t("home.faq") }}
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-5">
+                        <div>
+                            <div class="">
+                                <Link
+                                    href="#contact-us"
+                                    :active="route().current('profile.show')"
+                                >
+                                    {{ $t("home.contact") }}
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="flex flex-col space-y-4">
+                <p class="text-2xl font-bold text-rose-900">عن الشركة</p>
+                <div class="relative">
+                    <hr
+                        class="h-0.5 border-0 rounded-full bg-gray-900 opacity-10"
+                    />
+                    <hr
+                        class="absolute top-0 w-10 h-1 border-0 rounded-full -translate-y-1/3 bg-rose-900"
+                    />
+                </div>
+                <p class="font-medium leading-relaxed text-gray-100 text-md">
+                    - كافة اعمال العزل المائي و الحراري للاسطح بانواعها - عزل
+                    حمامات السباحة و البحيرات - عزل ضد الحريق - عزل الارضيات ضد
+                    الكيماويات والتآكل - عزل الصوت
+                </p>
+                <div
+                    class="flex justify-center px-2 py-4 text-white rounded-full w-44 bg-rose-900"
                 >
-                    <dotlottie-player
-                        src="/storage/images/lottiefiles/whatsapp.lottie"
-                        style="width: 30px"
-                        autoplay
-                        loop
+                    <Link
+                        :href="
+                            '/' +
+                            $page.props.locale[0].currentLocaleCode +
+                            '/about'
+                        "
                     >
-                    </dotlottie-player>
-                </a>
+                        {{ $t("why.us-read.more") }}
+                    </Link>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <p class="text-2xl font-bold text-rose-900">عن الشركة</p>
+                <div class="relative">
+                    <hr
+                        class="h-0.5 border-0 rounded-full bg-gray-900 opacity-10"
+                    />
+                    <hr
+                        class="absolute top-0 w-10 h-1 border-0 rounded-full -translate-y-1/3 bg-rose-900"
+                    />
+                </div>
+                <p class="font-medium leading-relaxed text-gray-100 text-md">
+                    - كافة اعمال العزل المائي و الحراري للاسطح بانواعها - عزل
+                    حمامات السباحة و البحيرات - عزل ضد الحريق - عزل الارضيات ضد
+                    الكيماويات والتآكل - عزل الصوت
+                </p>
+                <div
+                    class="flex justify-center px-2 py-4 text-white rounded-full w-44 bg-rose-900"
+                >
+                    <Link
+                        :href="
+                            '/' +
+                            $page.props.locale[0].currentLocaleCode +
+                            '/about'
+                        "
+                    >
+                        {{ $t("why.us-read.more") }}
+                    </Link>
+                </div>
             </div>
         </div>
     </footer>

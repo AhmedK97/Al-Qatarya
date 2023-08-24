@@ -289,7 +289,7 @@ const logout = () => {
                             :href="
                                 '/' +
                                 $page.props.locale[0].currentLocaleCode +
-                                '#contact-us'
+                                '/contact-us'
                             "
                         >
                             {{ $t("home.call_us") }}

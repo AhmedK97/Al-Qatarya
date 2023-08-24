@@ -1,0 +1,60 @@
+<template>
+    <div class="bg-rose-900">
+        <div
+            class="container flex flex-col items-center justify-between px-4 mx-auto lg:flex-row max-w-7xl"
+        >
+            <div
+                class="flex items-center px-4 py-8 space-x-6 lg:py-20 lg:px-0 lg:space-x-20 rtl:space-x-reverse"
+            >
+                <img
+                    src="storage/images/building.svg"
+                    class="w-20 h-20"
+                    alt=""
+                />
+                <div>
+                    <SectionTitleShadow>
+                        <template #upper-title>
+                            <span
+                                class="!text-secondary-700 text-3xl lg:text-4xl"
+                            >
+                                {{ $t("planning-upper") }}</span
+                            >
+                        </template>
+                        <template #title>
+                            <span
+                                class="!text-secondary-700 text-2xl lg:text-4xl"
+                                >{{ $t("planning") }}</span
+                            >
+                        </template>
+                    </SectionTitleShadow>
+                    <hr class="w-48 h-1 border-0 rounded bg-secondary-700" />
+                    <p
+                        class="mt-4 text-lg font-medium ltr:lg:pl-0 ltr:lg:pr-20 rtl:lg:pl-20 rtl:lg:pr-0 text-gray-50"
+                    >
+                        {{ $t("planning-desc") }}
+                    </p>
+                </div>
+            </div>
+            <div
+                class="flex items-center justify-center h-16 mb-8 text-xl text-white rounded-full lg:mb-0 w-52 bg-secondary-900"
+            >
+                <Link
+                    :href="
+                        '/' +
+                        $page.props.locale[0].currentLocaleCode +
+                        '/contact-us'
+                    "
+                >
+                    {{ $t("home.call_us") }}
+                </Link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
+import { Link } from "@inertiajs/vue3";
+</script>
+
+<style></style>
