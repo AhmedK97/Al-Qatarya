@@ -1,155 +1,131 @@
 <script setup>
-    import AppLayout from '@/Layouts/AppLayout.vue';
-    import { trans } from "laravel-vue-i18n";
-
+import AppLayout from "@/Layouts/AppLayout.vue";
+import { trans } from "laravel-vue-i18n";
+import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
+import { Link } from "@inertiajs/vue3";
+import Tabs from "@/Components/Tabs.vue";
+import OurTeam from "@/Components/OurTeam.vue";
+import { slideVisibleOnceLeft, slideVisibleOnceRight } from "@vueuse/motion";
 </script>
 
 <template>
     <AppLayout :title="trans('home.about')">
+        <section class="container mx-auto mb-20 mt-36 max-w-7xl">
+            <div
+                class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row ltr:space-x-reverse"
+            >
+                <div class="relative order-1 md:order-2">
+                    <img
+                        src="/storage/images/dots.png"
+                        class="hidden md:block md:w-full md:h-[500px] absolute top-0 -translate-y-14 right-0 -translate-x-14"
+                        alt=""
+                    />
+                    <img
+                        src="/storage/images/banner1-1.png"
+                        class="md:w-full md:h-[600px] rounded-lg relative z-10"
+                        alt=""
+                    />
+                </div>
+                <div class="order-2 md:order-1">
+                    <SectionTitleShadow>
+                        <template #upper-title>
+                            {{ $t("who.we.are-upper") }}
+                        </template>
+                        <template #title>
+                            {{ $t("who.we.are") }}
+                        </template>
+                    </SectionTitleShadow>
 
-        <section class="bg-red-50">
-            <div class="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
-                <div>
-                    <h2 class="text-3xl font-bold text-center tracki sm:text-5xl ">
-                        <span
-                            class="text-transparent underline bg-clip-text bg-gradient-to-r to-amber-600 from-black underline-offset-4 decoration-5 decoration-red-700 ">
-                            عــن شــركه القطريه
-                        </span>
-                    </h2>
-                    <p class="max-w-3xl mx-auto mt-4 text-xl text-center">Quando cetero his ne, eum admodum sapientem ut.
+                    <p
+                        class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    >
+                        مؤسسة ذات خبرة كبيرة فى مجال العزل الحراري والعزل المائي
+                        بالمملكة العربية السعودية بما تمتلكة من
+                    </p>
+                    <p
+                        class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    >
+                        فريق فني مدرب وقوام اداري منظم ومعدات وماكينات حديثة .
+                    </p>
+                    <p
+                        class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    >
+                        النشاط العام : أعمال صيانة وتشغيل المباني – تركيب واصلاح
+                        وصيانة أنظمة عازل الحرارة والماء والصوت – انشاء المباني
+                        الخرسانية – أعمال صيانة وتشغيل المباني سابقة الصب .
+                    </p>
+                    <p
+                        class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    >
+                        التخصص : متخصصون فى توريد وتنفيذ واصلاح جميع أنظمة العزل
+                        المائية والحرارية وإصلاح الخرسانة .
+                    </p>
+                    <p
+                        class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    >
+                        وقد استطاعت المؤسسة أن تنال ثقة عملائها بعد إتمام تتنفيذ
+                        المشروعات التى اسندت إليها على أكمل وجه ، وتعمل على
+                        زيادة مواردها وساتخدام التقنيات الحديثة من أجل إتمام
+                        تنفيذ كافة المشاريع المطلوبة بنفس الجودة والدقة العالية
+                        مع الإلتزام بمعايير الأمن والسلامة .
+                    </p>
+                    <p
+                        class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    >
+                        وتحظى المؤسسة بثقة كبيرة مع العملاء ودقة كبيرة فى
+                        التنفيذ والتزام فى المواعيد ، وهي حريصة كل الحرص على
+                        إرضاء عملائها والسعي وراء اكتساب ثقة المزيد من العملاء
                     </p>
                 </div>
-                <div class="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-                    <div>
-                        <h3 class="text-2xl font-bold tracki sm:text-3xl ">Ad vix debet docendi</h3>
-                        <p class="mt-3 text-lg">Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam
-                            regione ut, persius eripuit quo id. Sit te euismod tacimates.</p>
-                        <div class="mt-12 space-y-12">
-                            <div class="flex">
-                                <div class="flex-shrink-0 rtl:ml-4">
-                                    <div
-                                        class="flex items-center justify-center w-12 h-12 text-gray-900 rounded-md bg-amber-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor" class="w-7 h-7">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium leadi ">Per ei quaeque sensibus</h4>
-                                    <p class="mt-2">Ex usu illum iudico molestie. Pro ne agam facete mediocritatem,
-                                        ridens labore facete mea ei. Pro id apeirian dignissim.</p>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <div class="flex-shrink-0 rtl:ml-4">
-                                    <div
-                                        class="flex items-center justify-center w-12 h-12 text-gray-900 rounded-md bg-amber-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor" class="w-7 h-7">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium leadi ">Cu imperdiet posidonium sed</h4>
-                                    <p class="mt-2">Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit
-                                        tibique cu nec. Nec ex maluisset inciderint, ex quis.</p>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <div class="flex-shrink-0 rtl:ml-4">
-                                    <div
-                                        class="flex items-center justify-center w-12 h-12 text-gray-900 rounded-md bg-amber-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor" class="w-7 h-7">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium leadi ">Nulla omittam sadipscing mel ne</h4>
-                                    <p class="mt-2">At sed possim oporteat probatus, justo graece ne nec, minim
-                                        commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div aria-hidden="true" class="mt-10 lg:mt-0">
-                        <img loading="lazy"  src="https://source.unsplash.com/random/360x480" alt=""
-                            class="mx-auto bg-gray-500 rounded-lg shadow-lg">
-                    </div>
-                </div>
-                <div>
-                    <div class="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-                        <div class="lg:col-start-2">
-                            <h3 class="text-2xl font-bold tracki sm:text-3xl ">Eam nibh gloriatur ex</h3>
-                            <p class="mt-3 text-lg">Per odio fabellas consulatu cu. Utroque detracto mel ea, quo te
-                                latine theophrastus. Ea his tale nibh dissentias, mei exerci tamquam euripidis cu.</p>
-                            <div class="mt-12 space-y-12">
-                                <div class="flex">
-                                    <div class="flex-shrink-0 rtl:ml-4">
-                                        <div
-                                            class="flex items-center justify-center w-12 h-12 text-gray-900 rounded-md bg-amber-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" class="w-7 h-7">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="text-lg font-medium leadi ">Cibo augue offendit has ad</h4>
-                                        <p class="mt-2">An per velit appellantur, ut utinam minimum nominavi sit, odio
-                                            nostro habemus ne nec. Ne sonet regione contentiones est.</p>
-                                    </div>
-                                </div>
-                                <div class="flex">
-                                    <div class="flex-shrink-0 rtl:ml-4">
-                                        <div
-                                            class="flex items-center justify-center w-12 h-12 text-gray-900 rounded-md bg-amber-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" class="w-7 h-7">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="text-lg font-medium leadi ">At eum ferri luptatum lobortis</h4>
-                                        <p class="mt-2">Te per quidam maiorum ocurreret, etiam delicatissimi usu ad.
-                                            Ne has quod periculis. Te sit primis iisque efficiantur.</p>
-                                    </div>
-                                </div>
-                                <div class="flex">
-                                    <div class="flex-shrink-0 rtl:ml-4">
-                                        <div
-                                            class="flex items-center justify-center w-12 h-12 text-gray-900 rounded-md bg-amber-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" class="w-7 h-7">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="text-lg font-medium leadi ">Dicunt verterem evertitur eu sea</h4>
-                                        <p class="mt-2">Audire principes rationibus eam an, autem nominavi luptatum
-                                            per te. Sumo fabulas vim eu, sonet saperet eleifend ut vix.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
-                            <img loading="lazy" src="https://source.unsplash.com/random/361x481" alt=""
-                                class="mx-auto bg-gray-500 rounded-lg shadow-lg">
-                        </div>
-                    </div>
-                </div>
             </div>
+
+            <OurTeam class="mt-20" />
+
+            <section
+                class="container mx-auto mt-20 max-w-7xl"
+                v-motion="{
+                    initial: { x: 500, opacity: 0 },
+                    visibleOnce: {
+                        x: 0,
+                        opacity: 1,
+                        transition: { delay: 700 },
+                    },
+                }"
+            >
+                <div
+                    class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row rtl:space-x-reverse"
+                >
+                    <img
+                        src="/storage/images/banner1.png"
+                        class="md:w-[45%] md:h-[600px] rounded-lg"
+                        loading="lazy"
+                        alt=""
+                    />
+                    <div class="">
+                        <SectionTitleShadow>
+                            <template #upper-title>
+                                {{ $t("why.us-upper") }}
+                            </template>
+                            <template #title>
+                                {{ $t("why.us") }}
+                            </template>
+                        </SectionTitleShadow>
+
+                        <p class="mt-4 text-lg font-medium text-gray-500">
+                            {{ $t("why.us-desc") }}
+                        </p>
+                        <p
+                            class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                        >
+                            {{ $t("about.us-desc") }}
+                        </p>
+
+                        <!-- <ProgressBar /> -->
+                    </div>
+                </div>
+            </section>
+
+            <Tabs class="mt-20" />
         </section>
     </AppLayout>
 </template>

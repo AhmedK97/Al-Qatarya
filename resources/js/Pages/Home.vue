@@ -13,6 +13,7 @@ import "@ebcom/dotlottie-player";
 import PartnerSlider from "@/Components/PartnerSlider.vue";
 import Projects from "@/Components/Projects.vue";
 import StartPlanning from "@/Components/StartPlanning.vue";
+import ServicesTop from "@/Components/ServicesTop.vue";
 
 import { Link } from "@inertiajs/vue3";
 import { onMounted } from "vue";
@@ -78,6 +79,9 @@ const sponsors = [
     <AppLayout title="القطرىة">
         <!-- hero section -->
         <BannerSlider />
+
+        <!-- services top -->
+        <ServicesTop class="mt-20 md:mt-40" />
 
         <!-- services  -->
         <Services class="mt-20 md:mt-40" :services="services" />

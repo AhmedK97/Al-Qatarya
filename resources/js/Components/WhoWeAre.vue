@@ -2,7 +2,14 @@
     <section class="container mx-auto max-w-7xl">
         <div
             class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row ltr:space-x-reverse"
-            v-motion-slide-visible-once-right
+            v-motion="{
+                initial: { x: 500, opacity: 0 },
+                visibleOnce: {
+                    x: 0,
+                    opacity: 1,
+                    transition: { delay: 700 },
+                },
+            }"
         >
             <img
                 src="/storage/images/banner1.png"

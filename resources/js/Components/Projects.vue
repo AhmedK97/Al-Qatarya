@@ -4,12 +4,12 @@
             <SectionTitleShadow>
                 <template #upper-title>
                     <span class="!text-secondary-700">
-                        {{ $t("partners-upper") }}</span
+                        {{ $t("projects.upper") }}</span
                     >
                 </template>
                 <template #title>
                     <span class="!text-secondary-700">{{
-                        $t("partners")
+                        $t("projects")
                     }}</span>
                 </template>
             </SectionTitleShadow>
