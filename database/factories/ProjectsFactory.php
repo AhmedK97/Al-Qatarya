@@ -35,6 +35,7 @@ class ProjectsFactory extends Factory
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
                 'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
             ],
+
             'agent' =>[
                 'en' => $enFaker->name,
                 'ar' => $arFaker->name,
