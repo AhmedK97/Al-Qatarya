@@ -13,13 +13,12 @@ return new class extends Migration {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('agent');
+            $table->string('address');
+            $table->date('date');
+            $table->integer('space_area');
             $table->text('description');
             $table->string('slug');
-            $table->string('locale')->nullable();
-            // $table->string('status')->default(BlogStatusEnum::PUBLISHED->value);
-            $table->string('seo_title')->nullable();
-            $table->string('seo_description')->nullable();
-            $table->string('seo_keywords')->nullable();
             $table->timestamps();
 
         });
