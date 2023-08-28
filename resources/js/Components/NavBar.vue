@@ -277,6 +277,14 @@ const logout = () => {
                         </NavLink>
 
                         <NavLink
+                            :href="route('projects')"
+                            class="px-2 text-2xl text-white"
+                            :active="route().current('projects')"
+                        >
+                            {{ $t("home.projects") }}
+                        </NavLink>
+
+                        <NavLink
                             :href="route('show.faq')"
                             class="px-2 text-2xl text-white"
                             :active="route().current('show.faq')"

@@ -11,7 +11,7 @@ import WhoWeAre from "@/Components/WhoWeAre.vue";
 // import "@lottiefiles/lottie-player";
 import "@ebcom/dotlottie-player";
 import PartnerSlider from "@/Components/PartnerSlider.vue";
-import Projects from "@/Components/Projects.vue";
+import HomeProjects from "@/Components/HomeProjects.vue";
 import StartPlanning from "@/Components/StartPlanning.vue";
 import ServicesTop from "@/Components/ServicesTop.vue";
 
@@ -87,7 +87,7 @@ const sponsors = [
         <Services class="mt-20 md:mt-40" :services="services" />
 
         <!-- projects -->
-        <Projects class="mt-20 md:mt-40" />
+        <HomeProjects class="mt-20 md:mt-40" />
 
         <!-- why  -->
         <WhyUs class="mt-20 md:mt-40" />

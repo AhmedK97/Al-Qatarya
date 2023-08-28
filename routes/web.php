@@ -5,7 +5,9 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;
+use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\ShowBlogController;
+// use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,11 +30,16 @@ Route::get('/faq', FaqController::class)->name('show.faq');
 
 Route::get('/blogs', IndexBlogController::class)->name('blogs');
 
+Route::get('/projects', IndexProjectsController::class)->name('projects');
+
 Route::get('/contact-us', IndexContactUsController::class)->name('show.contact');
 
 Route::get('/{slug}', ShowServiceController::class)->name('service');
 
 Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
+
+// Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
+
 
 
 
