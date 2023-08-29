@@ -39,7 +39,7 @@ Route::get('/{slug}', ShowServiceController::class)->name('service');
 
 Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 
-// Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
+Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
 
 
 

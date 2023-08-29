@@ -10,13 +10,14 @@ use Spatie\Sluggable\SlugOptions;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Translatable\HasTranslations;
 
-class Projects extends Model implements HasMedia
+class Project extends Model implements HasMedia
 {
     use HasFactory;
     use HasSlug;
     use HasTranslations;
     use InteractsWithMedia;
 
+    public const PROJECT_IMAGE = 'project_image';
 
     protected $guarded = [];
 

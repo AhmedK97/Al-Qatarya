@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\IndexProjectResource;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class IndexProjectsController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return inertia('Project/Index');
+        $project = Project::all();
+        return inertia('Project/Index',[
+            'project' => IndexProjectResource::collection($project),
+        ]);
     }
 }

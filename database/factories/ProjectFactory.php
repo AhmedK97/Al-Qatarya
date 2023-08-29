@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Projects;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Projects>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
  */
-class ProjectsFactory extends Factory
+class ProjectFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,7 @@ class ProjectsFactory extends Factory
      * @return array<string, mixed>
      */
 
-
-    protected $model = Projects::class;
-
+    protected $model = Project::class;
 
     public function definition(): array
     {
@@ -30,7 +28,7 @@ class ProjectsFactory extends Factory
 
         Model::unguard();
 
-        Projects::truncate();
+        Project::truncate();
 
         $enFaker = Faker::create('en_US');
         $arFaker = Faker::create('ar_SA');
@@ -41,7 +39,7 @@ class ProjectsFactory extends Factory
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
             ],
 
-            'agent' =>[
+            'agent' => [
                 'ar' => $arFaker->name,
                 'en' => $enFaker->name,
             ],
@@ -56,6 +54,18 @@ class ProjectsFactory extends Factory
                 'en' => $enFaker->realText($nbWords = 50, $variableNbWords = true),
             ],
         ];
+    }
 
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (Project $project) {
+            $image = 'https://picsum.photos/720.webp';
+            $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGE);
+        });
     }
 }

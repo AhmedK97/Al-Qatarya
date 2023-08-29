@@ -19,6 +19,7 @@
             <div
                 class="grid gap-6 px-6 mt-20 sm:grid-rows-3 sm:grid-cols-2 lg:grid-cols-4"
             >
+                {{ project }}
                 <!-- <Link :href="route('show.projects' + project.slug)"> -->
                 <ImageWithDetails
                     v-for="(image, index) in images"
