@@ -390,8 +390,8 @@ const logout = () => {
                     <div>
                         <div class="">
                             <Link
-                                href="#contact-us"
-                                :active="route().current('profile.show')"
+                                href="/contact-us"
+                                :active="route().current('show.contact')"
                             >
                                 {{ $t("home.contact") }}
                             </Link>
