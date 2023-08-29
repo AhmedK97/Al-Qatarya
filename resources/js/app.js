@@ -8,8 +8,7 @@ import { i18nVue } from "laravel-vue-i18n";
 import { MotionPlugin } from "@vueuse/motion";
 
 const appName =
-    window.document.getElementsByTagName("title")[0]?.innerText ||
-    "القطريه للعوازل";
+    window.document.getElementsByTagName("title")[0]?.innerText ||"القطريه للعوازل";
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

@@ -18,35 +18,37 @@
                 {{ $t("partners-desc") }}
             </p>
 
-            <!-- <div class="grid grid-cols-3 grid-rows-2 gap-6 mt-20">
+            <!-- <div
+                class="grid gap-6 mt-20 sm:grid-rows-3 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2"
+            >
                 <img
                     src="/storage/1/720.webp"
-                    class="w-96 h-96 rounded-xl"
+                    class="object-cover w-full h-auto rounded-lg cursor-pointer hover:opacity-80"
                     alt=""
                 />
                 <img
                     src="/storage/2/720.webp"
-                    class="w-96 h-96 rounded-xl"
+                    class="object-cover w-full h-auto rounded-lg cursor-pointer hover:opacity-80"
                     alt=""
                 />
                 <img
                     src="/storage/3/720.webp"
-                    class="w-96 h-96 rounded-xl"
+                    class="object-cover w-full h-auto rounded-lg cursor-pointer hover:opacity-80"
                     alt=""
                 />
                 <img
                     src="/storage/4/720.webp"
-                    class="w-96 h-96 rounded-xl"
+                    class="object-cover w-full h-auto rounded-lg cursor-pointer hover:opacity-80"
                     alt=""
                 />
                 <img
                     src="/storage/5/720.webp"
-                    class="w-96 h-96 rounded-xl"
+                    class="object-cover w-full h-auto rounded-lg cursor-pointer hover:opacity-80"
                     alt=""
                 />
                 <img
                     src="/storage/6/720.webp"
-                    class="w-96 h-96 rounded-xl"
+                    class="object-cover w-full h-auto rounded-lg cursor-pointer hover:opacity-80"
                     alt=""
                 />
             </div> -->

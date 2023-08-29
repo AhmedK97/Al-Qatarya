@@ -15,6 +15,7 @@ class Blog extends Model implements HasMedia
     use HasSlug;
     use InteractsWithMedia;
 
+    public const BLOG_IMAGE = 'blog_image';
 
 
     protected $guarded = [];

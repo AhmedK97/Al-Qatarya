@@ -5,14 +5,13 @@ import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 import { Link } from "@inertiajs/vue3";
 import Tabs from "@/Components/Tabs.vue";
 import OurTeam from "@/Components/OurTeam.vue";
-import { slideVisibleOnceLeft, slideVisibleOnceRight } from "@vueuse/motion";
 </script>
 
 <template>
     <AppLayout :title="trans('home.about')">
-        <section class="container mx-auto mb-20 mt-36 max-w-7xl">
+        <section class="container mx-auto mt-10 mb-20 md:mt-36 max-w-7xl">
             <div
-                class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row ltr:space-x-reverse"
+                class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse"
             >
                 <div class="relative order-1 md:order-2">
                     <img
@@ -26,7 +25,7 @@ import { slideVisibleOnceLeft, slideVisibleOnceRight } from "@vueuse/motion";
                         alt=""
                     />
                 </div>
-                <div class="order-2 md:order-1">
+                <div class="order-2 px-4 md:order-1">
                     <SectionTitleShadow>
                         <template #upper-title>
                             {{ $t("who.we.are-upper") }}
@@ -84,7 +83,7 @@ import { slideVisibleOnceLeft, slideVisibleOnceRight } from "@vueuse/motion";
             <section
                 class="container mx-auto mt-20 max-w-7xl"
                 v-motion="{
-                    initial: { x: 500, opacity: 0 },
+                    initial: { x: 50, opacity: 0 },
                     visibleOnce: {
                         x: 0,
                         opacity: 1,
@@ -93,7 +92,7 @@ import { slideVisibleOnceLeft, slideVisibleOnceRight } from "@vueuse/motion";
                 }"
             >
                 <div
-                    class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row rtl:space-x-reverse"
+                    class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row rtl:space-x-reverse"
                 >
                     <img
                         src="/storage/images/banner1.png"
@@ -101,7 +100,7 @@ import { slideVisibleOnceLeft, slideVisibleOnceRight } from "@vueuse/motion";
                         loading="lazy"
                         alt=""
                     />
-                    <div class="">
+                    <div class="px-4">
                         <SectionTitleShadow>
                             <template #upper-title>
                                 {{ $t("why.us-upper") }}

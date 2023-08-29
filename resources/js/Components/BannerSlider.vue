@@ -7,9 +7,11 @@
                     class="container right-0 px-8 mx-auto text-gray-50 text max-w-7xl rtl:left-0"
                     :class="{ animate: animateText }"
                 >
-                    <p class="text-4xl">{{ slides[currentSlideIndex].text }}</p>
+                    <p class="text-2xl md:text-4xl">
+                        {{ slides[currentSlideIndex].text }}
+                    </p>
                     <div>
-                        <p class="mt-8 text-xl">
+                        <p class="mt-8 text-md md:text-xl">
                             توفر شركة القطريه مجموعة مدربة و متميزة من
                             <br />الفنيين لتوفير أعلي مستويات بتقنية عالية و
                             بأقل وقت ممكن
@@ -73,7 +75,7 @@ export default {
 .slide {
     position: relative;
     width: 100%;
-    height: 36.8rem; /* Adjust as needed */
+    height: 44rem; /* Adjust as needed */
 }
 
 img {

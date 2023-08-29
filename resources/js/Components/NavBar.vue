@@ -36,7 +36,7 @@ const logout = () => {
 <template>
     <!-- upper menu -->
     <div class="bg-secondary-900">
-        <div class="container flex justify-between max-w-6xl px-8 py-3 mx-auto">
+        <div class="container flex justify-between max-w-6xl px-5 py-3 mx-auto">
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
                 <img src="/storage/images/house.svg" class="w-5 h-7" alt="" />
                 <p class="mt-1 text-xs font-normal sm:text-base text-gray-50">
@@ -109,7 +109,7 @@ const logout = () => {
                     <!-- Navigation Links -->
                     <NavLink
                         :href="route('home')"
-                        class="px-2 !text-lg text-white"
+                        class="px-2 text-white md:text-lg"
                     >
                         {{ $t("home.company_name") }}
                     </NavLink>
@@ -200,7 +200,7 @@ const logout = () => {
             </div>
             <div class="flex justify-center">
                 <div
-                    class="absolute bottom-0 hidden px-2 py-1.5 translate-y-1/2 rounded-full space-x-40 lg:space-x-80 md:flex md:items-center md:justify-between z-50 bg-secondary-900 rtl:space-x-reverse"
+                    class="absolute bottom-0 hidden px-2 py-1.5 translate-y-1/2 rounded-full space-x-20 lg:space-x-80 md:flex md:items-center md:justify-between z-50 bg-secondary-900 rtl:space-x-reverse"
                 >
                     <div>
                         <div
@@ -312,12 +312,13 @@ const logout = () => {
             :class="{
                 block: showingNavigationDropdown,
                 hidden: !showingNavigationDropdown,
+                'h-[50rem]': serviceDropdown == true,
             }"
-            class="w-[22rem] h-[35rem] absolute top-[5.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
+            class="w-[22rem] h-[35rem] absolute top-[5.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
         >
             <!-- Responsive Settings Options -->
             <div
-                class="px-4 pt-4 overflow-hidden font-medium text-md text-gray-950"
+                class="px-4 pt-4 overflow-hidden font-semibold text-md text-gray-50"
             >
                 <div class="flex items-center p-5">
                     <div>
@@ -333,19 +334,27 @@ const logout = () => {
                     </div>
                 </div>
 
-                <div @click="showServices" class="flex items-center p-5">
-                    <div>
-                        <div class="">
-                            {{ $t("home.services") }}
-                        </div>
+                <div
+                    @click="showServices"
+                    class="flex items-center p-5 space-x-4 transition duration-150 ease-in-out rtl:space-x-reverse"
+                >
+                    <div class="">
+                        {{ $t("home.services") }}
                     </div>
+                    <img
+                        src="/storage/images/down-arrow-faq-white.svg"
+                        alt=""
+                    />
                 </div>
 
-                <div v-if="serviceDropdown == true" class="ltr:ml-10 rtl:mr-10">
+                <div
+                    v-if="serviceDropdown == true"
+                    class="transition duration-150 ease-in-out ltr:ml-10 rtl:mr-10"
+                >
                     <div
                         v-for="service in $page.props.services"
                         :key="service.slug"
-                        class="my-4 select-none"
+                        class="my-4 transition duration-150 ease-in-out select-none"
                     >
                         <Link
                             :href="route('service', service.slug)"
@@ -408,15 +417,6 @@ const logout = () => {
                         alt=""
                     />
                 </div>
-
-                <!-- <div class="mt-3 space-y-1"> -->
-                <!-- Authentication -->
-                <!-- <form method="POST" @submit.prevent="logout"> -->
-                <!-- <ResponsiveNavLink as="button"> -->
-                <!-- {{ $t('home.logout') }} -->
-                <!-- </ResponsiveNavLink> -->
-                <!-- </form> -->
-                <!-- </div> -->
             </div>
         </div>
     </nav>

@@ -7,7 +7,7 @@ import { Link } from "@inertiajs/vue3";
 <template>
     <footer class="bg-secondary-900">
         <div
-            class="container flex flex-col justify-between max-w-6xl px-8 mx-auto lg:space-x-12 lg:flex-row py-14 rtl:space-x-reverse"
+            class="container flex flex-col justify-between max-w-6xl px-6 mx-auto lg:space-x-12 lg:flex-row py-14 rtl:space-x-reverse"
         >
             <div class="flex flex-col space-y-4">
                 <p class="text-2xl font-bold text-rose-900">

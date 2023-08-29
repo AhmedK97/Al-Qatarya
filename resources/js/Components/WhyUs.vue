@@ -1,13 +1,13 @@
 <template>
     <section class="container mx-auto max-w-7xl">
         <div
-            class="flex flex-col justify-center p-2 space-x-10 space-y-8 md:flex-row rtl:space-x-reverse"
+            class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row rtl:space-x-reverse"
             v-motion="{
-                initial: { x: -500, opacity: 0 },
+                initial: { x: 50, opacity: 0 },
                 visibleOnce: {
                     x: 0,
                     opacity: 1,
-                    transition: { delay: 700 },
+                    transition: { delay: 500 },
                 },
             }"
         >
@@ -17,7 +17,7 @@
                 loading="lazy"
                 alt=""
             />
-            <div class="">
+            <div class="px-4">
                 <SectionTitleShadow>
                     <template #upper-title>
                         {{ $t("why.us-upper") }}
@@ -36,8 +36,10 @@
                     {{ $t("why.us-paragraph") }}
                 </p>
 
-                <div class="flex flex-col gap-8 px-4 mt-10">
-                    <div class="flex gap-x-24 md:gap-x-[8.5rem]">
+                <div class="flex flex-col gap-8 mt-4 md:mt-10">
+                    <div
+                        class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-[8.5rem]"
+                    >
                         <div
                             class="flex items-center space-x-6 rtl:space-x-reverse"
                         >
@@ -69,7 +71,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="flex gap-x-20 md:gap-x-28">
+                    <div
+                        class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-28"
+                    >
                         <div
                             class="flex items-center space-x-6 rtl:space-x-reverse"
                         >
@@ -104,7 +108,7 @@
                 </div>
 
                 <div
-                    class="flex justify-center px-5 py-4 mt-20 text-white rounded-full w-52 bg-rose-900"
+                    class="flex px-5 py-4 mt-20 text-white rounded-full w-52 bg-rose-900"
                 >
                     <Link
                         :href="

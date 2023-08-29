@@ -100,7 +100,7 @@ export default {
 };
 </script>
 <template>
-    <div class="container mx-auto bg-sidewhite max-w-7xl">
+    <div class="container px-6 mx-auto bg-sidewhite max-w-7xl">
         <SectionTitleShadow>
             <template #upper-title>
                 {{ $t("partners-upper") }}

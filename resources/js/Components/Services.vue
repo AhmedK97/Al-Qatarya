@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
     <section class="">
-        <div class="px-4 mx-auto mt-5 text-3xl max-w-7xl sm:px-6 lg:px-8s">
+        <div class="px-6 mx-auto mt-5 text-3xl max-w-7xl lg:px-8">
             <SectionTitleShadow>
                 <template #upper-title>
                     {{ $t("services-upper") }}

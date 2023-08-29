@@ -4,14 +4,14 @@
             class="container flex flex-col items-center justify-between px-4 mx-auto lg:flex-row max-w-7xl"
         >
             <div
-                class="flex items-center px-4 py-8 space-x-6 lg:py-20 lg:px-0 lg:space-x-20 rtl:space-x-reverse"
+                class="flex flex-col items-center px-4 py-8 md:space-x-6 md:flex-row lg:py-20 lg:px-0 lg:space-x-20 rtl:space-x-reverse"
             >
                 <img
                     src="storage/images/building.svg"
                     class="w-20 h-20"
                     alt=""
                 />
-                <div>
+                <div class="text-center md:text-right">
                     <SectionTitleShadow>
                         <template #upper-title>
                             <span
@@ -22,14 +22,14 @@
                         </template>
                         <template #title>
                             <span
-                                class="!text-secondary-700 text-2xl lg:text-4xl"
+                                class="!text-secondary-700 text-xl md:text-4xl"
                                 >{{ $t("planning") }}</span
                             >
                         </template>
                     </SectionTitleShadow>
-                    <hr class="w-48 h-1 border-0 rounded bg-secondary-700" />
+                    <hr class="h-1 border-0 rounded md:w-48 bg-secondary-700" />
                     <p
-                        class="mt-4 text-lg font-medium ltr:lg:pl-0 ltr:lg:pr-20 rtl:lg:pl-20 rtl:lg:pr-0 text-gray-50"
+                        class="mt-4 font-medium md:text-lg ltr:lg:pl-0 ltr:lg:pr-20 rtl:lg:pl-20 rtl:lg:pr-0 text-gray-50"
                     >
                         {{ $t("planning-desc") }}
                     </p>
