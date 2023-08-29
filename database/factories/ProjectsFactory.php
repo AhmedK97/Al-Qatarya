@@ -17,6 +17,11 @@ class ProjectsFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+
+    protected $model = Projects::class;
+
+
     public function definition(): array
     {
         \DB::table('projects')->delete();
@@ -32,21 +37,24 @@ class ProjectsFactory extends Factory
 
         return [
             'title' => [
-                'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
                 'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
+                'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
             ],
 
             'agent' =>[
-                'en' => $enFaker->name,
                 'ar' => $arFaker->name,
+                'en' => $enFaker->name,
             ],
             'address' => [
+                'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
-                'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true)
             ],
             'space_area' => $enFaker->randomNumber(5, true),
             'date' => now(),
-            'description' => $enFaker->realText($maxNbChars = 4000, $indexSize = 2),
+            'description' => [
+                'ar' => $arFaker->realText($nbWords = 50, $variableNbWords = true),
+                'en' => $enFaker->realText($nbWords = 50, $variableNbWords = true),
+            ],
         ];
 
     }

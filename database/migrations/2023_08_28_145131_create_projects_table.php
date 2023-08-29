@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('agent');
-            $table->string('address');
+            $table->json('title');
+            $table->json('agent');
+            $table->json('address');
             $table->date('date');
             $table->integer('space_area');
-            $table->text('description');
+            $table->json('description');
             $table->string('slug');
             $table->timestamps();
 
