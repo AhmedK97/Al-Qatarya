@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ShowProject;
+use App\Http\Resources\ShowProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class ShowProjectsController extends Controller
         $project = Project::where('slug', $request->slug)->firstOrFail();
 
         return inertia('Project/Show', [
-            'project' => ShowProject::make($project),
+            'project' => ShowProjectResource::make($project),
         ]);
     }
 }
