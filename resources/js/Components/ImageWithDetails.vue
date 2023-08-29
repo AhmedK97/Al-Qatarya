@@ -7,7 +7,7 @@
 
         <!-- Image details -->
         <div v-if="showDetails"
-            class="absolute inset-0 flex items-center justify-center text-white bg-gray-900 rounded-lg">
+            class="absolute inset-0 flex items-center justify-center text-white bg-gray-900 rounded-lg opacity-75">
             <div class="text-center">
                 <h3 class="text-lg font-semibold">{{ title }}</h3>
                 <p class="mt-2">{{ description }}</p>

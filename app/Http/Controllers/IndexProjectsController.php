@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class IndexProjectsController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return Inertia::render('Projects');
+        return inertia('Project/Index');
     }
 }

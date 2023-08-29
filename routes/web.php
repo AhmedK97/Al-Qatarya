@@ -7,6 +7,7 @@ use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;
 use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\ShowBlogController;
+use App\Http\Controllers\ShowProjectsController;
 // use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
 use Illuminate\Support\Facades\Route;
