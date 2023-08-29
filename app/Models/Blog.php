@@ -12,9 +12,10 @@ use Spatie\Sluggable\HasSlug;
 class Blog extends Model implements HasMedia
 {
     use HasFactory;
-     use HasSlug;
+    use HasSlug;
     use InteractsWithMedia;
 
+    public const BLOG_IMAGE = 'blog_image';
 
 
     protected $guarded = [];

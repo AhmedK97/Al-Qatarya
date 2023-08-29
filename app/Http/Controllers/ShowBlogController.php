@@ -15,10 +15,11 @@ class ShowBlogController extends Controller
     public function __invoke(Request $request )
     {
         $blog = Blog::Published()->where('slug', $request->slug)->firstOrFail();
-        $blogs = Blog::Published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
-            return new IndexBlogResource($blog);
-        });
-        return inertia('Blog/Index', [
+        // $blogs = Blog::Published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
+        //     return new IndexBlogResource($blog);
+        // });
+
+        return inertia('Blog/ShowBlog', [
             'blog' => IndexBlogResource::make($blog),
             'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
                 return new BlogResource($blog);
