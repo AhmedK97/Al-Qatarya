@@ -223,7 +223,7 @@ const logout = () => {
                                         >
                                             {{ $t("home.services") }}
                                             <img
-                                                class="w-4 h-4 mx-2"
+                                                class="w-4 h-4 mx-2 mt-px"
                                                 loading="lazy"
                                                 src="/storage/images/down-arrow.svg"
                                                 alt="arrow-down"

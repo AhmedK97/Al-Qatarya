@@ -9,9 +9,9 @@ import OurTeam from "@/Components/OurTeam.vue";
 
 <template>
     <AppLayout :title="trans('home.about')">
-        <section class="container mx-auto mt-10 mb-20 md:mt-36 max-w-7xl">
+        <section class="mt-10 mb-20 md:mt-36">
             <div
-                class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse"
+                class="container flex flex-col justify-center p-2 mx-auto space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse max-w-7xl"
             >
                 <div class="relative order-1 md:order-2">
                     <img

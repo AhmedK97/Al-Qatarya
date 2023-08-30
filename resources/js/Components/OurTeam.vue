@@ -1,6 +1,6 @@
 <template>
     <section
-        class="container px-4 mx-auto max-w-7xl lg:px-0 bg-rose-900"
+        class="bg-rose-900"
         v-motion="{
             initial: { x: 50, opacity: 0 },
             visibleOnce: {
@@ -10,7 +10,9 @@
             },
         }"
     >
-        <div class="flex flex-col justify-between p-2 py-10 lg:flex-row">
+        <div
+            class="container flex flex-col justify-between p-2 px-4 py-20 mx-auto lg:flex-row max-w-7xl lg:px-0"
+        >
             <div class="">
                 <SectionTitleShadow>
                     <template #upper-title>
