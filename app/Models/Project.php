@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Sluggable\SlugOptions;
 use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class Project extends Model implements HasMedia
@@ -17,7 +17,9 @@ class Project extends Model implements HasMedia
     use HasTranslations;
     use InteractsWithMedia;
 
-    public const PROJECT_IMAGE = 'project_image';
+    public const PROJECT_MAIN_IMAGE = 'project_main_image';
+
+    public const PROJECT_IMAGES = 'project_images';
 
     protected $guarded = [];
 

@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Project;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,7 +17,6 @@ class ProjectFactory extends Factory
      *
      * @return array<string, mixed>
      */
-
     protected $model = Project::class;
 
     public function definition(): array
@@ -64,8 +63,16 @@ class ProjectFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Project $project) {
+            // add project_image to project
+
             $image = 'https://picsum.photos/720.webp';
-            $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGE);
+            $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_MAIN_IMAGE);
+
+            // add project_images to project
+            for ($i = 0; $i < 5; $i++) {
+                $image = 'https://picsum.photos/720.webp';
+                $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGES);
+            }
         });
     }
 }

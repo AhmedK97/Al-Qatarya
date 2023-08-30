@@ -16,11 +16,11 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('Home' , [
+        return Inertia::render('Home', [
             'services' => ServiceResource::collection(Service::all()),
             'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
                 return new BlogResource($blog);
-            })
+            }),
         ]);
     }
 }

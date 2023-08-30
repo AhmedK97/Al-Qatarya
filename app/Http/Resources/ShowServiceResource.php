@@ -7,18 +7,18 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShowServiceResource extends JsonResource
 {
-
     public function toArray(Request $request)
     {
         // get media spatie
         // dd($this->getMedia("services"));
-        $mediaCollection = $this->getMedia("services");
+        $mediaCollection = $this->getMedia('services');
 
         $mediaUrls = [];
 
         foreach ($mediaCollection as $media) {
             $mediaUrls[] = $media->getUrl();
         }
+
         return [
             'id' => $this->id,
             'name' => $this->getTranslation('name', app()->getLocale()),

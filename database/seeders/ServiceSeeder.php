@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Service;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Js;
 
 class ServiceSeeder extends Seeder
 {
@@ -235,7 +234,6 @@ class ServiceSeeder extends Seeder
             $service->addMediaFromUrl($image)->toMediaCollection('services');
             $service->addMediaFromUrl($image)->toMediaCollection('services');
             $service->addMediaFromUrl($image)->toMediaCollection('services');
-
 
         }
     }

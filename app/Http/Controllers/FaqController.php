@@ -12,7 +12,7 @@ class FaqController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return inertia('Faq/Index' , [
+        return inertia('Faq/Index', [
             'faqs' => FAQ::Where('locale', currentLocale())->get(),
         ]);
     }

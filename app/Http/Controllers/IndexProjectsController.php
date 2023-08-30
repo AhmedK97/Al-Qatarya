@@ -11,7 +11,8 @@ class IndexProjectsController extends Controller
     public function __invoke(Request $request)
     {
         $project = Project::all();
-        return inertia('Project/Index',[
+
+        return inertia('Project/Index', [
             'project' => IndexProjectResource::collection($project),
         ]);
     }

@@ -16,9 +16,10 @@ class IndexProjectResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->description,
-            'image' => $this->image,
+            'image' => $this->getFirstMediaUrl('project_image'),
             'agent' => $this->agent,
             'address' => $this->address,
         ];

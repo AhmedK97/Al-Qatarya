@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\Sluggable\SlugOptions;
-use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Sluggable\HasSlug;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+use Spatie\Translatable\HasTranslations;
 
 class Service extends Model implements HasMedia
 {
@@ -17,7 +17,7 @@ class Service extends Model implements HasMedia
     use HasTranslations;
     use InteractsWithMedia;
 
-    public $translatable = ['name', 'body', 'seo_title', 'seo_description', 'seo_keywords' ];
+    public $translatable = ['name', 'body', 'seo_title', 'seo_description', 'seo_keywords'];
 
     protected $guarded = [];
 

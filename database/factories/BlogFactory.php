@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Blog;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlogFactory extends Factory
 {
