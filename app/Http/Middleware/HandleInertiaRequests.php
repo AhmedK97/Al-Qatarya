@@ -43,6 +43,7 @@ class HandleInertiaRequests extends Middleware
             // services
             'services' => function () {
                 $services = Service::select('name', 'slug')->get();
+
                 return ServiceResource::collection($services);
             },
 

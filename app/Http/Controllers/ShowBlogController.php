@@ -20,7 +20,7 @@ class ShowBlogController extends Controller
             'blog' => IndexBlogResource::make($blog),
             'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
                 return new BlogResource($blog);
-            })
+            }),
         ]);
         //
     }

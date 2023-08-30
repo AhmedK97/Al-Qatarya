@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Blog extends Model implements HasMedia
 {
@@ -16,7 +16,6 @@ class Blog extends Model implements HasMedia
     use InteractsWithMedia;
 
     public const BLOG_IMAGE = 'blog_image';
-
 
     protected $guarded = [];
 

@@ -41,8 +41,4 @@ Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 
 Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
 
-
-
-
-
 // To do show all services in one page

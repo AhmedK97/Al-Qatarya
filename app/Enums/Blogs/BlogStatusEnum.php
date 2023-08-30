@@ -11,6 +11,6 @@ enum BlogStatusEnum: string
     {
         return [
             self::PENDING->value,
-        self::PUBLISHED->value];
+            self::PUBLISHED->value];
     }
 }

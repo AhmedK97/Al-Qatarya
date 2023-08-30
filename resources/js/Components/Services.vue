@@ -31,4 +31,3 @@ const props = defineProps({
     </section>
 </template>
 
-<style></style>

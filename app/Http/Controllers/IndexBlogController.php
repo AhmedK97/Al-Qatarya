@@ -16,7 +16,7 @@ class IndexBlogController extends Controller
         return inertia('Blog/Index', [
             'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(9)->through(function (Blog $blog) {
                 return new BlogResource($blog);
-            })
+            }),
         ]);
     }
 }
