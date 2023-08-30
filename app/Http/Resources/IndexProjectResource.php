@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +20,7 @@ class IndexProjectResource extends JsonResource
             'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->description,
-            'image' => $this->getFirstMediaUrl('project_image'),
+            'main_image' => $this->getFirstMediaUrl(Project::PROJECT_MAIN_IMAGE) ?? null,
             'agent' => $this->agent,
             'address' => $this->address,
         ];

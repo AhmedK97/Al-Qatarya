@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +20,10 @@ class ShowProjectResource extends JsonResource
             'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->description,
-            'image' => $this->getFirstMediaUrl('project_image'),
+            'main_image' => $this->getFirstMediaUrl(Project::PROJECT_MAIN_IMAGE) ?? null,
+            'images' =>$this-> getMedia(Project::PROJECT_IMAGES)->map(function ($item) {
+                return $item->getFullUrl();
+            }),
             'agent' => $this->agent,
             'address' => $this->address,
             'date' => $this->created_at->format('d/m/Y'),

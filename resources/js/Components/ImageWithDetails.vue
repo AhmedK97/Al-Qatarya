@@ -1,8 +1,7 @@
 <template>
     <div class="relative">
         <Link :href="route('show.projects', project.slug)">
-
-        <img :src="project.image" :alt="project.title"
+        <img :src="project.main_image" :alt="project.title"
             class="object-cover w-full h-auto duration-300 rounded-lg cursor-pointer hover:opacity-80" />
 
         <div
@@ -11,7 +10,6 @@
                 <h3 class="text-lg font-semibold">{{ project . title }}</h3>
                 <p class="mt-2">{{ project . description }}</p>
             </div>
-
         </div>
         </Link>
 
