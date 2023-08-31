@@ -2,7 +2,7 @@
     <NavBar />
     <section class="bg-gray-50">
         <div
-            class="container flex flex-col items-center mx-auto my-20 space-y-8 md:space-y-0 md:items-start md:space-x-16 md:flex-row max-w-7xl rtl:space-x-reverse"
+            class="container flex flex-col items-center mx-auto mt-20 space-y-8 md:space-y-0 md:items-start md:space-x-16 md:flex-row max-w-7xl rtl:space-x-reverse"
         >
             <div class="flex flex-col space-y-8">
                 <img
@@ -176,6 +176,19 @@
                 </div>
             </div>
         </div>
+        <div
+            id="map-container"
+            class="container mx-auto my-10 border h-72 max-w-7xl"
+        >
+            <iframe
+                class="w-full h-full"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                :src="mapSrc"
+            ></iframe>
+        </div>
     </section>
     <Footer />
 </template>
@@ -184,6 +197,11 @@
 import NavBar from "@/Components/NavBar.vue";
 import Footer from "@/Components/Footer.vue";
 import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
+import { computed } from "@vue/reactivity";
+
+const mapSrc = computed(() => {
+    return `https://maps.google.com/maps?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA%2094043,%20USA&output=embed`;
+});
 </script>
 
 <style></style>

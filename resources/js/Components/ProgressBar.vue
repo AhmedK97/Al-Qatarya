@@ -1,51 +1,44 @@
 <template>
-    <div class="relative h-2">
+    <div class="relative h-8">
         <div
-            class="absolute top-0 left-0 h-full bg-blue-500"
+            class="h-full bg-blue-500"
             :style="{ width: progressBarWidth + '%' }"
-        ></div>
+        >
+            {{ progressBarWidth }}
+        </div>
     </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+<script>
+export default {
+    props: ["targetNumber"],
+    data() {
+        return {
+            progressBarWidth: 0,
+        };
+    },
+    mounted() {
+        this.startProgressBar();
+    },
+    methods: {
+        startProgressBar() {
+            const interval = 50; // Milliseconds
+            let currentNumber = 0;
 
-const progressBarWidth = ref(0);
-const sectionObserver = ref(null);
-
-const updateProgressBar = (entries) => {
-    const entry = entries[0];
-    const scrollY = window.scrollY;
-
-    if (entry.isIntersecting) {
-        const progress =
-            ((scrollY - entry.boundingClientRect.top) /
-                entry.boundingClientRect.height) *
-            100;
-        progressBarWidth.value = Math.min(progress, 100);
-    }
+            const progressBarInterval = setInterval(() => {
+                if (currentNumber >= this.targetNumber) {
+                    clearInterval(progressBarInterval);
+                } else {
+                    currentNumber++;
+                    this.progressBarWidth =
+                        (currentNumber / this.targetNumber) * 100;
+                }
+            }, interval);
+        },
+    },
 };
-
-onMounted(() => {
-    sectionObserver.value = new IntersectionObserver(updateProgressBar, {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0,
-    });
-
-    const sectionElement = document.querySelector("#my-section"); // Adjust the ID
-    if (sectionElement) {
-        sectionObserver.value.observe(sectionElement);
-    }
-});
-
-onBeforeUnmount(() => {
-    if (sectionObserver.value) {
-        sectionObserver.value.disconnect();
-    }
-});
 </script>
 
 <style scoped>
-/* Add your custom styling here */
+/* Add your styling here */
 </style>

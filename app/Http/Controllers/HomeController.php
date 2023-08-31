@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\ServiceResource;
+use App\Http\Resources\ShowProjectResource;
 use App\Models\Blog;
+use App\Models\Project;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -18,9 +20,7 @@ class HomeController extends Controller
     {
         return Inertia::render('Home', [
             'services' => ServiceResource::collection(Service::all()),
-            'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
-                return new BlogResource($blog);
-            }),
+            'project' => ShowProjectResource::collection(Project::take(6)->get()),
         ]);
     }
 }

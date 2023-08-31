@@ -5,6 +5,7 @@ import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 import { Link } from "@inertiajs/vue3";
 import Tabs from "@/Components/Tabs.vue";
 import OurTeam from "@/Components/OurTeam.vue";
+import ProgressBar from "@/Components/ProgressBar.vue";
 </script>
 
 <template>
@@ -118,8 +119,9 @@ import OurTeam from "@/Components/OurTeam.vue";
                         >
                             {{ $t("about.us-desc") }}
                         </p>
-
-                        <!-- <ProgressBar /> -->
+                        <div class="w-full">
+                            <ProgressBar :targetNumber="70" />
+                        </div>
                     </div>
                 </div>
             </section>

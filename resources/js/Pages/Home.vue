@@ -21,7 +21,10 @@ import { onMounted } from "vue";
 const props = defineProps({
     services: Object,
     blogs: Object,
+    project: Object,
 });
+
+console.log(props.project);
 
 const lottiePlayButton = onMounted(() => {
     // Find the element by its ID
@@ -87,7 +90,7 @@ const sponsors = [
         <Services class="mt-20 md:mt-40" :services="services" />
 
         <!-- projects -->
-        <HomeProjects class="mt-20 md:mt-40" />
+        <HomeProjects class="mt-20 md:mt-40" :project="project" />
 
         <!-- why  -->
         <WhyUs class="mt-20 md:mt-40" />
