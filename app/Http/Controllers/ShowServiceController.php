@@ -17,7 +17,7 @@ class ShowServiceController extends Controller
     {
         $service = Service::where('slug', 'like', '%'.$request->slug.'%')->firstOrFail();
 
-        return inertia('Service/Index', [
+        return inertia('Service/Show', [
             'service' => ShowServiceResource::make($service),
             'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
                 return new BlogResource($blog);

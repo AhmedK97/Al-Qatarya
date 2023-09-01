@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-// Route::get('/services', IndexServicesController::class)->name('services');
+Route::get('/services', IndexServicesController::class)->name('services');
 
 Route::get('/about', aboutController::class)->name('about');
 
@@ -37,7 +37,7 @@ Route::get('/projects', IndexProjectsController::class)->name('projects');
 
 Route::get('/contact-us', IndexContactUsController::class)->name('show.contact');
 
-Route::get('/{slug}', ShowServiceController::class)->name('service');
+Route::get('/services/{slug}', ShowServiceController::class)->name('service');
 
 Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 

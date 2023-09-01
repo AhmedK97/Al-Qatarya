@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from "vue";
+import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
     align: {
@@ -15,8 +16,6 @@ const props = defineProps({
         default: () => ["py-1", "bg-white"],
     },
 });
-
-let open = ref(false);
 
 const closeOnEscape = (e) => {
     if (open.value && e.key === "Escape") {
@@ -44,16 +43,17 @@ const alignmentClasses = computed(() => {
 
     return "origin-top";
 });
+
+let open = ref(false);
 </script>
 
 <template>
     <div class="relative">
-        <div @click="open = !open">
-            <slot name="trigger" />
-        </div>
-
-        <!-- Full Screen Dropdown Overlay -->
-        <div v-show="open" class="fixed inset-0 z-40" @click="open = false" />
+        <Link :href="route('services')">
+            <div @mouseover="open = true">
+                <slot name="trigger" />
+            </div>
+        </Link>
 
         <transition
             enter-active-class="transition duration-200 ease-out"
@@ -68,7 +68,7 @@ const alignmentClasses = computed(() => {
                 class="absolute z-50 mt-2 rounded-md shadow-lg md:w-[20rem] w-48"
                 :class="[alignmentClasses]"
                 style="display: none"
-                @click="open = false"
+                @mouseleave="open = false"
             >
                 <div
                     class="rounded-md ring-1 ring-black ring-opacity-5"

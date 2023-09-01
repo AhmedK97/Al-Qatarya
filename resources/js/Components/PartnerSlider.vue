@@ -129,7 +129,7 @@ export default {
                 >
                     <img
                         loading="lazy"
-                        class="xl:!h-16 xl:w-20 !h-[2.85rem] select-none aspect-square grayscale"
+                        class="xl:!h-16 xl:w-20 !h-[5rem] select-none aspect-square grayscale"
                         :src="image"
                         :alt="title"
                         :class="classes"
@@ -137,23 +137,6 @@ export default {
                 </Slide>
             </Carousel>
         </div>
-        <!-- <div
-            @click="autoplaySlider(true)"
-            class="flex items-center justify-center mt-4 space-x-2 bg-sidewhite rtl:space-x-reverse"
-        >
-            <div
-                @click="next"
-                class="w-6 h-[3.3px] rounded-full cursor-pointer bg-slate-400"
-            ></div>
-            <div
-                @click="next"
-                class="w-6 h-[3.3px] rounded-full cursor-pointer bg-slate-400"
-            ></div>
-            <div
-                @click="previous"
-                class="w-8 h-[3.3px] rounded-full cursor-pointer bg-secondarydark-600"
-            ></div>
-        </div> -->
     </div>
 </template>
 

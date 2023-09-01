@@ -26,7 +26,7 @@ console.log(props.blogs);
                 <article
                     v-for="(blog, index) in blogs.data"
                     :key="index"
-                    class="p-6 bg-gray-100 border border-gray-200 rounded-lg shadow-md"
+                    class="p-6 border border-gray-200 rounded-lg shadow-lg bg-gray-50"
                 >
                     <div
                         class="flex items-center justify-between mb-5 text-gray-500"

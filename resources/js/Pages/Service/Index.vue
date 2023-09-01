@@ -1,86 +1,72 @@
 <script setup>
+import ImageWithDetails from "@/Components/ImageWithDetails.vue";
+import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Pagination from "@/Components/Pagination.vue";
-import BlogsCards from "@/Components/BlogsCards.vue";
+import { Link } from "@inertiajs/vue3";
+
 const props = defineProps({
     service: Object,
-    blogs: Object,
 });
-
-// console.log(props.service);
 </script>
 
 <template>
     <AppLayout title="Dashboard">
         <section class="text-gray-600 body-font">
             <div
-                class="container flex flex-col items-center justify-center pt-16 mx-auto"
-            >
-                <h1
-                    class="mb-4 text-3xl font-medium text-gray-900 title-font sm:text-4xl"
-                >
-                    <span
-                        class="text-transparent underline bg-clip-text bg-gradient-to-r to-amber-600 from-black underline-offset-4 decoration-5 decoration-red-700"
-                    >
-                        {{ service.name }}
-                    </span>
-                </h1>
-            </div>
-
-            <div
-                class="items-center max-w-screen-xl gap-16 px-4 mx-auto mt-8 lg:grid lg:px-6"
+                class="container flex flex-col items-center justify-center mx-auto max-w-7xl"
             >
                 <div
-                    class="grid grid-cols-2 gap-8 mt-8 text-center sm:grid-cols-4 lg:grid-cols-4"
+                    class="flex flex-col items-center justify-center mt-10 md:mt-20"
+                >
+                    <SectionTitleShadow>
+                        <template #upper-title>
+                            <span class="text-3xl md:text-4xl">{{
+                                $t("services-upper")
+                            }}</span>
+                        </template>
+                        <template #title>
+                            <span class="text-2xl md:text-3xl">{{
+                                $t("services")
+                            }}</span>
+                        </template>
+                    </SectionTitleShadow>
+                    <p class="mt-4 text-lg font-medium text-gray-500">
+                        {{ $t("why.us-desc") }}
+                    </p>
+                </div>
+
+                <div
+                    class="container grid grid-cols-1 px-4 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3 gap-x-10 max-w-7xl gap-y-60 mb-60"
                 >
                     <div
                         v-for="(imageUrl, index) in service.images"
                         :key="index"
                     >
-                        <div :class="{ 'mt-10': index % 2 === 1 }">
-                            <img
-                                class="w-full rounded-lg max-h-[15rem]"
-                                loading="lazy"
-                                :src="imageUrl"
-                                :alt="`Image ${index + 1}`"
-                            />
+                        <div class="relative">
+                            <div class="">
+                                <img
+                                    class="w-full rounded-lg h-96"
+                                    loading="lazy"
+                                    :src="imageUrl"
+                                    :alt="`Image ${index + 1}`"
+                                />
+                            </div>
+                            <Link :href="route('service', service.slug)">
+                                <div
+                                    class="absolute top-0 right-0 z-50 p-5 m-5 transition duration-300 ease-in-out rounded-lg shadow-lg hover:translate-y-2/3 bg-gray-50 h-80 shadow-blue-100 hover:shadow-rose-50 translate-y-3/4"
+                                >
+                                    <p class="text-xl font-bold text-rose-900">
+                                        {{ service.name }}
+                                    </p>
+                                    <p class="mt-4 text-lg">
+                                        {{ service.body }}
+                                    </p>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- items-center max-w-screen-xl gap-16 px-4 mx-auto mt-8 lg:grid lg:px-6 -->
-            <div
-                class="container flex flex-col items-center max-w-screen-xl px-5 py-16 mx-auto mt-8 md:flex-row"
-            >
-                <div class="w-5/6 mb-10 lg:max-w-lg lg:w-full md:w-1/2 md:mb-0">
-                    <img
-                        loading="lazy"
-                        class="object-fill rounded"
-                        alt="hero"
-                        :src="service.main_image"
-                    />
-                </div>
-                <div
-                    class="flex flex-col items-center mx-3 text-center lg:flex-grow md:w-1/2 md:text-left"
-                >
-                    <h1
-                        class="mb-4 text-3xl font-medium text-center text-gray-900 title-font sm:text-4xl"
-                    >
-                        {{ service.name }}
-                    </h1>
-                    <p class="mb-8 text-xl leading-relaxed text-center">
-                        {{ service.body }}
-                    </p>
-                </div>
-            </div>
         </section>
-
-        <blogs-cards :blogs="blogs"></blogs-cards>
-        <div
-            class="container z-20 flex flex-col items-center max-w-6xl mx-auto mb-16 md:px-10"
-        >
-            <Pagination :links="blogs.links" />
-        </div>
     </AppLayout>
 </template>
