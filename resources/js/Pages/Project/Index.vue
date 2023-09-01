@@ -6,12 +6,12 @@
                 <SectionTitleShadow>
                     <template #upper-title>
                         <span class="text-3xl md:text-4xl">{{
-                            $t("faq.upper")
+                            $t("projects.upper")
                         }}</span>
                     </template>
                     <template #title>
                         <span class="text-2xl md:text-3xl">{{
-                            $t("faq.title")
+                            $t("projects")
                         }}</span>
                     </template>
                 </SectionTitleShadow>

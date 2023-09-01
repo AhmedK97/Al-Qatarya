@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-wrap">
-        <div class="w-full px-4">
+        <div class="container w-full px-4 mx-auto max-w-7xl">
             <ul
                 class="flex flex-row flex-wrap pt-3 pb-4 mb-0 space-x-2 list-none rtl:space-x-reverse"
             >

@@ -1,15 +1,5 @@
 <template>
-    <section
-        class="bg-rose-900"
-        v-motion="{
-            initial: { x: 50, opacity: 0 },
-            visibleOnce: {
-                x: 0,
-                opacity: 1,
-                transition: { delay: 700 },
-            },
-        }"
-    >
+    <section class="bg-rose-900">
         <div
             class="container flex flex-col justify-between p-2 px-4 py-20 mx-auto lg:flex-row max-w-7xl lg:px-0"
         >

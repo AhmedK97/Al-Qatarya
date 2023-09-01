@@ -6,6 +6,11 @@ import { Link } from "@inertiajs/vue3";
 import Tabs from "@/Components/Tabs.vue";
 import OurTeam from "@/Components/OurTeam.vue";
 import ProgressBar from "@/Components/ProgressBar.vue";
+import SericesAll from "@/Components/SericesAll.vue";
+
+defineProps({
+    services: Object,
+});
 </script>
 
 <template>
@@ -17,7 +22,7 @@ import ProgressBar from "@/Components/ProgressBar.vue";
                 <div class="relative order-1 md:order-2">
                     <img
                         src="/storage/images/dots.png"
-                        class="hidden md:block md:w-full md:h-[500px] absolute top-0 -translate-y-14 right-0 -translate-x-14"
+                        class="hidden xl:block md:w-full md:h-[500px] absolute top-0 -translate-y-14 right-0 -translate-x-14"
                         alt=""
                     />
                     <img
@@ -79,19 +84,11 @@ import ProgressBar from "@/Components/ProgressBar.vue";
                 </div>
             </div>
 
+            <SericesAll :services="services" class="mt-20" />
+
             <OurTeam class="mt-20" />
 
-            <section
-                class="container mx-auto mt-20 max-w-7xl"
-                v-motion="{
-                    initial: { x: 50, opacity: 0 },
-                    visibleOnce: {
-                        x: 0,
-                        opacity: 1,
-                        transition: { delay: 700 },
-                    },
-                }"
-            >
+            <section class="container mx-auto mt-20 max-w-7xl">
                 <div
                     class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row rtl:space-x-reverse"
                 >
@@ -119,8 +116,43 @@ import ProgressBar from "@/Components/ProgressBar.vue";
                         >
                             {{ $t("about.us-desc") }}
                         </p>
-                        <div class="w-full">
-                            <ProgressBar :targetNumber="70" />
+                        <div class="flex flex-col w-full mt-10 space-y-8">
+                            <div class="flex flex-col space-y-4">
+                                <p class="text-lg font-semibold">
+                                    {{ $t("progress.bar.1") }}
+                                </p>
+                                <ProgressBar
+                                    :targetNumber="40"
+                                    :endDigit="40"
+                                />
+                            </div>
+                            <div class="flex flex-col space-y-4">
+                                <p class="text-lg font-semibold">
+                                    {{ $t("progress.bar.2") }}
+                                </p>
+                                <ProgressBar
+                                    :targetNumber="80"
+                                    :endDigit="80"
+                                />
+                            </div>
+                            <div class="flex flex-col space-y-4">
+                                <p class="text-lg font-semibold">
+                                    {{ $t("progress.bar.3") }}
+                                </p>
+                                <ProgressBar
+                                    :targetNumber="64"
+                                    :endDigit="64"
+                                />
+                            </div>
+                            <div class="flex flex-col space-y-4">
+                                <p class="text-lg font-semibold">
+                                    {{ $t("progress.bar.4") }}
+                                </p>
+                                <ProgressBar
+                                    :targetNumber="96"
+                                    :endDigit="96"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

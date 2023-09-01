@@ -6,9 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;
 use App\Http\Controllers\IndexProjectsController;
+use App\Http\Controllers\IndexServicesController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
-// use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
+
+// Route::get('/services', IndexServicesController::class)->name('services');
 
 Route::get('/about', aboutController::class)->name('about');
 
