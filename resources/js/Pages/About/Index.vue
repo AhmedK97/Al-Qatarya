@@ -17,12 +17,12 @@ defineProps({
     <AppLayout :title="trans('home.about')">
         <section class="mt-10 mb-20 md:mt-36">
             <div
-                class="container flex flex-col justify-center p-2 mx-auto space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse max-w-7xl"
+                class="container flex flex-col justify-center w-full p-2 mx-auto space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse max-w-7xl"
             >
                 <div class="relative order-1 md:order-2">
                     <img
                         src="/storage/images/dots.png"
-                        class="hidden xl:block md:w-full md:h-[500px] absolute top-0 -translate-y-14 right-0 -translate-x-14"
+                        class="hidden xl:block md:w-full md:h-[500px] absolute top-0 -translate-y-14 -translate-x-14 ltr:translate-x-14"
                         alt=""
                     />
                     <img
@@ -31,7 +31,7 @@ defineProps({
                         alt=""
                     />
                 </div>
-                <div class="order-2 px-4 md:order-1">
+                <div class="order-2 w-full px-4 md:order-1">
                     <SectionTitleShadow>
                         <template #upper-title>
                             {{ $t("who.we.are-upper") }}
@@ -44,42 +44,32 @@ defineProps({
                     <p
                         class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
-                        مؤسسة ذات خبرة كبيرة فى مجال العزل الحراري والعزل المائي
-                        بالمملكة العربية السعودية بما تمتلكة من
+                        {{ $t("who.we.are-paragraph1") }}
                     </p>
                     <p
                         class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
-                        فريق فني مدرب وقوام اداري منظم ومعدات وماكينات حديثة .
+                        {{ $t("who.we.are-paragraph2") }}
                     </p>
                     <p
                         class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
-                        النشاط العام : أعمال صيانة وتشغيل المباني – تركيب واصلاح
-                        وصيانة أنظمة عازل الحرارة والماء والصوت – انشاء المباني
-                        الخرسانية – أعمال صيانة وتشغيل المباني سابقة الصب .
+                        {{ $t("who.we.are-paragraph3") }}
                     </p>
                     <p
                         class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
-                        التخصص : متخصصون فى توريد وتنفيذ واصلاح جميع أنظمة العزل
-                        المائية والحرارية وإصلاح الخرسانة .
+                        {{ $t("who.we.are-paragraph4") }}
                     </p>
                     <p
                         class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
-                        وقد استطاعت المؤسسة أن تنال ثقة عملائها بعد إتمام تتنفيذ
-                        المشروعات التى اسندت إليها على أكمل وجه ، وتعمل على
-                        زيادة مواردها وساتخدام التقنيات الحديثة من أجل إتمام
-                        تنفيذ كافة المشاريع المطلوبة بنفس الجودة والدقة العالية
-                        مع الإلتزام بمعايير الأمن والسلامة .
+                        {{ $t("who.we.are-paragraph5") }}
                     </p>
                     <p
                         class="mt-2 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
-                        وتحظى المؤسسة بثقة كبيرة مع العملاء ودقة كبيرة فى
-                        التنفيذ والتزام فى المواعيد ، وهي حريصة كل الحرص على
-                        إرضاء عملائها والسعي وراء اكتساب ثقة المزيد من العملاء
+                        {{ $t("who.we.are-paragraph6") }}
                     </p>
                 </div>
             </div>
@@ -90,7 +80,7 @@ defineProps({
 
             <section class="container mx-auto mt-20 max-w-7xl">
                 <div
-                    class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row rtl:space-x-reverse"
+                    class="flex flex-col justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row rtl:space-x-reverse"
                 >
                     <img
                         src="/storage/images/banner1.png"
@@ -112,11 +102,11 @@ defineProps({
                             {{ $t("why.us-desc") }}
                         </p>
                         <p
-                            class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                            class="mt-4 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                         >
                             {{ $t("about.us-desc") }}
                         </p>
-                        <div class="flex flex-col w-full mt-10 space-y-8">
+                        <div class="flex flex-col w-full mt-4 space-y-8">
                             <div class="flex flex-col space-y-4">
                                 <p class="text-lg font-semibold">
                                     {{ $t("progress.bar.1") }}

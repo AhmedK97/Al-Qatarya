@@ -37,7 +37,7 @@
                         alt=""
                     />
                     <p class="mt-4 text-xl font-semibold text-secondary-700">
-                        المدير العام
+                        {{ $t("general.manager") }}
                     </p>
                     <p class="text-xl font-semibold text-gray-50">
                         المهندس سيد مصطفى
@@ -50,7 +50,7 @@
                         alt=""
                     />
                     <p class="mt-4 text-xl font-semibold text-secondary-700">
-                        المدير العام
+                        {{ $t("general.manager") }}
                     </p>
                     <p class="text-xl font-semibold text-gray-50">
                         المهندس سيد مصطفى

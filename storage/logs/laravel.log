@@ -12780,3 +12780,1095 @@ Stack level 1.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/n
 #35 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #36 {main}
 "} 
+[2023-09-02 12:49:11] local.ERROR: Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. {"view":{"view":"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-1459236187 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#521</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1459236187\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","exception":"<pre class=sf-dump id=sf-dump-1833128120 data-indent-pad=\"  \"><span class=sf-dump-note>Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException</span> {<a class=sf-dump-ref>#514</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">message</span>: \"<span class=sf-dump-str title=\"60 characters\">The route ar/storage/images/location.svg could not be found.</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">code</span>: <span class=sf-dump-num>0</span>
+  #<span class=sf-dump-protected title=\"Protected property\">file</span>: \"<span class=sf-dump-str title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php
+104 characters\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/AbstractRouteCollection.php</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">line</span>: <span class=sf-dump-num>44</span>
+  -<span class=sf-dump-private title=\"Private property defined in class:&#10;`Symfony\\Component\\HttpKernel\\Exception\\HttpException`\">statusCode</span>: <span class=sf-dump-num>404</span>
+  -<span class=sf-dump-private title=\"Private property defined in class:&#10;`Symfony\\Component\\HttpKernel\\Exception\\HttpException`\">headers</span>: []
+  <span class=sf-dump-meta>trace</span>: {<samp data-depth=2 class=sf-dump-compact>
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:44
+Stack level 28.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/AbstractRouteCollection.php:44</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)\">throw new NotFoundHttpException(sprintf(</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>    &#039;The route %s could not be found.&#039;,</span></code>
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php:162
+Stack level 27.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/RouteCollection.php:162</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\RouteCollection-&gt;match(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>RouteCollection-&gt;match(Request $request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\RouteCollection-&gt;match(Request $request)\">    return $this-&gt;handleMatchedRoute($request, $route);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:754
+Stack level 26.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:754</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;findRoute($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;findRoute($request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;findRoute($request)\">$this-&gt;current = $route = $this-&gt;routes-&gt;match($request);</span></code>
+      &#8250; 
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:741
+Stack level 25.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:741</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;dispatchToRoute(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;dispatchToRoute(Request $request)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>{</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;dispatchToRoute(Request $request)\">    return $this-&gt;runRoute($request, $this-&gt;findRoute($request));</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:730
+Stack level 24.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:730</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;dispatch(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;dispatch(Request $request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;dispatch(Request $request)\">    return $this-&gt;dispatchToRoute($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:200
+Stack level 23.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:200</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http\\{closure}\">    return $this-&gt;router-&gt;dispatch($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>};</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:141
+Stack level 22.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:141</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>try {</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">    return $destination($passable);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php:66
+Stack level 21.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/barryvdh/laravel-debugbar/</span>src/Middleware/InjectDebugbar.php:66</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Barryvdh\\Debugbar\\Middleware\\InjectDebugbar-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Barryvdh\\Debugbar\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>InjectDebugbar-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>    /** @var \\Illuminate\\Http\\Response $response */</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Barryvdh\\Debugbar\\Middleware\\InjectDebugbar-&gt;handle($request, Closure $next)\">    $response = $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 20.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21
+Stack level 19.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TransformsRequest-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php:31
+Stack level 18.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php:31</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)\">    return parent::handle($request, $next);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 17.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21
+Stack level 16.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TransformsRequest-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php:40
+Stack level 15.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TrimStrings.php:40</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TrimStrings-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TrimStrings-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TrimStrings-&gt;handle($request, Closure $next)\">    return parent::handle($request, $next);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 14.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php:27
+Stack level 13.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php:27</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ValidatePostSize-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 12.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php:86
+Stack level 11.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php:86</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 10.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php:49
+Stack level 9.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Http/Middleware/HandleCors.php:49</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Http\\Middleware\\HandleCors-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>HandleCors-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>if (! $this-&gt;hasMatchingPath($request)) {</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Http\\Middleware\\HandleCors-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 8.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php:39
+Stack level 7.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Http/Middleware/TrustProxies.php:39</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Http\\Middleware\\TrustProxies-&gt;handle(Request $request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TrustProxies-&gt;handle(Request $request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Http\\Middleware\\TrustProxies-&gt;handle(Request $request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 6.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:116
+Stack level 5.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:116</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;then(Closure $destination)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Pipeline-&gt;then(Closure $destination)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;then(Closure $destination)\">    return $pipeline($this-&gt;passable);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:175
+Stack level 4.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:175</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;sendRequestThroughRouter($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Kernel-&gt;sendRequestThroughRouter($request)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                -&gt;through($this-&gt;app-&gt;shouldSkipMiddleware() ? [] : $this-&gt;middleware)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;sendRequestThroughRouter($request)\">                -&gt;then($this-&gt;dispatchToRouter());</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:144
+Stack level 3.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:144</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;handle($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Kernel-&gt;handle($request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;handle($request)\">    $response = $this-&gt;sendRequestThroughRouter($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/public/index.php:52
+Stack level 2.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/</span>public/index.php:52</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note>require</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$response = $kernel-&gt;handle(</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in require\">    $request = Request::capture()</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>)-&gt;send();</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/.composer/vendor/laravel/valet/server.php:250
+Stack level 1.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/.composer/vendor/laravel/valet</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/</span>server.php:250</span> {<samp data-depth=3 class=sf-dump-compact>
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"\">require $frontControllerPath;</span></code>
+      &#8250; 
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+  </samp>}
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1833128120\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(159): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('Not Found', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('Not Found', Array, NULL)
+#7 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php(3): __('Not Found')
+#8 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('/Users/nagi/lub...')
+#9 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#10 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('/Users/nagi/lub...', Array)
+#11 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/nagi/lub...', Array)
+#12 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/nagi/lub...', Array)
+#13 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#14 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#15 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#16 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#17 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(57): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 404, Array)
+#18 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(87): Illuminate\\Routing\\ResponseFactory->make(Object(Illuminate\\View\\View), 404, Array)
+#19 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(661): Illuminate\\Routing\\ResponseFactory->view('errors::404', Array, 404, Array)
+#20 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(586): Illuminate\\Foundation\\Exceptions\\Handler->renderHttpException(Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#21 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(492): Illuminate\\Foundation\\Exceptions\\Handler->prepareResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#22 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(409): Illuminate\\Foundation\\Exceptions\\Handler->renderExceptionResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#23 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate\\Foundation\\Exceptions\\Handler->render(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#24 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(143): Illuminate\\Routing\\Pipeline->handleException(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#25 /Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /Users/nagi/lubna/Al-Qatarya/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
+#46 {main}
+
+[previous exception] [object] (RuntimeException(code: 0): Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(159): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('Not Found', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('Not Found', Array, NULL)
+#7 /Users/nagi/lubna/Al-Qatarya/storage/framework/views/6262b7e89138f5cfc2d13734d691f7c3.php(1): __('Not Found')
+#8 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('/Users/nagi/lub...')
+#9 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#10 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('/Users/nagi/lub...', Array)
+#11 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/nagi/lub...', Array)
+#12 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/nagi/lub...', Array)
+#13 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#14 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#15 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#16 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#17 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(57): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 404, Array)
+#18 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(87): Illuminate\\Routing\\ResponseFactory->make(Object(Illuminate\\View\\View), 404, Array)
+#19 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(661): Illuminate\\Routing\\ResponseFactory->view('errors::404', Array, 404, Array)
+#20 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(586): Illuminate\\Foundation\\Exceptions\\Handler->renderHttpException(Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#21 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(492): Illuminate\\Foundation\\Exceptions\\Handler->prepareResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#22 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(409): Illuminate\\Foundation\\Exceptions\\Handler->renderExceptionResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#23 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate\\Foundation\\Exceptions\\Handler->render(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#24 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(143): Illuminate\\Routing\\Pipeline->handleException(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#25 /Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /Users/nagi/lubna/Al-Qatarya/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
+#46 {main}
+"} 
+[2023-09-02 12:49:11] local.ERROR: Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. {"view":{"view":"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-2019198926 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#521</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-2019198926\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","exception":"<pre class=sf-dump id=sf-dump-453287308 data-indent-pad=\"  \"><span class=sf-dump-note>Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException</span> {<a class=sf-dump-ref>#514</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">message</span>: \"<span class=sf-dump-str title=\"63 characters\">The route ar/storage/images/mail-footer.svg could not be found.</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">code</span>: <span class=sf-dump-num>0</span>
+  #<span class=sf-dump-protected title=\"Protected property\">file</span>: \"<span class=sf-dump-str title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php
+104 characters\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/AbstractRouteCollection.php</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">line</span>: <span class=sf-dump-num>44</span>
+  -<span class=sf-dump-private title=\"Private property defined in class:&#10;`Symfony\\Component\\HttpKernel\\Exception\\HttpException`\">statusCode</span>: <span class=sf-dump-num>404</span>
+  -<span class=sf-dump-private title=\"Private property defined in class:&#10;`Symfony\\Component\\HttpKernel\\Exception\\HttpException`\">headers</span>: []
+  <span class=sf-dump-meta>trace</span>: {<samp data-depth=2 class=sf-dump-compact>
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:44
+Stack level 28.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/AbstractRouteCollection.php:44</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)\">throw new NotFoundHttpException(sprintf(</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>    &#039;The route %s could not be found.&#039;,</span></code>
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php:162
+Stack level 27.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/RouteCollection.php:162</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\RouteCollection-&gt;match(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>RouteCollection-&gt;match(Request $request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\RouteCollection-&gt;match(Request $request)\">    return $this-&gt;handleMatchedRoute($request, $route);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:754
+Stack level 26.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:754</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;findRoute($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;findRoute($request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;findRoute($request)\">$this-&gt;current = $route = $this-&gt;routes-&gt;match($request);</span></code>
+      &#8250; 
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:741
+Stack level 25.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:741</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;dispatchToRoute(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;dispatchToRoute(Request $request)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>{</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;dispatchToRoute(Request $request)\">    return $this-&gt;runRoute($request, $this-&gt;findRoute($request));</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:730
+Stack level 24.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:730</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;dispatch(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;dispatch(Request $request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;dispatch(Request $request)\">    return $this-&gt;dispatchToRoute($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:200
+Stack level 23.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:200</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http\\{closure}\">    return $this-&gt;router-&gt;dispatch($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>};</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:141
+Stack level 22.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:141</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>try {</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">    return $destination($passable);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php:66
+Stack level 21.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/barryvdh/laravel-debugbar/</span>src/Middleware/InjectDebugbar.php:66</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Barryvdh\\Debugbar\\Middleware\\InjectDebugbar-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Barryvdh\\Debugbar\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>InjectDebugbar-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>    /** @var \\Illuminate\\Http\\Response $response */</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Barryvdh\\Debugbar\\Middleware\\InjectDebugbar-&gt;handle($request, Closure $next)\">    $response = $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 20.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21
+Stack level 19.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TransformsRequest-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php:31
+Stack level 18.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php:31</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)\">    return parent::handle($request, $next);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 17.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21
+Stack level 16.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TransformsRequest-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php:40
+Stack level 15.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TrimStrings.php:40</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TrimStrings-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TrimStrings-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TrimStrings-&gt;handle($request, Closure $next)\">    return parent::handle($request, $next);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 14.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php:27
+Stack level 13.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php:27</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ValidatePostSize-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 12.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php:86
+Stack level 11.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php:86</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 10.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php:49
+Stack level 9.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Http/Middleware/HandleCors.php:49</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Http\\Middleware\\HandleCors-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>HandleCors-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>if (! $this-&gt;hasMatchingPath($request)) {</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Http\\Middleware\\HandleCors-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 8.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php:39
+Stack level 7.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Http/Middleware/TrustProxies.php:39</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Http\\Middleware\\TrustProxies-&gt;handle(Request $request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TrustProxies-&gt;handle(Request $request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Http\\Middleware\\TrustProxies-&gt;handle(Request $request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 6.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:116
+Stack level 5.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:116</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;then(Closure $destination)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Pipeline-&gt;then(Closure $destination)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;then(Closure $destination)\">    return $pipeline($this-&gt;passable);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:175
+Stack level 4.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:175</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;sendRequestThroughRouter($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Kernel-&gt;sendRequestThroughRouter($request)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                -&gt;through($this-&gt;app-&gt;shouldSkipMiddleware() ? [] : $this-&gt;middleware)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;sendRequestThroughRouter($request)\">                -&gt;then($this-&gt;dispatchToRouter());</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:144
+Stack level 3.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:144</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;handle($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Kernel-&gt;handle($request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;handle($request)\">    $response = $this-&gt;sendRequestThroughRouter($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/public/index.php:52
+Stack level 2.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/</span>public/index.php:52</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note>require</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$response = $kernel-&gt;handle(</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in require\">    $request = Request::capture()</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>)-&gt;send();</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/.composer/vendor/laravel/valet/server.php:250
+Stack level 1.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/.composer/vendor/laravel/valet</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/</span>server.php:250</span> {<samp data-depth=3 class=sf-dump-compact>
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"\">require $frontControllerPath;</span></code>
+      &#8250; 
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+  </samp>}
+</samp>}
+</pre><script>Sfdump(\"sf-dump-453287308\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(159): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('Not Found', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('Not Found', Array, NULL)
+#7 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php(3): __('Not Found')
+#8 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('/Users/nagi/lub...')
+#9 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#10 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('/Users/nagi/lub...', Array)
+#11 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/nagi/lub...', Array)
+#12 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/nagi/lub...', Array)
+#13 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#14 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#15 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#16 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#17 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(57): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 404, Array)
+#18 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(87): Illuminate\\Routing\\ResponseFactory->make(Object(Illuminate\\View\\View), 404, Array)
+#19 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(661): Illuminate\\Routing\\ResponseFactory->view('errors::404', Array, 404, Array)
+#20 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(586): Illuminate\\Foundation\\Exceptions\\Handler->renderHttpException(Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#21 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(492): Illuminate\\Foundation\\Exceptions\\Handler->prepareResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#22 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(409): Illuminate\\Foundation\\Exceptions\\Handler->renderExceptionResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#23 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate\\Foundation\\Exceptions\\Handler->render(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#24 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(143): Illuminate\\Routing\\Pipeline->handleException(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#25 /Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /Users/nagi/lubna/Al-Qatarya/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
+#46 {main}
+
+[previous exception] [object] (RuntimeException(code: 0): Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(159): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('Not Found', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('Not Found', Array, NULL)
+#7 /Users/nagi/lubna/Al-Qatarya/storage/framework/views/6262b7e89138f5cfc2d13734d691f7c3.php(1): __('Not Found')
+#8 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('/Users/nagi/lub...')
+#9 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#10 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('/Users/nagi/lub...', Array)
+#11 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/nagi/lub...', Array)
+#12 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/nagi/lub...', Array)
+#13 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#14 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#15 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#16 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#17 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(57): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 404, Array)
+#18 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(87): Illuminate\\Routing\\ResponseFactory->make(Object(Illuminate\\View\\View), 404, Array)
+#19 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(661): Illuminate\\Routing\\ResponseFactory->view('errors::404', Array, 404, Array)
+#20 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(586): Illuminate\\Foundation\\Exceptions\\Handler->renderHttpException(Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#21 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(492): Illuminate\\Foundation\\Exceptions\\Handler->prepareResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#22 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(409): Illuminate\\Foundation\\Exceptions\\Handler->renderExceptionResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#23 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate\\Foundation\\Exceptions\\Handler->render(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#24 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(143): Illuminate\\Routing\\Pipeline->handleException(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#25 /Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /Users/nagi/lubna/Al-Qatarya/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
+#46 {main}
+"} 
+[2023-09-02 12:49:11] local.ERROR: Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. {"view":{"view":"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-2129442870 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#521</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-2129442870\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","exception":"<pre class=sf-dump id=sf-dump-189755370 data-indent-pad=\"  \"><span class=sf-dump-note>Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException</span> {<a class=sf-dump-ref>#514</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">message</span>: \"<span class=sf-dump-str title=\"64 characters\">The route ar/storage/images/phone-footer.svg could not be found.</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">code</span>: <span class=sf-dump-num>0</span>
+  #<span class=sf-dump-protected title=\"Protected property\">file</span>: \"<span class=sf-dump-str title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php
+104 characters\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/AbstractRouteCollection.php</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">line</span>: <span class=sf-dump-num>44</span>
+  -<span class=sf-dump-private title=\"Private property defined in class:&#10;`Symfony\\Component\\HttpKernel\\Exception\\HttpException`\">statusCode</span>: <span class=sf-dump-num>404</span>
+  -<span class=sf-dump-private title=\"Private property defined in class:&#10;`Symfony\\Component\\HttpKernel\\Exception\\HttpException`\">headers</span>: []
+  <span class=sf-dump-meta>trace</span>: {<samp data-depth=2 class=sf-dump-compact>
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:44
+Stack level 28.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/AbstractRouteCollection.php:44</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\AbstractRouteCollection-&gt;handleMatchedRoute(Request $request, $route)\">throw new NotFoundHttpException(sprintf(</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>    &#039;The route %s could not be found.&#039;,</span></code>
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php:162
+Stack level 27.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/RouteCollection.php:162</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\RouteCollection-&gt;match(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>RouteCollection-&gt;match(Request $request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\RouteCollection-&gt;match(Request $request)\">    return $this-&gt;handleMatchedRoute($request, $route);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:754
+Stack level 26.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:754</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;findRoute($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;findRoute($request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;findRoute($request)\">$this-&gt;current = $route = $this-&gt;routes-&gt;match($request);</span></code>
+      &#8250; 
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:741
+Stack level 25.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:741</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;dispatchToRoute(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;dispatchToRoute(Request $request)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>{</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;dispatchToRoute(Request $request)\">    return $this-&gt;runRoute($request, $this-&gt;findRoute($request));</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Router.php:730
+Stack level 24.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Routing/Router.php:730</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Routing\\Router-&gt;dispatch(Request $request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Routing</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Router-&gt;dispatch(Request $request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Routing\\Router-&gt;dispatch(Request $request)\">    return $this-&gt;dispatchToRoute($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:200
+Stack level 23.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:200</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;Illuminate\\Foundation\\Http\\{closure}\">    return $this-&gt;router-&gt;dispatch($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>};</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:141
+Stack level 22.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:141</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>try {</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">    return $destination($passable);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php:66
+Stack level 21.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/barryvdh/laravel-debugbar/</span>src/Middleware/InjectDebugbar.php:66</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Barryvdh\\Debugbar\\Middleware\\InjectDebugbar-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Barryvdh\\Debugbar\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>InjectDebugbar-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>    /** @var \\Illuminate\\Http\\Response $response */</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Barryvdh\\Debugbar\\Middleware\\InjectDebugbar-&gt;handle($request, Closure $next)\">    $response = $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 20.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21
+Stack level 19.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TransformsRequest-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php:31
+Stack level 18.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php:31</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull-&gt;handle($request, Closure $next)\">    return parent::handle($request, $next);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 17.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21
+Stack level 16.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php:21</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TransformsRequest-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php:40
+Stack level 15.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/TrimStrings.php:40</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\TrimStrings-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TrimStrings-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\TrimStrings-&gt;handle($request, Closure $next)\">    return parent::handle($request, $next);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 14.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php:27
+Stack level 13.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php:27</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ValidatePostSize-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 12.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php:86
+Stack level 11.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php:86</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 10.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php:49
+Stack level 9.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Http/Middleware/HandleCors.php:49</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Http\\Middleware\\HandleCors-&gt;handle($request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>HandleCors-&gt;handle($request, Closure $next)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>if (! $this-&gt;hasMatchingPath($request)) {</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Http\\Middleware\\HandleCors-&gt;handle($request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 8.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php:39
+Stack level 7.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Http/Middleware/TrustProxies.php:39</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Http\\Middleware\\TrustProxies-&gt;handle(Request $request, Closure $next)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Http\\Middleware</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>TrustProxies-&gt;handle(Request $request, Closure $next)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Http\\Middleware\\TrustProxies-&gt;handle(Request $request, Closure $next)\">    return $next($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+Stack level 6.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:180</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>{closure}</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$carry = method_exists($pipe, $this-&gt;method)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;Illuminate\\Pipeline\\{closure}\">                ? $pipe-&gt;{$this-&gt;method}(...$parameters)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                : $pipe(...$parameters);</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;2}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:116
+Stack level 5.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Pipeline/Pipeline.php:116</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Pipeline\\Pipeline-&gt;then(Closure $destination)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Pipeline</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Pipeline-&gt;then(Closure $destination)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Pipeline\\Pipeline-&gt;then(Closure $destination)\">    return $pipeline($this-&gt;passable);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:175
+Stack level 4.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:175</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;sendRequestThroughRouter($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Kernel-&gt;sendRequestThroughRouter($request)</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>                -&gt;through($this-&gt;app-&gt;shouldSkipMiddleware() ? [] : $this-&gt;middleware)</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;sendRequestThroughRouter($request)\">                -&gt;then($this-&gt;dispatchToRouter());</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>}</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:144
+Stack level 3.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya/vendor</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/laravel/framework/</span>src/Illuminate/Foundation/Http/Kernel.php:144</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note title=\"Illuminate\\Foundation\\Http\\Kernel-&gt;handle($request)
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Foundation\\Http</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Kernel-&gt;handle($request)</span> &#8230;
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in Illuminate\\Foundation\\Http\\Kernel-&gt;handle($request)\">    $response = $this-&gt;sendRequestThroughRouter($request);</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>} catch (Throwable $e) {</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/lubna/Al-Qatarya/public/index.php:52
+Stack level 2.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/lubna/Al-Qatarya</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/</span>public/index.php:52</span> {<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-note>require</span> &#8230;
+      &#8250; <code class=\"php\"><span class=sf-dump-default>$response = $kernel-&gt;handle(</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"in require\">    $request = Request::capture()</span></code>
+      &#8250; <code class=\"php\"><span class=sf-dump-default>)-&gt;send();</span></code>
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+    <span class=sf-dump-meta title=\"/Users/nagi/.composer/vendor/laravel/valet/server.php:250
+Stack level 1.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/nagi/.composer/vendor/laravel/valet</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/</span>server.php:250</span> {<samp data-depth=3 class=sf-dump-compact>
+      &#8250; 
+      &#8250; <code class=\"php\"><span class=sf-dump-const title=\"\">require $frontControllerPath;</span></code>
+      &#8250; 
+      <span class=sf-dump-meta>arguments</span>: { &#8230;1}
+    </samp>}
+  </samp>}
+</samp>}
+</pre><script>Sfdump(\"sf-dump-189755370\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(159): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('Not Found', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('Not Found', Array, NULL)
+#7 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php(3): __('Not Found')
+#8 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('/Users/nagi/lub...')
+#9 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#10 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('/Users/nagi/lub...', Array)
+#11 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/nagi/lub...', Array)
+#12 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/nagi/lub...', Array)
+#13 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#14 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#15 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#16 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#17 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(57): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 404, Array)
+#18 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(87): Illuminate\\Routing\\ResponseFactory->make(Object(Illuminate\\View\\View), 404, Array)
+#19 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(661): Illuminate\\Routing\\ResponseFactory->view('errors::404', Array, 404, Array)
+#20 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(586): Illuminate\\Foundation\\Exceptions\\Handler->renderHttpException(Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#21 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(492): Illuminate\\Foundation\\Exceptions\\Handler->prepareResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#22 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(409): Illuminate\\Foundation\\Exceptions\\Handler->renderExceptionResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#23 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate\\Foundation\\Exceptions\\Handler->render(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#24 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(143): Illuminate\\Routing\\Pipeline->handleException(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#25 /Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /Users/nagi/lubna/Al-Qatarya/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
+#46 {main}
+
+[previous exception] [object] (RuntimeException(code: 0): Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(159): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('Not Found', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('Not Found', Array, NULL)
+#7 /Users/nagi/lubna/Al-Qatarya/storage/framework/views/6262b7e89138f5cfc2d13734d691f7c3.php(1): __('Not Found')
+#8 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): require('/Users/nagi/lub...')
+#9 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#10 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('/Users/nagi/lub...', Array)
+#11 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(70): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/nagi/lub...', Array)
+#12 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(195): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/nagi/lub...', Array)
+#13 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(178): Illuminate\\View\\View->getContents()
+#14 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/View/View.php(147): Illuminate\\View\\View->renderContents()
+#15 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(69): Illuminate\\View\\View->render()
+#16 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#17 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(57): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 404, Array)
+#18 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(87): Illuminate\\Routing\\ResponseFactory->make(Object(Illuminate\\View\\View), 404, Array)
+#19 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(661): Illuminate\\Routing\\ResponseFactory->view('errors::404', Array, 404, Array)
+#20 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(586): Illuminate\\Foundation\\Exceptions\\Handler->renderHttpException(Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#21 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(492): Illuminate\\Foundation\\Exceptions\\Handler->prepareResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#22 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(409): Illuminate\\Foundation\\Exceptions\\Handler->renderExceptionResponse(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#23 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate\\Foundation\\Exceptions\\Handler->render(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#24 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(143): Illuminate\\Routing\\Pipeline->handleException(Object(Illuminate\\Http\\Request), Object(Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException))
+#25 /Users/nagi/lubna/Al-Qatarya/vendor/barryvdh/laravel-debugbar/src/Middleware/InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /Users/nagi/lubna/Al-Qatarya/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
+#46 {main}
+"} 

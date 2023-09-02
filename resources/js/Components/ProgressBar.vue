@@ -8,8 +8,12 @@
             :style="{ width: progressBarWidth + '%' }"
         >
             <div
-                class="absolute bottom-[-6px] transform translate-x-1/2 w-6 h-6 bg-rose-900 text-white text-xs rounded-full flex items-center justify-center"
-                :style="{ right: progressBarWidth + '%' }"
+                class="absolute bottom-[-6px] transform -translate-x-1/2 rtl:translate-x-1/2 w-6 h-6 bg-rose-900 text-white text-xs rounded-full flex items-center justify-center"
+                :style="{
+                    [$page.props.locale[0].currentLocaleCode === 'ar'
+                        ? 'right'
+                        : 'left']: progressBarWidth + '%',
+                }"
             >
                 <span class="mt-1">{{ progressBarCounter }}</span>
             </div>
