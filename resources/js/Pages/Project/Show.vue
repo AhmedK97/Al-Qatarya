@@ -12,7 +12,7 @@ const props = defineProps({
     <AppLayout title="Dashboard">
         <main class="pt-8 pb-16 bg-white lg:pt-16 lg:pb-24 dark:bg-gray-900">
             <div class="flex justify-between max-w-screen-xl px-4 mx-auto">
-                <article class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <article class="px-4 mx-auto w-100">
                     <div
                         class="flex flex-col justify-between lg:flex-row lg:space-x-20 rtl:space-x-reverse"
                     >
@@ -87,7 +87,7 @@ const props = defineProps({
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full m-auto lg:w-1/2">
+                        <div class="m-auto lg:w-1/2">
                             <ImageCarousel :Gallery="project.images" />
                         </div>
                     </div>

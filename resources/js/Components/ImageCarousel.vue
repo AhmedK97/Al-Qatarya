@@ -1,17 +1,10 @@
 <template>
-    <Carousel id="activeClasses" :breakpoints="breakpoints" :wrapAround="true" :transition="1000" :autoplay="1500">
+    <Carousel id="activeClasses" :breakpoints="breakpoints" :wrapAround="true" :autoplay="1500">
         <Slide v-for="gal in Gallery" :key="gal">
             <div>
                 <div class="mb-10 carousel__item">
                     <img class="w-full mt-4 rounded-lg max-h-[20rem] lg:mt-10" loading="lazy" :src="gal"/>
                 </div>
-                <!-- <Link rel="stylesheet" :href="route('service', service.slug)">
-                <div>
-                    <h1 class="text-2xl font-bold text-center text-gray-800">
-                        {{ service.name }}
-                    </h1>
-                </div>
-                </Link> -->
             </div>
         </Slide>
         <template #addons>
