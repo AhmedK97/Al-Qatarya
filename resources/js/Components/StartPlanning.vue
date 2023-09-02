@@ -35,19 +35,19 @@
                     </p>
                 </div>
             </div>
-            <div
-                class="flex items-center justify-center h-16 mb-8 text-xl text-white rounded-full lg:mb-0 w-52 bg-secondary-900"
+            <Link
+                :href="
+                    '/' +
+                    $page.props.locale[0].currentLocaleCode +
+                    '/contact-us'
+                "
             >
-                <Link
-                    :href="
-                        '/' +
-                        $page.props.locale[0].currentLocaleCode +
-                        '/contact-us'
-                    "
+                <div
+                    class="flex items-center justify-center w-32 h-16 mb-8 text-xl text-white rounded-full lg:mb-0 bg-secondary-900 hover:bg-secondary-800"
                 >
                     {{ $t("home.call_us") }}
-                </Link>
-            </div>
+                </div>
+            </Link>
         </div>
     </div>
 </template>

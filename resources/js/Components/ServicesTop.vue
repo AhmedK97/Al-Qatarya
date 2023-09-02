@@ -30,20 +30,20 @@
                     {{ $t("services.top.desc") }}
                 </p>
 
-                <div class="flex flex-col gap-8 px-4 mt-10">
-                    <div class="flex md:gap-x-2">
+                <div class="flex flex-col gap-8 mt-10 sm:px-4">
+                    <div class="flex gap-x-4 md:gap-x-2">
                         <div class="flex flex-col">
                             <div
-                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                                class="flex items-center space-x-2 sm:space-x-6 rtl:space-x-reverse"
                             >
                                 <img
                                     src="/storage/images/check.svg"
-                                    class="w-6"
+                                    class="w-6 shrink-0"
                                     loading="lazy"
                                     alt=""
                                 />
                                 <p
-                                    class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
+                                    class="mt-1.5 text-base lg:text-xl whitespace-nowrap font-semibold text-gray-800"
                                 >
                                     {{ $t("services.top-feature-1") }}
                                 </p>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="flex flex-col">
                             <div
-                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                                class="flex items-center space-x-2 sm:space-x-6 rtl:space-x-reverse"
                             >
                                 <img
                                     src="/storage/images/check.svg"
@@ -80,7 +80,7 @@
                     <div class="flex gap-x-2 md:gap-x-2">
                         <div class="flex flex-col">
                             <div
-                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                                class="flex items-center space-x-2 sm:space-x-6 rtl:space-x-reverse"
                             >
                                 <img
                                     src="/storage/images/check.svg"
@@ -102,7 +102,7 @@
                         </div>
                         <div class="flex flex-col">
                             <div
-                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                                class="flex items-center space-x-2 sm:space-x-6 rtl:space-x-reverse"
                             >
                                 <img
                                     src="/storage/images/check.svg"

@@ -294,17 +294,19 @@ const logout = () => {
                             {{ $t("home.faq") }}
                         </NavLink>
                     </div>
-                    <div class="px-5 py-2 text-white rounded-full bg-rose-900">
-                        <Link
-                            :href="
-                                '/' +
-                                $page.props.locale[0].currentLocaleCode +
-                                '/contact-us'
-                            "
+                    <Link
+                        :href="
+                            '/' +
+                            $page.props.locale[0].currentLocaleCode +
+                            '/contact-us'
+                        "
+                    >
+                        <div
+                            class="px-5 py-2 text-white rounded-full bg-rose-900 hover:bg-rose-800"
                         >
                             {{ $t("home.call_us") }}
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

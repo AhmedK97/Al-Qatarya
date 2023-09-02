@@ -57,5 +57,7 @@ const logout = () => {
             <!-- footer -->
             <Footer></Footer>
         </div>
+
+        <MobileControllers />
     </div>
 </template>

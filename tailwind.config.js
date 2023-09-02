@@ -53,5 +53,14 @@ export default {
         typography,
         require("flowbite/plugin"),
         require("tailwindcss-debug-screens"),
+        function ({ addUtilities }) {
+            const extendUnderline = {
+                ".underline": {
+                    textDecoration: "underline",
+                    "text-decoration-color": "#881337",
+                },
+            };
+            addUtilities(extendUnderline);
+        },
     ],
 };

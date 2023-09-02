@@ -1,4 +1,5 @@
 <script setup>
+import MobileControllers from "@/Components/MobileControllers.vue";
 import ApplicationMark from "./ApplicationMark.vue";
 import "@ebcom/dotlottie-player";
 import { Link } from "@inertiajs/vue3";
@@ -22,23 +23,21 @@ import { Link } from "@inertiajs/vue3";
                     />
                 </div>
                 <p
-                    class="font-medium leading-relaxed text-gray-100 text-md w-80"
+                    class="font-medium leading-relaxed text-gray-100 text-md sm:w-80"
                 >
                     {{ $t("footer.about-text") }}
                 </p>
-                <div
-                    class="flex justify-center px-2 py-4 text-white rounded-full w-44 bg-rose-900"
+                <Link
+                    :href="
+                        '/' + $page.props.locale[0].currentLocaleCode + '/about'
+                    "
                 >
-                    <Link
-                        :href="
-                            '/' +
-                            $page.props.locale[0].currentLocaleCode +
-                            '/about'
-                        "
+                    <div
+                        class="flex justify-center px-2 py-4 text-white rounded-full w-44 bg-rose-900 hover:bg-rose-800"
                     >
                         {{ $t("why.us-read.more") }}
-                    </Link>
-                </div>
+                    </div>
+                </Link>
                 <div class="flex p-5 space-x-6 rtl:space-x-reverse">
                     <img
                         src="/storage/images/facebook-ham.svg"
@@ -185,5 +184,29 @@ import { Link } from "@inertiajs/vue3";
                 </div>
             </div>
         </div>
+        <div
+            class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6"
+        >
+            <div>
+                <a href="tel:+123456789" class="mr-2">
+                    <img
+                        src="/storage/images/phone-white.svg"
+                        alt="Call Us"
+                        class="w-12 h-12 p-2 bg-blue-500 rounded-full hover:bg-blue-600"
+                    />
+                </a>
+            </div>
+            <div>
+                <a href="https://wa.me/123456789" target="_blank">
+                    <img
+                        src="/storage/images/whatsapp-white.svg"
+                        alt="WhatsApp"
+                        class="w-12 h-12 p-2 bg-green-500 rounded-full hover:bg-green-600"
+                    />
+                </a>
+            </div>
+        </div>
+
+        <MobileControllers />
     </footer>
 </template>

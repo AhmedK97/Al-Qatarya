@@ -8,12 +8,12 @@
                     >
                 </template>
                 <template #title>
-                    <span class="!text-secondary-700">{{
+                    <span class="!text-secondary-700 !no-underline">{{
                         $t("projects")
                     }}</span>
                 </template>
             </SectionTitleShadow>
-            <hr class="w-48 h-1 border-0 rounded bg-secondary-700" />
+            <hr class="w-32 h-1 border-0 rounded rtl:w-40 bg-secondary-700" />
             <p class="mt-4 text-lg font-medium text-gray-50">
                 {{ $t("projects-desc") }}
             </p>
