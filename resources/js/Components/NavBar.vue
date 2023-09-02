@@ -39,8 +39,10 @@ const logout = () => {
         <div class="container flex justify-between max-w-6xl px-5 py-3 mx-auto">
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
                 <img src="/storage/images/house.svg" class="w-5 h-7" alt="" />
-                <p class="mt-1 text-xs font-normal sm:text-base text-gray-50">
-                    رواد في مجال العوازل الحرارية والمائية
+                <p
+                    class="mt-1 text-xs font-normal ltr:mt-2 sm:text-base text-gray-50"
+                >
+                    {{ $t("home.top.nav") }}
                 </p>
             </div>
             <!-- change language and social icons -->
@@ -223,7 +225,7 @@ const logout = () => {
                                         >
                                             {{ $t("home.services") }}
                                             <img
-                                                class="w-4 h-4 mx-2 mt-px"
+                                                class="w-4 h-4 mx-2 mt-[1.5px]"
                                                 loading="lazy"
                                                 src="/storage/images/down-arrow.svg"
                                                 alt="arrow-down"
@@ -334,35 +336,41 @@ const logout = () => {
                     </div>
                 </div>
 
-                <div
-                    @click="showServices"
-                    class="flex items-center p-5 space-x-4 transition duration-150 ease-in-out rtl:space-x-reverse"
-                >
-                    <div class="">
-                        {{ $t("home.services") }}
-                    </div>
-                    <img
-                        src="/storage/images/down-arrow-faq-white.svg"
-                        alt=""
-                    />
-                </div>
-
-                <div
-                    v-if="serviceDropdown == true"
-                    class="transition duration-150 ease-in-out ltr:ml-10 rtl:mr-10"
-                >
-                    <div
-                        v-for="service in $page.props.services"
-                        :key="service.slug"
-                        class="my-4 transition duration-150 ease-in-out select-none"
-                    >
-                        <Link
-                            :href="route('service', service.slug)"
-                            :active="route().current('service', service.slug)"
-                            class=""
+                <div @mouseleave="serviceDropdown = false">
+                    <Link :href="route('services')">
+                        <div
+                            @mouseover="serviceDropdown = true"
+                            class="flex items-center p-5 space-x-4 transition duration-150 ease-in-out rtl:space-x-reverse"
                         >
-                            {{ service.name }}
-                        </Link>
+                            <div class="">
+                                {{ $t("home.services") }}
+                            </div>
+                            <img
+                                src="/storage/images/down-arrow-faq-white.svg"
+                                alt=""
+                            />
+                        </div>
+                    </Link>
+
+                    <div
+                        v-show="serviceDropdown"
+                        class="transition duration-150 ease-in-out ltr:ml-10 rtl:mr-10"
+                    >
+                        <div
+                            v-for="service in $page.props.services"
+                            :key="service.slug"
+                            class="my-4 transition duration-150 ease-in-out select-none"
+                        >
+                            <Link
+                                :href="route('service', service.slug)"
+                                :active="
+                                    route().current('service', service.slug)
+                                "
+                                class=""
+                            >
+                                {{ service.name }}
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
@@ -371,6 +379,15 @@ const logout = () => {
                         <div class="">
                             <Link :href="route('blogs')" class="text-right">
                                 {{ $t("home.blogs") }}
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center p-5">
+                    <div>
+                        <div class="">
+                            <Link :href="route('projects')" class="text-right">
+                                {{ $t("home.projects") }}
                             </Link>
                         </div>
                     </div>

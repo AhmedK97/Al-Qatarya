@@ -11,7 +11,7 @@
                     class="w-20 h-20"
                     alt=""
                 />
-                <div class="text-center md:text-right">
+                <div class="text-center ltr:text-left md:rtl:text-right">
                     <SectionTitleShadow>
                         <template #upper-title>
                             <span

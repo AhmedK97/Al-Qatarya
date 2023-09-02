@@ -15,7 +15,7 @@
             </SectionTitleShadow>
             <hr class="w-48 h-1 border-0 rounded bg-secondary-700" />
             <p class="mt-4 text-lg font-medium text-gray-50">
-                {{ $t("partners-desc") }}
+                {{ $t("projects-desc") }}
             </p>
 
             <div

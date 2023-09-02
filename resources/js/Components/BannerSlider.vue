@@ -8,13 +8,12 @@
                     :class="{ animate: animateText }"
                 >
                     <p class="text-2xl md:text-4xl">
-                        {{ slides[currentSlideIndex].text }}
+                        <!-- {{ slides[currentSlideIndex].text }} -->
+                        {{ $t("banner.title") }}
                     </p>
                     <div>
-                        <p class="mt-8 text-md md:text-xl">
-                            توفر شركة القطريه مجموعة مدربة و متميزة من
-                            <br />الفنيين لتوفير أعلي مستويات بتقنية عالية و
-                            بأقل وقت ممكن
+                        <p class="mt-8 text-md md:text-xl md:w-[27rem]">
+                            {{ $t("banner.desc") }}
                         </p>
                     </div>
                 </div>

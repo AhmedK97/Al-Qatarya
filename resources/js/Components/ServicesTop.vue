@@ -27,7 +27,7 @@
                 </SectionTitleShadow>
 
                 <p class="mt-4 text-lg font-medium text-gray-500">
-                    {{ $t("who.we.are-desc") }}
+                    {{ $t("services.top.desc") }}
                 </p>
 
                 <div class="flex flex-col gap-8 px-4 mt-10">
@@ -45,14 +45,13 @@
                                 <p
                                     class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
                                 >
-                                    {{ $t("why.us-feature-1") }}
+                                    {{ $t("services.top-feature-1") }}
                                 </p>
                             </div>
                             <p
                                 class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
-                                متخصصون في اعمال العزل الحراري للابنية والمنشآت
-                                الصناعية ولكافة المشاريع الكبرى.
+                                {{ $t("services.top-feature-1.desc") }}
                             </p>
                         </div>
                         <div class="flex flex-col">
@@ -68,14 +67,13 @@
                                 <p
                                     class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
                                 >
-                                    {{ $t("why.us-feature-1") }}
+                                    {{ $t("services.top-feature-2") }}
                                 </p>
                             </div>
                             <p
                                 class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
-                                متخصصون في اعمال العزل الحراري للابنية والمنشآت
-                                الصناعية ولكافة المشاريع الكبرى.
+                                {{ $t("services.top-feature-2.desc") }}
                             </p>
                         </div>
                     </div>
@@ -93,14 +91,13 @@
                                 <p
                                     class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
                                 >
-                                    {{ $t("why.us-feature-1") }}
+                                    {{ $t("services.top-feature-3") }}
                                 </p>
                             </div>
                             <p
                                 class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
-                                متخصصون في اعمال العزل الحراري للابنية والمنشآت
-                                الصناعية ولكافة المشاريع الكبرى.
+                                {{ $t("services.top-feature-3.desc") }}
                             </p>
                         </div>
                         <div class="flex flex-col">
@@ -116,14 +113,13 @@
                                 <p
                                     class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
                                 >
-                                    {{ $t("why.us-feature-1") }}
+                                    {{ $t("services.top-feature-4") }}
                                 </p>
                             </div>
                             <p
                                 class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
-                                متخصصون في اعمال العزل الحراري للابنية والمنشآت
-                                الصناعية ولكافة المشاريع الكبرى.
+                                {{ $t("services.top-feature-4.desc") }}
                             </p>
                         </div>
                     </div>

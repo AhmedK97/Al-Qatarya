@@ -22,12 +22,9 @@ const props = defineProps({
             </SectionTitleShadow>
             <!-- slider -->
             <p class="text-xl font-semibold leading-snug my-7">
-                نحن نقدر أهمية العمل كما أن شركتنا تتميز بالصدق والجودة والمستوي
-                الرفيع بين منافسيها وفريق العمل مدرب علي اعلي مستوي ويتمتع
-                بالخبرة في اداء الاعمال وصيانة المنازل.
+                {{ $t("services-desc") }}
             </p>
             <Slider :services="services"></Slider>
         </div>
     </section>
 </template>
-

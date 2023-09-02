@@ -38,7 +38,7 @@
 
                 <div class="flex flex-col gap-8 mt-4 md:mt-10">
                     <div
-                        class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-[8.5rem]"
+                        class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-12 md:rtl:gap-x-[8.5rem]"
                     >
                         <div
                             class="flex items-center space-x-6 rtl:space-x-reverse"
@@ -108,7 +108,7 @@
                 </div>
 
                 <div
-                    class="flex px-5 py-4 mt-20 text-white rounded-full w-52 bg-rose-900"
+                    class="flex justify-center px-5 py-4 mt-20 text-white rounded-full cursor-pointer w-52 bg-rose-900 hover:bg-rose-800"
                 >
                     <Link
                         :href="
