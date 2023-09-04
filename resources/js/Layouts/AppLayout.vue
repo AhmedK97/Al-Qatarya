@@ -9,6 +9,7 @@ import NavLink from "@/Components/NavLink.vue";
 import NavBar from "@/Components/NavBar.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Footer from "@/Components/Footer.vue";
+import MobileControllers from "@/Components/MobileControllers.vue";
 
 const props = defineProps({
     title: String,

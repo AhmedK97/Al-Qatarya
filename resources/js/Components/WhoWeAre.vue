@@ -3,7 +3,13 @@
         <div
             class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse"
             v-motion="{
-                initial: { x: 50, opacity: 0 },
+                initial: {
+                    x:
+                        $page.props.locale[0].currentLocaleCode === 'ar'
+                            ? 50
+                            : -50,
+                    opacity: 0,
+                },
                 visibleOnce: {
                     x: 0,
                     opacity: 1,

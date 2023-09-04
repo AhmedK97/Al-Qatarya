@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center justify-center sm:hidden">
         <div
-            class="fixed z-50 flex items-center justify-between w-full px-8 border rounded-full bottom-4 bg-rose-900 border-gray-50"
+            class="fixed z-50 flex items-center justify-between px-4 border rounded-full w-[23rem] bottom-4 bg-rose-900 border-gray-50"
         >
             <Link :href="route('home')">
                 <div

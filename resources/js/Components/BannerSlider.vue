@@ -23,6 +23,8 @@
 </template>
 
 <script>
+// JavaScript code to change the CSS variable value
+
 export default {
     data() {
         return {
@@ -71,6 +73,10 @@ export default {
 </script>
 
 <style scoped>
+:root {
+    --translateXValue: 100%; /* Define your variable with a default value */
+}
+
 .slide {
     position: relative;
     width: 100%;
@@ -106,9 +112,15 @@ img {
     transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
+[dir="rtl"] .slide-fade-enter-from,
+[dir="rtl"] .slide-fade-leave-to {
     transform: translateX(100%);
+    opacity: 0;
+}
+
+[dir="ltr"] .slide-fade-enter-from,
+[dir="ltr"] .slide-fade-leave-to {
+    transform: translateX(-100%);
     opacity: 0;
 }
 </style>

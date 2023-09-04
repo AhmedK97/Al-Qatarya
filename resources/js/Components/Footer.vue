@@ -206,7 +206,5 @@ import { Link } from "@inertiajs/vue3";
                 </a>
             </div>
         </div>
-
-        <MobileControllers />
     </footer>
 </template>
