@@ -184,8 +184,9 @@ import { Link } from "@inertiajs/vue3";
                 </div>
             </div>
         </div>
+
         <div
-            class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6"
+            class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6 rtl:left-auto"
         >
             <div>
                 <a href="tel:+123456789" class="mr-2">

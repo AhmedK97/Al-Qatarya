@@ -283,5 +283,10 @@
     "contact.fields": "Fields",
     "contact.file": "Upload file",
     "contact.send": "Send",
-    "contact.choose-fields": "Choose field"
+    "contact.choose-fields": "Choose field",
+    "project.desc": "Full Description",
+    "agent": "Agent",
+    "location": "Location",
+    "project-date": "Date",
+    "space-area": "Space Area"
 }

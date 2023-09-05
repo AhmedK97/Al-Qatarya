@@ -13,7 +13,7 @@
                 visibleOnce: {
                     x: 0,
                     opacity: 1,
-                    transition: { delay: 500 },
+                    transition: { delay: 300 },
                 },
             }"
         >
@@ -43,18 +43,18 @@
 
                 <div class="flex flex-wrap justify-center gap-8 mt-10 md:mt-32">
                     <div class="flex gap-x-8">
-                        <Counter :targetNumber="100" :intervalSpeed="20">
+                        <Counter :targetNumber="100" :intervalSpeed="10">
                             <template #title>
                                 {{ $t("who.we.are-counter") }}
                             </template>
                         </Counter>
-                        <Counter :targetNumber="2500" :intervalSpeed="0.1">
+                        <Counter :targetNumber="500" :intervalSpeed="0.1">
                             <template #title>
                                 {{ $t("who.we.are-counter") }}
                             </template>
                         </Counter>
                     </div>
-                    <Counter :targetNumber="139" :intervalSpeed="20">
+                    <Counter :targetNumber="139" :intervalSpeed="10">
                         <template #title>
                             {{ $t("who.we.are-counter") }}
                         </template>

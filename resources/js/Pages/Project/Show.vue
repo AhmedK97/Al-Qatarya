@@ -41,7 +41,7 @@ const props = defineProps({
                                 <div
                                     class="flex items-center space-x-2 rtl:space-x-reverse"
                                 >
-                                    <p>العميل</p>
+                                    <p>{{ $t("agent") }}</p>
                                     <hr
                                         class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
                                     />
@@ -53,7 +53,9 @@ const props = defineProps({
                                 <div
                                     class="flex items-center space-x-2 rtl:space-x-reverse"
                                 >
-                                    <p>الموقع</p>
+                                    <p>
+                                        {{ $t("location") }}
+                                    </p>
                                     <hr
                                         class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
                                     />
@@ -65,7 +67,9 @@ const props = defineProps({
                                 <div
                                     class="flex items-center space-x-2 rtl:space-x-reverse"
                                 >
-                                    <p>التاريخ</p>
+                                    <p>
+                                        {{ $t("project-date") }}
+                                    </p>
                                     <hr
                                         class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
                                     />
@@ -77,7 +81,9 @@ const props = defineProps({
                                 <div
                                     class="flex items-center space-x-2 rtl:space-x-reverse"
                                 >
-                                    <p>المساحة</p>
+                                    <p>
+                                        {{ $t("space-area") }}
+                                    </p>
                                     <hr
                                         class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
                                     />
