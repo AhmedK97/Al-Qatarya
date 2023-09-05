@@ -1,7 +1,7 @@
 <template>
-    <p class="-mb-6 text-5xl font-black text-rose-900 opacity-10">
+    <!-- <p class="-mb-6 text-5xl font-black text-rose-900 opacity-10">
         <slot name="upper-title" />
-    </p>
+    </p> -->
     <h1
         class="text-4xl font-black text-gray-900 underline underline-offset-[20px]"
     >

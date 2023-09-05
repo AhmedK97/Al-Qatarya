@@ -59,6 +59,6 @@ const logout = () => {
             <Footer></Footer>
         </div>
 
-        <MobileControllers />
+        <!-- <MobileControllers /> -->
     </div>
 </template>
