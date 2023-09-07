@@ -32,7 +32,7 @@
             >
                 <div class="">
                     <img
-                        src="/storage/images/banner1.png"
+                        src="/storage/images/banner1.webp"
                         class="rounded-lg w-96 h-[25rem]"
                         alt=""
                     />
@@ -45,7 +45,7 @@
                 </div>
                 <div class="">
                     <img
-                        src="/storage/images/banner1.png"
+                        src="/storage/images/banner1.webp"
                         class="rounded-lg w-96 h-80"
                         alt=""
                     />
