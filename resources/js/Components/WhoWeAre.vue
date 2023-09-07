@@ -19,7 +19,7 @@
         >
             <img
                 src="/storage/images/banner1.png"
-                class="w-[92%] md:w-[40%] md:h-[550px] rounded-lg shadow-2xl order-1 md:order-2"
+                class="w-[92%] md:w-[40%] md:h-[370px] rounded-lg shadow-2xl order-1 md:order-2"
                 alt=""
             />
             <div class="order-2 px-4 md:order-1">
@@ -32,16 +32,16 @@
                     </template>
                 </SectionTitleShadow>
 
-                <p class="mt-4 text-lg font-medium text-gray-500">
+                <p class="mt-8 text-lg font-medium text-gray-500">
                     {{ $t("who.we.are-desc") }}
                 </p>
                 <p
-                    class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    class="mt-10 text-lg font-medium leading-relaxed text-gray-500 lg:text-lg"
                 >
                     {{ $t("who.we.are-paragraph") }}
                 </p>
 
-                <div class="flex flex-wrap justify-center gap-8 mt-10 md:mt-32">
+                <div class="flex flex-wrap justify-center gap-8 mt-10 md:mt-16">
                     <div class="flex gap-x-8">
                         <Counter :targetNumber="100" :intervalSpeed="10">
                             <template #title>

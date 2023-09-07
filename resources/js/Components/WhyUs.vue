@@ -19,7 +19,7 @@
         >
             <img
                 src="/storage/images/banner1.png"
-                class="w-[92%] md:w-[40%] md:h-[550px] rounded-lg shadow-2xl"
+                class="w-[92%] md:w-[40%] md:h-[370px] rounded-lg shadow-2xl"
                 loading="lazy"
                 alt=""
             />
@@ -33,11 +33,11 @@
                     </template>
                 </SectionTitleShadow>
 
-                <p class="mt-4 text-lg font-medium text-gray-500">
+                <p class="mt-8 text-lg font-medium text-gray-500">
                     {{ $t("why.us-desc") }}
                 </p>
                 <p
-                    class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                    class="mt-10 text-lg font-medium leading-relaxed text-gray-500 lg:text-lg"
                 >
                     {{ $t("why.us-paragraph") }}
                 </p>
@@ -46,7 +46,7 @@
                     class="flex flex-col items-center justify-center md:items-start md:justify-start"
                 >
                     <div
-                        class="flex flex-col justify-center gap-8 mt-4 md:mt-10"
+                        class="flex gap-8 mt-4 md:mt-10"
                     >
                         <div
                             class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-12 md:rtl:gap-x-[8.5rem]"
@@ -119,7 +119,7 @@
                     </div>
 
                     <div
-                        class="flex items-center justify-center px-5 py-4 mt-10 text-white rounded-full cursor-pointer w-52 bg-rose-900 hover:bg-rose-800"
+                        class="flex items-center justify-center px-5 py-4 mt-16 text-white rounded-full cursor-pointer w-52 bg-rose-900 hover:bg-rose-800"
                     >
                         <Link
                             :href="

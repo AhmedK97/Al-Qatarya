@@ -7,7 +7,7 @@
             {{ currentCount }}
         </div>
         <div
-            class="flex justify-center px-5 py-2 text-xs text-white rounded-full lg:text-base bg-rose-900 hover:bg-rose-700"
+            class="flex justify-center px-5 py-2 text-base text-white rounded-full bg-rose-900 whitespace-nowrap hover:bg-rose-700"
         >
             <slot name="title" />
         </div>

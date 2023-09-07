@@ -42,7 +42,7 @@ defineProps({
                     </SectionTitleShadow>
 
                     <p
-                        class="mt-10 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
+                        class="mt-10 text-lg font-medium leading-relaxed text-gray-500 lg:text-lg"
                     >
                         {{ $t("who.we.are-paragraph1") }}
                     </p>
@@ -98,7 +98,7 @@ defineProps({
                             </template>
                         </SectionTitleShadow>
 
-                        <p class="mt-4 text-lg font-medium text-gray-500">
+                        <p class="mt-8 text-lg font-medium text-gray-500">
                             {{ $t("why.us-desc") }}
                         </p>
                         <p

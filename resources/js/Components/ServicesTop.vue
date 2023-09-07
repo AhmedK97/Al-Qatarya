@@ -2,25 +2,11 @@
     <section class="container mx-auto max-w-7xl">
         <div
             class="flex flex-col items-center justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row ltr:space-x-reverse"
-            v-motion="{
-                initial: {
-                    x:
-                        $page.props.locale[0].currentLocaleCode === 'ar'
-                            ? 50
-                            : -50,
-                    opacity: 0,
-                },
-                visibleOnce: {
-                    x: 0,
-                    opacity: 1,
-                    transition: { delay: 300 },
-                },
-            }"
         >
             <img
                 src="/storage/images/banner1.png"
-                class="hidden md:block w-[92%] md:w-[40%] md:h-[550px] rounded-lg shadow-2xl order-1 md:order-2"
-                alt=""
+                class="hidden md:block w-[92%] md:w-[40%] md:h-[370px] rounded-lg shadow-2xl order-1 md:order-2"
+
             />
             <div class="order-2 px-4 md:order-1">
                 <SectionTitleShadow>
@@ -32,7 +18,7 @@
                     </template>
                 </SectionTitleShadow>
 
-                <p class="mt-4 text-lg font-medium text-gray-500">
+                <p class="mt-8 text-lg font-medium text-gray-500">
                     {{ $t("services.top.desc") }}
                 </p>
 
@@ -49,13 +35,13 @@
                                     alt=""
                                 />
                                 <p
-                                    class="mt-1.5 text-xs lg:text-xl whitespace-nowrap font-semibold text-gray-800"
+                                    class="mt-1.5 text-lg lg:text-xl whitespace-nowrap font-semibold text-gray-800"
                                 >
                                     {{ $t("services.top-feature-1") }}
                                 </p>
                             </div>
                             <p
-                                class="mt-6 text-xs font-medium leading-relaxed text-gray-500 lg:text-lg"
+                                class="mt-6 text-lg font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
                                 {{ $t("services.top-feature-1.desc") }}
                             </p>
@@ -71,13 +57,13 @@
                                     alt=""
                                 />
                                 <p
-                                    class="mt-1.5 text-xs lg:text-xl font-semibold text-gray-800"
+                                    class="mt-1.5 text-lg lg:text-xl font-semibold text-gray-800"
                                 >
                                     {{ $t("services.top-feature-2") }}
                                 </p>
                             </div>
                             <p
-                                class="mt-6 text-xs font-medium leading-relaxed text-gray-500 lg:text-lg"
+                                class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
                                 {{ $t("services.top-feature-2.desc") }}
                             </p>
@@ -95,13 +81,13 @@
                                     alt=""
                                 />
                                 <p
-                                    class="mt-1.5 text-xs lg:text-xl font-semibold text-gray-800"
+                                    class="mt-1.5 text-lg lg:text-xl font-semibold text-gray-800"
                                 >
                                     {{ $t("services.top-feature-3") }}
                                 </p>
                             </div>
                             <p
-                                class="mt-6 text-xs font-medium leading-relaxed text-gray-500 lg:text-lg"
+                                class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
                                 {{ $t("services.top-feature-3.desc") }}
                             </p>
@@ -117,13 +103,13 @@
                                     alt=""
                                 />
                                 <p
-                                    class="mt-1.5 text-xs lg:text-xl font-semibold text-gray-800"
+                                    class="mt-1.5 text-lg lg:text-xl font-semibold text-gray-800"
                                 >
                                     {{ $t("services.top-feature-4") }}
                                 </p>
                             </div>
                             <p
-                                class="mt-6 text-xs font-medium leading-relaxed text-gray-500 lg:text-lg"
+                                class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
                                 {{ $t("services.top-feature-4.desc") }}
                             </p>

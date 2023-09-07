@@ -1,7 +1,7 @@
 <script setup>
 import MobileControllers from "@/Components/MobileControllers.vue";
 import ApplicationMark from "./ApplicationMark.vue";
-import "@ebcom/dotlottie-player";
+
 import { Link } from "@inertiajs/vue3";
 </script>
 
@@ -185,7 +185,7 @@ import { Link } from "@inertiajs/vue3";
             </div>
         </div>
 
-        <div
+        <!-- <div
             class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6 rtl:left-auto"
         >
             <div>
@@ -206,7 +206,27 @@ import { Link } from "@inertiajs/vue3";
                     />
                 </a>
             </div>
-        </div>
+        </div> -->
+
+        <div
+                class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6 rtl:left-auto"
+            >
+                <!-- telephone icon -->
+                <div class="w-16 h-16 bg-white rounded-full shadow-lg">
+                    <a href="tel:01000000000" class="flex items-center justify-center w-full h-full">
+                        <dotlottie-player src="/storage/images/lottiefiles/phone.lottie" style="width: 50px;" autoplay loop>
+                        </dotlottie-player>
+                    </a>
+                </div>
+                <!-- whatsapp icon -->
+                <div class="w-16 h-16 mt-4 bg-white rounded-full shadow-lg">
+                    <a href="https://wa.me/01000000000" class="flex items-center justify-center w-full h-full">
+                        <dotlottie-player src="/storage/images/lottiefiles/whatsapp.lottie" style="width: 50px;" autoplay
+                            loop>
+                        </dotlottie-player>
+                    </a>
+                </div>
+            </div>
 
         <MobileControllers />
     </footer>

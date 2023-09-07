@@ -11,7 +11,7 @@
                     </template>
                 </SectionTitleShadow>
 
-                <p class="mt-4 text-lg font-medium text-gray-500">
+                <p class="mt-8 text-lg font-medium text-gray-500">
                     {{ $t("why.us-desc") }}
                 </p>
 

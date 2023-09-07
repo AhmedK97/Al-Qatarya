@@ -12,7 +12,7 @@
                         alt="WhatsApp"
                         class="w-6 h-6"
                     />
-                    <p class="text-gray-50">
+                    <p class="text-gray-50 whitespace-nowrap">
                         {{ $t("mobile-controllers.home") }}
                     </p>
                 </div>
@@ -21,12 +21,16 @@
                 <div
                     class="flex flex-col items-center justify-center px-3 py-2 space-y-1 hover:bg-rose-800"
                 >
-                    <img
+                    <!-- <img
                         src="/storage/images/mobile-controllers-whatsapp.svg"
                         alt="WhatsApp"
                         class="w-6 h-6"
-                    />
-                    <p class="text-gray-50">
+                    /> -->
+        <dotlottie-player src="/storage/images/lottiefiles/whatsapp.lottie" style="width: 50px;" autoplay
+                                loop>
+                            </dotlottie-player>
+
+                    <p class="text-gray-50 whitespace-nowrap">
                         {{ $t("mobile-controllers.whatsapp") }}
                     </p>
                 </div>
@@ -35,12 +39,14 @@
                 class="relative flex flex-col items-center justify-center px-3 py-2 space-y-1 hover:bg-rose-800"
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
             >
-                <img
+                <!-- <img
                     src="/storage/images/mobile-controllers-phone.svg"
                     alt="WhatsApp"
                     class="w-6 h-6"
-                />
-                <p class="text-gray-50">
+                /> -->
+                <dotlottie-player src="/storage/images/lottiefiles/phone.lottie" style="width: 50px;" autoplay loop>
+                            </dotlottie-player>
+                <p class="text-gray-50 whitespace-nowrap">
                     {{ $t("mobile-controllers.contact") }}
                 </p>
             </div>
@@ -55,25 +61,32 @@
                         class="flex items-center space-x-2 rtl:space-x-reverse"
                     >
                         <a href="tel:+123456789" class="">
+                            <div class="flex">
+
                             <img
                                 src="/storage/images/phone-white.svg"
                                 alt="Call Us"
                                 class="w-12 h-12 p-2 bg-blue-500 rounded-full hover:bg-blue-600"
                             />
+                             <p class="m-auto mx-2 font-bold">{{ $t("call.now") }}</p>
+                        </div>
                         </a>
-                        <p>{{ $t("call.now") }}</p>
+
                     </div>
                     <div
                         class="flex items-center space-x-2 rtl:space-x-reverse"
                     >
                         <a href="https://wa.me/123456789" target="_blank">
+                            <div class="flex">
                             <img
                                 src="/storage/images/whatsapp-white.svg"
                                 alt="WhatsApp"
                                 class="w-12 h-12 p-2 bg-green-500 rounded-full hover:bg-green-600"
                             />
+                             <p class="m-auto mx-2 font-bold">{{ $t("send-whatsapp-message") }}</p>
+                             </div>
                         </a>
-                        <p>{{ $t("send-whatsapp-message") }}</p>
+
                     </div>
                 </div>
             </div>
@@ -86,7 +99,7 @@
                         alt="WhatsApp"
                         class="w-6 h-6"
                     />
-                    <p class="text-gray-50">
+                    <p class="text-gray-50 whitespace-nowrap">
                         {{ $t("mobile-controllers.services") }}
                     </p>
                 </div>
