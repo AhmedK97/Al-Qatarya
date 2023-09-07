@@ -21,7 +21,7 @@ class ShowProjectResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'main_image' => $this->getFirstMediaUrl(Project::PROJECT_MAIN_IMAGE) ?? null,
-            'images' =>$this-> getMedia(Project::PROJECT_IMAGES)->map(function ($item) {
+            'images' => $this->getMedia(Project::PROJECT_IMAGES)->map(function ($item) {
                 return $item->getFullUrl();
             }),
             'agent' => $this->agent,

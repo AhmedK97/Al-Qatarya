@@ -11,7 +11,7 @@ class ShowProjectsController extends Controller
     public function __invoke(Request $request)
     {
         $project = Project::where('slug', $request->slug)->firstOrFail();
-        
+
         return inertia('Project/Show', [
             'project' => ShowProjectResource::make($project),
         ]);

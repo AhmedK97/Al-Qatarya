@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BlogResource;
 use App\Http\Resources\ServiceResource;
 use App\Http\Resources\ShowProjectResource;
-use App\Models\Blog;
 use App\Models\Project;
 use App\Models\Service;
 use Illuminate\Http\Request;
