@@ -1,7 +1,7 @@
 <template>
     <section class="container mx-auto max-w-7xl">
         <div
-            class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse"
+            class="flex flex-col items-center justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row ltr:space-x-reverse"
             v-motion="{
                 initial: {
                     x:
@@ -19,7 +19,7 @@
         >
             <img
                 src="/storage/images/banner1.png"
-                class="md:w-[45%] md:h-[600px] rounded-lg order-1 md:order-2"
+                class="w-[92%] md:w-[40%] md:h-[550px] rounded-lg shadow-2xl order-1 md:order-2"
                 alt=""
             />
             <div class="order-2 px-4 md:order-1">

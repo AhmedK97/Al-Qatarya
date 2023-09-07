@@ -2,16 +2,16 @@
     <NavBar />
     <section class="bg-gray-50">
         <div
-            class="container flex flex-col items-center mx-auto mt-20 space-y-8 md:space-y-0 md:items-start md:space-x-16 md:flex-row max-w-7xl rtl:space-x-reverse"
+            class="container flex flex-col items-center px-4 mx-auto mt-20 space-y-8 md:space-y-0 md:items-start md:space-x-10 md:flex-row max-w-7xl rtl:space-x-reverse"
         >
-            <div class="flex flex-col space-y-8">
+            <div class="flex flex-col items-center space-y-8 md:items-start">
                 <img
                     src="/storage/images/1-3.png"
-                    class="object-cover object-center rounded-md w-96 h-60"
+                    class="object-cover object-center rounded-md w-[99%] md:w-80 lg:w-96 h-60"
                     alt=""
                 />
                 <div
-                    class="flex items-center justify-center p-5 border rounded-md w-96 h-80 border-rose-900"
+                    class="flex items-center justify-center p-5 border rounded-md md:w-80 h-80 border-rose-900"
                 >
                     <div class="flex flex-col space-y-14">
                         <div
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="flex flex-col w-full space-y-24">
-                <div class="px-4">
+                <div class="">
                     <SectionTitleShadow>
                         <template #upper-title>
                             {{ $t("contact-us-upper") }}
@@ -74,7 +74,7 @@
                         {{ $t("contact.us-paragraph") }}
                     </p>
                 </div>
-                <div class="px-4">
+                <div class="">
                     <form action="">
                         <div class="flex w-full space-x-8 rtl:space-x-reverse">
                             <div class="w-full mb-6">
@@ -178,7 +178,7 @@
         </div>
         <div
             id="map-container"
-            class="container mx-auto my-10 border h-72 max-w-7xl"
+            class="container px-4 mx-auto my-10 border md:px-0 h-72 max-w-7xl"
         >
             <iframe
                 class="w-full h-full"

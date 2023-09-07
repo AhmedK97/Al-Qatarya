@@ -100,7 +100,7 @@ const props = defineProps({
                 </article>
             </div>
 
-            <ProjectDescription class="mt-10 md:mt-40" :project="project" />
+            <ProjectDescription class="mt-4" :project="project" />
         </main>
     </AppLayout>
 </template>

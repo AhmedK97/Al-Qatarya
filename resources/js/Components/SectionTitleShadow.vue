@@ -3,7 +3,7 @@
         <slot name="upper-title" />
     </p> -->
     <h1
-        class="text-4xl font-black text-gray-900 underline underline-offset-[20px]"
+        class="text-2xl md:text-4xl font-black text-gray-900 underline underline-offset-[20px]"
     >
         <slot name="title" />
     </h1>

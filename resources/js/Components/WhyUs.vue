@@ -1,7 +1,7 @@
 <template>
     <section class="container mx-auto max-w-7xl">
         <div
-            class="flex flex-col justify-center p-2 space-y-8 md:space-x-10 md:flex-row rtl:space-x-reverse"
+            class="flex flex-col items-center justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row rtl:space-x-reverse"
             v-motion="{
                 initial: {
                     x:
@@ -19,7 +19,7 @@
         >
             <img
                 src="/storage/images/banner1.png"
-                class="md:w-[45%] md:h-[600px] rounded-lg"
+                class="w-[92%] md:w-[40%] md:h-[550px] rounded-lg shadow-2xl"
                 loading="lazy"
                 alt=""
             />
@@ -42,89 +42,95 @@
                     {{ $t("why.us-paragraph") }}
                 </p>
 
-                <div class="flex flex-col gap-8 mt-4 md:mt-10">
-                    <div
-                        class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-12 md:rtl:gap-x-[8.5rem]"
-                    >
-                        <div
-                            class="flex items-center space-x-6 rtl:space-x-reverse"
-                        >
-                            <img
-                                src="/storage/images/check.svg"
-                                class="w-6"
-                                loading="lazy"
-                                alt=""
-                            />
-                            <p
-                                class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
-                            >
-                                {{ $t("why.us-feature-1") }}
-                            </p>
-                        </div>
-                        <div
-                            class="flex items-center space-x-6 rtl:space-x-reverse"
-                        >
-                            <img
-                                src="/storage/images/check.svg"
-                                class="w-6"
-                                loading="lazy"
-                                alt=""
-                            />
-                            <p
-                                class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
-                            >
-                                {{ $t("why.us-feature-2") }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-28"
-                    >
-                        <div
-                            class="flex items-center space-x-6 rtl:space-x-reverse"
-                        >
-                            <img
-                                src="/storage/images/check.svg"
-                                class="w-6"
-                                loading="lazy"
-                                alt=""
-                            />
-                            <p
-                                class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
-                            >
-                                {{ $t("why.us-feature-3") }}
-                            </p>
-                        </div>
-                        <div
-                            class="flex items-center space-x-6 rtl:space-x-reverse"
-                        >
-                            <img
-                                src="/storage/images/check.svg"
-                                class="w-6"
-                                loading="lazy"
-                                alt=""
-                            />
-                            <p
-                                class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
-                            >
-                                {{ $t("why.us-feature-4") }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
                 <div
-                    class="flex justify-center px-5 py-4 mt-20 text-white rounded-full cursor-pointer w-52 bg-rose-900 hover:bg-rose-800"
+                    class="flex flex-col items-center justify-center md:items-start md:justify-start"
                 >
-                    <Link
-                        :href="
-                            '/' +
-                            $page.props.locale[0].currentLocaleCode +
-                            '/about'
-                        "
+                    <div
+                        class="flex flex-col justify-center gap-8 mt-4 md:mt-10"
                     >
-                        {{ $t("why.us-read.more") }}
-                    </Link>
+                        <div
+                            class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-12 md:rtl:gap-x-[8.5rem]"
+                        >
+                            <div
+                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                            >
+                                <img
+                                    src="/storage/images/check.svg"
+                                    class="w-6 shrink-0"
+                                    loading="lazy"
+                                    alt=""
+                                />
+                                <p
+                                    class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
+                                >
+                                    {{ $t("why.us-feature-1") }}
+                                </p>
+                            </div>
+                            <div
+                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                            >
+                                <img
+                                    src="/storage/images/check.svg"
+                                    class="w-6 shrink-0"
+                                    loading="lazy"
+                                    alt=""
+                                />
+                                <p
+                                    class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
+                                >
+                                    {{ $t("why.us-feature-2") }}
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:gap-x-28"
+                        >
+                            <div
+                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                            >
+                                <img
+                                    src="/storage/images/check.svg"
+                                    class="w-6 shrink-0"
+                                    loading="lazy"
+                                    alt=""
+                                />
+                                <p
+                                    class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
+                                >
+                                    {{ $t("why.us-feature-3") }}
+                                </p>
+                            </div>
+                            <div
+                                class="flex items-center space-x-6 rtl:space-x-reverse"
+                            >
+                                <img
+                                    src="/storage/images/check.svg"
+                                    class="w-6 shrink-0"
+                                    loading="lazy"
+                                    alt=""
+                                />
+                                <p
+                                    class="mt-1.5 text-base lg:text-xl font-semibold text-gray-800"
+                                >
+                                    {{ $t("why.us-feature-4") }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-center justify-center px-5 py-4 mt-10 text-white rounded-full cursor-pointer w-52 bg-rose-900 hover:bg-rose-800"
+                    >
+                        <Link
+                            :href="
+                                '/' +
+                                $page.props.locale[0].currentLocaleCode +
+                                '/about'
+                            "
+                        >
+                            {{ $t("why.us-read.more") }}
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

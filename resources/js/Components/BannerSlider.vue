@@ -1,7 +1,10 @@
 <template>
     <div class="slider">
         <transition name="slide-fade" mode="out-in">
-            <div :key="currentSlideIndex" class="slide">
+            <div
+                :key="currentSlideIndex"
+                class="relative w-full h-[27rem] md:h-[37rem]"
+            >
                 <img :src="slides[currentSlideIndex].image" alt="Banner" />
                 <div
                     class="container right-0 px-8 mx-auto text-gray-50 text max-w-7xl rtl:left-0"
@@ -80,7 +83,7 @@ export default {
 .slide {
     position: relative;
     width: 100%;
-    height: 44rem; /* Adjust as needed */
+    height: 37rem; /* Adjust as needed */
 }
 
 img {
@@ -91,7 +94,7 @@ img {
 
 .text {
     position: absolute;
-    top: 40%; /* Initial position above the slide */
+    top: 35%; /* Initial position above the slide */
     width: 100%;
     transition: top 0.5s;
 }

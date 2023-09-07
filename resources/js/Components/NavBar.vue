@@ -47,7 +47,7 @@ const logout = () => {
                         alt=""
                     />
                     <p
-                        class="mt-1 text-xs font-normal ltr:mt-2 sm:text-base text-gray-50"
+                        class="pr-4 mt-1 text-xs font-normal rtl:pr-0 rtl:pl-4 ltr:mt-2 sm:text-base text-gray-50"
                     >
                         {{ $t("home.top.nav") }}
                     </p>
@@ -327,7 +327,7 @@ const logout = () => {
                     hidden: !showingNavigationDropdown,
                     'h-[50rem]': serviceDropdown == true,
                 }"
-                class="w-[22rem] h-[35rem] absolute top-[5.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
+                class="w-full sm:w-[22rem] h-[35rem] absolute top-[5.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
             >
                 <!-- Responsive Settings Options -->
                 <div

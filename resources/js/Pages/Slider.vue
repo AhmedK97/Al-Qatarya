@@ -7,16 +7,16 @@
         :autoplay="1500"
     >
         <Slide v-for="service in services" :key="service.id">
-            <div>
-                <div class="mb-10 carousel__item">
-                    <img
-                        class="w-full mt-4 rounded-lg max-h-[20rem] lg:mt-10"
-                        loading="lazy"
-                        :src="service.main_image"
-                        alt="خدمات غسيل وعزل الخزانات"
-                    />
-                </div>
-                <Link rel="stylesheet" :href="route('service', service.slug)">
+            <Link rel="stylesheet" :href="route('service', service.slug)">
+                <div>
+                    <div class="mb-10 carousel__item">
+                        <img
+                            class="w-full mt-4 rounded-lg max-h-[20rem] lg:mt-10"
+                            loading="lazy"
+                            :src="service.main_image"
+                            alt="خدمات غسيل وعزل الخزانات"
+                        />
+                    </div>
                     <div>
                         <h1
                             class="text-2xl font-bold text-center text-gray-800"
@@ -24,8 +24,8 @@
                             {{ service.name }}
                         </h1>
                     </div>
-                </Link>
-            </div>
+                </div>
+            </Link>
         </Slide>
         <template #addons>
             <Navigation />
