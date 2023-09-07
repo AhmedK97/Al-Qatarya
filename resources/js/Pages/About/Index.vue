@@ -26,7 +26,7 @@ defineProps({
                         alt=""
                     />
                     <img
-                        src="/storage/images/banner1-1.png"
+                        src="/storage/images/banner1-1.webp"
                         class="md:w-full md:h-[600px] rounded-lg relative z-10"
                         alt=""
                     />
@@ -83,7 +83,7 @@ defineProps({
                     class="flex flex-col justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row rtl:space-x-reverse"
                 >
                     <img
-                        src="/storage/images/banner1.png"
+                        src="/storage/images/banner1.webp"
                         class="md:w-[45%] md:h-[600px] rounded-lg"
                         loading="lazy"
                         alt=""

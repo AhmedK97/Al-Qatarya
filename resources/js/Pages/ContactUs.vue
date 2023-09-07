@@ -6,7 +6,7 @@
         >
             <div class="flex flex-col space-y-8">
                 <img
-                    src="/storage/images/1-3.png"
+                    src="/storage/images/1-3.webp"
                     class="object-cover object-center rounded-md w-96 h-60"
                     alt=""
                 />

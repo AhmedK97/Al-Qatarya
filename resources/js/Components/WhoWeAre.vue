@@ -18,7 +18,7 @@
             }"
         >
             <img
-                src="/storage/images/banner1.png"
+                src="/storage/images/banner1.webp"
                 class="md:w-[45%] md:h-[600px] rounded-lg order-1 md:order-2"
                 alt=""
             />

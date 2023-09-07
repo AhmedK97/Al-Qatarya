@@ -31,19 +31,19 @@ export default {
             currentSlideIndex: 0,
             slides: [
                 {
-                    image: "/storage/images/banner1.png",
+                    image: "/storage/images/banner1.webp",
                     text: "شركة القطرية للعوازل",
                     description:
                         "توفر شركة القطريه مجموعة مدربة و متميزة من الفنيين لتوفير أعلي مستويات بتقنية عالية و بأقل وقت ممكن",
                 },
                 {
-                    image: "/storage/images/banner2.png",
+                    image: "/storage/images/banner2.webp",
                     text: "شركة القطرية للعوازل",
                     description:
                         "توفر شركة القطريه مجموعة مدربة و متميزة من الفنيين لتوفير  أعلي مستويات بتقنية عالية و بأقل وقت ممكن",
                 },
                 {
-                    image: "/storage/images/banner3.png",
+                    image: "/storage/images/banner3.webp",
                     text: "شركة القطرية للعوازل",
                     description:
                         "توفر شركة القطريه مجموعة مدربة و متميزة من الفنيين لتوفير أعلي مستويات بتقنية عالية و بأقل وقت ممكن",
