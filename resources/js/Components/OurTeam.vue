@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-rose-900">
+    <section class="px-4 bg-rose-900">
         <div
             class="container flex flex-col justify-between p-2 px-4 py-20 mx-auto lg:flex-row max-w-7xl lg:px-0"
         >
@@ -21,7 +21,7 @@
                     {{ $t("who.we.are-desc") }}
                 </p>
                 <p
-                    class="mt-10 text-base font-medium leading-relaxed text-gray-50 lg:text-lg md:w-96"
+                    class="mt-10 text-base font-medium leading-relaxed text-gray-50 lg:text-lg lg:w-96"
                 >
                     {{ $t("our.team-paragraph") }}
                 </p>

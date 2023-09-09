@@ -1,14 +1,13 @@
 <template>
     <section class="container mx-auto max-w-7xl">
         <div
-            class="flex flex-col items-center justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row ltr:space-x-reverse"
+            class="flex flex-col items-center justify-center p-2 space-y-8 lg:space-y-0 lg:space-x-10 lg:flex-row ltr:space-x-reverse"
         >
             <img
                 src="/storage/images/banner1.png"
-                class="hidden md:block w-[92%] md:w-[40%] md:h-[370px] rounded-lg shadow-2xl order-1 md:order-2"
-
+                class="hidden md:block w-[92%] md:w-[95%] lg:w-[40%] lg:h-[370px] rounded-lg shadow-2xl order-1 lg:order-2"
             />
-            <div class="order-2 px-4 md:order-1">
+            <div class="order-2 px-4 lg:order-1">
                 <SectionTitleShadow>
                     <template #upper-title>
                         {{ $t("services.top.upper") }}
@@ -23,7 +22,7 @@
                 </p>
 
                 <div class="flex flex-col gap-8 mt-10 sm:px-4">
-                    <div class="flex gap-x-4 md:gap-x-2">
+                    <div class="flex gap-x-2 lg:gap-x-2">
                         <div class="flex flex-col">
                             <div
                                 class="flex items-center space-x-2 sm:space-x-6 rtl:space-x-reverse"
@@ -41,7 +40,7 @@
                                 </p>
                             </div>
                             <p
-                                class="mt-6 text-lg font-medium leading-relaxed text-gray-500 lg:text-lg"
+                                class="mt-6 text-base font-medium leading-relaxed text-gray-500 lg:text-lg"
                             >
                                 {{ $t("services.top-feature-1.desc") }}
                             </p>
@@ -69,7 +68,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="flex gap-x-2 md:gap-x-2">
+                    <div class="flex gap-x-2 lg:gap-x-2">
                         <div class="flex flex-col">
                             <div
                                 class="flex items-center space-x-2 sm:space-x-6 rtl:space-x-reverse"

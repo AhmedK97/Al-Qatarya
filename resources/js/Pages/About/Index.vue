@@ -15,19 +15,19 @@ defineProps({
 
 <template>
     <AppLayout :title="trans('home.about')">
-        <section class="mt-10 mb-20 md:mt-36">
+        <section class="mt-10 mb-20 lg:mt-36">
             <div
-                class="container flex flex-col justify-center w-full p-2 mx-auto space-y-8 md:space-x-10 md:flex-row ltr:space-x-reverse max-w-7xl"
+                class="container flex flex-col justify-center w-full p-2 mx-auto space-y-8 lg:space-y-0 lg:space-x-10 lg:flex-row ltr:space-x-reverse max-w-7xl"
             >
-                <div class="relative order-1 md:order-2">
+                <div class="relative order-1 lg:order-2">
                     <img
                         src="/storage/images/dots.png"
-                        class="hidden xl:block md:w-full md:h-[500px] absolute top-0 -translate-y-14 -translate-x-14 ltr:translate-x-14"
+                        class="hidden xl:block md:w-full lg:h-[500px] absolute top-0 -translate-y-14 -translate-x-14 ltr:translate-x-14"
                         alt=""
                     />
                     <img
                         src="/storage/images/banner1-1.webp"
-                        class="md:w-full md:h-[600px] rounded-lg relative z-10"
+                        class="md:w-full lg:h-[600px] rounded-lg relative z-10"
                         alt=""
                     />
                 </div>
@@ -80,11 +80,11 @@ defineProps({
 
             <section class="container mx-auto mt-20 max-w-7xl">
                 <div
-                    class="flex flex-col justify-center p-2 space-y-8 md:space-y-0 md:space-x-10 md:flex-row rtl:space-x-reverse"
+                    class="flex flex-col justify-center p-2 space-y-8 lg:space-y-0 lg:space-x-10 lg:flex-row rtl:space-x-reverse"
                 >
                     <img
                         src="/storage/images/banner1.webp"
-                        class="md:w-[45%] md:h-[600px] rounded-lg"
+                        class="w-full lg:w-[45%] lg:h-[600px] rounded-lg"
                         loading="lazy"
                         alt=""
                     />

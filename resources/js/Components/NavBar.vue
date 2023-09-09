@@ -347,21 +347,18 @@ const logout = () => {
                         </div>
                     </div>
 
-                    <div @mouseleave="serviceDropdown = false">
-                        <Link :href="route('services')">
-                            <div
-                                @mouseover="serviceDropdown = true"
-                                class="flex items-center p-5 space-x-4 transition duration-150 ease-in-out rtl:space-x-reverse"
-                            >
-                                <div class="">
-                                    {{ $t("home.services") }}
-                                </div>
-                                <img
-                                    src="/storage/images/down-arrow-faq-white.svg"
-                                    alt=""
-                                />
+                    <div @click="serviceDropdown = !serviceDropdown">
+                        <div
+                            class="flex items-center p-5 space-x-4 transition duration-150 ease-in-out rtl:space-x-reverse"
+                        >
+                            <div class="">
+                                {{ $t("home.services") }}
                             </div>
-                        </Link>
+                            <img
+                                src="/storage/images/down-arrow-faq-white.svg"
+                                alt=""
+                            />
+                        </div>
 
                         <div
                             v-show="serviceDropdown"

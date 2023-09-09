@@ -11,7 +11,9 @@ console.log(props.blogs);
 
 <template>
     <section class="">
-        <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
+        <div
+            class="max-w-screen-xl px-4 py-8 mx-auto md:py-20 lg:py-16 lg:px-6"
+        >
             <div class="flex flex-col items-center justify-center">
                 <SectionTitleShadow>
                     <template #upper-title>
