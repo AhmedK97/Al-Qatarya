@@ -14,7 +14,7 @@
                 </template>
             </SectionTitleShadow>
             <hr
-                class="w-24 h-1 mt-3 border-0 rounded rtl:w-28 bg-secondary-700"
+                class="w-32 h-1 mt-3 border-0 rounded rtl:w-40 bg-secondary-700"
             />
             <p class="mt-4 text-lg font-medium text-gray-50">
                 {{ $t("projects-desc") }}
