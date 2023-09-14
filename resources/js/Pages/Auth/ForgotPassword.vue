@@ -1,7 +1,7 @@
 <script setup>
 import { useForm, Head, Link } from "@inertiajs/vue3";
 import { mdiEmail } from "@mdi/js";
-import LayoutGuest from "@/layouts/LayoutGuest.vue";
+import LayoutGuest from "@/Layouts/Admin/LayoutGuest.vue";
 import SectionFullScreen from "@/Components/Admin";
 import CardBox from "@/Components/Admin/CardBox.vue";
 import FormField from "@/Components/Admin/FormField.vue";

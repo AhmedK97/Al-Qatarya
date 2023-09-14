@@ -27,8 +27,6 @@ use Inertia\Inertia;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
-
 Route::get('/services', IndexServicesController::class)->name('services');
 
 Route::get('/about', aboutController::class)->name('about');
@@ -42,6 +40,7 @@ Route::get('/projects', IndexProjectsController::class)->name('projects');
 Route::get('/contact-us', IndexContactUsController::class)->name('show.contact');
 
 // dashboard routes
+Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
 Route::get('/services/{slug}', ShowServiceController::class)->name('service');
 

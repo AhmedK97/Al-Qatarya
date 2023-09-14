@@ -119,7 +119,7 @@ onBeforeUnmount(() => {
                 class="transition-colors"
             />
             <span
-                class="px-2 transition-colors"
+                class="px-2 transition-colors whitespace-nowrap"
                 :class="{ 'lg:hidden': item.isDesktopNoLabel && item.icon }"
                 >{{ itemLabel }}</span
             >
