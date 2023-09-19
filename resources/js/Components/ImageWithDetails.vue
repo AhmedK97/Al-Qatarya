@@ -1,10 +1,19 @@
 <template>
     <div class="relative">
-        <img
-            :src="project.main_image"
-            :alt="project.title"
-            class="object-cover w-full h-auto duration-300 rounded-lg cursor-pointer hover:opacity-80"
-        />
+        <div class="relative">
+            <img
+                :src="project.main_image"
+                :alt="project.title"
+                class="object-cover w-full h-auto duration-300 rounded-lg cursor-pointer hover:opacity-80"
+            />
+            <!-- <div
+                class="absolute right-0 flex justify-center px-5 py-4 text-white -translate-x-1/2 rounded-full cursor-pointer top-1/2 bg-rose-900 hover:bg-rose-800"
+            >
+                <Link :href="route('show.projects', project.slug)">
+                    {{ $t("why.us-read.more") }}
+                </Link>
+            </div> -->
+        </div>
 
         <div
             class="absolute inset-0 flex items-center justify-center text-white bg-gray-900 rounded-lg opacity-0 hover:opacity-75"

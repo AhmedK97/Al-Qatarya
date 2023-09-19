@@ -41,7 +41,15 @@
                     {{ $t("who.we.are-paragraph") }}
                 </p>
 
-                <div class="flex flex-wrap justify-center gap-8 mt-10 md:mt-16">
+                <div class="mt-10">
+                    <Counter :targetNumber="100" :intervalSpeed="10">
+                        <template #title>
+                            {{ $t("who.we.are-counter") }}
+                        </template>
+                    </Counter>
+                </div>
+
+                <!-- <div class="flex flex-wrap justify-center gap-8 mt-10 md:mt-16">
                     <div class="flex gap-x-8">
                         <Counter :targetNumber="100" :intervalSpeed="10">
                             <template #title>
@@ -59,7 +67,7 @@
                             {{ $t("who.we.are-counter") }}
                         </template>
                     </Counter>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

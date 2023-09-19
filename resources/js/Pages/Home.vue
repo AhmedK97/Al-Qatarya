@@ -84,7 +84,7 @@ const sponsors = [
         <BannerSlider />
 
         <!-- services top -->
-        <ServicesTop class="md:mt-16" />
+        <ServicesTop class="md:mt-16" :services="services" />
 
         <!-- services  -->
         <Services class="mt-20 md:mt-40" :services="services" />

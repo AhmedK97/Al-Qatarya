@@ -145,25 +145,7 @@ import { Link } from "@inertiajs/vue3";
                 </div>
             </div>
 
-            <div class="flex flex-col space-y-10">
-                <div class="space-y-4">
-                    <p class="text-2xl font-bold text-rose-900">
-                        {{ $t("footer.support") }}
-                    </p>
-                    <div class="relative">
-                        <hr
-                            class="h-0.5 border-0 rounded-full bg-gray-900 opacity-10"
-                        />
-                        <hr
-                            class="absolute top-0 w-10 h-1 border-0 rounded-full -translate-y-1/3 bg-rose-900"
-                        />
-                    </div>
-                    <p
-                        class="font-medium leading-relaxed text-gray-100 text-md"
-                    >
-                        {{ $t("footer.support-text") }}
-                    </p>
-                </div>
+            <div class="flex flex-col mt-4">
                 <div class="space-y-4">
                     <p class="text-2xl font-bold text-rose-900">
                         {{ $t("footer.support") }}

@@ -33,11 +33,13 @@
                                 alt=""
                             />
                         </div>
-                        <p
-                            class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800"
-                        >
-                            {{ service.name }}
-                        </p>
+                        <Link :href="route('services', service.slug)">
+                            <p
+                                class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800"
+                            >
+                                {{ service.name }}
+                            </p>
+                        </Link>
                     </div>
                 </div>
             </div>

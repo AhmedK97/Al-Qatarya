@@ -21,7 +21,9 @@
                     {{ $t("services.top.desc") }}
                 </p>
 
-                <div class="flex flex-col gap-8 mt-10 sm:px-4">
+                <WhyUsTabs :services="services" />
+
+                <!-- <div class="flex flex-col gap-8 mt-10 sm:px-4">
                     <div class="flex gap-x-2 lg:gap-x-2">
                         <div class="flex flex-col">
                             <div
@@ -114,7 +116,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -122,7 +124,12 @@
 
 <script setup>
 import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
+import WhyUsTabs from "@/Components/WhyUsTabs.vue";
 import { Link } from "@inertiajs/vue3";
+
+defineProps({
+    services: Object,
+});
 </script>
 
 <style></style>

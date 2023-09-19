@@ -17310,3 +17310,29 @@ Stack level 1.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">/Users/n
 #71 /Users/nagi/.composer/vendor/laravel/valet/server.php(250): require('/Users/nagi/lub...')
 #72 {main}
 "} 
+[2023-09-18 16:08:58] local.ERROR: Uncaught RuntimeException: Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. in /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152
+Stack trace:
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\Translation\FileLoader->Illuminate\Translation\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(147): Illuminate\Support\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\Translation\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\Translation\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\Translation\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\Translation\Translator->get('auth', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('auth', Array, NULL)
+#7 Command line code(1): __('auth')
+#8 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught RuntimeException: Translation file [/Users/nagi/lubna/Al-Qatarya/lang/ar.json] contains an invalid JSON structure. in /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152
+Stack trace:
+#0 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(739): Illuminate\\Translation\\FileLoader->Illuminate\\Translation\\{closure}(Array, '/Users/nagi/lub...', 1)
+#1 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(147): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#2 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php(64): Illuminate\\Translation\\FileLoader->loadJsonPaths('ar')
+#3 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(293): Illuminate\\Translation\\FileLoader->load('ar', '*', '*')
+#4 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/Translator.php(134): Illuminate\\Translation\\Translator->load('*', '*', 'ar')
+#5 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(920): Illuminate\\Translation\\Translator->get('auth', Array, 'ar')
+#6 /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(955): trans('auth', Array, NULL)
+#7 Command line code(1): __('auth')
+#8 {main}
+  thrown at /Users/nagi/lubna/Al-Qatarya/vendor/laravel/framework/src/Illuminate/Translation/FileLoader.php:152)
+[stacktrace]
+#0 {main}
+"} 

@@ -120,7 +120,7 @@ const logout = () => {
                         <!-- Navigation Links -->
                         <NavLink
                             :href="route('home')"
-                            class="px-2 text-white md:text-lg"
+                            class="px-2 !text-lg text-white"
                         >
                             {{ $t("home.company_name") }}
                         </NavLink>
@@ -208,6 +208,31 @@ const logout = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div
+                    class="flex items-center justify-center space-x-6 sm:hidden rtl:space-x-reverse"
+                >
+                    <a href="#">
+                        <img
+                            src="/storage/images/facebook-upper.svg"
+                            class="w-4 h-4"
+                            alt=""
+                        />
+                    </a>
+                    <a href="#">
+                        <img
+                            src="/storage/images/instagram-upper.svg"
+                            class="w-4 h-4"
+                            alt=""
+                        />
+                    </a>
+                    <a href="#">
+                        <img
+                            src="/storage/images/twitter-upper.svg"
+                            class="w-4 h-4"
+                            alt=""
+                        />
+                    </a>
                 </div>
                 <div class="flex justify-center">
                     <div
@@ -327,7 +352,7 @@ const logout = () => {
                     hidden: !showingNavigationDropdown,
                     'h-[50rem]': serviceDropdown == true,
                 }"
-                class="w-full sm:w-[22rem] h-[35rem] absolute top-[5.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
+                class="w-full sm:w-[22rem] h-[35rem] absolute top-[6.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
             >
                 <!-- Responsive Settings Options -->
                 <div
