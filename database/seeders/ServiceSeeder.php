@@ -227,6 +227,9 @@ class ServiceSeeder extends Seeder
                 'seo_title' => json_decode($seo_title, true),
                 'seo_description' => json_decode($seo_description, true),
                 'seo_keywords' => json_decode($seo_keywords, true),
+                'company_name' =>
+                    Arr::random(['qatarya', 'othman']),
+
             ]);
 
             $service->addMediaFromUrl($image)->toMediaCollection('services_main_image');

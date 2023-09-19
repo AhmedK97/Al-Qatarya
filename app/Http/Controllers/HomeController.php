@@ -16,8 +16,13 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $qatarya = Service::where('company_name', 'qatarya')->get();
+        $othman = Service::where('company_name', 'othman')->get();
+
+        
         return Inertia::render('Home', [
-            'services' => ServiceResource::collection(Service::all()),
+            'services_qatarya' => ServiceResource::collection($qatarya),
+            'services_othman' => ServiceResource::collection($othman),
             'project' => ShowProjectResource::collection(Project::take(6)->get()),
         ]);
     }

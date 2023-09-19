@@ -21,7 +21,7 @@
                     {{ $t("services.top.desc") }}
                 </p>
 
-                <WhyUsTabs :services="services" />
+                <WhyUsTabs :services_othman="services_othman" :services_qatarya="services_qatarya" />
 
                 <!-- <div class="flex flex-col gap-8 mt-10 sm:px-4">
                     <div class="flex gap-x-2 lg:gap-x-2">
@@ -128,7 +128,8 @@ import WhyUsTabs from "@/Components/WhyUsTabs.vue";
 import { Link } from "@inertiajs/vue3";
 
 defineProps({
-    services: Object,
+    services_othman: Object,
+    services_qatarya: Object,
 });
 </script>
 

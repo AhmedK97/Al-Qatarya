@@ -19,7 +19,8 @@ import { Link } from "@inertiajs/vue3";
 import { onMounted } from "vue";
 
 const props = defineProps({
-    services: Object,
+    services_qatarya: Object,
+    services_othman : Object,
     blogs: Object,
     project: Object,
 });
@@ -84,10 +85,10 @@ const sponsors = [
         <BannerSlider />
 
         <!-- services top -->
-        <ServicesTop class="md:mt-16" :services="services" />
+        <ServicesTop class="md:mt-16"  :services_qatarya='services_qatarya' :services_othman='services_othman' />
 
         <!-- services  -->
-        <Services class="mt-20 md:mt-40" :services="services" />
+        <Services class="mt-20 md:mt-40"  services_qatarya = 'services_qatarya' services_othman = 'services_othman' />
 
         <!-- projects -->
         <HomeProjects class="mt-20 md:mt-40" :project="project" />
