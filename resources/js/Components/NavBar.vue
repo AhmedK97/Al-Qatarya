@@ -210,26 +210,26 @@ const logout = () => {
                     </div>
                 </div>
                 <div
-                    class="flex items-center justify-center space-x-6 sm:hidden rtl:space-x-reverse"
+                    class="flex items-center justify-center mt-4 space-x-20 sm:hidden rtl:space-x-reverse"
                 >
                     <a href="#">
                         <img
                             src="/storage/images/facebook-upper.svg"
-                            class="w-4 h-4"
+                            class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
                     <a href="#">
                         <img
                             src="/storage/images/instagram-upper.svg"
-                            class="w-4 h-4"
+                            class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
                     <a href="#">
                         <img
                             src="/storage/images/twitter-upper.svg"
-                            class="w-4 h-4"
+                            class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
@@ -493,5 +493,26 @@ const logout = () => {
 [dir="rtl"] .slide-enter-from,
 [dir="rtl"] .slide-leave-to {
     transform: translateX(100%);
+}
+
+.icon {
+    transition: transform 0.9s ease-in-out;
+}
+
+.rotate {
+    animation: rotate 0.5s linear infinite;
+}
+
+@keyframes rotate {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
 }
 </style>
