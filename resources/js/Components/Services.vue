@@ -5,8 +5,7 @@ import Services from "@/Components/Services.vue";
 import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 
 const props = defineProps({
-    services_othman: Object,
-    services_qatarya: Object,
+    services: Object,
 });
 </script>
 
@@ -25,7 +24,7 @@ const props = defineProps({
             <p class="text-xl font-semibold leading-snug my-7">
                 {{ $t("services-desc") }}
             </p>
-            <Slider :services_othman="services_othman" :services_qatarya="services_qatarya"  ></Slider>
+            <Slider :services="services"></Slider>
         </div>
     </section>
 </template>

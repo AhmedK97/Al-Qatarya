@@ -112,10 +112,6 @@
             services_qatarya: Object,
         },
 
-        mounted() {
-            console.log(this.services_othman);
-            console.log(this.services_qatarya);
-        },
 
         data() {
             return {

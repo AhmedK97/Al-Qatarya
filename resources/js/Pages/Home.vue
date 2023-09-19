@@ -85,10 +85,13 @@ const sponsors = [
         <BannerSlider />
 
         <!-- services top -->
-        <ServicesTop class="md:mt-16"  :services_qatarya='services_qatarya' :services_othman='services_othman' />
+
+         <!-- services_othman or services_qatarya based on active tap  -->
+
+        <ServicesTop class="md:mt-16"  :services='services_qatarya'  />
 
         <!-- services  -->
-        <Services class="mt-20 md:mt-40"  :services_qatarya = 'services_qatarya' :services_othman = 'services_othman' />
+        <Services class="mt-20 md:mt-40"  :services = 'services_qatarya' />
 
         <!-- projects -->
         <HomeProjects class="mt-20 md:mt-40" :project="project" />
