@@ -33,7 +33,7 @@
                                 alt=""
                             />
                         </div>
-                        <Link :href="route('services', service.slug)">
+                        <Link :href="route('service', service.slug)">
                             <p
                                 class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800"
                             >
@@ -49,7 +49,7 @@
 
 <script setup>
 import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
-
+import { Link } from "@inertiajs/vue3";
 defineProps({
     services: Object,
 });

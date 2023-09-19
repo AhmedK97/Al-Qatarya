@@ -8,9 +8,11 @@ import OurTeam from "@/Components/OurTeam.vue";
 import ProgressBar from "@/Components/ProgressBar.vue";
 import AllServices from "@/Components/AllServices.vue";
 
-defineProps({
+const props = defineProps({
     services: Object,
 });
+
+console.log(props.services);
 </script>
 
 <template>

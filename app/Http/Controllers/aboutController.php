@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ShowServiceResource;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class aboutController extends Controller
@@ -11,6 +13,9 @@ class aboutController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return inertia('About/Index');
+        $services = Service::all();
+        return inertia('About/Index', [
+            'services' => ShowServiceResource::collection($services),
+        ]);
     }
 }
