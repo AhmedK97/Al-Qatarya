@@ -88,7 +88,7 @@ const sponsors = [
         <ServicesTop class="md:mt-16"  :services_qatarya='services_qatarya' :services_othman='services_othman' />
 
         <!-- services  -->
-        <Services class="mt-20 md:mt-40"  services_qatarya = 'services_qatarya' services_othman = 'services_othman' />
+        <Services class="mt-20 md:mt-40"  :services_qatarya = 'services_qatarya' :services_othman = 'services_othman' />
 
         <!-- projects -->
         <HomeProjects class="mt-20 md:mt-40" :project="project" />

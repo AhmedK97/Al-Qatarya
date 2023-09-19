@@ -39,7 +39,8 @@ import { Link } from "@inertiajs/vue3";
 import { Carousel, Pagination, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 const props = defineProps({
-    services: Object,
+   services_othman: Object,
+   services_qatarya: Object,
 });
 
 const breakpoints = {
