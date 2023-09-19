@@ -6,7 +6,7 @@ import { Link } from "@inertiajs/vue3";
 import Tabs from "@/Components/Tabs.vue";
 import OurTeam from "@/Components/OurTeam.vue";
 import ProgressBar from "@/Components/ProgressBar.vue";
-import SericesAll from "@/Components/SericesAll.vue";
+import AllServices from "@/Components/AllServices.vue";
 
 defineProps({
     services: Object,
@@ -74,7 +74,7 @@ defineProps({
                 </div>
             </div>
 
-            <SericesAll :services="services" class="mt-20" />
+            <AllServices :services="services" class="mt-20" />
 
             <OurTeam class="mt-20" />
 
