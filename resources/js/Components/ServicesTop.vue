@@ -9,11 +9,8 @@
             />
             <div class="order-2 px-4 lg:order-1">
                 <SectionTitleShadow>
-                    <template #upper-title>
-                        {{ $t("services.top.upper") }}
-                    </template>
                     <template #title>
-                        {{ $t("services.top") }}
+                        <slot />
                     </template>
                 </SectionTitleShadow>
 
@@ -21,7 +18,65 @@
                     {{ $t("services.top.desc") }}
                 </p>
 
-                <WhyUsTabs :services_othman="services_othman" :services_qatarya="services_qatarya" />
+                <div>
+                    <div
+                        class="grid grid-cols-2 mt-4 md:grid-cols-3 lg:grid-cols-3 gap-y-10 md:mt-10"
+                    >
+                        <div
+                            class="flex space-x-4 rtl:space-x-reverse"
+                            v-for="service in services_qatarya"
+                            :key="service.id"
+                        >
+                            <div
+                                class="flex items-center justify-center w-6 h-6 rounded-full xl:w-8 xl:h-8 bg-rose-900 shrink-0"
+                            >
+                                <img
+                                    src="/storage/images/check-white.svg"
+                                    class="w-3 xl:w-5"
+                                    loading="lazy"
+                                    alt=""
+                                />
+                            </div>
+                            <Link :href="route('service', service.slug)">
+                                <p
+                                    class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800 hover:text-gray-500"
+                                >
+                                    {{ service.name }}
+                                </p>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div
+                        class="grid grid-cols-2 mt-4 md:grid-cols-3 lg:grid-cols-3 gap-y-10 md:mt-10"
+                    >
+                        <div
+                            class="flex space-x-4 rtl:space-x-reverse"
+                            v-for="service in services_othman"
+                            :key="service.id"
+                        >
+                            <div
+                                class="flex items-center justify-center w-6 h-6 rounded-full xl:w-8 xl:h-8 bg-rose-900 shrink-0"
+                            >
+                                <img
+                                    src="/storage/images/check-white.svg"
+                                    class="w-3 xl:w-5"
+                                    loading="lazy"
+                                    alt=""
+                                />
+                            </div>
+                            <Link :href="route('service', service.slug)">
+                                <p
+                                    class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800 hover:text-gray-500"
+                                >
+                                    {{ service.name }}
+                                </p>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- <div class="flex flex-col gap-8 mt-10 sm:px-4">
                     <div class="flex gap-x-2 lg:gap-x-2">
@@ -128,6 +183,7 @@ import WhyUsTabs from "@/Components/WhyUsTabs.vue";
 import { Link } from "@inertiajs/vue3";
 
 defineProps({
+    services: Object,
     services_othman: Object,
     services_qatarya: Object,
 });
