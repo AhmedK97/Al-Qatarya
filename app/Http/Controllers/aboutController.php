@@ -14,6 +14,7 @@ class aboutController extends Controller
     public function __invoke(Request $request)
     {
         $services = Service::all();
+
         return inertia('About/Index', [
             'services' => ShowServiceResource::collection($services),
         ]);

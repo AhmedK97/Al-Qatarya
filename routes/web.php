@@ -12,7 +12,6 @@ use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------

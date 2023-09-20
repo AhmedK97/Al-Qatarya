@@ -19,7 +19,6 @@ class HomeController extends Controller
         $qatarya = Service::where('company_name', 'qatarya')->get();
         $othman = Service::where('company_name', 'othman')->get();
 
-        
         return Inertia::render('Home', [
             'services_qatarya' => ServiceResource::collection($qatarya),
             'services_othman' => ServiceResource::collection($othman),
