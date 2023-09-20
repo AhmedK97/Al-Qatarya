@@ -2,10 +2,8 @@
     import AppLayout from "@/Layouts/AppLayout.vue";
     import "vue3-carousel/dist/carousel.css";
     import BannerSlider from "@/Components/BannerSlider.vue";
-
     import WhyUs from "@/Components/WhyUs.vue";
     import WhoWeAre from "@/Components/WhoWeAre.vue";
-    // import "@lottiefiles/lottie-player";
     import "@ebcom/dotlottie-player";
     import PartnerSlider from "@/Components/PartnerSlider.vue";
     import HomeProjects from "@/Components/HomeProjects.vue";
