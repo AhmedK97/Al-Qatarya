@@ -6,28 +6,7 @@
         :transition="1000"
         :autoplay="1500"
     >
-        <Slide v-for="service in services_othman" :key="service.id">
-            <Link rel="stylesheet" :href="route('service', service.slug)">
-                <div>
-                    <div class="mb-10 carousel__item">
-                        <img
-                            class="w-full mt-4 rounded-lg max-h-[20rem] lg:mt-10"
-                            loading="lazy"
-                            :src="service.main_image"
-                            alt="خدمات غسيل وعزل الخزانات"
-                        />
-                    </div>
-                    <div>
-                        <h1
-                            class="text-2xl font-bold text-center text-gray-800"
-                        >
-                            {{ service.name }}
-                        </h1>
-                    </div>
-                </div>
-            </Link>
-        </Slide>
-        <Slide v-for="service in services_qatarya" :key="service.id">
+        <Slide v-for="service in services" :key="service.id">
             <Link rel="stylesheet" :href="route('service', service.slug)">
                 <div>
                     <div class="mb-10 carousel__item">
@@ -61,8 +40,6 @@ import { Carousel, Pagination, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 const props = defineProps({
     services: Object,
-    services_qatarya: Object,
-    services_othman: Object,
 });
 
 const breakpoints = {
