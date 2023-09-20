@@ -17,13 +17,13 @@
                 <p class="mt-8 text-lg font-medium text-gray-500">
                     {{ $t("services.top.desc") }}
                 </p>
-                
+
                 <div>
                     <div
                         class="grid grid-cols-2 mt-4 md:grid-cols-3 lg:grid-cols-3 gap-y-10 md:mt-10"
                     >
                         <div
-                            class="flex space-x-4 rtl:space-x-reverse"
+                            class="flex space-x-2 rtl:space-x-reverse"
                             v-for="service in services"
                             :key="service.id"
                         >
@@ -39,7 +39,7 @@
                             </div>
                             <Link :href="route('service', service.slug)">
                                 <p
-                                    class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800 hover:text-gray-500"
+                                    class="mt-1.5 text-md xl:text-lg font-semibold text-gray-800 hover:text-gray-500"
                                 >
                                     {{ service.name }}
                                 </p>
@@ -47,38 +47,6 @@
                         </div>
                     </div>
                 </div>
-<!--
-                <div>
-                    <div
-                        class="grid grid-cols-2 mt-4 md:grid-cols-3 lg:grid-cols-3 gap-y-10 md:mt-10"
-                    >
-                        <div
-                            class="flex space-x-4 rtl:space-x-reverse"
-                            v-for="service in services_othman"
-                            :key="service.id"
-                        >
-                            <div
-                                class="flex items-center justify-center w-6 h-6 rounded-full xl:w-8 xl:h-8 bg-rose-900 shrink-0"
-                            >
-                                <img
-                                    src="/storage/images/check-white.svg"
-                                    class="w-3 xl:w-5"
-                                    loading="lazy"
-                                    alt=""
-                                />
-                            </div>
-                            <Link :href="route('service', service.slug)">
-                                <p
-                                    class="mt-1.5 text-sm xl:text-lg font-semibold text-gray-800 hover:text-gray-500"
-                                >
-                                    {{ service.name }}
-                                </p>
-                            </Link>
-                        </div>
-                    </div>
-                </div> -->
-
-
             </div>
         </div>
     </section>
