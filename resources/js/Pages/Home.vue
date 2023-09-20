@@ -85,11 +85,7 @@
         <!-- hero section -->
         <BannerSlider />
 
-        <!-- services top -->
-
-        <!-- services_othman or services_qatarya based on active tap  -->
-
-
+        <!-- services -->
         <ServicesSection :services_qatarya="services_qatarya" :services_othman="services_othman" />
 
         <!-- projects -->

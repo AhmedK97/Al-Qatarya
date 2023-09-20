@@ -47,7 +47,6 @@
             {{ $t('services.insulation') }}
         </ServicesImages>
 
-        <!--   -->
         <Service class="mt-20 md:mt-40" :services="openTab === 1 ? services_qatarya : services_othman" />
 
     </div>
