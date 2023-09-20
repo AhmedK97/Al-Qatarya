@@ -4,7 +4,7 @@
     } from "vue";
 
     import ServicesImages from "@/Components/ServicesImages.vue";
-    import X from "@/Components/X.vue";
+    import Service from "@/Components/Services.vue";
 
     const props = defineProps({
         services_qatarya: Object,
@@ -48,7 +48,7 @@
         </ServicesImages>
 
         <!--   -->
-        <X class="mt-20 md:mt-40" :services="openTab === 1 ? services_qatarya : services_othman" />
+        <Service class="mt-20 md:mt-40" :services="openTab === 1 ? services_qatarya : services_othman" />
 
     </div>
 </template>
