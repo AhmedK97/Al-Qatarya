@@ -120,7 +120,7 @@ const logout = () => {
                         <!-- Navigation Links -->
                         <NavLink
                             :href="route('home')"
-                            class="px-2 !text-lg text-white"
+                            class="px-2 !text-lg text-white font-ahmedltfont"
                         >
                             {{ $t("home.company_name") }}
                         </NavLink>

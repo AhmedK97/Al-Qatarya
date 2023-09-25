@@ -51,6 +51,7 @@ module.exports = {
                 sans: ["Cairo", ...defaultTheme.fontFamily.sans],
                 nunito: "Tajawal, sans-serif",
                 tajawal: "Tajawal, sans-serif",
+                ahmedltfont: "Ahmed LT Regular",
             },
             colors: {
                 primary: {

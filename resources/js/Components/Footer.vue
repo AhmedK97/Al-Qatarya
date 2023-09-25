@@ -145,7 +145,7 @@ import { Link } from "@inertiajs/vue3";
                 </div>
             </div>
 
-            <div class="flex flex-col mt-4">
+            <div class="flex flex-col mt-4 lg:mt-0">
                 <div class="space-y-4">
                     <p class="text-2xl font-bold text-rose-900">
                         {{ $t("footer.support") }}
