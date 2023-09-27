@@ -23,7 +23,7 @@ import { Link } from "@inertiajs/vue3";
                     />
                 </div>
                 <p
-                    class="font-medium leading-relaxed text-gray-100 text-md sm:w-80"
+                    class="font-medium leading-relaxed text-gray-900 text-md sm:w-80"
                 >
                     {{ $t("footer.about-text") }}
                 </p>
@@ -69,7 +69,7 @@ import { Link } from "@inertiajs/vue3";
                         class="absolute top-0 w-10 h-1 border-0 rounded-full -translate-y-1/3 bg-rose-900"
                     />
                 </div>
-                <div class="w-40 space-y-4 text-gray-50">
+                <div class="w-40 space-y-4 text-gray-900">
                     <div class="flex items-center">
                         <div>
                             <div class="">
@@ -121,7 +121,7 @@ import { Link } from "@inertiajs/vue3";
                     <div class="flex space-x-4 rtl:space-x-reverse">
                         <img src="storage/images/location.svg" alt="" />
                         <p
-                            class="font-medium leading-relaxed text-gray-100 text-md"
+                            class="font-medium leading-relaxed text-gray-900 text-md"
                         >
                             {{ $t("footer.address-text") }}
                         </p>
@@ -129,7 +129,7 @@ import { Link } from "@inertiajs/vue3";
                     <div class="flex space-x-4 rtl:space-x-reverse">
                         <img src="storage/images/phone-footer.svg" alt="" />
                         <p
-                            class="font-medium leading-relaxed text-gray-100 text-md"
+                            class="font-medium leading-relaxed text-gray-900 text-md"
                         >
                             {{ $t("footer.address-text1") }}
                         </p>
@@ -137,7 +137,7 @@ import { Link } from "@inertiajs/vue3";
                     <div class="flex space-x-4 rtl:space-x-reverse">
                         <img src="storage/images/mail-footer.svg" alt="" />
                         <p
-                            class="font-medium leading-relaxed text-gray-100 text-md"
+                            class="font-medium leading-relaxed text-gray-900 text-md"
                         >
                             {{ $t("footer.address-text2") }}
                         </p>
@@ -159,7 +159,7 @@ import { Link } from "@inertiajs/vue3";
                         />
                     </div>
                     <p
-                        class="font-medium leading-relaxed text-gray-100 text-md"
+                        class="font-medium leading-relaxed text-gray-900 text-md"
                     >
                         {{ $t("footer.support-text") }}
                     </p>

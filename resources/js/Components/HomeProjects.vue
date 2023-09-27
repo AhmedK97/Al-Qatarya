@@ -8,7 +8,7 @@
                     >
                 </template>
                 <template #title>
-                    <span class="!text-secondary-700 !no-underline">{{
+                    <span class="!text-white !no-underline">{{
                         $t("projects")
                     }}</span>
                 </template>

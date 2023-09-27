@@ -43,7 +43,7 @@
                 "
             >
                 <div
-                    class="flex items-center justify-center w-32 h-16 mb-8 text-xl text-white rounded-full lg:mb-0 bg-secondary-900 hover:bg-secondary-800"
+                    class="flex items-center justify-center w-32 h-16 mb-8 text-xl text-gray-900 rounded-full lg:mb-0 bg-secondary-900 hover:bg-gray-300"
                 >
                     {{ $t("home.call_us") }}
                 </div>

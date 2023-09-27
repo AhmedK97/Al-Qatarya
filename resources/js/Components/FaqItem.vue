@@ -40,7 +40,7 @@ const open = () => {
                     <img
                         class="w-4 h-4 mx-2"
                         loading="lazy"
-                        src="/storage/images/down-arrow-faq-white.svg"
+                        src="/storage/images/down-arrow-faq-invert.svg"
                         alt="arrow-down"
                     />
                     <p class="text-base text-gray-50 lg:text-lg md:text-base">
