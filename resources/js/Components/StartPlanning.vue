@@ -14,20 +14,17 @@
                 <div class="text-center ltr:text-left md:rtl:text-right">
                     <SectionTitleShadow>
                         <template #upper-title>
-                            <span
-                                class="!text-secondary-700 text-3xl lg:text-4xl"
-                            >
+                            <span class="!text-gray-50 text-3xl lg:text-4xl">
                                 {{ $t("planning-upper") }}</span
                             >
                         </template>
                         <template #title>
-                            <span
-                                class="!text-secondary-700 text-xl md:text-4xl"
-                                >{{ $t("planning") }}</span
-                            >
+                            <span class="!text-gray-50 text-xl md:text-4xl">{{
+                                $t("planning")
+                            }}</span>
                         </template>
                     </SectionTitleShadow>
-                    <hr class="h-1 border-0 rounded md:w-48 bg-secondary-700" />
+                    <hr class="h-1 border-0 rounded bg-gray-50 md:w-48" />
                     <p
                         class="mt-4 font-medium md:text-lg ltr:lg:pl-0 ltr:lg:pr-20 rtl:lg:pl-20 rtl:lg:pr-0 text-gray-50"
                     >
@@ -43,7 +40,7 @@
                 "
             >
                 <div
-                    class="flex items-center justify-center w-32 h-16 mb-8 text-xl text-gray-900 rounded-full lg:mb-0 bg-secondary-900 hover:bg-gray-300"
+                    class="flex items-center justify-center w-32 h-16 mb-8 text-xl text-gray-900 rounded-full lg:mb-0 bg-gray-50 hover:bg-gray-200"
                 >
                     {{ $t("home.call_us") }}
                 </div>

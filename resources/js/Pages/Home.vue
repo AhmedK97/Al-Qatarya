@@ -83,16 +83,16 @@ const sponsors = [
         />
 
         <!-- projects -->
-        <HomeProjects class="mt-20 md:mt-40" :project="project" />
+        <HomeProjects class="mt-10" :project="project" />
 
         <!-- why  -->
-        <WhyUs class="mt-20 md:mt-40" />
+        <WhyUs class="mt-10" />
 
         <!-- who we are -->
-        <WhoWeAre class="mt-20 md:mt-40" />
+        <WhoWeAre class="mt-10" />
 
         <!-- partners slider -->
-        <PartnerSlider :items="sponsors" class="mt-14" />
+        <PartnerSlider :items="sponsors" class="mt-10" />
 
         <!-- start planning your project -->
         <StartPlanning class="-mt-20" />
