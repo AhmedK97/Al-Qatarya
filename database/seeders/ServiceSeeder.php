@@ -219,7 +219,7 @@ class ServiceSeeder extends Seeder
             $seo_title = json_encode(Arr::only($servicesData['seo_title'], ['en', 'ar']));
             $seo_description = json_encode(Arr::only($servicesData['seo_description'], ['en', 'ar']));
             $seo_keywords = json_encode(Arr::only($servicesData['seo_keywords'], ['en', 'ar']));
-            $image = 'https://picsum.photos/720.webp';
+            // $image = 'https://picsum.photos/720.webp';
 
             $service = Service::create([
                 'name' => json_decode($name, true),
@@ -231,11 +231,11 @@ class ServiceSeeder extends Seeder
 
             ]);
 
-            $service->addMediaFromUrl($image)->toMediaCollection('services_main_image');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services_main_image');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
 
         }
     }

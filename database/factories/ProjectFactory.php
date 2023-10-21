@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Enums\Blogs\CompaniesEnum;
+use App\Enums\Blogs\ProjectStatusEnum;
 use App\Models\Project;
+use App\Models\User;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,27 +34,39 @@ class ProjectFactory extends Factory
 
         $enFaker = Faker::create('en_US');
         $arFaker = Faker::create('ar_SA');
-
         return [
-            'title' => [
+            'title' => ([
                 'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
-            ],
+            ]),
 
-            'agent' => [
-                'ar' => $arFaker->name,
-                'en' => $enFaker->name,
-            ],
-            'address' => [
+             'employee' => User::where('role', 'employee')
+                ->get()
+                ->random()->id,
+            'customer' => User::where('role', 'customer')
+                ->get()
+                ->random()->id,
+
+            'notes' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
+
+            'cost' => $enFaker->randomNumber(6, true),
+
+            'status' => $enFaker->randomElement(ProjectStatusEnum::getValues()),
+
+            'company' => $enFaker->randomElement(CompaniesEnum::getValues()),
+
+            'address' => ([
                 'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
-            ],
+            ]),
             'space_area' => $enFaker->randomNumber(5, true),
-            'date' => now(),
-            'description' => [
+
+            'project_date' => now(),
+
+            'description' => ([
                 'ar' => $arFaker->realText($nbWords = 50, $variableNbWords = true),
                 'en' => $enFaker->realText($nbWords = 50, $variableNbWords = true),
-            ],
+            ]),
         ];
     }
 
@@ -60,19 +75,19 @@ class ProjectFactory extends Factory
      *
      * @return $this
      */
-    public function configure()
-    {
-        return $this->afterCreating(function (Project $project) {
-            // add project_image to project
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Project $project) {
+    //         // add project_image to project
 
-            $image = 'https://picsum.photos/720.webp';
-            $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_MAIN_IMAGE);
+    //         $image = 'https://picsum.photos/720.webp';
+    //         $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_MAIN_IMAGE);
 
-            // add project_images to project
-            for ($i = 0; $i < 5; $i++) {
-                $image = 'https://picsum.photos/720.webp';
-                $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGES);
-            }
-        });
-    }
+    //         // add project_images to project
+    //         for ($i = 0; $i < 5; $i++) {
+    //             $image = 'https://picsum.photos/720.webp';
+    //             $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGES);
+    //         }
+    //     });
+    // }
 }
