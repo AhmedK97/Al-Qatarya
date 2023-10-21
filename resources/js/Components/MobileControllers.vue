@@ -49,7 +49,7 @@
                     class="w-6 h-6 animate-bounce"
                 /> -->
                 <dotlottie-player
-                    src="/storage/images/lottiefiles/phone.lottie"
+                    src="/storage/images/lottiefiles/phone-white.lottie"
                     style="width: 2rem"
                     autoplay
                     loop

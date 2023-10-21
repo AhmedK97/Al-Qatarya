@@ -51,8 +51,12 @@ module.exports = {
                 sans: ["Cairo", ...defaultTheme.fontFamily.sans],
                 nunito: "Tajawal, sans-serif",
                 tajawal: "Tajawal, sans-serif",
+                ahmedltfont: "Ahmed LT Regular",
             },
             colors: {
+                rose: {
+                    900: "#660033",
+                },
                 primary: {
                     50: "#eff6ff",
                     100: "#dbeafe",
@@ -67,11 +71,11 @@ module.exports = {
                     950: "#172554",
                 },
                 secondary: {
-                    900: "#b9987a",
-                    800: "#c9a48b",
-                    700: "#d9b49c",
-                    600: "#e9c0ad",
-                    500: "#f9d0be",
+                    900: "#cccccc",
+                    800: "#cccccc",
+                    700: "#cccccc",
+                    600: "#cccccc",
+                    500: "#cccccc",
                 },
             },
         },
@@ -118,7 +122,7 @@ module.exports = {
             const extendUnderline = {
                 ".underline": {
                     textDecoration: "underline",
-                    "text-decoration-color": "#881337",
+                    "text-decoration-color": "#660033",
                 },
             };
             addUtilities(extendUnderline);

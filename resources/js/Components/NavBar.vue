@@ -47,7 +47,7 @@ const logout = () => {
                         alt=""
                     />
                     <p
-                        class="pr-4 mt-1 text-xs font-normal rtl:pr-0 rtl:pl-4 ltr:mt-2 sm:text-base text-gray-50"
+                        class="pr-4 mt-1 text-xs font-normal text-gray-900 rtl:pr-0 rtl:pl-4 ltr:mt-2 sm:text-base"
                     >
                         {{ $t("home.top.nav") }}
                     </p>
@@ -69,7 +69,7 @@ const logout = () => {
                                         local.currentLocaleCode !== local.code
                                     "
                                     rel="alternate"
-                                    class="text-sm font-medium text-gray-50"
+                                    class="text-sm font-medium text-gray-900"
                                     :hreflang="local.code"
                                     :href="local.url"
                                 >
@@ -120,7 +120,7 @@ const logout = () => {
                         <!-- Navigation Links -->
                         <NavLink
                             :href="route('home')"
-                            class="px-2 !text-lg text-white"
+                            class="px-2 !text-xl lg:!text-2xl text-white font-ahmedltfont font-bold"
                         >
                             {{ $t("home.company_name") }}
                         </NavLink>
@@ -214,21 +214,21 @@ const logout = () => {
                 >
                     <a href="#">
                         <img
-                            src="/storage/images/facebook-upper.svg"
+                            src="/storage/images/facebook-mobile.svg"
                             class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
                     <a href="#">
                         <img
-                            src="/storage/images/instagram-upper.svg"
+                            src="/storage/images/instagram-mobile.svg"
                             class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
                     <a href="#">
                         <img
-                            src="/storage/images/twitter-upper.svg"
+                            src="/storage/images/twitter-mobile.svg"
                             class="w-5 h-5 icon rotate"
                             alt=""
                         />
@@ -255,7 +255,7 @@ const logout = () => {
                                         <span class="">
                                             <button
                                                 type="button"
-                                                class="inline-flex px-3 text-sm font-medium text-white transition duration-150 ease-in-out rounded-md focus:outline-none"
+                                                class="inline-flex px-3 text-sm font-medium text-black transition duration-150 ease-in-out rounded-md focus:outline-none"
                                             >
                                                 {{ $t("home.services") }}
                                                 <img
@@ -298,7 +298,7 @@ const logout = () => {
 
                             <NavLink
                                 :href="route('about')"
-                                class="px-2 text-2xl text-white"
+                                class="px-2 text-2xl text-black"
                                 :active="route().current('about')"
                             >
                                 {{ $t("home.about") }}
@@ -306,7 +306,7 @@ const logout = () => {
 
                             <NavLink
                                 :href="route('blogs')"
-                                class="px-2 text-2xl text-white"
+                                class="px-2 text-2xl text-black"
                                 :active="route().current('blogs')"
                             >
                                 {{ $t("home.blogs") }}
@@ -314,7 +314,7 @@ const logout = () => {
 
                             <NavLink
                                 :href="route('projects')"
-                                class="px-2 text-2xl text-white"
+                                class="px-2 text-2xl text-black"
                                 :active="route().current('projects')"
                             >
                                 {{ $t("home.projects") }}
@@ -322,7 +322,7 @@ const logout = () => {
 
                             <NavLink
                                 :href="route('show.faq')"
-                                class="px-2 text-2xl text-white"
+                                class="px-2 text-2xl text-black"
                                 :active="route().current('show.faq')"
                             >
                                 {{ $t("home.faq") }}
@@ -352,11 +352,11 @@ const logout = () => {
                     hidden: !showingNavigationDropdown,
                     'h-[50rem]': serviceDropdown == true,
                 }"
-                class="w-full sm:w-[22rem] h-[35rem] absolute top-[6.5rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
+                class="w-full sm:w-[22rem] h-[35rem] absolute top-[7.8rem] bg-secondary-900 left-0 rtl:right-0 z-50 rounded-tr-2xl rounded-br-2xl rtl:rounded-tr-none rtl:rounded-br-none rtl:rounded-tl-2xl rtl:rounded-bl-2xl"
             >
                 <!-- Responsive Settings Options -->
                 <div
-                    class="px-4 pt-4 overflow-hidden font-semibold text-md text-gray-50"
+                    class="px-4 pt-4 overflow-hidden font-semibold text-gray-900 text-md"
                 >
                     <div class="flex items-center p-5">
                         <div>
