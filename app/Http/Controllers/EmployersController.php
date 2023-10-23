@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EmployeeResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -21,10 +22,13 @@ class EmployersController extends Controller
                AllowedFilter::partial('name'),
                AllowedFilter::partial('email'),
                AllowedFilter::partial('phone'),
-            ])->where('role', 'employee')
+            ])->employee()
             ->orderBy('id','desc')
-            ->paginate(10);
-
+            ->paginate(10)
+            ->withQueryString()
+            ->through(function (User $user) {
+                return new EmployeeResource($user);
+            });
 
         return Inertia::render('Admin/Employee/Index', [
             'employees' => $employees,

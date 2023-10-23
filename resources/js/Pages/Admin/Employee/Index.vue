@@ -78,7 +78,6 @@ const exportTable = () => {
                 />
 
             </div>
-            <!-- <h1>{{ employee }}</h1> -->
 
             <SectionTitleLineWithButton :icon="mdiDomain" title="Users">
                 <div class="flex items-center space-x-3">

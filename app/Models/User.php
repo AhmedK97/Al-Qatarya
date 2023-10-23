@@ -22,11 +22,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+
+    protected $table = 'users';
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,4 +56,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // employee
+    public function scopeEmployee($query)
+    {
+        return $query->where('role', 'employee');
+    }
 }

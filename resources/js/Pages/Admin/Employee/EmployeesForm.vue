@@ -17,22 +17,11 @@ import eventBus from "@/Composables/eventBus.js";
 import Swal from "sweetalert2";
 
 const props = defineProps({
-    user: {
+    employee: {
         type: Object,
         default: () => {},
     },
-    cities: {
-        type: Array,
-        default: () => [],
-    },
-    sectors: {
-        type: Array,
-        default: () => [],
-    },
-    roles: {
-        type: Array,
-        default: () => [],
-    },
+
 });
 
 onMounted(() => {
@@ -43,27 +32,6 @@ onMounted(() => {
     });
 });
 
-const normalizedRoles = computed(() => {
-    return props.roles.map((role) => ({
-        id: role,
-        name: role,
-    }));
-});
-
-const statues = [
-    {
-        id: "active",
-        name: "Active",
-    },
-    {
-        id: "inactive",
-        name: "Inactive",
-    },
-    {
-        id: "blocked",
-        name: "Blocked",
-    },
-];
 
 const isUpdate = computed(() => {
     if (!props.user) {
@@ -73,30 +41,15 @@ const isUpdate = computed(() => {
     return !!props.user.id;
 });
 
-const user = reactive(props.user || {});
+const employee = reactive(props.employee || {});
 
 const form = useForm({
-    name: user.name,
-    email: user.email,
-    website: user.website,
-    phone: user.phone,
-    role: user.role,
-    city: user.city?.id,
-    category: user.category?.id,
-    is_verified: user.isVerified,
-    status: user.status,
+    name: employee.name,
+    email: employee.email,
+    phone: employee.phone,
     password: "",
 });
 
-const UserSelectedSector = computed(() => {
-    if (!user.category) {
-        return null;
-    }
-
-    return user.category.parent_id;
-});
-
-const selectedSector = ref(UserSelectedSector.value);
 
 const fields = computed(() => {
     if (!selectedSector.value) {
@@ -197,121 +150,48 @@ const submit = () => {
 };
 </script>
 <template>
-    <CardBox form @submit.prevent="submit">
-        <FormField label="Name">
-            <FormControl :errorMessage="form.errors.name" v-model="form.name" />
-        </FormField>
+   <CardBox form @submit.prevent="submit">
+            <FormField label="Name">
+                <FormControl :errorMessage="form.errors.name" v-model="form.name" />
+            </FormField>
 
-        <FormField>
-            <FormField label="Email">
+            <FormField>
+                <FormField label="Email">
+                    <FormControl
+                        :errorMessage="form.errors.email"
+                        v-model="form.email"
+                        type="email"
+                    />
+                </FormField>
+
+                <FormField label="Phone">
+                    <FormControl
+                        :errorMessage="form.errors.phone"
+                        v-model="form.phone"
+                    />
+                </FormField>
+            </FormField>
+
+            <FormField v-if="!isUpdate" label="Password">
                 <FormControl
-                    :errorMessage="form.errors.email"
-                    v-model="form.email"
-                    type="email"
+                    type="password"
+                    :errorMessage="form.errors.password"
+                    v-model="form.password"
                 />
             </FormField>
 
-            <FormField label="Phone">
-                <FormControl
-                    :errorMessage="form.errors.phone"
-                    v-model="form.phone"
-                />
-            </FormField>
-        </FormField>
 
-        <FormField v-if="!isUpdate" label="Password">
-            <FormControl
-                type="password"
-                :errorMessage="form.errors.password"
-                v-model="form.password"
-            />
-        </FormField>
 
-        <BaseDivider />
-        <FormField label="Role">
-            <select-field
-                :errorMessage="form.errors.role"
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.role"
-                :items="normalizedRoles"
-            />
-        </FormField>
-        <BaseDivider />
 
-        <FormField label="City">
-            <div class="flex flex-col w-full space-y-2">
-                <v-select
-                    v-model="form.city"
-                    :options="cities"
-                    label="name"
-                    :reduce="(city) => city.id"
-                    :class="{
-                        'border-red-500 border': form.errors.city,
-                    }"
-                >
-                </v-select>
-                <InputError :message="form.errors.city" />
-            </div>
-        </FormField>
-
-        <BaseDivider />
-
-        <FormField>
-            <FormField label="Sector">
-                <select-field
-                    :errorMessage="form.errors.category"
-                    class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                    v-model="selectedSector"
-                    :items="sectors"
-                />
-            </FormField>
-            <FormField label="Field">
-                <select-field
-                    :errorMessage="form.errors.category"
-                    class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                    v-if="selectedSector"
-                    v-model="form.category"
-                    :items="fields"
-                />
-            </FormField>
-        </FormField>
-        <BaseDivider />
-        <FormField>
-            <FormField label="Status">
-                <select-field
-                    :errorMessage="form.errors.status"
-                    class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                    v-model="form.status"
-                    :items="statues"
-                />
-            </FormField>
-            <FormField label="Is Verified">
-                <select-field
-                    class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                    v-model="form.is_verified"
-                    :items="[
-                        {
-                            id: true,
-                            name: 'Active (Yes)',
-                        },
-                        {
-                            id: false,
-                            name: 'Inactive (No)',
-                        },
-                    ]"
-                />
-            </FormField>
-        </FormField>
-
-        <template #footer>
-            <BaseButtons>
-                <BaseButton
-                    @click="submit"
-                    type="submit"
-                    color="info"
-                    label="Submit"
-                />
-            </BaseButtons>
-        </template>
-    </CardBox>
+            <template #footer>
+                <BaseButtons>
+                    <BaseButton
+                        @click="submit"
+                        type="submit"
+                        color="info"
+                        label="Submit"
+                    />
+                </BaseButtons>
+            </template>
+        </CardBox>
 </template>

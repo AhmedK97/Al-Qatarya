@@ -96,38 +96,38 @@
 
     const isFormModalOpen = ref(false && currentlyEditedEmployee.value);
 
-    // const editUser = (user) => {
-    //     currentlyEditedEmployee.value = user;
-    //     isFormModalOpen.value = true;
-    // };
+    const editEmployee = (employee) => {
+        currentlyEditedEmployee.value = employee;
+        isFormModalOpen.value = true;
+    };
 
-    // const deleteUser = (user) => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: `You won't be able to revert this - ${user.name}!`,
-    //         icon: "error",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!",
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             router.delete(route("admin.employees.destroy", user.id), {
-    //                 preserveState: true,
-    //                 replace: true,
-    //                 onSuccess: () => {
-    //                     Swal.fire({
-    //                         title: "Deleted!",
-    //                         text: `${user.name} has been deleted.`,
-    //                         icon: "success",
-    //                         showConfirmButton: true,
-    //                         timer: 2000,
-    //                     });
-    //                 },
-    //             });
-    //         }
-    //     });
-    // };
+    const deleteEmployee = (employee) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You won't be able to revert this - ${employee.name}!`,
+            icon: "error",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.delete(route("admin.employees.destroy", employee.id), {
+                    preserveState: true,
+                    replace: true,
+                    onSuccess: () => {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: `${employee.name} has been deleted.`,
+                            icon: "success",
+                            showConfirmButton: true,
+                            timer: 2000,
+                        });
+                    },
+                });
+            }
+        });
+    };
 
     const sendAs = (user, type = "city_only") => {
         window.open(`/ar/upload?send_as_user=${user.id}&type=${type}`, "_blank");
@@ -141,24 +141,25 @@
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <!-- <EmployeeForm
-
+        <EmployeesForm
             :employee="currentlyEditedEmployee"
-
-        /> -->
+        />
     </CardBoxModal>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
         :title="viewModalTitle">
+        <EmployeesForm
+                :employee="currentlyEditedEmployee"
+            />
     </CardBoxModal>
 
-    <table class="w-full">
-        <caption>User Information</caption>
+    <table>
         <thead>
             <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Created At</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -179,13 +180,16 @@
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td></td>
+                <td></td>
+
             </tr>
 
-            <!-- Empty state -->
+            <!-- empty state -->
+
             <tr v-if="employees.data.length === 0">
-                <td colspan="5">
+                <td colspan="12">
                     <CardBoxComponentEmpty title="No Users Found, Click here to add new user"
-                        description="You can add a new user by clicking on the button below" @click="openformModal" />
+                        description="You can add new user by clicking on the button below" @click="openformModal" />
                 </td>
             </tr>
 
@@ -195,10 +199,12 @@
                 <td data-label="Name">{{ employee . name }}</td>
                 <td data-label="Email">{{ employee . email }}</td>
                 <td data-label="Phone">{{ employee . phone }}</td>
-                <td data-label="Action">
+                <td data-label="Created At">{{ employee . created_at }}</td>
+
+                <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                        <BaseButton color="info" :icon="mdiSquareEditOutline" small @click="editUser(employee)" />
-                        <!-- Other action buttons can be added here -->
+                        <BaseButton color="info" :icon="mdiSquareEditOutline" small @click="editEmployee(employee)" />
+                        <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteEmployee(employee)" />
                     </BaseButtons>
                 </td>
             </tr>
