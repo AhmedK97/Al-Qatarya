@@ -1,9 +1,33 @@
-@import "tailwindcss/base";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/components";
+@layer utilities {
+    .debug {
+        @apply border-2 border-red-500;
+    }
+}
 
-@import "tailwindcss/utilities";
+.vuejs3-datepicker__value {
+    min-width: 18rem !important;
+    padding: 10px 15px !important;
+    border: 2px solid #adadad !important;
 
-[x-cloak] {
-    display: none;
+}
+
+.vuejs3-datepicker__icon {
+    padding: 0 5px 0 5px !important;
+}
+
+.vuejs3-datepicker__content {
+    padding: 4px 5px 0 5px !important;
+}
+
+
+/* less than 767 */
+@media screen and (max-width: 768px) {
+    .vuejs3-datepicker__value {
+        min-width: 19rem !important;
+    }
+
 }

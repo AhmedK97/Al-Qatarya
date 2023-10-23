@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployersController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
@@ -38,13 +39,15 @@ Route::get('/projects', IndexProjectsController::class)->name('projects');
 
 Route::get('/contact-us', IndexContactUsController::class)->name('show.contact');
 
-// dashboard routes
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
-
 Route::get('/services/{slug}', ShowServiceController::class)->name('service');
 
 Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 
 Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
 
-// To do show all services in one page
+// Admin Routes
+Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+Route::get('/employers', EmployersController::class)->name('employees');
+
+

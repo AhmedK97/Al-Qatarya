@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from "vue";
 import { mdiClose } from "@mdi/js";
-import BaseButton from "@/components/BaseButton.vue";
-import BaseButtons from "@/components/BaseButtons.vue";
-import CardBox from "@/components/CardBox.vue";
-import OverlayLayer from "@/components/OverlayLayer.vue";
-import CardBoxComponentTitle from "@/components/CardBoxComponentTitle.vue";
+import BaseButton from "@/components/Admin/BaseButton.vue";
+import BaseButtons from "@/components/Admin/BaseButtons.vue";
+import CardBox from "@/components/Admin/CardBox.vue";
+import OverlayLayer from "@/components/Admin/OverlayLayer.vue";
+import CardBoxComponentTitle from "@/components/Admin/CardBoxComponentTitle.vue";
 
 const props = defineProps({
   title: {
@@ -54,7 +54,7 @@ window.addEventListener("keydown", (e) => {
   <OverlayLayer v-show="value" @overlay-click="cancel">
     <CardBox
       v-show="value"
-      class="shadow-lg max-h-modal w-11/12 md:w-3/5 lg:w-2/5 xl:w-4/12 z-50"
+      class="z-50 w-11/12 shadow-lg max-h-modal md:w-3/5 lg:w-2/5 xl:w-4/12"
       is-modal
     >
       <CardBoxComponentTitle :title="title">

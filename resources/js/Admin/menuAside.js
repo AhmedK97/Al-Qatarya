@@ -11,6 +11,8 @@ import {
     mdiResponsive,
     mdiPalette,
     mdiReact,
+    mdiAccountMultipleOutline,
+    mdiAccountGroup,
 } from "@mdi/js";
 
 export default [
@@ -19,10 +21,15 @@ export default [
         icon: mdiMonitor,
         label: "Dashboard",
     },
+    {
+        route: "employees",
+        label: "Employees",
+        icon: mdiAccountMultipleOutline,
+    },
     // {
-    //     route: "/tables",
-    //     label: "Tables",
-    //     icon: mdiTable,
+    //     route: "dashboard",
+    //     label: "Employers",
+    //     icon: mdiAccountGroup,
     // },
     // {
     //     route: "/forms",

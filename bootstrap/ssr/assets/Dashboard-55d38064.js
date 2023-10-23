@@ -14,11 +14,11 @@ const menuAside = [
     icon: mdiMonitor,
     label: "Dashboard"
   },
-  // {
-  //     route: "/tables",
-  //     label: "Tables",
-  //     icon: mdiTable,
-  // },
+//   {
+//       route: "/tables",
+//       label: "Tables",
+//       icon: mdiTable,
+//   },
   // {
   //     route: "/forms",
   //     label: "Forms",

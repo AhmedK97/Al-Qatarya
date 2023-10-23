@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, useSlots } from "vue";
 import { mdiClose } from "@mdi/js";
-import { colorsBgLight, colorsOutline } from "@/colors.js";
+import { colorsBgLight, colorsOutline } from "@/Admin/colors.js";
 import BaseLevel from "@/components/BaseLevel.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -37,10 +37,10 @@ const hasRightSlot = computed(() => slots.right);
   <div
     v-if="!isDismissed"
     :class="componentClass"
-    class="px-3 py-6 md:py-3 mb-6 last:mb-0 border rounded-lg transition-colors duration-150"
+    class="px-3 py-6 mb-6 transition-colors duration-150 border rounded-lg md:py-3 last:mb-0"
   >
     <BaseLevel>
-      <div class="flex flex-col md:flex-row items-center">
+      <div class="flex flex-col items-center md:flex-row">
         <BaseIcon
           v-if="icon"
           :path="icon"
