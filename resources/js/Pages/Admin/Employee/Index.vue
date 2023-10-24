@@ -56,7 +56,7 @@ const exportTable = () => {
             console.log('Export cancelled');
         } else if (result.value) {
             // User clicked export button
-            window.open(route("admin.users.export"), "_blank");
+            window.open(route("export.employees"), "_blank");
         }
     });
 };

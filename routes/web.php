@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeleteEmployeesController;
+use App\Http\Controllers\ExportEmployeesController;
 use App\Http\Controllers\IndexEmployeesController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
@@ -56,3 +58,5 @@ Route::post('/employees', StoreEmployeesController::class)->name('store.employee
 Route::Put('employees/{user}', StoreEmployeesController::class)->name('update.employees');
 
 Route::delete('employees/{user}', DeleteEmployeesController::class)->name('delete.employees');
+
+Route::get('/users/export', ExportEmployeesController::class)->name('export.employees');

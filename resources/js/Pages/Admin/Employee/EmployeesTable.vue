@@ -106,7 +106,7 @@
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                router.delete(route("admin.employees.destroy", employee.id), {
+                router.delete(route("delete.employees", employee.id), {
                     preserveState: true,
                     replace: true,
                     onSuccess: () => {
@@ -149,9 +149,9 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>status</th>
+                <th>Status</th>
                 <th>Address</th>
-                <th>about</th>
+                <th>About</th>
                 <th>Created At</th>
                 <th>Action</th>
             </tr>
