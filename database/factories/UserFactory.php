@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Blogs\EmployeeStatusEnum;
 use App\Enums\Blogs\UserRoleEnum;
 use App\Models\Team;
 use App\Models\User;
@@ -31,9 +32,10 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone' => Str::random(10),
+            'status' => $this->faker->randomElement(EmployeeStatusEnum::cases()),
             'address' => $this->faker->address(),
+            'about' => $this->faker->paragraph(),
             'role' => $this->faker->randomElement(UserRoleEnum::cases()),
-            
 
         ];
     }

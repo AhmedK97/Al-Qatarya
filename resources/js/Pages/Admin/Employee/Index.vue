@@ -66,24 +66,23 @@ const exportTable = () => {
 
 <template>
     <LayoutAuthenticated>
-        <Head title="List Users" />
+        <Head title="List Employee" />
 
         <SectionMain>
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
                 <CardBoxWidget
                     :icon="mdiAccountPlus"
                     :number="employeesCount"
-                    label="Active Users"
+                    label="Employees"
                     color="text-blue-500"
                 />
-
             </div>
 
             <SectionTitleLineWithButton :icon="mdiDomain" title="Users">
                 <div class="flex items-center space-x-3">
                     <BaseButton
                         @click="
-                            () => eventBus.$emit('openModal', 'user::create')
+                            () => eventBus.$emit('openModal', 'employee::create')
                         "
                         color="info"
                         :icon="mdiPlus"

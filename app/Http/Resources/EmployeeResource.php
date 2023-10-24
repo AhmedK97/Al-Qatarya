@@ -19,6 +19,9 @@ class EmployeeResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone ?? 'N/A',
+            'address' => $this->address ?? 'N/A',
+            'status' => $this->status ??'N/A',
+            'about' => $this->about ?? 'N/A',
             'created_at' => $this->created_at->diffForHumans(),
         ];
     }

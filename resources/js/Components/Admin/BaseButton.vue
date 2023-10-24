@@ -1,6 +1,6 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
 import { computed } from "vue";
+import { Link } from "@inertiajs/vue3";
 import { getButtonColor } from "@/Admin/colors.js";
 import BaseIcon from "@/Components/Admin/BaseIcon.vue";
 
@@ -41,14 +41,29 @@ const props = defineProps({
         type: String,
         default: null,
     },
+    renderLabelAsHtml: {
+        type: Boolean,
+        default: false,
+    },
     small: Boolean,
     outline: Boolean,
     active: Boolean,
-    disabled: Boolean,
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
     roundedFull: Boolean,
+    loading: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const is = computed(() => {
+    if (props.as && props.as === "Link") {
+        return Link;
+    }
+
     if (props.as) {
         return props.as;
     }
@@ -76,6 +91,8 @@ const labelClass = computed(() =>
     props.small && props.icon ? "px-1" : "px-2"
 );
 
+const isDisabled = computed(() => props.disabled || props.loading);
+
 const componentClass = computed(() => {
     const base = [
         "inline-flex",
@@ -87,12 +104,12 @@ const componentClass = computed(() => {
         "focus:ring",
         "duration-150",
         "border",
-        props.disabled ? "cursor-not-allowed" : "cursor-pointer",
+        isDisabled.value ? "cursor-not-allowed" : "cursor-pointer",
         props.roundedFull ? "rounded-full" : "rounded",
         getButtonColor(
             props.color,
             props.outline,
-            !props.disabled,
+            !isDisabled.value,
             props.active
         ),
     ];
@@ -105,7 +122,7 @@ const componentClass = computed(() => {
         base.push("py-2", props.roundedFull ? "px-6" : "px-3");
     }
 
-    if (props.disabled) {
+    if (isDisabled.value) {
         base.push(props.outline ? "opacity-50" : "opacity-70");
     }
 
@@ -114,15 +131,12 @@ const componentClass = computed(() => {
 </script>
 
 <template>
-    <component
-        :is="is"
-        :class="componentClass"
-        :href="routeName ? route(routeName) : href"
-        :type="computedType"
-        :target="target"
-        :disabled="disabled"
-    >
+    <component v-bind="$attrs" :is="is" :class="componentClass" :href="routeName ? route(routeName) : href"
+        :type="computedType" :target="target" :disabled="disabled">
         <BaseIcon v-if="icon" :path="icon" :size="iconSize" />
-        <span v-if="label" :class="labelClass">{{ label }}</span>
+        <span v-if="label && !renderLabelAsHtml" :class="labelClass">{{
+            label
+        }}</span>
+        <span v-else-if="label && renderLabelAsHtml" v-html="label" :class="labelClass"></span>
     </component>
 </template>

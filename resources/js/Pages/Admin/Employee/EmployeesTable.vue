@@ -32,7 +32,6 @@
     const {
         employees,
         filters,
-        cities
     } = defineProps({
         employees: {
             type: Object,
@@ -42,12 +41,11 @@
             type: Object,
             default: {},
         },
-
     });
 
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
-            if (modalToOpen === "user::create") {
+            if (modalToOpen === "employee::create") {
                 currentlyEditedEmployee.value = null;
                 isFormModalOpen.value = true;
             }
@@ -55,8 +53,8 @@
 
         eventBus.$on("closeModal", (modalToClose) => {
             if (
-                modalToClose === "user::create" ||
-                modalToClose === "user::update"
+                modalToClose === "employee::create" ||
+                modalToClose === "employee::update"
             ) {
                 isFormModalOpen.value = false;
             }
@@ -79,20 +77,15 @@
     });
 
     const currentlyEditedEmployee = ref(null);
+
     const formModalTitle = computed(() => {
         return currentlyEditedEmployee.value?.id ?
-            `Edit ${currentlyEditedEmployee.value?.name} user` :
-            "Add New user";
+            `Edit ${currentlyEditedEmployee.value?.name} Employee` :
+            "Add New Employee";
     });
 
-    const currentlyViewedUser = ref(null);
+    // const currentlyViewedUser = ref(null);
     const isViewModalOpen = ref(false && currentlyViewedUser.value);
-
-    const viewModalTitle = computed(() => {
-        return currentlyEditedEmployee.value?.id ?
-            `View ${currentlyEditedEmployee.value?.name} user` :
-            "View user";
-    });
 
     const isFormModalOpen = ref(false && currentlyEditedEmployee.value);
 
@@ -134,22 +127,18 @@
     };
 
     const openformModal = () => {
-        eventBus.$emit("openModal", "user::create");
+        eventBus.$emit("openModal", "employee::create");
     };
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <EmployeesForm
-            :employee="currentlyEditedEmployee"
-        />
+        <EmployeesForm :employee="currentlyEditedEmployee" />
     </CardBoxModal>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
         :title="viewModalTitle">
-        <EmployeesForm
-                :employee="currentlyEditedEmployee"
-            />
+        <EmployeesForm :employee="currentlyEditedEmployee" />
     </CardBoxModal>
 
     <table>
@@ -159,6 +148,9 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>status</th>
+                <th>Address</th>
+                <th>about</th>
                 <th>Created At</th>
                 <th>Action</th>
             </tr>
@@ -181,7 +173,9 @@
                 </td>
                 <td></td>
                 <td></td>
-
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
 
             <!-- empty state -->
@@ -199,11 +193,14 @@
                 <td data-label="Name">{{ employee . name }}</td>
                 <td data-label="Email">{{ employee . email }}</td>
                 <td data-label="Phone">{{ employee . phone }}</td>
+                <td data-label="Status">{{ employee . status }}</td>
+                <td data-label="Address">{{ employee . address }}</td>
+                <td data-label="About">{{ employee . about }}</td>
                 <td data-label="Created At">{{ employee . created_at }}</td>
-
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                        <BaseButton color="info" :icon="mdiSquareEditOutline" small @click="editEmployee(employee)" />
+                        <BaseButton color="info" :icon="mdiSquareEditOutline" small
+                            @click = "editEmployee(employee)" />
                         <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteEmployee(employee)" />
                     </BaseButtons>
                 </td>
