@@ -23,7 +23,7 @@ class IndexEmployeesController extends Controller
                AllowedFilter::partial('email'),
                AllowedFilter::partial('phone'),
                AllowedFilter::partial('status'),
-            ])->employee()
+            ])->employees()
             ->orderBy('id','desc')
             ->paginate(10)
             ->withQueryString()

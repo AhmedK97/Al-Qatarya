@@ -29,7 +29,7 @@
     import Swal from "sweetalert2";
 
     const props = defineProps({
-        employee: {
+        customer: {
             type: Object,
             default: () => {},
         },
@@ -38,29 +38,29 @@
 
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
-            if (modalToOpen === "employee::create") {
+            if (modalToOpen === "customer::create") {
                 resetForm();
             }
         });
     });
 
     const isUpdate = computed(() => {
-        if (!props.employee) {
+        if (!props.customer) {
             return false;
         }
 
-        return !!props.employee.id;
+        return !!props.customer.id;
     });
 
-    const employee = reactive(props.employee || {});
+    const customer = reactive(props.customer || {});
 
     const form = useForm({
-        name: employee.name,
-        email: employee.email,
-        phone: employee.phone,
-        address: employee.address,
-        status: employee.status,
-        about: employee.about,
+        name: customer.name,
+        email: customer.email,
+        phone: customer.phone,
+        address: customer.address,
+        status: customer.status,
+        about: customer.about,
         password: "",
     });
 
@@ -89,17 +89,17 @@
     watch(
         () => cloneDeep(props),
         (newProps) => {
-            if (!newProps.employee) {
+            if (!newProps.customer) {
                 return;
             }
             resetForm();
-            Object.assign(employee, newProps.employee);
-            form.name = newProps.employee.name;
-            form.email = newProps.employee.email;
-            form.phone = newProps.employee.phone;
-            form.address = newProps.employee.address;
-            form.status = newProps.employee.status;
-            form.about = newProps.employee.about;
+            Object.assign(customer, newProps.customer);
+            form.name = newProps.customer.name;
+            form.email = newProps.customer.email;
+            form.phone = newProps.customer.phone;
+            form.address = newProps.customer.address;
+            form.status = newProps.customer.status;
+            form.about = newProps.customer.about;
         }
     );
 
@@ -120,11 +120,11 @@
 
         if (isUpdate.value) {
             router.put(
-                route("update.employees", employee.id),
+                route("update.customers", customer.id),
                 form,
                 Object.assign(sharedFormOptions, {
                     onSuccess: () => {
-                        eventBus.$emit("closeModal", "employee::update");
+                        eventBus.$emit("closeModal", "customer::update");
                         Swal.fire({
                             icon: "success",
                             title: "Success",
@@ -140,12 +140,12 @@
         }
 
         router.post(
-            route("store.employees"),
+            route("store.customers"),
             form,
             Object.assign(sharedFormOptions, {
                 onSuccess: () => {
                     resetForm();
-                    eventBus.$emit("closeModal", "employee::create");
+                    eventBus.$emit("closeModal", "customer::create");
                     Swal.fire({
                         icon: "success",
                         title: "Success",

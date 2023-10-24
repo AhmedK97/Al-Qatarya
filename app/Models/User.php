@@ -58,8 +58,12 @@ class User extends Authenticatable
     ];
 
     // employee
-    public function scopeEmployee($query)
+    public function scopeEmployees($query)
     {
         return $query->where('role', 'employee');
+    }
+
+    public function scopeCustomers($query){
+        return $query->where('role','customer');
     }
 }

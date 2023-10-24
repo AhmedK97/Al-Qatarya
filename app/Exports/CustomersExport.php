@@ -7,8 +7,9 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class EmployeesExport implements FromCollection, WithHeadings, WithMapping
+class CustomersExport implements FromCollection, WithHeadings, WithMapping
 {
+
     public function headings(): array
     {
         return ['ID', 'Name', 'Email', 'Phone', 'Status', 'About', 'Created At'];
@@ -24,6 +25,6 @@ class EmployeesExport implements FromCollection, WithHeadings, WithMapping
      */
     public function collection()
     {
-        return User::employees()->get();
+        return User::customers()->get();
     }
 }

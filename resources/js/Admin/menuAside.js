@@ -26,11 +26,11 @@ export default [
         label: "Employees",
         icon: mdiAccountMultipleOutline,
     },
-    // {
-    //     route: "dashboard",
-    //     label: "Employers",
-    //     icon: mdiAccountGroup,
-    // },
+    {
+        route: "index.customers",
+        label: "Customers",
+        icon: mdiAccountGroup,
+    },
     // {
     //     route: "/forms",
     //     label: "Forms",

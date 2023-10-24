@@ -44,7 +44,7 @@ const exportTable = () => {
     // ask for confirmation
     Swal.fire({
         title: "Are you sure?",
-        text: "Export Users table to excel file!",
+        text: "Export Employees table to excel file!",
         icon: "info",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -78,7 +78,7 @@ const exportTable = () => {
                 />
             </div>
 
-            <SectionTitleLineWithButton :icon="mdiDomain" title="Users">
+            <SectionTitleLineWithButton :icon="mdiDomain" title="Employees">
                 <div class="flex items-center space-x-3">
                     <BaseButton
                         @click="

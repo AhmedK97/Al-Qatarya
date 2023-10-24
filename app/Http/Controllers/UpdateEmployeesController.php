@@ -26,8 +26,6 @@ class UpdateEmployeesController extends Controller
             'about' => ['required', 'string', 'max:255'],
         ]);
 
-        $data['role'] = UserRoleEnum::EMPLOYEE->value;
-
         $user->update($data);
 
         return redirect()
