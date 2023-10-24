@@ -66,6 +66,7 @@
             name: filters?.filteredBy?.name,
             email: filters?.filteredBy?.email,
             phone: filters?.filteredBy?.phone,
+            status: filters?.filteredBy?.status,
         },
     });
 
@@ -171,7 +172,14 @@
                     <input placeholder="Filter by Phone" v-model="activeFilters.filteredBy.phone"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td></td>
+                <td data-label="Filter Status">
+                    <select v-model="activeFilters.filteredBy.status"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
+                        <option :value="null">Filter</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>

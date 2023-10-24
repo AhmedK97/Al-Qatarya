@@ -16,6 +16,7 @@
     import InputError from "@/Components/InputError.vue";
     import FormField from "@/Components/Admin/FormField.vue";
     import CardBox from "@/Components/Admin/CardBox.vue";
+    import SelectField from "@/Components/Admin/SelectField.vue";
     import BaseButtons from "@/Components/Admin/BaseButtons.vue";
     import BaseButton from "@/Components/Admin/BaseButton.vue";
     import BaseDivider from "@/Components/Admin/BaseDivider.vue";
@@ -43,7 +44,6 @@
         });
     });
 
-
     const isUpdate = computed(() => {
         if (!props.user) {
             return false;
@@ -58,8 +58,8 @@
         name: employee.name,
         email: employee.email,
         phone: employee.phone,
-        address : employee.address,
-        status : employee.status,
+        address: employee.address,
+        status: employee.status,
         about: employee.about,
         password: "",
     });
@@ -74,6 +74,17 @@
         });
 
     };
+
+    const statues = [{
+            id: "Active",
+            name: "Active",
+        },
+        {
+            id: "Inactive",
+            name: "Inactive",
+        },
+
+    ];
 
 
     watch(
@@ -92,6 +103,7 @@
             form.about = newProps.employee.about;
         }
     );
+
 
     const submit = () => {
         const sharedFormOptions = {
@@ -167,16 +179,20 @@
 
         <BaseDivider />
 
-        <FormField label="status">
-            <FormControl :errorMessage="form.errors.status" v-model="form.status" />
+        <FormField label="Status">
+            <select-field :errorMessage="form.errors.status"
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.status" :items="statues" />
         </FormField>
 
         <BaseDivider />
+
         <FormField label="address">
             <FormControl :errorMessage="form.errors.address" v-model="form.address" />
         </FormField>
 
         <BaseDivider />
+
         <FormField label="About">
             <FormControl :errorMessage="form.errors.about" v-model="form.about" />
         </FormField>
@@ -186,8 +202,6 @@
         <FormField v-if="!isUpdate" label="Password">
             <FormControl type="password" :errorMessage="form.errors.password" v-model="form.password" />
         </FormField>
-
-
 
         <template #footer>
             <BaseButtons>

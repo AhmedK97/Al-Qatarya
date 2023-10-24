@@ -22,6 +22,7 @@ class EmployersController extends Controller
                AllowedFilter::partial('name'),
                AllowedFilter::partial('email'),
                AllowedFilter::partial('phone'),
+               AllowedFilter::partial('status'),
             ])->employee()
             ->orderBy('id','desc')
             ->paginate(10)
