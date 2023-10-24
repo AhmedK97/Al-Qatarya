@@ -9,12 +9,15 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;
+use App\Http\Controllers\IndexCustomersController;
 use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\IndexServicesController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
+use App\Http\Controllers\StoreCustomersController;
 use App\Http\Controllers\StoreEmployeesController;
+use App\Http\Controllers\UpdateEmployeesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,12 +54,23 @@ Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projec
 // Admin Routes
 Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
+//--------------- Employees -----------------//
 Route::get('/employees', IndexEmployeesController::class)->name('index.employees');
 
 Route::post('/employees', StoreEmployeesController::class)->name('store.employees');
 
-Route::Put('employees/{user}', StoreEmployeesController::class)->name('update.employees');
+Route::Put('employees/{user}', UpdateEmployeesController::class)->name('update.employees');
 
 Route::delete('employees/{user}', DeleteEmployeesController::class)->name('delete.employees');
 
 Route::get('/users/export', ExportEmployeesController::class)->name('export.employees');
+
+
+//--------------- Employees -----------------//
+Route::get('/customers', IndexCustomersController::class)->name('index.customers');
+
+Route::get('/customers', StoreCustomersController::class)->name('store.customers');
+
+
+
+

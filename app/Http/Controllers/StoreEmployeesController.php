@@ -16,19 +16,23 @@ class StoreEmployeesController extends Controller
      */
     public function __invoke(Request $request , User $user)
     {
-        // dd($request->all());
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
-            'phone' => ['required', 'numeric', RUle::unique('users', 'phone')->ignore($user->id)],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'phone' => ['required', 'numeric', RUle::unique('users', 'phone')],
             'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
             'about' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:5'],
         ]);
 
         $data['role'] = UserRoleEnum::EMPLOYEE->value;
-        
-        $user->update($data);
+
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        User::create($data);
 
         return redirect()
             ->route('index.employees')

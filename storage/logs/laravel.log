@@ -23512,3 +23512,540 @@ Did you mean one of these?
 #59 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
 "} 
+[2023-10-24 20:17:39] local.ERROR: Command "make:comtrolller" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:export
+    make:factory
+    make:import
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:comtrolller\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:export
+    make:factory
+    make:import
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:test at C:\\laragon\\www\\alqatarya\\vendor\\symfony\\console\\Application.php:725)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\symfony\\console\\Application.php(262): Symfony\\Component\\Console\\Application->find('make:comtrollle...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\symfony\\console\\Application.php(174): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(200): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\laragon\\www\\alqatarya\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 {main}
+"} 
+[2023-10-24 20:17:52] local.ERROR: Command "make:comtroller" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:export
+    make:factory
+    make:import
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:comtroller\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:export
+    make:factory
+    make:import
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:test at C:\\laragon\\www\\alqatarya\\vendor\\symfony\\console\\Application.php:725)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\symfony\\console\\Application.php(262): Symfony\\Component\\Console\\Application->find('make:comtroller')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\symfony\\console\\Application.php(174): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(200): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\laragon\\www\\alqatarya\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 {main}
+"} 
+[2023-10-24 20:18:39] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('en/customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'en/customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'en/customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#36 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#37 {main}
+"} 
+[2023-10-24 20:18:39] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('en/customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'en/customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'en/customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#36 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#37 {main}
+"} 
+[2023-10-24 20:18:41] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('en/customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'en/customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'en/customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#36 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#37 {main}
+"} 
+[2023-10-24 20:18:44] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 43)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#35 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 {main}
+"} 
+[2023-10-24 20:18:48] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('en/customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'en/customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'en/customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#36 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#37 {main}
+"} 
+[2023-10-24 20:18:48] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('en/customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'en/customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'en/customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#36 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#37 {main}
+"} 
+[2023-10-24 20:18:50] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('en/customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'en/customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'en/customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#36 C:\\laragon\\www\\alqatarya\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#37 {main}
+"} 
+[2023-10-24 20:18:53] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 43)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#35 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 {main}
+"} 
+[2023-10-24 20:18:57] local.ERROR: Invalid route action: [IndexCustomersController]. {"exception":"[object] (UnexpectedValueException(code: 0): Invalid route action: [IndexCustomersController]. at C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php:92)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('IndexCustomersC...')
+#1 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('customers', Array)
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct(Array, 'customers', Array)
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute(Array, 'customers', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute(Array, '/customers', Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(152): Illuminate\\Routing\\Router->addRoute(Array, '/customers', 'IndexCustomersC...')
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->get('/customers', 'IndexCustomersC...')
+#8 C:\\laragon\\www\\alqatarya\\routes\\web.php(67): Illuminate\\Support\\Facades\\Facade::__callStatic('get', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#11 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#29 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 42)
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#32 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#35 C:\\laragon\\www\\alqatarya\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 {main}
+"} 
+[2023-10-24 20:20:40] local.ERROR: syntax error, unexpected token "public" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"public\" at C:\\laragon\\www\\alqatarya\\app\\Http\\Controllers\\UpdateEmployeesController.php:14)
+[stacktrace]
+#0 C:\\laragon\\www\\alqatarya\\vendor\\composer\\ClassLoader.php(433): Composer\\Autoload\\{closure}('C:\\\\laragon\\\\www\\\\...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(91): method_exists('App\\\\Http\\\\Contro...', '__invoke')
+#3 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteAction.php(47): Illuminate\\Routing\\RouteAction::makeInvokable('App\\\\Http\\\\Contro...')
+#4 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(191): Illuminate\\Routing\\RouteAction::parse('employees/{user...', Array)
+#5 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(172): Illuminate\\Routing\\Route->parseAction(Array)
+#6 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Route->__construct('PUT', 'employees/{user...', Array)
+#7 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(554): Illuminate\\Routing\\Router->newRoute('PUT', 'employees/{user...', Array)
+#8 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(534): Illuminate\\Routing\\Router->createRoute('PUT', 'employees/{user...', Array)
+#9 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(176): Illuminate\\Routing\\Router->addRoute('PUT', 'employees/{user...', 'App\\\\Http\\\\Contro...')
+#10 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(353): Illuminate\\Routing\\Router->put('employees/{user...', 'App\\\\Http\\\\Contro...')
+#11 C:\\laragon\\www\\alqatarya\\routes\\web.php(62): Illuminate\\Support\\Facades\\Facade::__callStatic('Put', Array)
+#12 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('C:\\\\laragon\\\\www\\\\...')
+#13 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(504): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\laragon\\\\www\\\\...')
+#14 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(458): Illuminate\\Routing\\Router->loadRoutes('C:\\\\laragon\\\\www\\\\...')
+#15 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'C:\\\\laragon\\\\www\\\\...')
+#16 C:\\laragon\\www\\alqatarya\\app\\Providers\\RouteServiceProvider.php(41): Illuminate\\Routing\\RouteRegistrar->group('C:\\\\laragon\\\\www\\\\...')
+#17 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#18 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#21 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#22 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#23 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#24 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#25 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#26 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#28 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#29 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#30 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1009): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#31 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(987): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#32 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 43)
+#33 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(986): array_walk(Array, Object(Closure))
+#34 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#35 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(261): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#36 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(434): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#37 C:\\laragon\\www\\alqatarya\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#38 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 {main}
+"} 
