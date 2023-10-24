@@ -9,7 +9,7 @@ use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class EmployersController extends Controller
+class IndexEmployeesController extends Controller
 {
     /**
      * Handle the incoming request.

@@ -2,7 +2,7 @@
 import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import { useMainStore } from "@/Admin/Stores/main";
 import FormControlIcon from "@/Components/Admin/FormControlIcon.vue";
-
+import InputError from "@/Components/InputError.vue";
 const props = defineProps({
     name: {
         type: String,
@@ -44,6 +44,7 @@ const props = defineProps({
         type: [String, Number, Boolean, Array, Object],
         default: "",
     },
+    errorMessage: String,
     required: Boolean,
     borderless: Boolean,
     transparent: Boolean,
@@ -66,6 +67,7 @@ const inputElClass = computed(() => {
         computedType.value === "textarea" ? "h-24" : "h-12",
         props.borderless ? "border-0" : "border",
         props.transparent ? "bg-transparent" : "bg-white dark:bg-slate-800",
+        props.errorMessage ? "border-red-600" : "border-gray-700",
     ];
 
     if (props.icon) {
@@ -88,6 +90,7 @@ const selectEl = ref(null);
 const textareaEl = ref(null);
 
 const inputEl = ref(null);
+
 
 onMounted(() => {
     if (selectEl.value) {
@@ -127,45 +130,17 @@ if (props.ctrlKFocus) {
 
 <template>
     <div class="relative">
-        <select
-            v-if="computedType === 'select'"
-            :id="id"
-            v-model="computedValue"
-            :name="name"
-            :class="inputElClass"
-        >
-            <option
-                v-for="option in options"
-                :key="option.id ?? option"
-                :value="option"
-            >
+        <select v-if="computedType === 'select'" :id="id" v-model="computedValue" :name="name" :class="inputElClass">
+            <option v-for="option in options" :key="option.id ?? option" :value="option">
                 {{ option.label ?? option }}
             </option>
         </select>
-        <textarea
-            v-else-if="computedType === 'textarea'"
-            :id="id"
-            v-model="computedValue"
-            :class="inputElClass"
-            :name="name"
-            :maxlength="maxlength"
-            :placeholder="placeholder"
-            :required="required"
-        />
-        <input
-            v-else
-            :id="id"
-            ref="inputEl"
-            v-model="computedValue"
-            :name="name"
-            :maxlength="maxlength"
-            :inputmode="inputmode"
-            :autocomplete="autocomplete"
-            :required="required"
-            :placeholder="placeholder"
-            :type="computedType"
-            :class="inputElClass"
-        />
+        <textarea v-else-if="computedType === 'textarea'" :id="id" v-model="computedValue" :class="inputElClass"
+            :name="name" :maxlength="maxlength" :placeholder="placeholder" :required="required" />
+        <input v-else :id="id" ref="inputEl" v-model="computedValue" :name="name" :maxlength="maxlength"
+            :inputmode="inputmode" :autocomplete="autocomplete" :required="required" :placeholder="placeholder"
+            :type="computedType" :class="inputElClass" />
         <FormControlIcon v-if="icon" :icon="icon" :h="controlIconH" />
     </div>
+    <InputError class="mt-2" v-show="errorMessage" :message="errorMessage" />
 </template>

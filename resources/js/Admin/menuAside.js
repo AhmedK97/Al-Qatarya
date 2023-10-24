@@ -22,7 +22,7 @@ export default [
         label: "Dashboard",
     },
     {
-        route: "employees",
+        route: "index.employees",
         label: "Employees",
         icon: mdiAccountMultipleOutline,
     },

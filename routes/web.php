@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployersController;
+use App\Http\Controllers\IndexEmployeesController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
@@ -12,6 +12,7 @@ use App\Http\Controllers\IndexServicesController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
+use App\Http\Controllers\StoreEmployeesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,10 @@ Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projec
 // Admin Routes
 Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-Route::get('/employers', EmployersController::class)->name('employees');
+Route::get('/employees', IndexEmployeesController::class)->name('index.employees');
 
+Route::post('/employees', StoreEmployeesController::class)->name('store.employees');
 
+Route::Put('employees/{user}', StoreEmployeesController::class)->name('update.employees');
+
+Route::delete('employees/{user}', DeleteEmployeesController::class)->name('delete.employees');

@@ -6,15 +6,15 @@ enum UserRoleEnum: string
 {
     // role: admin, employee, customer
     case ADMIN = 'admin';
-    case employee = 'employee';
-    case customer = 'customer';
+    case EMPLOYEE = 'employee';
+    case CUSTOMER = 'customer';
 
-    public static function getValues(): array
+     static function getValues(): array
     {
         return [
-            self::ADMIN => 'admin',
-            self::employee => 'employee',
-            self::customer => 'customer',
+            self::ADMIN->value,
+            self::EMPLOYEE->value,
+            self::CUSTOMER->value,
         ];
     }
 }

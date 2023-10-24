@@ -71,7 +71,7 @@
     });
 
     watch(activeFilters, (filledFilters) => {
-        router.get(route("employees"), filledFilters, {
+        router.get(route("index.employees"), filledFilters, {
             preserveState: true,
             replace: true,
         });

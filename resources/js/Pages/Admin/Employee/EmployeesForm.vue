@@ -45,11 +45,11 @@
     });
 
     const isUpdate = computed(() => {
-        if (!props.user) {
+        if (!props.employee) {
             return false;
         }
 
-        return !!props.user.id;
+        return !!props.employee.id;
     });
 
     const employee = reactive(props.employee || {});
@@ -83,7 +83,6 @@
             id: "Inactive",
             name: "Inactive",
         },
-
     ];
 
 
@@ -121,7 +120,7 @@
 
         if (isUpdate.value) {
             router.put(
-                route("admin.users.update", user.id),
+                route("update.employees", employee.id),
                 form,
                 Object.assign(sharedFormOptions, {
                     onSuccess: () => {
@@ -129,7 +128,7 @@
                         Swal.fire({
                             icon: "success",
                             title: "Success",
-                            text: "User updated successfully",
+                            text: "Employees updated successfully",
                             timer: 3000,
                             timerProgressBar: true,
                         });
@@ -141,7 +140,7 @@
         }
 
         router.post(
-            route("admin.users.store"),
+            route("store.employees"),
             form,
             Object.assign(sharedFormOptions, {
                 onSuccess: () => {
@@ -150,7 +149,7 @@
                     Swal.fire({
                         icon: "success",
                         title: "Success",
-                        text: "User created successfully",
+                        text: "Employees created successfully",
                         timer: 3000,
                         timerProgressBar: true,
                     });
@@ -197,7 +196,7 @@
             <FormControl :errorMessage="form.errors.about" v-model="form.about" />
         </FormField>
 
-        <BaseDivider />
+        <BaseDivider v-if="!isUpdate" />
 
         <FormField v-if="!isUpdate" label="Password">
             <FormControl type="password" :errorMessage="form.errors.password" v-model="form.password" />
