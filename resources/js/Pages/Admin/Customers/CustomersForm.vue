@@ -149,7 +149,7 @@
                     Swal.fire({
                         icon: "success",
                         title: "Success",
-                        text: "Employees created successfully",
+                        text: "Customer created successfully",
                         timer: 3000,
                         timerProgressBar: true,
                     });

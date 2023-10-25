@@ -122,10 +122,6 @@
         });
     };
 
-    const sendAs = (user, type = "city_only") => {
-        window.open(`/ar/upload?send_as_user=${user.id}&type=${type}`, "_blank");
-    };
-
     const openformModal = () => {
         eventBus.$emit("openModal", "customer::create");
     };
