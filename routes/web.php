@@ -2,25 +2,28 @@
 
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DeleteCustomersController;
-use App\Http\Controllers\DeleteEmployeesController;
-use App\Http\Controllers\ExportCustomersController;
-use App\Http\Controllers\ExportEmployeesController;
-use App\Http\Controllers\IndexEmployeesController;
+use App\Http\Controllers\DeleteCustomersAdminController;
+use App\Http\Controllers\DeleteEmployeesAdminController;
+use App\Http\Controllers\ExportCustomersAdminController;
+use App\Http\Controllers\ExportEmployeesAdminController;
+use App\Http\Controllers\IndexEmployeesAdminController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;
-use App\Http\Controllers\IndexCustomersController;
+use App\Http\Controllers\IndexCustomersAdminController;
+use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\IndexServicesController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
-use App\Http\Controllers\StoreCustomersController;
-use App\Http\Controllers\StoreEmployeesController;
-use App\Http\Controllers\UpdateCustomersController;
-use App\Http\Controllers\UpdateEmployeesController;
+use App\Http\Controllers\StoreCustomersAdminController;
+use App\Http\Controllers\StoreEmployeesAdminController;
+use App\Http\Controllers\StoreProjectsAdminController;
+use App\Http\Controllers\UpdateCustomersAdminController;
+use App\Http\Controllers\UpdateEmployeesAdminController;
+use App\Http\Controllers\UpdateProjectsAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,27 +57,43 @@ Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 
 Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
 
-// Admin Routes
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
+// -------------------------- Admin ----------------------------
 
-//--------------- Employees -----------------//
-Route::get('/employees', IndexEmployeesController::class)->name('index.employees');
+// prefex admin group
+Route::prefix('/admin')->group(function () {
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-Route::post('/employees', StoreEmployeesController::class)->name('store.employees');
+    //--------------- Employees -----------------//
+    Route::get('/employees', IndexEmployeesAdminController::class)->name('index.employees');
 
-Route::Put('employees/{user}', UpdateEmployeesController::class)->name('update.employees');
+    Route::post('/employees', StoreEmployeesAdminController::class)->name('store.employees');
 
-Route::delete('employees/{user}', DeleteEmployeesController::class)->name('delete.employees');
+    Route::Put('employees/{user}', UpdateEmployeesAdminController::class)->name('update.employees');
 
-Route::get('/customers/export', ExportEmployeesController::class)->name('export.employees');
+    Route::delete('employees/{user}', DeleteEmployeesAdminController::class)->name('delete.employees');
 
-//--------------- Employees -----------------//
-Route::get('/customers', IndexCustomersController::class)->name('index.customers');
+    Route::get('/customers/export', ExportEmployeesAdminController::class)->name('export.employees');
 
-Route::post('/customers', StoreCustomersController::class)->name('store.customers');
+    //--------------- Employees -----------------//
+    Route::get('/customers', IndexCustomersAdminController::class)->name('index.customers');
 
-Route::Put('customers/{user}', UpdateCustomersController::class)->name('update.customers');
+    Route::post('/customers', StoreCustomersAdminController::class)->name('store.customers');
 
-Route::delete('customers/{user}', DeleteCustomersController::class)->name('delete.customers');
+    Route::Put('customers/{user}', UpdateCustomersAdminController::class)->name('update.customers');
 
-Route::get('/customers/export', ExportCustomersController::class)->name('export.customers');
+    Route::delete('customers/{user}', DeleteCustomersAdminController::class)->name('delete.customers');
+
+    Route::get('/customers/export', ExportCustomersAdminController::class)->name('export.customers');
+
+    // --------------- Projects -----------------//
+
+    // index projects // update // store
+    // IndexProjectsAdminController
+    // StoreProjectsAdminController
+    // UpdateProjectsAdminController
+    // DeleteProjectsAdminController
+
+    Route::get('/projects', IndexProjectsAdminController::class)->name('index.projects');
+    Route::post('/projects', StoreProjectsAdminController::class)->name('store.projects');
+    Route::put('/projects/{project}', UpdateProjectsAdminController::class)->name('update.projects');
+});

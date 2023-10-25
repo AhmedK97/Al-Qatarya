@@ -9,7 +9,7 @@ use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class IndexCustomersController extends Controller
+class IndexEmployeesAdminController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -17,24 +17,24 @@ class IndexCustomersController extends Controller
     public function __invoke(Request $request)
     {
 
-        $customers = QueryBuilder::for(User::class)
+        $employees = QueryBuilder::for(User::class)
             ->allowedFilters([
-                AllowedFilter::partial('name'),
-                AllowedFilter::partial('email'),
-                AllowedFilter::partial('phone'),
-                AllowedFilter::partial('status'),
-            ])->customers()
-            ->orderBy('id', 'desc')
+               AllowedFilter::partial('name'),
+               AllowedFilter::partial('email'),
+               AllowedFilter::partial('phone'),
+               AllowedFilter::partial('status'),
+            ])->employees()
+            ->orderBy('id','desc')
             ->paginate(10)
             ->withQueryString()
             ->through(function (User $user) {
                 return new EmployeeResource($user);
             });
 
-        return Inertia::render('Admin/Customers/Index', [
-            'customers' => $customers,
+        return Inertia::render('Admin/Employee/Index', [
+            'employees' => $employees,
             'filters' => $request->all('search'),
-            'customersCount' => User::where('role', 'customer')->count(),
+            'employeesCount' => User::where('role', 'employee')->count(),
         ]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-class ExportCustomersController extends Controller
+class ExportCustomersAdminController extends Controller
 {
     /**
      * Handle the incoming request.

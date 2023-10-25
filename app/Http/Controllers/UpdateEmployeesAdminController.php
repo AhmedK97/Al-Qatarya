@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
-class UpdateCustomersController extends Controller
+class UpdateEmployeesAdminController extends Controller
 {
     /**
      * Handle the incoming request.
      */
+
     public function __invoke(Request $request, User $user)
     {
         $data = $request->validate([
@@ -28,7 +29,7 @@ class UpdateCustomersController extends Controller
         $user->update($data);
 
         return redirect()
-            ->route('index.customers')
+            ->route('index.employees')
             ->with('swalNotification', [
                 'title' => __('common.success'),
                 'text' => __('common.created'),

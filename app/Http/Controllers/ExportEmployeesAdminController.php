@@ -6,7 +6,7 @@ use App\Exports\EmployeesExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ExportEmployeesController extends Controller
+class ExportEmployeesAdminController extends Controller
 {
     /**
      * Handle the incoming request.

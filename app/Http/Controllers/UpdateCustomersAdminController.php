@@ -6,9 +6,10 @@ use App\Enums\Blogs\EmployeeStatusEnum;
 use App\Enums\Blogs\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\Validation\Rule;
-class StoreCustomersController extends Controller
+use Illuminate\Validation\Rules\Enum;
+
+class UpdateCustomersAdminController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -17,21 +18,14 @@ class StoreCustomersController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'phone' => ['required', 'numeric', RUle::unique('users', 'phone')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
+            'phone' => ['required', 'numeric', RUle::unique('users', 'phone')->ignore($user->id)],
             'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
             'about' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:5'],
         ]);
 
-        $data['role'] = UserRoleEnum::CUSTOMER->value;
-
-        if ($request->has('password')) {
-            $data['password'] = bcrypt($request->password);
-        }
-
-        User::create($data);
+        $user->update($data);
 
         return redirect()
             ->route('index.customers')

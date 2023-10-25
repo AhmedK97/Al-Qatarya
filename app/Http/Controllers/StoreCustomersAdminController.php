@@ -8,8 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\Validation\Rule;
-
-class StoreEmployeesController extends Controller
+class StoreCustomersAdminController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -26,7 +25,7 @@ class StoreEmployeesController extends Controller
             'password' => ['required', 'string', 'min:5'],
         ]);
 
-        $data['role'] = UserRoleEnum::EMPLOYEE->value;
+        $data['role'] = UserRoleEnum::CUSTOMER->value;
 
         if ($request->has('password')) {
             $data['password'] = bcrypt($request->password);
@@ -35,7 +34,7 @@ class StoreEmployeesController extends Controller
         User::create($data);
 
         return redirect()
-            ->route('index.employees')
+            ->route('index.customers')
             ->with('swalNotification', [
                 'title' => __('common.success'),
                 'text' => __('common.created'),
