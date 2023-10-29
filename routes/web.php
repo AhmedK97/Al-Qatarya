@@ -4,6 +4,7 @@ use App\Http\Controllers\aboutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeleteCustomersAdminController;
 use App\Http\Controllers\DeleteEmployeesAdminController;
+use App\Http\Controllers\DeleteProjectsAdminController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
@@ -86,14 +87,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/customers/export', ExportCustomersAdminController::class)->name('export.customers');
 
     // --------------- Projects -----------------//
-
-    // index projects // update // store
-    // IndexProjectsAdminController
-    // StoreProjectsAdminController
-    // UpdateProjectsAdminController
-    // DeleteProjectsAdminController
-
     Route::get('/projects', IndexProjectsAdminController::class)->name('index.projects');
+
     Route::post('/projects', StoreProjectsAdminController::class)->name('store.projects');
+
     Route::put('/projects/{project}', UpdateProjectsAdminController::class)->name('update.projects');
+
+    Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name('delete.projects');
 });

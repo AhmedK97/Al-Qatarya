@@ -1,5 +1,6 @@
 import "../css/app.css";
 import "../css/admin/main.css";
+import 'vue-select/dist/vue-select.css';
 
 import { createApp, h } from "vue";
 import { createPinia } from "pinia";
@@ -10,6 +11,7 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { i18nVue } from "laravel-vue-i18n";
 import { MotionPlugin } from "@vueuse/motion";
+import vSelect from "vue-select";
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText ||
@@ -36,7 +38,12 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .use(pinia)
             .use(MotionPlugin)
-            .mount(el);
+            .mount(el)
+            // .use(vSelect);
+
+
+
+
     },
     progress: {
         color: "#4B5563",

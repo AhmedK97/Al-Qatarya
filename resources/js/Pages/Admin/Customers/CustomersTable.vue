@@ -84,6 +84,12 @@
             "Add New Employee";
     });
 
+    // const viewModalTitle = computed(() => {
+    //     return currentlyViewedUser.value?.id ?
+    //         `View ${currentlyViewedUser.value?.name} Customer` :
+    //         "View Customer";
+    // });
+
     // const currentlyViewedUser = ref(null);
     const isViewModalOpen = ref(false && currentlyViewedUser.value);
 

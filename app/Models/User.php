@@ -66,4 +66,9 @@ class User extends Authenticatable
     public function scopeCustomers($query){
         return $query->where('role','customer');
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

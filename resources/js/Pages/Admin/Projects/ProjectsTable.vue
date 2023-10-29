@@ -1,0 +1,270 @@
+<script setup>
+    import {
+        computed,
+        ref,
+        watch,
+        reactive,
+        onMounted
+    } from "vue";
+    import eventBus from "@/Composables/eventBus.js";
+
+    import {
+        mdiSquareEditOutline,
+        mdiTrashCan,
+        mdiEyeOutline,
+        mdiSend,
+        mdiFactory,
+        mdiCity,
+        mdiPlaneCar,
+    } from "@mdi/js";
+    import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
+    import BaseLevel from "@/Components/Admin/BaseLevel.vue";
+    import BaseButtons from "@/Components/Admin/BaseButtons.vue";
+    import BaseButton from "@/Components/Admin/BaseButton.vue";
+    import PillTag from "@/Components/Admin/PillTag.vue";
+    import ProjectsForm from "@/Pages/Admin/Projects/ProjectsForm.vue";
+    import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
+    import {
+        router
+    } from "@inertiajs/vue3";
+    import Swal from "sweetalert2";
+
+    const {
+        projects,
+        filters,
+    } = defineProps({
+        projects: {
+            type: Object,
+            default: [],
+        },
+        filters: {
+            type: Object,
+            default: {},
+        },
+    });
+
+    onMounted(() => {
+        eventBus.$on("openModal", (modalToOpen) => {
+            if (modalToOpen === "project::create") {
+                currentlyEditedProject.value = null;
+                isFormModalOpen.value = true;
+            }
+        });
+
+        eventBus.$on("closeModal", (modalToClose) => {
+            if (
+                modalToClose === "project::create" ||
+                modalToClose === "project::update"
+            ) {
+                isFormModalOpen.value = false;
+            }
+        });
+    });
+
+    const activeFilters = reactive({
+        filteredBy: {
+            title: filters?.filteredBy?.title,
+            address: filters?.filteredBy?.address,
+            employee: filters?.filteredBy?.employee,
+            customer: filters?.filteredBy?.customer,
+            company: filters?.filteredBy?.company,
+            status: filters?.filteredBy?.status,
+        },
+    });
+
+    watch(activeFilters, (filledFilters) => {
+        router.get(route("index.projects"), filledFilters, {
+            preserveState: true,
+            replace: true,
+        });
+    });
+
+    const currentlyEditedProject = ref(null);
+
+    const formModalTitle = computed(() => {
+        return currentlyEditedProject.value?.id ?
+            `Edit ${currentlyEditedProject.value?.title} Project` :
+            "Add New Project";
+    });
+
+    const viewModalTitle = computed(() => {
+        return currentlyEditedProject.value?.id ?
+            `View ${currentlyEditedProject.value?.title} Project` :
+            "View Project";
+    });
+
+    // const currentlyViewedUser = ref(null);
+    const isViewModalOpen = ref(false && currentlyViewedUser.value);
+
+    const isFormModalOpen = ref(false && currentlyEditedProject.value);
+
+    const editProject = (project) => {
+        currentlyEditedProject.value = project;
+        isFormModalOpen.value = true;
+    };
+
+    const deleteProject = (project) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You won't be able to revert this - ${project.title}!`,
+            icon: "error",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.delete(route("delete.projects", project.id), {
+                    preserveState: true,
+                    replace: true,
+                    onSuccess: () => {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: `${project.title} has been deleted.`,
+                            icon: "success",
+                            showConfirmButton: true,
+                            timer: 2000,
+                        });
+                    },
+                });
+            }
+        });
+    };
+
+    const openformModal = () => {
+        eventBus.$emit("openModal", "project::create");
+    };
+</script>
+
+<template>
+    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
+        :title="formModalTitle">
+        <ProjectsForm :project="currentlyEditedProject" />
+    </CardBoxModal>
+    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
+        :title="viewModalTitle">
+        <ProjectsForm :project="currentlyEditedProject" />
+    </CardBoxModal>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Space Area</th>
+                <th>Status</th>
+                <th>Project Date</th>
+                <th>Address</th>
+                <th>Notes</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Filters -->
+            <tr key="filters">
+                <td></td>
+                <td data-label="Filter Name">
+                    <input placeholder="Filter by name" v-model="activeFilters.filteredBy.title"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                </td>
+                <td data-label="Filter Company">
+                    <select v-model="activeFilters.filteredBy.company"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
+                        <option :value="null">Filter</option>
+                        <option value="othman">othman</option>
+                        <option value="qatarya">qatarya</option>
+                    </select>
+                </td>
+
+                <td data-label="Filter Customer">
+                    <input placeholder="Filter by Customer" v-model="activeFilters.filteredBy.customer"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                </td>
+
+                <td data-label="Filter Employee">
+                    <input placeholder="Filter by Employee" v-model="activeFilters.filteredBy.employee"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                </td>
+                <td></td>
+                <td data-label="Filter status">
+                    <select v-model="activeFilters.filteredBy.status"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
+                        <option :value="null">Filter</option>
+                        <option value="pending">Pending</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="finished">Finished</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                </td>
+                <td data-label="Filter Address">
+                    <input placeholder="Filter by Address" v-model="activeFilters.filteredBy.address"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+            <!-- empty state -->
+
+            <tr v-if="projects.data.length === 0">
+                <td colspan="12">
+                    <CardBoxComponentEmpty title="No Users Found, Click here to add new user"
+                        description="You can add new user by clicking on the button below" @click="openformModal" />
+                </td>
+            </tr>
+
+            <!-- User data -->
+            <tr v-for="project in projects.data" :key="project.id">
+                <td data-label="ID">{{ project . id }}</td>
+                <td data-label="Name">{{ project . title }}</td>
+                <td data-label="Email">
+                    <PillTag
+                        :color="project.company === 'othman' ? 'success' : project.company === 'qatarya' ? 'info' : 'danger'"
+                        :label="project.company" small />
+                </td>
+                <td data-label="Phone">{{ project . customer_name }}</td>
+                <td data-label="Status">{{ project . employee_name }}</td>
+                <td data-label="Address">{{ project . space_area }}</td>
+                <td data-label="status">
+                    <PillTag
+                        :color="project.status === 'pending' ? 'warning' : project.status === 'in_progress' ? 'info' : project
+                            .status === 'finished' ? 'success' : 'danger'"
+                        :label="project.status" small />
+                </td>
+                <td data-label="project_date">{{ project . project_date }}</td>
+                <td data-label="notes">{{ project . notes }}</td>
+                <td data-label="About">{{ project . address }}</td>
+                <td data-label="Created At">{{ project . created_at }}</td>
+                <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
+                    <BaseButtons type="justify-start lg:justify-end" no-wrap>
+                        <BaseButton color="info" :icon="mdiSquareEditOutline" small
+                            @click = "editProject(project)" />
+                        <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteProject(project)" />
+                    </BaseButtons>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div v-if="projects?.data?.length" class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800">
+        <BaseLevel>
+            <BaseButtons>
+                <BaseButton v-for="(page, index) in projects.links" :key="index" :active="page.active"
+                    :label="page.label" :render-label-as-html="true"
+                    :class="{
+                        'text-white': page.active,
+                    }"
+                    :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
+                    :href="page.url" preserve-state :only="['projects']" />
+            </BaseButtons>
+            <small>Page {{ projects . current_page }} of {{ projects . total }}</small>
+        </BaseLevel>
+    </div>
+</template>

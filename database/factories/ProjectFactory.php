@@ -40,14 +40,14 @@ class ProjectFactory extends Factory
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
             ]),
 
-             'employee' => User::where('role', 'employee')
+             'employee_id' => User::where('role', 'employee')
                 ->get()
                 ->random()->id,
-            'customer' => User::where('role', 'customer')
+            'customer_id' => User::where('role', 'customer')
                 ->get()
                 ->random()->id,
 
-            'notes' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
+            'notes' => $enFaker->paragraph(1),
 
             'cost' => $enFaker->randomNumber(6, true),
 
@@ -57,7 +57,7 @@ class ProjectFactory extends Factory
 
             'address' => ([
                 'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
-                'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
+                'en' => $enFaker->address,
             ]),
             'space_area' => $enFaker->randomNumber(5, true),
 

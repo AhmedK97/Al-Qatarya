@@ -23,7 +23,7 @@ class Project extends Model implements HasMedia
 
     protected $guarded = [];
 
-    public $translatable = ['title', 'description', 'agent', 'address'];
+    public $translatable = ['title', 'description', 'address'];
 
     public function getSlugOptions(): SlugOptions
     {
@@ -31,4 +31,16 @@ class Project extends Model implements HasMedia
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
+    public function employee()
+    {
+        return $this->belongsTo(User::class, 'employee_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
+    
+
 }

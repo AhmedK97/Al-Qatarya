@@ -31,11 +31,11 @@ export default [
         label: "Customers",
         icon: mdiAccountGroup,
     },
-    // {
-    //     route: "/forms",
-    //     label: "Forms",
-    //     icon: mdiSquareEditOutline,
-    // },
+    {
+        route: "index.projects",
+        label: "Projects",
+        icon: mdiSquareEditOutline,
+    },
     // {
     //     route: "/ui",
     //     label: "UI",

@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectAdminResource;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
+
 
 class IndexProjectsAdminController extends Controller
 {
@@ -11,6 +17,29 @@ class IndexProjectsAdminController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        $projects = QueryBuilder::for(Project::class)
+            ->allowedFilters([
+                AllowedFilter::partial('name'),
+                AllowedFilter::partial('notes'),
+                AllowedFilter::partial('cost'),
+                AllowedFilter::partial('status'),
+                AllowedFilter::partial('company'),
+                AllowedFilter::partial('customer'),
+                AllowedFilter::partial('employee'),
+                AllowedFilter::partial('space_area'),
+            ])
+            ->with(['employee:id,name' , 'customer:id,name' ])
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString()
+            ->through(function (Project $project) {
+                return new ProjectAdminResource($project);
+            });
+
+            return Inertia::render('Admin/Projects/Index', [
+                'projects' => $projects,
+                'filters' => $request->all('search'),
+                'projectsCount' => Project::count(),
+            ]);
     }
 }
