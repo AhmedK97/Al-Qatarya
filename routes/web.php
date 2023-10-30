@@ -16,6 +16,7 @@ use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\IndexServicesController;
+use App\Http\Controllers\ProjectUploadMediaController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
 use App\Http\Controllers\ShowServiceController;
@@ -94,4 +95,6 @@ Route::prefix('/admin')->group(function () {
     Route::put('/projects/{project}', UpdateProjectsAdminController::class)->name('update.projects');
 
     Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name('delete.projects');
+
+    Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
 });

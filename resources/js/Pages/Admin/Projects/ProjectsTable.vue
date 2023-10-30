@@ -16,6 +16,7 @@
         mdiFactory,
         mdiCity,
         mdiPlaneCar,
+        mdiMultimedia
     } from "@mdi/js";
     import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
     import BaseLevel from "@/Components/Admin/BaseLevel.vue";
@@ -24,6 +25,7 @@
     import PillTag from "@/Components/Admin/PillTag.vue";
     import ProjectsForm from "@/Pages/Admin/Projects/ProjectsForm.vue";
     import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
+    import ProjectsUploadMediaForm from "@/Pages/Admin/Projects/ProjectsUploadMediaForm.vue";
     import {
         router
     } from "@inertiajs/vue3";
@@ -81,26 +83,42 @@
 
     const currentlyEditedProject = ref(null);
 
+    const currentlyUploadMediaProject = ref(null);
+
     const formModalTitle = computed(() => {
         return currentlyEditedProject.value?.id ?
             `Edit ${currentlyEditedProject.value?.title} Project` :
             "Add New Project";
     });
 
-    const viewModalTitle = computed(() => {
-        return currentlyEditedProject.value?.id ?
-            `View ${currentlyEditedProject.value?.title} Project` :
-            "View Project";
+    const formUploadMediaModalTitle = computed(() => {
+        return currentlyUploadMediaProject.value?.id ?
+            `Upload Media ${currentlyUploadMediaProject.value?.title} Project` :
+            "Upload Media Project";
     });
 
+
+    // const viewModalTitle = computed(() => {
+    //     return currentlyEditedProject.value?.id ?
+    //         `View ${currentlyEditedProject.value?.title} Project` :
+    //         "View Project";
+    // });
+
     // const currentlyViewedUser = ref(null);
-    const isViewModalOpen = ref(false && currentlyViewedUser.value);
+    // const isViewModalOpen = ref(false && currentlyViewedUser.value);
 
     const isFormModalOpen = ref(false && currentlyEditedProject.value);
+
+    const isUploadMediaModalOpen = ref(false && currentlyUploadMediaProject.value);
 
     const editProject = (project) => {
         currentlyEditedProject.value = project;
         isFormModalOpen.value = true;
+    };
+
+    const uploadMedia = (project) => {
+        currentlyUploadMediaProject.value = project;
+        isUploadMediaModalOpen.value = true;
     };
 
     const deleteProject = (project) => {
@@ -141,10 +159,15 @@
         :title="formModalTitle">
         <ProjectsForm :project="currentlyEditedProject" />
     </CardBoxModal>
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
+
+    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
+        :title="formUploadMediaModalTitle">
+        <ProjectsUploadMediaForm :project="currentlyUploadMediaProject" />
+    </CardBoxModal>
+    <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
         :title="viewModalTitle">
         <ProjectsForm :project="currentlyEditedProject" />
-    </CardBoxModal>
+    </CardBoxModal> -->
 
     <table>
         <thead>
@@ -244,9 +267,9 @@
                 <td data-label="Created At">{{ project . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                        <BaseButton color="info" :icon="mdiSquareEditOutline" small
-                            @click = "editProject(project)" />
+                        <BaseButton color="info" :icon="mdiSquareEditOutline" small  @click = "editProject(project)" />
                         <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteProject(project)" />
+                        <BaseButton color="success" :icon="mdiMultimedia" small @click="uploadMedia(project)" />
                     </BaseButtons>
                 </td>
             </tr>

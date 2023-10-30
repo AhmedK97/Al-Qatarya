@@ -1,0 +1,282 @@
+<script setup>
+    import {
+        computed,
+        ref,
+        watch,
+        reactive,
+        toRef,
+        onMounted
+    } from "vue";
+    import cloneDeep from "lodash/cloneDeep";
+    import {
+        router,
+        useForm
+    } from "@inertiajs/vue3";
+    import FormControl from "@/Components/Admin/FormControl.vue";
+    import InputError from "@/Components/InputError.vue";
+    import FormField from "@/Components/Admin/FormField.vue";
+    import CardBox from "@/Components/Admin/CardBox.vue";
+    import SelectField from "@/Components/Admin/SelectField.vue";
+    import AutoCompleteField from "@/Components/Admin/AutoCompleteField.vue";
+    import BaseButtons from "@/Components/Admin/BaseButtons.vue";
+    import BaseButton from "@/Components/Admin/BaseButton.vue";
+    import BaseDivider from "@/Components/Admin/BaseDivider.vue";
+    import {
+        mdiAccount,
+        mdiMail
+    } from "@mdi/js";
+    import "vue-select/dist/vue-select.css";
+    import eventBus from "@/Composables/eventBus.js";
+    import Swal from "sweetalert2";
+    // import Vue from "vue";
+    import vSelect from "vue-select";
+
+    const props = defineProps({
+        project: {
+            type: Object,
+            default: () => {},
+        },
+
+    });
+
+    onMounted(() => {
+        eventBus.$on("openModal", (modalToOpen) => {
+            if (modalToOpen === "project::create") {
+                resetForm();
+            }
+        });
+    });
+
+    const isUpdate = computed(() => {
+        if (!props.project) {
+            return false;
+        }
+
+        return !!props.project.id;
+    });
+
+    const project = reactive(props.project || {});
+
+
+    const form = useForm({
+        title: project.title,
+        company: project.company,
+        customer_id: project.customer_id,
+        employee_id: project.employee_id,
+        space_area: project.space_area,
+        status: project.status,
+        project_date: project.project_date,
+        address: project.address,
+        notes: project.notes,
+    });
+
+
+    const resetForm = () => {
+        form.reset();
+        Object.keys(form.errors).forEach((key) => {
+            delete form.errors[key];
+        });
+    };
+
+    const statues = [{
+            id: "pending",
+            name: "Pending",
+        },
+        {
+            id: "in_progress",
+            name: "In Progress",
+        },
+        {
+            id: "finished",
+            name: "Finished",
+        },
+        {
+            id: "canceled",
+            name: "Canceled",
+        },
+    ];
+
+    const companies = [{
+            'id': 'othman',
+            'name': 'othman'
+        },
+        {
+            'id': 'qatarya',
+            'name': 'qatarya'
+        }
+
+    ];
+
+    watch(
+        () => cloneDeep(props),
+        (newProps) => {
+            if (!newProps.project) {
+                return;
+            }
+            resetForm();
+            Object.assign(project, newProps.project);
+            form.title = newProps.project.title;
+            form.company= newProps.project.company;
+            form.customer_id = newProps.project.customer_id;
+            form.employee_id = newProps.project.employee_id;
+            form.space_area = newProps.project.space_area;
+            form.status = newProps.project.status;
+            form.project_date = newProps.project.project_date;
+            form.address = newProps.project.address;
+            form.notes = newProps.project.notes;
+        }
+    );
+
+    const submit = () => {
+        const sharedFormOptions = {
+            preserveState: true,
+            preserveScroll: true,
+            onError: (errors) => {
+                // remove errors
+                Object.keys(form.errors).forEach((key) => {
+                    delete form.errors[key];
+                });
+
+                Object.assign(form.errors, errors);
+            },
+        };
+
+        if (isUpdate.value) {
+            router.put(
+                route("update.projects", project.id),
+                form,
+                Object.assign(sharedFormOptions, {
+                    onSuccess: () => {
+                        eventBus.$emit("closeModal", "project::update");
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: "Project updated successfully",
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                    },
+                })
+            );
+
+            return;
+        }
+
+        router.post(
+            route("store.projects"),
+            form,
+            Object.assign(sharedFormOptions, {
+                onSuccess: () => {
+                    resetForm();
+                    eventBus.$emit("closeModal", "project::create");
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: "Project created successfully",
+                        timer: 3000,
+                        timerProgressBar: true,
+                    });
+                },
+            })
+        );
+    };
+</script>
+<template>
+    <CardBox form @submit.prevent="submit">
+        <FormField label="Name">
+            <FormControl :errorMessage="form.errors.title" v-model="form.title" />
+        </FormField>
+        <BaseDivider />
+
+        <!-- <h1>{{ project . users }}</h1> -->
+        <FormField label="Company">
+            <select-field :errorMessage="form.errors.company"
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.company" :items="companies" />
+        </FormField>
+        <BaseDivider />
+
+
+        <!-- <h1>{{ form . customer }}</h1> -->
+        <FormField label="Customer">
+
+            <!-- <AutoCompleteField
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.customer" :currentVal="form.customer" :items="project.users"
+                @update:selectedIdValue="getCustomerId" /> -->
+
+                <!-- <v-select  :options="project.users" v-model="form.customer" class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black" /> -->
+                <!-- <h1>{{ form.customer }}</h1> -->
+                <v-select :options="project.customers" label="name" v-model="form.customer_id"
+                :reduce="option => option.id"
+                ></v-select>
+
+                <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form.errors.customer_id }}</span>
+
+        </FormField>
+        <BaseDivider />
+
+        <!-- <h1>{{ form . employee }}</h1> -->
+        <FormField label="Employee">
+
+
+            <!-- <AutoCompleteField
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                :errorMessage="form.errors.employee" v-model="form.employee"
+                :currentVal="form.employee" :items="project.users" @update:selectedIdValue="getEmployeeId" /> -->
+
+                <v-select :options="project.employees" label="name" v-model="form.employee_id"
+                :reduce="option => option.id"
+                ></v-select>
+
+                <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form.errors.employee_id }}</span>
+
+            <!--
+                <select-field :errorMessage="form.errors.employee"
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.employee" :items="project.users" /> -->
+
+        </FormField>
+        <BaseDivider />
+
+        <FormField label="Space Area">
+            <FormControl :errorMessage="form.errors.space_area" v-model="form.space_area" />
+        </FormField>
+        <BaseDivider />
+
+
+        <FormField label="Status">
+            <select-field :errorMessage="form.errors.status"
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.status" :items="statues" />
+        </FormField>
+        <BaseDivider />
+
+
+        <FormField label="Project Date">
+            <input type="date" class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.project_date" :errorMessage="form.errors.project_date" />
+
+        </FormField>
+        <BaseDivider />
+
+
+        <FormField label="Address">
+            <FormControl :errorMessage="form.errors.address" v-model="form.address" />
+        </FormField>
+        <BaseDivider />
+
+
+        <FormField label="Notes">
+            <FormControl type="textarea" :errorMessage="form.errors.notes" v-model="form.notes" />
+        </FormField>
+
+
+
+        <template #footer>
+            <BaseButtons>
+                <BaseButton @click="submit" type="submit" color="info" label="Submit" />
+            </BaseButtons>
+        </template>
+    </CardBox>
+</template>

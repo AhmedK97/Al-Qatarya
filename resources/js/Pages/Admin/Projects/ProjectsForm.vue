@@ -57,7 +57,6 @@
 
     const project = reactive(props.project || {});
 
-
     const form = useForm({
         title: project.title,
         company: project.company,
