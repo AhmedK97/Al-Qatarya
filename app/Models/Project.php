@@ -21,6 +21,8 @@ class Project extends Model implements HasMedia
 
     public const PROJECT_IMAGES = 'project_images';
 
+    public const PROJECT_FILES = 'project_files';
+
     protected $guarded = [];
 
     public $translatable = ['title', 'description', 'address'];
@@ -41,6 +43,6 @@ class Project extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'customer_id');
     }
-    
+
 
 }

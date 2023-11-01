@@ -39,11 +39,6 @@ createInertiaApp({
             .use(pinia)
             .use(MotionPlugin)
             .mount(el)
-            // .use(vSelect);
-
-
-
-
     },
     progress: {
         color: "#4B5563",

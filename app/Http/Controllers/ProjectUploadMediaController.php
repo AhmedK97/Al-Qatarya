@@ -8,18 +8,25 @@ use Illuminate\Http\Request;
 class ProjectUploadMediaController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Handle the incoming request to upload project media.
      */
-    public function __invoke(Request $request , Project $project)
+    public function __invoke(Request $request, Project $project)
     {
-        dd($request->all());
-        // media (image // video // audio // pdf )
-        $data = $request->validate([
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt',
-            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
-            'audio' => 'nullable|mimes:mpga,wav',
-            'pdf' => 'nullable|mimes:pdf',
+        // Validate the request data, e.g., ensure the 'avatar' field is a valid image.
+        $request->validate([
+            'files' => 'required',
         ]);
 
+        $file = $request->file('files');
+        $project->addMedia($file)->toMediaCollection(Project::PROJECT_FILES);
+
+        return redirect()
+            ->route('index.projects')
+            ->with('swalNotification', [
+                'title' => __('common.success'),
+                'text' => __('common.created'),
+                'icon' => 'success',
+                'timer' => 5000,
+            ]);
     }
 }

@@ -149,6 +149,8 @@
         });
     };
 
+
+
     const openformModal = () => {
         eventBus.$emit("openModal", "project::create");
     };
@@ -162,6 +164,8 @@
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
         :title="formUploadMediaModalTitle">
+        <!-- <VueFileAgent :uploadUrl="uploadUrl" v-model="fileRecords" v-model:rawModelValue="rawFileRecords"></VueFileAgent> -->
+
         <ProjectsUploadMediaForm :project="currentlyUploadMediaProject" />
     </CardBoxModal>
     <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
@@ -267,7 +271,8 @@
                 <td data-label="Created At">{{ project . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                        <BaseButton color="info" :icon="mdiSquareEditOutline" small  @click = "editProject(project)" />
+                        <BaseButton color="info" :icon="mdiSquareEditOutline" small
+                            @click = "editProject(project)" />
                         <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteProject(project)" />
                         <BaseButton color="success" :icon="mdiMultimedia" small @click="uploadMedia(project)" />
                     </BaseButtons>
