@@ -7,12 +7,8 @@ use Illuminate\Http\Request;
 
 class ProjectUploadMediaController extends Controller
 {
-    /**
-     * Handle the incoming request to upload project media.
-     */
     public function __invoke(Request $request, Project $project)
     {
-        // Validate the request data, e.g., ensure the 'avatar' field is a valid image.
         $request->validate([
             'files' => 'required',
         ]);

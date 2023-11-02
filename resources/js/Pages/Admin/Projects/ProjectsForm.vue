@@ -115,7 +115,7 @@
             resetForm();
             Object.assign(project, newProps.project);
             form.title = newProps.project.title;
-            form.company= newProps.project.company;
+            form.company = newProps.project.company;
             form.customer_id = newProps.project.customer_id;
             form.employee_id = newProps.project.employee_id;
             form.space_area = newProps.project.space_area;
@@ -187,7 +187,6 @@
         </FormField>
         <BaseDivider />
 
-        <!-- <h1>{{ project . users }}</h1> -->
         <FormField label="Company">
             <select-field :errorMessage="form.errors.company"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
@@ -195,47 +194,23 @@
         </FormField>
         <BaseDivider />
 
+        <label class="block mb-2 font-bold">
+            Customer
+        </label>
+        <v-select :options="project.customers" label="name" v-model="form.customer_id"
+            :reduce="option => option.id"></v-select>
 
-        <!-- <h1>{{ form . customer }}</h1> -->
-        <FormField label="Customer">
+        <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form . errors . customer_id }}</span>
 
-            <!-- <AutoCompleteField
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.customer" :currentVal="form.customer" :items="project.users"
-                @update:selectedIdValue="getCustomerId" /> -->
-
-                <!-- <v-select  :options="project.users" v-model="form.customer" class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black" /> -->
-                <!-- <h1>{{ form.customer }}</h1> -->
-                <v-select :options="project.customers" label="name" v-model="form.customer_id"
-                :reduce="option => option.id"
-                ></v-select>
-
-                <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form.errors.customer_id }}</span>
-
-        </FormField>
         <BaseDivider />
 
-        <!-- <h1>{{ form . employee }}</h1> -->
-        <FormField label="Employee">
+        <label class="block mb-2 font-bold">
+            Employee
+        </label>
+        <v-select :options="project.employees" label="name" v-model="form.employee_id"
+            :reduce="option => option.id"></v-select>
+        <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form . errors . employee_id }}</span>
 
-
-            <!-- <AutoCompleteField
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                :errorMessage="form.errors.employee" v-model="form.employee"
-                :currentVal="form.employee" :items="project.users" @update:selectedIdValue="getEmployeeId" /> -->
-
-                <v-select :options="project.employees" label="name" v-model="form.employee_id"
-                :reduce="option => option.id"
-                ></v-select>
-
-                <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form.errors.employee_id }}</span>
-
-            <!--
-                <select-field :errorMessage="form.errors.employee"
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.employee" :items="project.users" /> -->
-
-        </FormField>
         <BaseDivider />
 
         <FormField label="Space Area">
@@ -253,7 +228,8 @@
 
 
         <FormField label="Project Date">
-            <input type="date" class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+            <input type="date"
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.project_date" :errorMessage="form.errors.project_date" />
 
         </FormField>

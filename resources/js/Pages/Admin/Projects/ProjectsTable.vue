@@ -45,6 +45,7 @@
         },
     });
 
+
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
             if (modalToOpen === "project::create") {
@@ -149,7 +150,11 @@
         });
     };
 
+    const upload = ref(false);
 
+    const uploading = (value) => {
+        upload.value = value;
+    };
 
     const openformModal = () => {
         eventBus.$emit("openModal", "project::create");
@@ -163,10 +168,8 @@
     </CardBoxModal>
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
-        :title="formUploadMediaModalTitle">
-        <!-- <VueFileAgent :uploadUrl="uploadUrl" v-model="fileRecords" v-model:rawModelValue="rawFileRecords"></VueFileAgent> -->
-
-        <ProjectsUploadMediaForm :project="currentlyUploadMediaProject" />
+        :noExit="upload" :title="formUploadMediaModalTitle">
+        <ProjectsUploadMediaForm :project="currentlyUploadMediaProject" @uploading="uploading" />
     </CardBoxModal>
     <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
         :title="viewModalTitle">

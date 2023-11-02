@@ -32,6 +32,10 @@ const props = defineProps({
         type: [String, Number, Boolean],
         default: null,
     },
+    noExit: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const emit = defineEmits(["update:modelValue", "cancel", "confirm"]);
@@ -42,6 +46,9 @@ const value = computed({
 });
 
 const confirmCancel = (mode) => {
+    if (props.noExit) {
+        return;
+    }
     value.value = false;
     emit(mode);
 };
