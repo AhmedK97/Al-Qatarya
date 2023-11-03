@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer utilities {
     .debug {
         @apply border-2 border-red-500;

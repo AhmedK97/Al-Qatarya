@@ -36,57 +36,49 @@ const props = defineProps({
                                 </div>
                             </header>
                             <div
-                                class="flex flex-col space-y-8 font-medium whitespace-nowrap"
+                                class="flex flex-col space-y-8 font-medium "
                             >
                                 <div
-                                    class="flex items-center space-x-2 rtl:space-x-reverse"
+                                    class="items-center space-x-2 rtl:space-x-reverse"
                                 >
                                     <p>{{ $t("agent") }}</p>
-                                    <hr
-                                        class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
-                                    />
+                                    <!-- {{ project.images }} -->
                                     <p class="font-semibold">
                                         {{ project.agent }}
                                     </p>
                                 </div>
 
                                 <div
-                                    class="flex items-center space-x-2 rtl:space-x-reverse"
+                                    class="items-center space-x-2 rtl:space-x-reverse"
                                 >
                                     <p>
                                         {{ $t("location") }}
                                     </p>
-                                    <hr
-                                        class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
-                                    />
+
                                     <p class="font-semibold">
                                         {{ project.address }}
                                     </p>
                                 </div>
 
                                 <div
-                                    class="flex items-center space-x-2 rtl:space-x-reverse"
+                                    class="items-center space-x-2 rtl:space-x-reverse"
                                 >
                                     <p>
                                         {{ $t("project-date") }}
                                     </p>
-                                    <hr
-                                        class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
-                                    />
+
                                     <p class="font-semibold">
                                         {{ project.date }}
                                     </p>
                                 </div>
 
                                 <div
-                                    class="flex items-center space-x-2 rtl:space-x-reverse"
+                                    class="items-center space-x-2 rtl:space-x-reverse"
                                 >
                                     <p>
                                         {{ $t("space-area") }}
                                     </p>
-                                    <hr
-                                        class="w-full h-px border-0 rounded lg:w-80 bg-rose-900"
-                                    />
+
                                     <p class="font-semibold">
                                         {{ project.space_area }} &#13217;
                                     </p>

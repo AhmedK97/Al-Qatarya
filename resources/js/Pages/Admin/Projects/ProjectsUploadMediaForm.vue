@@ -3,14 +3,20 @@
         useForm,
     } from '@inertiajs/vue3'
     import {
-        defineProps,nextTick,ref
+        defineProps,
+
+        ref,
+
+        defineEmits
     } from 'vue'
+
+
     import {
         mdiPlus,
     } from '@mdi/js'
     import BaseButton from "@/Components/Admin/BaseButton.vue";
     import Swal from 'sweetalert2'
-
+    import eventBus from "@/Composables/eventBus.js";
 
     const props = defineProps({
         project: {
@@ -26,23 +32,6 @@
 
     const file = ref(null);
 
-    // const resetForm = () => {
-    //     form.reset();
-
-    //     nextTick(() => {
-    //         form.files.value = null;
-    //     form.reset();
-
-    //     // reset file input value
-    //
-
-    //     });
-
-    //     Object.keys(form.errors).forEach((key) => {
-    //         delete form.errors[key];
-    //     });
-    // };
-
     const emit = defineEmits(['uploading'])
 
     function submit() {
@@ -50,16 +39,19 @@
         form.post(route('uploadMedia.projects', props.project?.id), {
             preserveScroll: true,
             onSuccess: () => {
+                eventBus.$emit("closeModal", "project::create");
                 Swal.fire({
+
                     title: 'Success!',
                     text: 'File uploaded successfully!',
                     icon: 'success',
                     confirmButtonText: 'OK',
                 }).then(() => {
-                    console.log(form.files = null);
                     emit('uploading', false);
                     file.value.value = null;
-                    // resetForm();
+
+                    // close modal
+                    // eventBus.$emit('closeModal', 'project::uploadMedia');
                 })
             }
         })
@@ -71,9 +63,14 @@
         Progress : {{ form . progress . percentage }}%
     </progress>
     <form @submit.prevent="submit">
-        <input ref="file" type="file" @input="form.files = $event.target.files[0]" :disabled="form.progress"
-             />
+        <input ref="file" type="file" multiple @input="form.files = $event.target.files"
+            :disabled="form.progress" />
         <BaseButton :disabled="form.progress" color="info" :icon="mdiPlus" label="Add" small type="submit">
             Submit</BaseButton>
+        <!--
+        <div v-if="form.project">
+            <img v-for="file in form.project.media_files" :src="file.path">
+        </div> -->
+      
     </form>
 </template>

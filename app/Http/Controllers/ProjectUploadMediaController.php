@@ -10,11 +10,14 @@ class ProjectUploadMediaController extends Controller
     public function __invoke(Request $request, Project $project)
     {
         $request->validate([
-            'files' => 'required',
+            'files' => 'required|array|max:5',
+            'files.*' => 'file|mimes:jpeg,png,pdf,mvk,mp4',
         ]);
 
-        $file = $request->file('files');
-        $project->addMedia($file)->toMediaCollection(Project::PROJECT_FILES);
+        $files = $request->file('files');
+        foreach ($files as $file) {
+            $project->addMedia($file)->toMediaCollection(Project::PROJECT_IMAGES);
+        }
 
         return redirect()
             ->route('index.projects')

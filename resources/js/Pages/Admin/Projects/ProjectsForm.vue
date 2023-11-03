@@ -28,17 +28,32 @@
     import "vue-select/dist/vue-select.css";
     import eventBus from "@/Composables/eventBus.js";
     import Swal from "sweetalert2";
-    // import Vue from "vue";
+    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+    import {
+        CKEditor
+    } from '@ckeditor/ckeditor5-vue';
     import vSelect from "vue-select";
+
+
+    const editor = ClassicEditor
+    const editorData = '<p>Content of the editor.</p>'
+    const editorConfig = {}
 
     const props = defineProps({
         project: {
             type: Object,
             default: () => {},
         },
+        customers: {
+            type: Array,
+            default: () => {},
+        },
+        employees: {
+            type: Array,
+            default: () => {},
+        },
 
     });
-
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
             if (modalToOpen === "project::create") {
@@ -67,8 +82,8 @@
         project_date: project.project_date,
         address: project.address,
         notes: project.notes,
+        description: project.description,
     });
-
 
     const resetForm = () => {
         form.reset();
@@ -123,6 +138,7 @@
             form.project_date = newProps.project.project_date;
             form.address = newProps.project.address;
             form.notes = newProps.project.notes;
+            form.description = newProps.project.description;
         }
     );
 
@@ -197,7 +213,7 @@
         <label class="block mb-2 font-bold">
             Customer
         </label>
-        <v-select :options="project.customers" label="name" v-model="form.customer_id"
+        <v-select :options="customers" label="name" v-model="form.customer_id"
             :reduce="option => option.id"></v-select>
 
         <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form . errors . customer_id }}</span>
@@ -207,7 +223,7 @@
         <label class="block mb-2 font-bold">
             Employee
         </label>
-        <v-select :options="project.employees" label="name" v-model="form.employee_id"
+        <v-select :options="employees" label="name" v-model="form.employee_id"
             :reduce="option => option.id"></v-select>
         <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form . errors . employee_id }}</span>
 
@@ -245,8 +261,13 @@
         <FormField label="Notes">
             <FormControl type="textarea" :errorMessage="form.errors.notes" v-model="form.notes" />
         </FormField>
+        <BaseDivider />
 
-
+        <FormField label="Description">
+            <div id="app">
+                <ckeditor :editor="editor" v-model="form.description" :config="editorConfig"></ckeditor>
+            </div>
+        </FormField>
 
         <template #footer>
             <BaseButtons>

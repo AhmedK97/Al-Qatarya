@@ -12,7 +12,8 @@ import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { i18nVue } from "laravel-vue-i18n";
 import { MotionPlugin } from "@vueuse/motion";
 import vSelect from "vue-select";
-
+import CKEditor from '@ckeditor/ckeditor5-vue';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText ||
     "القطريه للعوازل";
@@ -38,6 +39,7 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .use(pinia)
             .use(MotionPlugin)
+            .use(CKEditor)
             .mount(el)
     },
     progress: {

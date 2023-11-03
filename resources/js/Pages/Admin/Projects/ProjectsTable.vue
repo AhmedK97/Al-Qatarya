@@ -34,6 +34,8 @@
     const {
         projects,
         filters,
+        customers,
+        employees,
     } = defineProps({
         projects: {
             type: Object,
@@ -42,6 +44,14 @@
         filters: {
             type: Object,
             default: {},
+        },
+        customers: {
+            type: Array,
+            default: () => {},
+        },
+        employees: {
+            type: Array,
+            default: () => {},
         },
     });
 
@@ -156,15 +166,15 @@
         upload.value = value;
     };
 
-    const openformModal = () => {
-        eventBus.$emit("openModal", "project::create");
-    };
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <ProjectsForm :project="currentlyEditedProject" />
+        <ProjectsForm
+        :employees="employees"
+        :customers="customers"
+        :project="currentlyEditedProject" />
     </CardBoxModal>
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
@@ -240,16 +250,6 @@
                 <td></td>
 
             </tr>
-
-            <!-- empty state -->
-
-            <tr v-if="projects.data.length === 0">
-                <td colspan="12">
-                    <CardBoxComponentEmpty title="No Users Found, Click here to add new user"
-                        description="You can add new user by clicking on the button below" @click="openformModal" />
-                </td>
-            </tr>
-
             <!-- User data -->
             <tr v-for="project in projects.data" :key="project.id">
                 <td data-label="ID">{{ project . id }}</td>
@@ -269,8 +269,8 @@
                         :label="project.status" small />
                 </td>
                 <td data-label="project_date">{{ project . project_date }}</td>
-                <td data-label="notes">{{ project . notes }}</td>
                 <td data-label="About">{{ project . address }}</td>
+                <td data-label="notes">{{ project . notes }}</td>
                 <td data-label="Created At">{{ project . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
