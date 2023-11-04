@@ -9,6 +9,7 @@
 
     {{-- icon --}}
     <link rel="icon" href="{{ asset('images/logo.webp') }}" type="image/webp" sizes="16x16">
+
 <!-- include VueJS first -->
 {{-- <script src="https://unpkg.com/vue@latest"></script>
 

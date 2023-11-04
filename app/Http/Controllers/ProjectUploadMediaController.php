@@ -11,12 +11,27 @@ class ProjectUploadMediaController extends Controller
     {
         $request->validate([
             'files' => 'required|array|max:5',
-            'files.*' => 'file|mimes:jpeg,png,pdf,mvk,mp4',
+            'files.*' => 'file|mimes:jpeg,png,mkv,mp4',
         ]);
 
+        $fileTypeMappings = [
+            'mkv' => Project::PROJECT_VIDEOS,
+            'mp4' => Project::PROJECT_VIDEOS,
+            'jpeg' => Project::PROJECT_IMAGES,
+            'png' => Project::PROJECT_IMAGES,
+        ];
+
         $files = $request->file('files');
+
         foreach ($files as $file) {
-            $project->addMedia($file)->toMediaCollection(Project::PROJECT_IMAGES);
+
+            $extension = $file->getClientOriginalExtension();
+
+            $fileType = $fileTypeMappings[$extension];
+
+            $mediaCollection = $fileType === Project::PROJECT_VIDEOS ? Project::PROJECT_VIDEOS : Project::PROJECT_IMAGES;
+
+            $project->addMedia($file)->toMediaCollection($mediaCollection);
         }
 
         return redirect()

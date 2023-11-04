@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ProjectAdminResource extends JsonResource
 {
@@ -15,11 +16,11 @@ class ProjectAdminResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // dd($this->getMedia("*"));
         return [
             'id' => $this?->id,
             'title' => $this?->title,
-            'notes' => $this?->notes,
+            'slug' => $this?->slug,
+            'notes' => Str::limit($this->notes,100),
             'description' => $this?->description,
             'project_date' => $this?->project_date,
             'cost' => $this?->cost,
@@ -32,7 +33,7 @@ class ProjectAdminResource extends JsonResource
             'space_area' => $this?->space_area,
             'address' => $this?->address,
             'created_at' => $this?->created_at->diffForHumans(),
-            'media_files' => MediaFilesResource::collection($this->getMedia("*")),
+            // 'media_files' => MediaFilesResource::collection($this->getMedia("*")),
         ];
     }
 }

@@ -23,6 +23,8 @@ class Project extends Model implements HasMedia
 
     public const PROJECT_FILES = 'project_files';
 
+    public const PROJECT_VIDEOS = 'project_videos';
+
     protected $guarded = [];
 
     public $translatable = ['title', 'description', 'address'];

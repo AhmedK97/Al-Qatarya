@@ -41,8 +41,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
-
 Route::get('/services', IndexServicesController::class)->name('services');
 
 Route::get('/about', aboutController::class)->name('about');
@@ -98,4 +96,5 @@ Route::prefix('/admin')->group(function () {
 
     Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name('delete.projects');
 
+    Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
 });

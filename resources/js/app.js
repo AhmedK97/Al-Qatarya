@@ -13,6 +13,8 @@ import { i18nVue } from "laravel-vue-i18n";
 import { MotionPlugin } from "@vueuse/motion";
 import vSelect from "vue-select";
 import CKEditor from '@ckeditor/ckeditor5-vue';
+import "@ebcom/dotlottie-player";
+
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText ||

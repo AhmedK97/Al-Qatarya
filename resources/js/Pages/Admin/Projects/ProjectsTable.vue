@@ -160,32 +160,30 @@
         });
     };
 
+    // viewProject
+    const viewProject = (project) => {
+        const url = route("show.projects", project.slug);
+        window.open(url, '_blank');
+    };
+
+
     const upload = ref(false);
 
     const uploading = (value) => {
         upload.value = value;
     };
-
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <ProjectsForm
-        :employees="employees"
-        :customers="customers"
-        :project="currentlyEditedProject" />
+        <ProjectsForm :employees="employees" :customers="customers" :project="currentlyEditedProject" />
     </CardBoxModal>
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
         :noExit="upload" :title="formUploadMediaModalTitle">
         <ProjectsUploadMediaForm :project="currentlyUploadMediaProject" @uploading="uploading" />
     </CardBoxModal>
-    <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
-        :title="viewModalTitle">
-        <ProjectsForm :project="currentlyEditedProject" />
-    </CardBoxModal> -->
-
     <table>
         <thead>
             <tr>
@@ -278,6 +276,7 @@
                             @click = "editProject(project)" />
                         <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteProject(project)" />
                         <BaseButton color="success" :icon="mdiMultimedia" small @click="uploadMedia(project)" />
+                        <BaseButton color="primary" :icon="mdiEyeOutline" small @click="viewProject(project)" />
                     </BaseButtons>
                 </td>
             </tr>

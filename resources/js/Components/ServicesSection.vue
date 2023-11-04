@@ -53,8 +53,7 @@ const toggleTabs = (tabNumber) => {
 
         <ServicesImages
             class="md:mt-16"
-            :services="openTab === 1 ? services_qatarya : services_othman"
-        >
+            :services="openTab === 1 ? services_qatarya : services_othman">
             {{
                 openTab === 1
                     ? $t("services.insulation")
