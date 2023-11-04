@@ -34,13 +34,14 @@ class ProjectFactory extends Factory
 
         $enFaker = Faker::create('en_US');
         $arFaker = Faker::create('ar_SA');
+
         return [
             'title' => ([
                 'ar' => $arFaker->realText($nbWords = 10, $variableNbWords = true),
                 'en' => $enFaker->realText($nbWords = 10, $variableNbWords = true),
             ]),
 
-             'employee_id' => User::where('role', 'employee')
+            'employee_id' => User::where('role', 'employee')
                 ->get()
                 ->random()->id,
             'customer_id' => User::where('role', 'customer')

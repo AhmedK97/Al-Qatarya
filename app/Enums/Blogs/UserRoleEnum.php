@@ -9,7 +9,7 @@ enum UserRoleEnum: string
     case EMPLOYEE = 'employee';
     case CUSTOMER = 'customer';
 
-     static function getValues(): array
+    public static function getValues(): array
     {
         return [
             self::ADMIN->value,

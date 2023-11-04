@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
@@ -20,7 +19,7 @@ class ProjectAdminResource extends JsonResource
             'id' => $this?->id,
             'title' => $this?->title,
             'slug' => $this?->slug,
-            'notes' => Str::limit($this->notes,100),
+            'notes' => Str::limit($this->notes, 100),
             'description' => $this?->description,
             'project_date' => $this?->project_date,
             'cost' => $this?->cost,

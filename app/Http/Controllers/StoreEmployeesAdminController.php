@@ -6,8 +6,8 @@ use App\Enums\Blogs\EmployeeStatusEnum;
 use App\Enums\Blogs\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
 class StoreEmployeesAdminController extends Controller
 {

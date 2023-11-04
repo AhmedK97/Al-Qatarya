@@ -9,7 +9,6 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class CustomersExport implements FromCollection, WithHeadings, WithMapping
 {
-
     public function headings(): array
     {
         return ['ID', 'Name', 'Email', 'Phone', 'Status', 'About', 'Created At'];

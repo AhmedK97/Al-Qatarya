@@ -45,6 +45,4 @@ class Project extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'customer_id');
     }
-
-
 }

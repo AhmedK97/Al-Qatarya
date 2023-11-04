@@ -22,15 +22,15 @@ class UpdateProjectAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required','string','max:255'],
-            'company' => ['required','string','max:255'],
-            'customer' => ['nullable','string','exists:users,name'],
-            'employee' => ['nullable','string','exists:users,name'],
-            'space_area' => ['required','string','max:255'],
-            'status' => ['required','string','max:255'],
-            'project_date' => ['required','date'],
-            'address' => ['required','string','max:255'],
-            'notes' => ['nullable','string','max:255'],
+            'title' => ['required', 'string', 'max:255'],
+            'company' => ['required', 'string', 'max:255'],
+            'customer' => ['nullable', 'string', 'exists:users,name'],
+            'employee' => ['nullable', 'string', 'exists:users,name'],
+            'space_area' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'string', 'max:255'],
+            'project_date' => ['required', 'date'],
+            'address' => ['required', 'string', 'max:255'],
+            'notes' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

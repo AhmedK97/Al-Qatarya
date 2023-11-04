@@ -22,7 +22,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-
     protected $table = 'users';
 
     protected $guarded = [];
@@ -63,8 +62,9 @@ class User extends Authenticatable
         return $query->where('role', 'employee');
     }
 
-    public function scopeCustomers($query){
-        return $query->where('role','customer');
+    public function scopeCustomers($query)
+    {
+        return $query->where('role', 'customer');
     }
 
     public function projects()

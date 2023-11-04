@@ -34,14 +34,14 @@ class DashboardController extends Controller
 
         return Inertia::render('Admin/Dashboard', [
             'customersCount' => $customersCount,
-            'employeesCount'=> $employeesCount,
-            'allProjectCount'=> $allProjectCount,
-            'pendingProjectCount'=> $pendingProjectCount,
-            'finishedProjectCount'=> $finishedProjectCount,
-            'inProgressProjectCount'=> $inProgressProjectCount,
-            'canceledProjectCount'=> $canceledProjectCount,
-            'serviceAlqataryaProjectCount'=> $serviceAlqataryaProjectCount,
-            'serviceOthmanProjectCount'=> $serviceOthmanProjectCount,
+            'employeesCount' => $employeesCount,
+            'allProjectCount' => $allProjectCount,
+            'pendingProjectCount' => $pendingProjectCount,
+            'finishedProjectCount' => $finishedProjectCount,
+            'inProgressProjectCount' => $inProgressProjectCount,
+            'canceledProjectCount' => $canceledProjectCount,
+            'serviceAlqataryaProjectCount' => $serviceAlqataryaProjectCount,
+            'serviceOthmanProjectCount' => $serviceOthmanProjectCount,
         ]);
     }
 }

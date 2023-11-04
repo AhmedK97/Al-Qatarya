@@ -19,12 +19,12 @@ class IndexEmployeesAdminController extends Controller
 
         $employees = QueryBuilder::for(User::class)
             ->allowedFilters([
-               AllowedFilter::partial('name'),
-               AllowedFilter::partial('email'),
-               AllowedFilter::partial('phone'),
-               AllowedFilter::partial('status'),
+                AllowedFilter::partial('name'),
+                AllowedFilter::partial('email'),
+                AllowedFilter::partial('phone'),
+                AllowedFilter::partial('status'),
             ])->employees()
-            ->orderBy('id','desc')
+            ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString()
             ->through(function (User $user) {

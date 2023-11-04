@@ -6,7 +6,6 @@ use App\Exports\CustomersExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-
 class ExportCustomersAdminController extends Controller
 {
     /**

@@ -11,7 +11,6 @@ use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-
 class IndexProjectsAdminController extends Controller
 {
     /**
@@ -30,19 +29,20 @@ class IndexProjectsAdminController extends Controller
                 AllowedFilter::partial('employee'),
                 AllowedFilter::partial('space_area'),
             ])
-            ->with(['employee:id,name' , 'customer:id,name'])
+            ->with(['employee:id,name', 'customer:id,name'])
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString()
             ->through(function (Project $project) {
                 return new ProjectAdminResource($project);
             });
-            return Inertia::render('Admin/Projects/Index', [
-                'projects' => $projects,
-                'filters' => $request->all('search'),
-                'projectsCount' => Project::count(),
-                'customers' => UsersProjectsResource::collection(User::Customers()->get()),
-                'employees' => UsersProjectsResource::collection(User::Employees()->get()),
-            ]);
+
+        return Inertia::render('Admin/Projects/Index', [
+            'projects' => $projects,
+            'filters' => $request->all('search'),
+            'projectsCount' => Project::count(),
+            'customers' => UsersProjectsResource::collection(User::Customers()->get()),
+            'employees' => UsersProjectsResource::collection(User::Employees()->get()),
+        ]);
     }
 }

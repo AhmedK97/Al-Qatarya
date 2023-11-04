@@ -10,7 +10,8 @@ enum ProjectStatusEnum: string
     case FINISHED = 'finished';
     case CANCELED = 'canceled';
 
-    static function getValues(): array {
+    public static function getValues(): array
+    {
         return [
             self::PENDING->value,
             self::IN_PROGRESS->value,
@@ -18,7 +19,4 @@ enum ProjectStatusEnum: string
             self::CANCELED->value,
         ];
     }
-
-
-
 }

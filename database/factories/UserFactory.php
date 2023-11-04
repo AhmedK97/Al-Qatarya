@@ -4,11 +4,8 @@ namespace Database\Factories;
 
 use App\Enums\Blogs\EmployeeStatusEnum;
 use App\Enums\Blogs\UserRoleEnum;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use Laravel\Jetstream\Features;
 
 class UserFactory extends Factory
 {
@@ -54,5 +51,4 @@ class UserFactory extends Factory
     /**
      * Indicate that the user should have a personal team.
      */
-
 }
