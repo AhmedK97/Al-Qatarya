@@ -56,7 +56,6 @@
 
     const form = useForm({
         name: customer.name,
-        email: customer.email,
         phone: customer.phone,
         address: customer.address,
         status: customer.status,
@@ -95,7 +94,6 @@
             resetForm();
             Object.assign(customer, newProps.customer);
             form.name = newProps.customer.name;
-            form.email = newProps.customer.email;
             form.phone = newProps.customer.phone;
             form.address = newProps.customer.address;
             form.status = newProps.customer.status;
@@ -162,12 +160,6 @@
     <CardBox form @submit.prevent="submit">
         <FormField label="Name">
             <FormControl :errorMessage="form.errors.name" v-model="form.name" />
-        </FormField>
-
-        <BaseDivider />
-
-        <FormField label="Email">
-            <FormControl :errorMessage="form.errors.email" v-model="form.email" type="email" />
         </FormField>
 
         <BaseDivider />

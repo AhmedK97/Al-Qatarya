@@ -4,7 +4,6 @@
     import {
         mdiAccountPlus,
         mdiCheckCircle,
-        mdiEmailFast,
         mdiCurrencyUsdOff,
         mdiCurrencyUsd,
         mdiPlusBox,

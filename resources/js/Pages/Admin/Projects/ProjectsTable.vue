@@ -252,7 +252,7 @@
             <tr v-for="project in projects.data" :key="project.id">
                 <td data-label="ID">{{ project . id }}</td>
                 <td data-label="Name">{{ project . title }}</td>
-                <td data-label="Email">
+                <td data-label="company">
                     <PillTag
                         :color="project.company === 'othman' ? 'success' : project.company === 'qatarya' ? 'info' : 'danger'"
                         :label="project.company" small />

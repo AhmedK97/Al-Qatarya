@@ -63,7 +63,6 @@
     const activeFilters = reactive({
         filteredBy: {
             name: filters?.filteredBy?.name,
-            email: filters?.filteredBy?.email,
             phone: filters?.filteredBy?.phone,
             status: filters?.filteredBy?.status,
         },
@@ -148,7 +147,6 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Email</th>
                 <th>Phone</th>
                 <th>Status</th>
                 <th>Address</th>
@@ -163,10 +161,6 @@
                 <td></td>
                 <td data-label="Filter Name">
                     <input placeholder="Filter by name" v-model="activeFilters.filteredBy.name"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
-                </td>
-                <td data-label="Filter Email">
-                    <input placeholder="Filter by email" v-model="activeFilters.filteredBy.email"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td data-label="Filter Phone">
@@ -200,7 +194,6 @@
             <tr v-for="customer in customers.data" :key="customer.id">
                 <td data-label="ID">{{ customer . id }}</td>
                 <td data-label="Name">{{ customer . name }}</td>
-                <td data-label="Email">{{ customer . email }}</td>
                 <td data-label="Phone">{{ customer . phone }}</td>
                 <td data-label="Status">{{ customer . status }}</td>
                 <td data-label="Address">{{ customer . address }}</td>

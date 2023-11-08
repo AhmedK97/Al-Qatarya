@@ -74,7 +74,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::delete('employees/{user}', DeleteEmployeesAdminController::class)->name('delete.employees');
 
-    Route::get('/customers/export', ExportEmployeesAdminController::class)->name('export.employees');
+    Route::get('/employees/export', ExportEmployeesAdminController::class)->name('export.employees');
 
     //--------------- Employees -----------------//
     Route::get('/customers', IndexCustomersAdminController::class)->name('index.customers');
