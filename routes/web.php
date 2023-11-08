@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeleteCustomersAdminController;
 use App\Http\Controllers\DeleteEmployeesAdminController;
 use App\Http\Controllers\DeleteProjectsAdminController;
+use App\Http\Controllers\DeleteServicesAdminController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
 use App\Http\Controllers\FaqController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
 use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexProjectsController;
+use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexServicesController;
 use App\Http\Controllers\ProjectUploadMediaController;
 use App\Http\Controllers\ShowBlogController;
@@ -23,9 +25,11 @@ use App\Http\Controllers\ShowServiceController;
 use App\Http\Controllers\StoreCustomersAdminController;
 use App\Http\Controllers\StoreEmployeesAdminController;
 use App\Http\Controllers\StoreProjectsAdminController;
+use App\Http\Controllers\StoreServicesAdminController;
 use App\Http\Controllers\UpdateCustomersAdminController;
 use App\Http\Controllers\UpdateEmployeesAdminController;
 use App\Http\Controllers\UpdateProjectsAdminController;
+use App\Http\Controllers\UpdateServicesAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,4 +101,14 @@ Route::prefix('/admin')->group(function () {
     Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name('delete.projects');
 
     Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
+
+    // --------------- Services -----------------//
+    Route::get('services', IndexServicesAdminController::class)->name('index.services');
+
+    Route::post('services', StoreServicesAdminController::class)->name('store.services');
+
+    Route::put('services/{service}', UpdateServicesAdminController::class)->name('update.services');
+
+    Route::delete('services/{service}', DeleteServicesAdminController::class)->name('delete.services');
+
 });

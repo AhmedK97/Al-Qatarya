@@ -36,6 +36,12 @@ export default [
         label: "Projects",
         icon: mdiSquareEditOutline,
     },
+    {
+        route: "index.services",
+        label: "Services",
+        icon: mdiSquareEditOutline,
+    },
+
     // {
     //     route: "/ui",
     //     label: "UI",

@@ -178,8 +178,7 @@
         }
 
         router.post(
-            route("store.projects"),
-            form,
+            route("store.projects", form),
             Object.assign(sharedFormOptions, {
                 onSuccess: () => {
                     resetForm();

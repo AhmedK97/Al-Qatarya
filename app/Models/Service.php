@@ -27,4 +27,13 @@ class Service extends Model implements HasMedia
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    public function scopeQatarya()
+    {
+        return $this->where('company_name', 'qatarya');
+    }
+    public function scopeOthman()
+    {
+        return $this->where('company_name', 'othman');
+    }
 }

@@ -16,9 +16,9 @@ class StoreCustomersAdminController extends Controller
      */
     public function __invoke(Request $request, User $user)
     {
+        dd($request->all());
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')],
             'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
