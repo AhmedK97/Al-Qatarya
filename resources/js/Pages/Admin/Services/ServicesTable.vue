@@ -149,6 +149,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Company</th>
+                <th>Language</th>
                 <th>Created At</th>
                 <th>Action</th>
             </tr>
@@ -167,6 +168,14 @@
                         <option :value="null">Filter</option>
                         <option value="qatarya">Qatarya</option>
                         <option value="othman">Othman</option>
+                    </select>
+                </td>
+                <td data-label="Filter Status">
+                    <select v-model="activeFilters.filteredBy.company_name"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
+                        <option :value="null">Filter</option>
+                        <option value="ar">Arabic</option>
+                        <option value="en">English</option>
                     </select>
                 </td>
                 <td></td>
@@ -188,6 +197,7 @@
                 <td data-label="ID">{{ service . id }}</td>
                 <td data-label="Name">{{ service . name }}</td>
                 <td data-label="Status">{{ service . company_name }}</td>
+                <td data-label="Language">{{ service . lang == 'ar'  ? 'Arabic' : 'English'}}</td>
                 <td data-label="Created At">{{ service . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>

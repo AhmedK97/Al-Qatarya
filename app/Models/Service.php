@@ -8,16 +8,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Translatable\HasTranslations;
 
 class Service extends Model implements HasMedia
 {
     use HasSlug;
     use HasFactory;
-    use HasTranslations;
     use InteractsWithMedia;
 
-    public $translatable = ['name', 'body', 'seo_title', 'seo_description', 'seo_keywords'];
+    public const SERVICE_MAIN_IMAGE = 'service_main_image';
 
     protected $guarded = [];
 

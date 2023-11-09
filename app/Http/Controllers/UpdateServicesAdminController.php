@@ -18,7 +18,17 @@ class UpdateServicesAdminController extends Controller
             'additional_info' => 'sometimes|array',
             'additional_info.*.title' => 'string',
             'additional_info.*.description' => 'string',
+            'files' => ['nullable','sometimes', 'image'],
+            'lang' => 'required|string',
         ]);
+
+        if ($request->hasFile('files')) {
+            $service->clearMediaCollection(Service::SERVICE_MAIN_IMAGE);
+            $service->addMediaFromRequest('files')->toMediaCollection(Service::SERVICE_MAIN_IMAGE);
+        }
+
+        unset($data['files']);
+        
         $service->update($data);
 
         return redirect()

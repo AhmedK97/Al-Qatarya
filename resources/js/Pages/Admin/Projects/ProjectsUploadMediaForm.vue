@@ -41,7 +41,6 @@
             onSuccess: () => {
                 eventBus.$emit("closeModal", "project::create");
                 Swal.fire({
-
                     title: 'Success!',
                     text: 'File uploaded successfully!',
                     icon: 'success',
@@ -71,6 +70,6 @@
         <div v-if="form.project">
             <img v-for="file in form.project.media_files" :src="file.path">
         </div> -->
-      
+
     </form>
 </template>

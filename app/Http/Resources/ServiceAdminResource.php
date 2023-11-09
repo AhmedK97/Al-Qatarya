@@ -19,6 +19,7 @@ class ServiceAdminResource extends JsonResource
             'name' => $this->name,
             'company_name' => $this->company_name,
             'additional_info' => json_decode($this->additional_info),
+            'lang' => $this->lang,
             'created_at' => optional($this->created_at)->format('Y-m-d H:i:s'),
         ];
     }

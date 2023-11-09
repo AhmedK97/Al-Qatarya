@@ -2,6 +2,7 @@
 import { mdiUpload } from "@mdi/js";
 import { computed, ref, watch } from "vue";
 import BaseButton from "@/components/Admin/BaseButton.vue";
+import InputError from "@/components/InputError.vue";
 
 const props = defineProps({
   modelValue: {
@@ -12,6 +13,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  errorMessage: {
+    type: String,
+  },
+
   icon: {
     type: String,
     default: mdiUpload,
@@ -110,5 +115,12 @@ const upload = (event) => {
         {{ file.name }}
       </span>
     </div>
+
   </div>
+  <InputError
+            class="mt-2"
+            v-show="errorMessage"
+            :message="errorMessage"
+        />
+
 </template>

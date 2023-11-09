@@ -20,6 +20,7 @@
     import BaseButtons from "@/Components/Admin/BaseButtons.vue";
     import BaseButton from "@/Components/Admin/BaseButton.vue";
     import BaseDivider from "@/Components/Admin/BaseDivider.vue";
+    import FormFilePicker from "@/Components/Admin/FormFilePicker.vue";
     import {
         mdiPlus,
         mdiMinus
@@ -33,7 +34,6 @@
             type: Object,
             default: () => {},
         },
-
     });
 
     onMounted(() => {
@@ -48,7 +48,6 @@
         if (!props.service) {
             return false;
         }
-
         return !!props.service.id;
     });
 
@@ -64,7 +63,6 @@
             title: '',
             description: '',
         });
-
     };
 
     const addFormItemUpdate = () => {
@@ -74,12 +72,12 @@
         });
     };
 
-
     const form = useForm({
         name: service.name,
         company_name: service.company_name,
         additional_info: isUpdate.value == true ? service.additional_info : formItems,
-        // additional_info: formItems,
+        files: null,
+        lang: service.lang,
     });
 
     watch(formItems, (filledFilters) => {
@@ -91,7 +89,6 @@
         Object.keys(form.errors).forEach((key) => {
             delete form.errors[key];
         });
-
     };
 
     const companies = [{
@@ -102,6 +99,16 @@
             id: "othman",
             name: "othman",
         },
+    ];
+
+    const lang = [{
+            id: "en",
+            name: "English",
+        },
+        {
+            id: "ar",
+            name: "Arabic",
+        }
     ];
 
     watch(
@@ -115,6 +122,8 @@
             form.name = newProps.service.name;
             form.company_name = newProps.service.company_name;
             form.additional_info = newProps.service.additional_info;
+            form.lang = newProps.service.lang;
+            // form.files = newProps.service.files;
         }
     );
 
@@ -127,13 +136,12 @@
                 Object.keys(form.errors).forEach((key) => {
                     delete form.errors[key];
                 });
-
                 Object.assign(form.errors, errors);
             },
         };
 
         if (isUpdate.value) {
-            router.put(
+            router.post(
                 route("update.services", service.id),
                 form,
                 Object.assign(sharedFormOptions, {
@@ -145,8 +153,10 @@
                             text: "Services updated successfully",
                             timer: 3000,
                             timerProgressBar: true,
+                        }).then(() => {
+                            form.files = null;
                         });
-                    },
+                    }
                 })
             );
 
@@ -154,7 +164,8 @@
         }
 
         router.post(
-            route("store.services", form),
+            route("store.services"),
+            form,
             Object.assign(sharedFormOptions, {
                 onSuccess: () => {
                     resetForm();
@@ -179,15 +190,24 @@
         </FormField>
 
         <BaseDivider />
-
         <FormField label="Company">
             <select-field :errorMessage="form.errors.company_name"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.company_name" :items="companies" />
         </FormField>
 
+        <FormField label="Image">
+
+            <FormFilePicker :errorMessage="form.errors.files" accept="image/*" class="mt-5" label="Image Cover"
+                v-model="form.files" />
+
+            <!-- <span v-if="form.errors.files" class="text-red-500 ">
+                {{ form . errors . files }}
+            </span> -->
+
+        </FormField>
+
         <BaseDivider />
-        <!-- {{ isUpdate }} -->
         <div v-if="!isUpdate">
             <div v-for="(formItem, index) in formItems" :key="index">
                 <div class="flex justify-end">
@@ -211,6 +231,7 @@
             </div>
         </div>
 
+        <!-- {{ isUpdate }} -->
         <div v-if="isUpdate">
             <div v-for="(formItem, index) in service.additional_info" :key="index">
                 <!-- remove button -->
@@ -219,15 +240,22 @@
                         @click="service.additional_info.splice(index, 1)" />
                 </div>
                 <FormField label="Title">
-                    <FormControl v-model="formItem.title" />
+                    <FormControl v-model="formItem.title"
+                        :error-message="form.errors.additional_info ? form.errors.additional_info[index]?.title : null" />
                 </FormField>
 
                 <FormField label="Description">
-                    <FormControl type="textarea" v-model="formItem.description" />
+                    <FormControl type="textarea"
+                        :error-message="form.errors.additional_info ? form.errors.additional_info[index]?.description : null"
+                        v-model="formItem.description" />
                 </FormField>
 
                 <BaseDivider />
             </div>
+            <!-- {{ form . errors }} -->
+            <span v-if="form.errors" class="text-red-500 ">
+                {{ form . errors . additional_info }}
+            </span>
 
             <div class="flex justify-end">
                 <BaseButton type="button" :icon="mdiPlus" color="info" label="Add More Info"
@@ -235,17 +263,13 @@
             </div>
 
         </div>
-        <!-- <BaseDivider />
+        <BaseDivider />
 
-        <FormField label="About">
-            <FormControl :errorMessage="form.errors.about" v-model="form.about" />
+        <FormField label="Language">
+            <select-field :errorMessage="form.errors.lang"
+                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                v-model="form.lang" :items="lang" />
         </FormField>
-
-        <BaseDivider v-if="!isUpdate" />
-
-        <FormField v-if="!isUpdate" label="Password">
-            <FormControl type="password" :errorMessage="form.errors.password" v-model="form.password" />
-        </FormField> -->
 
         <template #footer>
             <BaseButtons>

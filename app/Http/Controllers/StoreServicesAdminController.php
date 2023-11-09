@@ -18,13 +18,21 @@ class StoreServicesAdminController extends Controller
             'additional_info' => 'sometimes|array',
             'additional_info.*.title' => 'string',
             'additional_info.*.description' => 'string',
+            'files' => 'required|image',
+            'lang' => 'required|string',
         ]);
 
-        Service::create([
+        $service = Service::create([
             'name' => $request->name,
             'company_name' => $request->company_name,
             'additional_info' => json_encode($request->additional_info),
+            'lang' => $request->lang,
         ]);
+
+        if ($request->hasFile('files')) {
+            $service->clearMediaCollection(Service::SERVICE_MAIN_IMAGE);
+            $service->addMediaFromRequest('files')->toMediaCollection(Service::SERVICE_MAIN_IMAGE);
+        }
 
         return redirect()
             ->route('index.services')

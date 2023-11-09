@@ -19,9 +19,9 @@ class ShowServiceController extends Controller
 
         return inertia('Service/Show', [
             'service' => ShowServiceResource::make($service),
-            'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
-                return new BlogResource($blog);
-            }),
+            // 'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(6)->through(function (Blog $blog) {
+            //     return new BlogResource($blog);
+            // }),
         ]);
     }
 }

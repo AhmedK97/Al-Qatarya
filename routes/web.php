@@ -107,8 +107,8 @@ Route::prefix('/admin')->group(function () {
 
     Route::post('services', StoreServicesAdminController::class)->name('store.services');
 
-    Route::put('services/{service}', UpdateServicesAdminController::class)->name('update.services');
+    Route::post('services/{service}', UpdateServicesAdminController::class)->name('update.services');
 
     Route::delete('services/{service}', DeleteServicesAdminController::class)->name('delete.services');
-
+    
 });
