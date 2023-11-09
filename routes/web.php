@@ -110,5 +110,5 @@ Route::prefix('/admin')->group(function () {
     Route::post('services/{service}', UpdateServicesAdminController::class)->name('update.services');
 
     Route::delete('services/{service}', DeleteServicesAdminController::class)->name('delete.services');
-    
+
 });

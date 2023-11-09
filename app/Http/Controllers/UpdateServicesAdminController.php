@@ -18,7 +18,7 @@ class UpdateServicesAdminController extends Controller
             'additional_info' => 'sometimes|array',
             'additional_info.*.title' => 'string',
             'additional_info.*.description' => 'string',
-            'files' => ['nullable','sometimes', 'image'],
+            'files' => ['nullable', 'sometimes', 'image'],
             'lang' => 'required|string',
         ]);
 
@@ -28,7 +28,7 @@ class UpdateServicesAdminController extends Controller
         }
 
         unset($data['files']);
-        
+
         $service->update($data);
 
         return redirect()

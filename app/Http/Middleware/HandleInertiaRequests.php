@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
 
             // services
             'services' => function () {
-                $services = Service::select('name', 'slug')->where('lang', 'like', '%' . app()->getLocale() . '%')->get();
+                $services = Service::select('name', 'slug')->where('lang', 'like', '%'.app()->getLocale().'%')->get();
 
                 return ServiceResource::collection($services);
             },

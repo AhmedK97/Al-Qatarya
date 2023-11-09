@@ -30,6 +30,7 @@ class Service extends Model implements HasMedia
     {
         return $this->where('company_name', 'qatarya');
     }
+
     public function scopeOthman()
     {
         return $this->where('company_name', 'othman');

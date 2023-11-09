@@ -10,7 +10,7 @@ class DeleteServicesAdminController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request , Service $service)
+    public function __invoke(Request $request, Service $service)
     {
         $service->delete();
 
