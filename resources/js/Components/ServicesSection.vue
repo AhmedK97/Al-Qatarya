@@ -19,7 +19,7 @@ const toggleTabs = (tabNumber) => {
 <template>
     <div class="container px-4 mx-auto max-w-7xl">
         <ul
-            class="flex flex-row flex-wrap pt-3 pb-4 mb-0 space-x-2 list-none rtl:space-x-reverse"
+            class="flex flex-row flex-wrap pt-3 pb-4 m-auto mb-0 space-x-2 list-none rtl:space-x-reverse"
         >
             <li class="flex-auto text-center">
                 <a
@@ -61,9 +61,9 @@ const toggleTabs = (tabNumber) => {
             }}
         </ServicesImages>
 
-        <Service
+        <!-- <Service
             class="mt-20 md:mt-40"
             :services="openTab === 1 ? services_qatarya : services_othman"
-        />
+        /> -->
     </div>
 </template>
