@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Blogs\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -59,12 +60,12 @@ class User extends Authenticatable
     // employee
     public function scopeEmployees($query)
     {
-        return $query->where('role', 'employee');
+        return $query->where('role', UserRoleEnum::EMPLOYEE->value);
     }
 
     public function scopeCustomers($query)
     {
-        return $query->where('role', 'customer');
+        return $query->where('role', UserRoleEnum::CUSTOMER->value);
     }
 
     public function projects()

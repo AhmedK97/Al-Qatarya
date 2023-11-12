@@ -31,6 +31,11 @@ class Service extends Model implements HasMedia
         return $this->where('company_name', 'qatarya');
     }
 
+    public function transactions()
+    {
+        return $this->belongsToMany(Transaction::class , 'service_transaction');
+    }
+
     public function scopeOthman()
     {
         return $this->where('company_name', 'othman');

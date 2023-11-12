@@ -13,6 +13,7 @@ import {
     mdiReact,
     mdiAccountMultipleOutline,
     mdiAccountGroup,
+    mdiCashMultiple
 } from "@mdi/js";
 
 export default [
@@ -40,6 +41,11 @@ export default [
         route: "index.services",
         label: "Services",
         icon: mdiSquareEditOutline,
+    },
+    {
+        route: "index.transactions",
+        label: "Transactions",
+        icon: mdiCashMultiple,
     },
 
     // {

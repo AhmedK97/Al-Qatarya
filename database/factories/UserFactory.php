@@ -48,6 +48,24 @@ class UserFactory extends Factory
         });
     }
 
+    public function customer(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => UserRoleEnum::CUSTOMER->value,
+            ];
+        });
+    }
+
+    public function employee(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => UserRoleEnum::EMPLOYEE->value,
+            ];
+        });
+    }
+
     /**
      * Indicate that the user should have a personal team.
      */

@@ -45,4 +45,20 @@ class Project extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'customer_id');
     }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class);
+    }
+    // qatarya
+    public function scopeQatarya()
+    {
+        return $this->where('company', 'qatarya');
+    }
+
+    // othman
+    public function scopeOthman()
+    {
+        return $this->where('company', 'othman');
+    }
 }

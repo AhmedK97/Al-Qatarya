@@ -6,6 +6,7 @@ use App\Http\Controllers\DeleteCustomersAdminController;
 use App\Http\Controllers\DeleteEmployeesAdminController;
 use App\Http\Controllers\DeleteProjectsAdminController;
 use App\Http\Controllers\DeleteServicesAdminController;
+use App\Http\Controllers\DeleteTransactionsController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
 use App\Http\Controllers\FaqController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexServicesController;
+use App\Http\Controllers\IndexTransactionsController;
 use App\Http\Controllers\ProjectUploadMediaController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
@@ -26,10 +28,12 @@ use App\Http\Controllers\StoreCustomersAdminController;
 use App\Http\Controllers\StoreEmployeesAdminController;
 use App\Http\Controllers\StoreProjectsAdminController;
 use App\Http\Controllers\StoreServicesAdminController;
+use App\Http\Controllers\StoreTransactionsController;
 use App\Http\Controllers\UpdateCustomersAdminController;
 use App\Http\Controllers\UpdateEmployeesAdminController;
 use App\Http\Controllers\UpdateProjectsAdminController;
 use App\Http\Controllers\UpdateServicesAdminController;
+use App\Http\Controllers\UpdateTransactionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -103,12 +107,21 @@ Route::prefix('/admin')->group(function () {
     Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
 
     // --------------- Services -----------------//
-    Route::get('services', IndexServicesAdminController::class)->name('index.services');
+    Route::get('/services', IndexServicesAdminController::class)->name('index.services');
 
-    Route::post('services', StoreServicesAdminController::class)->name('store.services');
+    Route::post('/services', StoreServicesAdminController::class)->name('store.services');
 
-    Route::post('services/{service}', UpdateServicesAdminController::class)->name('update.services');
+    Route::post('/services/{service}', UpdateServicesAdminController::class)->name('update.services');
 
-    Route::delete('services/{service}', DeleteServicesAdminController::class)->name('delete.services');
+    Route::delete('/services/{service}', DeleteServicesAdminController::class)->name('delete.services');
+
+    // --------------- Transaction -----------------//
+    Route::get('/transactions', IndexTransactionsController::class)->name('index.transactions');
+
+    Route::post('/transactions', StoreTransactionsController::class)->name('store.transactions');
+
+    Route::post('/transactions/{transaction}', UpdateTransactionsController::class)->name('store.transactions');
+
+    Route::delete('/transactions/{transaction}', DeleteTransactionsController::class)->name('delete.transactions');
 
 });
