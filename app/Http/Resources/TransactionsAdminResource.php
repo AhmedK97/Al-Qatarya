@@ -16,29 +16,20 @@ class TransactionsAdminResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'customer' => $this->whenLoaded('customer', function () {
+            'customer' => $this->whenLoaded('project', function () {
                 return [
-                    'id' => $this->customer->id,
-                    'name' => $this->customer->name,
-                    'phone' => $this->customer->phone,
+                    'id' => $this->project->customer->id,
+                    'name' => $this->project->customer->name,
+                    'phone' => $this->project->customer->phone,
                 ];
             }),
 
-            'employee' => $this->whenLoaded('employee', function () {
+            'employee' => $this->whenLoaded('project', function () {
                 return [
-                    'id' => $this->employee->id,
-                    'name' => $this->employee->name,
-                    'phone' => $this->employee->phone,
+                    'id' => $this->project->employee->id,
+                    'name' => $this->project->employee->name,
+                    'phone' => $this->project->employee->phone,
                 ];
-            }),
-
-            'services' => $this->whenLoaded('services', function () {
-                return $this->services->map(function ($service) {
-                    return [
-                        'id' => $service->id,
-                        'name' => $service->name,
-                    ];
-                });
             }),
 
             'project' => $this->whenLoaded('project', function () {
@@ -46,6 +37,22 @@ class TransactionsAdminResource extends JsonResource
                     'id' => $this->project->id,
                     'name' => $this->project->name,
                 ];
+            }),
+
+            'address' => $this->whenLoaded('project', function () {
+                return [
+                    'id' => $this->project->id,
+                    'address' => $this->project->address,
+                ];
+            }),
+
+            'services' => $this->whenLoaded('project', function () {
+                return $this->project->services->map(function ($service) {
+                    return [
+                        'id' => $service->id,
+                        'name' => $service->name,
+                    ];
+                });
             }),
 
             'payments' => $this->whenLoaded('payments', function () {
@@ -60,11 +67,10 @@ class TransactionsAdminResource extends JsonResource
                 });
             }),
 
-            'address' => $this->address,
             'status' => $this->status,
             'full_price' => $this->full_price,
             'times_to_pay' => $this->times_to_pay,
             'created_at' => $this->created_at->diffForHumans(),
-        ];
+        ]; 
     }
 }

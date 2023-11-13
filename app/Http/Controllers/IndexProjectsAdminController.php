@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProjectAdminResource;
+use App\Http\Resources\ServicesAlqataryaaResource;
 use App\Http\Resources\UsersProjectsResource;
 use App\Models\Project;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -43,6 +45,7 @@ class IndexProjectsAdminController extends Controller
             'projectsCount' => Project::count(),
             'customers' => UsersProjectsResource::collection(User::Customers()->get()),
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),
+            'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
         ]);
     }
 }

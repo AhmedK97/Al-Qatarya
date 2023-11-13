@@ -41,6 +41,10 @@
             type: Object,
             default: [],
         },
+        services: {
+            type: Object,
+            default: [],
+        },
         filters: {
             type: Object,
             default: {},
@@ -177,7 +181,12 @@
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <ProjectsForm :employees="employees" :customers="customers" :project="currentlyEditedProject" />
+        <ProjectsForm
+        :employees="employees"
+        :customers="customers"
+        :project="currentlyEditedProject"
+        :services="services"
+        />
     </CardBoxModal>
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
@@ -192,6 +201,7 @@
                 <th>Company</th>
                 <th>Customer</th>
                 <th>Employee</th>
+                <th>Services</th>
                 <th>Space Area</th>
                 <th>Status</th>
                 <th>Project Date</th>
@@ -228,6 +238,8 @@
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td></td>
+
+                <td></td>
                 <td data-label="Filter status">
                     <select v-model="activeFilters.filteredBy.status"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
@@ -259,6 +271,7 @@
                 </td>
                 <td data-label="Phone">{{ project . customer_name }}</td>
                 <td data-label="Status">{{ project . employee_name }}</td>
+                <td data-label="Services">{{ project . services }}</td>
                 <td data-label="Address">{{ project . space_area }}</td>
                 <td data-label="status">
                     <PillTag

@@ -33,9 +33,10 @@ class IndexTransactionsController extends Controller
         ->orderBy('id', 'desc')
         ->paginate(10)
         ->withQueryString()
-        ->through(function (Transaction $project) {
-            return new TransactionsAdminResource($project);
+        ->through(function (Transaction $transactions) {
+            return new TransactionsAdminResource($transactions);
         });
+
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
             'filters' => $request->all('search'),
@@ -44,7 +45,6 @@ class IndexTransactionsController extends Controller
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),
             'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
             'projects' => ProjectsAlqataryaaResource::collection(Project::qatarya()->get()),
-
         ]);
     }
 }

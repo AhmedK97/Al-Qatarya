@@ -26,6 +26,12 @@ class Service extends Model implements HasMedia
             ->saveSlugsTo('slug');
     }
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
+
+
     public function scopeQatarya()
     {
         return $this->where('company_name', 'qatarya');

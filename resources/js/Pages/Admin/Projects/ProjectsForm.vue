@@ -52,6 +52,10 @@
             type: Array,
             default: () => {},
         },
+        services: {
+            type: Array,
+            default: () => {},
+        },
 
     });
     onMounted(() => {
@@ -83,6 +87,7 @@
         address: project.address,
         notes: project.notes,
         description: project.description,
+        services_id: project.services_id,
     });
 
     const resetForm = () => {
@@ -139,6 +144,7 @@
             form.address = newProps.project.address;
             form.notes = newProps.project.notes;
             form.description = newProps.project.description;
+            form.services_id = newProps.project.services_id;
         }
     );
 
@@ -225,6 +231,15 @@
         <v-select :options="employees" label="name" v-model="form.employee_id"
             :reduce="option => option.id"></v-select>
         <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form . errors . employee_id }}</span>
+
+        <BaseDivider />
+
+
+        <label class="block mb-2 font-bold">
+            Services
+        </label>
+        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id" multiple></v-select>
+        <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
 
         <BaseDivider />
 

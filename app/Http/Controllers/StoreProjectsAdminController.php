@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use Arr;
 class StoreProjectsAdminController extends Controller
 {
     /**
@@ -22,9 +22,17 @@ class StoreProjectsAdminController extends Controller
             'project_date' => ['required', 'date'],
             'address' => ['required', 'string', 'max:255'],
             'notes' => ['nullable', 'string', 'max:255'],
+            'services' => ['required', 'array'],
         ]);
 
-        Project::create($data);
+        // except data services
+
+        $project = Project::create(Arr::except($data, 'services'));
+
+        $project->services()->attach($data['services']);
+
+        dd($project);
+
 
         return redirect()
             ->route('index.projects')

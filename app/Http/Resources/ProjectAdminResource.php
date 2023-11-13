@@ -31,6 +31,7 @@ class ProjectAdminResource extends JsonResource
             'employee_name' => $this?->employee?->name,
             'space_area' => $this?->space_area,
             'address' => $this?->address,
+            'services_id' => $this?->services?->pluck('id'),
             'created_at' => $this?->created_at->diffForHumans(),
             // 'media_files' => MediaFilesResource::collection($this->getMedia("*")),
         ];

@@ -82,6 +82,7 @@
         full_price: transaction.full_price,
         service_id: transaction.service_id,
         project_id: transaction.project_id,
+        services_id: transaction.services_id,
 
     });
 
@@ -123,6 +124,7 @@
             form.full_price = transaction.full_price;
             form.service_id = transaction.service_id;
             form.project_id = transaction.project_id;
+            form.services_id = transaction.services_id;
 
         }
     );
@@ -209,13 +211,13 @@
         <!-- services -->
 
         <label class="block mb-2 font-bold">
-            Service
+            Services
         </label>
-        <v-select :options="services" label="name" v-model="form.service_id"
-            :reduce="option => option.id"></v-select>
-        <span v-if="form.errors.service_id" class="text-sm text-red-600">{{ form . errors . service_id }}</span>
+        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id" multiple></v-select>
+        <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
 
         <BaseDivider />
+
 
         <!-- projects -->
 

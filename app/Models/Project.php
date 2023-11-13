@@ -56,6 +56,11 @@ class Project extends Model implements HasMedia
         return $this->where('company', 'qatarya');
     }
 
+    public function services()
+    {
+        return $this->belongsToMany(Service::class ,'project_service');
+    }
+
     // othman
     public function scopeOthman()
     {

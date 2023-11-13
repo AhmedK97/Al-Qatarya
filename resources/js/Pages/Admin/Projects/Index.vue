@@ -42,6 +42,10 @@ const props = defineProps({
         type: Number,
         default: 0,
     },
+    services:{
+        type: Object,
+        default: [],
+    },
     filters: {
         type: Object,
         default: {},
@@ -112,6 +116,7 @@ const exportTable = () => {
                     :projects="projects"
                     :customers="customers"
                     :employees="employees"
+                    :services="services"
                 />
             </CardBox>
         </SectionMain>
