@@ -24,6 +24,7 @@
     import BaseButton from "@/Components/Admin/BaseButton.vue";
     import PillTag from "@/Components/Admin/PillTag.vue";
     import TransactionsForm from "@/Pages/Admin/Transactions/TransactionsForm.vue";
+    import AddMoreTransactionsForm from "@/Pages/Admin/Transactions/AddMoreTransactionsForm.vue";
     import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
     import {
         router
@@ -68,12 +69,21 @@
             }
         });
 
+        eventBus.$on("openModal", (modalToOpen) => {
+            if (modalToOpen === "transaction::AddMoreTransactionForm") {
+                currentAddMoreTransaction.value = null;
+                isAddMoreTransactionModalOpen.value = true;
+            }
+        });
+
         eventBus.$on("closeModal", (modalToClose) => {
             if (
                 modalToClose === "transaction::create" ||
-                modalToClose === "transaction::update"
+                modalToClose === "transaction::update" ||
+                modalToClose === "transaction::AddMoreTransactionForm"
             ) {
                 isFormModalOpen.value = false;
+                isAddMoreTransactionModalOpen.value = false;
             }
         });
     });
@@ -96,10 +106,18 @@
 
     const currentlyEditedTransaction = ref(null);
 
+    const currentAddMoreTransaction = ref(null);
+
     const formModalTitle = computed(() => {
         return currentlyEditedTransaction.value?.id ?
             `Edit ${currentlyEditedTransaction.value?.name} Transaction` :
             "Add New Transaction";
+    });
+
+    const AddMoreTransactionModalTitle = computed(() => {
+        return currentAddMoreTransaction.value?.id ?
+            `Add More ${currentAddMoreTransaction.value?.name} Transaction` :
+            "Add More Transaction";
     });
 
     // const viewModalTitle = computed(() => {
@@ -112,6 +130,14 @@
     const isViewModalOpen = ref(false && currentlyViewedUser.value);
 
     const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
+
+    const isAddMoreTransactionModalOpen = ref(false && currentAddMoreTransaction.value);
+
+
+    const addMoreTransaction = (transaction) => {
+        currentAddMoreTransaction.value = transaction;
+        isAddMoreTransactionModalOpen.value = true;
+    };
 
     const editTransaction = (transaction) => {
         currentlyEditedTransaction.value = transaction;
@@ -163,7 +189,18 @@
         :services="services" />
 
     </CardBoxModal>
+    <!-- {{  }} -->
+    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
+        v-model="isAddMoreTransactionModalOpen"
+        :title="AddMoreTransactionModalTitle">
 
+        <AddMoreTransactionsForm
+        :project="currentAddMoreTransaction?.project.id"
+        :services="currentAddMoreTransaction?.services"
+         />
+
+    </CardBoxModal>
+<!--
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
         :title="viewModalTitle">
 
@@ -175,12 +212,13 @@
         :services="services"
         />
 
-    </CardBoxModal>
+    </CardBoxModal> -->
 
     <table>
         <thead>
             <tr>
                 <th>#</th>
+                <th>Project Name</th>
                 <th>Customer Name</th>
                 <th>Phone Number</th>
                 <th>Employee Name</th>
@@ -195,6 +233,7 @@
         <tbody>
             <!-- Filters -->
             <tr key="filters">
+                <td></td>
                 <td></td>
                 <td data-label="Filter Customer Name">
                     <input placeholder="Filter by Customer Name" v-model="activeFilters.filteredBy.customer_name"
@@ -234,14 +273,15 @@
 
             <tr v-for="transaction in transactions.data" :key="transaction.id">
                 <td data-label="ID">{{ transaction . id }}</td>
+                <td data-label="Project Name">{{ transaction . project . title }}</td>
                 <td data-label="Customer Name">{{ transaction . customer . name }}</td>
                 <td data-label="Phone Number">{{ transaction . customer . phone }}</td>
                 <td data-label="Customer Employee">{{ transaction . employee . name }}</td>
-                <td data-label="Address">{{ transaction . address }}</td>
+                <td data-label="Address">{{ transaction . address . address }}</td>
                 <td data-label="Full Price">{{ transaction . full_price }}</td>
                 <td data-label="Times To Pay">{{ transaction . times_to_pay }}</td>
                 <td data-label="Status">
-                    <PillTag :color="transaction.status === 'pending' ? 'info' : 'green'"
+                    <PillTag :color="transaction.status === 'Paid' ? 'success' : 'info'"
                         :label="transaction.status">
                     </PillTag>
                 </td>
@@ -253,8 +293,10 @@
                         <BaseButton color="danger" :icon="mdiTrashCan" small
                             @click="deleteTransaction(transaction)" />
                         <!-- extra payments -->
-                        <BaseButton color="success" :icon="mdiCashMultiple" small
-                            @click="() => eventBus.$emit('openModal', 'transaction::create')" />
+                        <BaseButton  color="success" :icon="mdiCashMultiple" small
+                            @click="addMoreTransaction(transaction)" />
+                        <!-- <BaseButton :icon="mdiCashMultiple" small
+                            @click="() => eventBus.$emit('openModal', 'transaction::create')" /> -->
                         <!-- view -->
                     </BaseButtons>
                 </td>

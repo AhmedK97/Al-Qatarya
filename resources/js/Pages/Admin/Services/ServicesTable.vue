@@ -128,7 +128,7 @@
         });
     };
 
-    const openformModal = () => {
+    const openFormModal = () => {
         eventBus.$emit("openModal", "service::create");
     };
 </script>
@@ -187,7 +187,7 @@
             <tr v-if="services.data.length === 0">
                 <td colspan="12">
                     <CardBoxComponentEmpty title="No Users Found, Click here to add new user"
-                        description="You can add new user by clicking on the button below" @click="openformModal" />
+                        description="You can add new user by clicking on the button below" @click="openFormModal" />
                 </td>
             </tr>
 

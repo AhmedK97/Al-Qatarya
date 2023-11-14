@@ -35,13 +35,12 @@ class TransactionsAdminResource extends JsonResource
             'project' => $this->whenLoaded('project', function () {
                 return [
                     'id' => $this->project->id,
-                    'name' => $this->project->name,
+                    'title' => $this->project->title,
                 ];
             }),
 
             'address' => $this->whenLoaded('project', function () {
                 return [
-                    'id' => $this->project->id,
                     'address' => $this->project->address,
                 ];
             }),
@@ -51,6 +50,8 @@ class TransactionsAdminResource extends JsonResource
                     return [
                         'id' => $service->id,
                         'name' => $service->name,
+                        'price' => $service->pivot->price,
+                        'quantity' => $service->pivot->quantity,
                     ];
                 });
             }),
@@ -71,6 +72,6 @@ class TransactionsAdminResource extends JsonResource
             'full_price' => $this->full_price,
             'times_to_pay' => $this->times_to_pay,
             'created_at' => $this->created_at->diffForHumans(),
-        ]; 
+        ];
     }
 }

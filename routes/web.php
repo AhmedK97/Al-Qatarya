@@ -20,6 +20,7 @@ use App\Http\Controllers\IndexProjectsController;
 use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexServicesController;
 use App\Http\Controllers\IndexTransactionsController;
+use App\Http\Controllers\ProjectServiceController;
 use App\Http\Controllers\ProjectUploadMediaController;
 use App\Http\Controllers\ShowBlogController;
 use App\Http\Controllers\ShowProjectsController;
@@ -116,6 +117,7 @@ Route::prefix('/admin')->group(function () {
     Route::delete('/services/{service}', DeleteServicesAdminController::class)->name('delete.services');
 
     // --------------- Transaction -----------------//
+
     Route::get('/transactions', IndexTransactionsController::class)->name('index.transactions');
 
     Route::post('/transactions', StoreTransactionsController::class)->name('store.transactions');
@@ -123,5 +125,10 @@ Route::prefix('/admin')->group(function () {
     Route::post('/transactions/{transaction}', UpdateTransactionsController::class)->name('store.transactions');
 
     Route::delete('/transactions/{transaction}', DeleteTransactionsController::class)->name('delete.transactions');
+
+
+    // --------------- service transaction -----------------//
+    // ProjectServiceController
+    Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');
 
 });

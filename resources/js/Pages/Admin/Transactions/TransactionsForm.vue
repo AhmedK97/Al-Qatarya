@@ -81,8 +81,8 @@
         times_to_pay: transaction.times_to_pay,
         full_price: transaction.full_price,
         service_id: transaction.service_id,
-        project_id: transaction.project_id,
-        services_id: transaction.services_id,
+        project_id: transaction.project,
+        services_id: transaction.services,
 
     });
 
@@ -116,16 +116,15 @@
             }
             resetForm();
             Object.assign(transaction, newProps.transaction);
-            form.customer_id = transaction.customer_id;
-            form.employee_id = transaction.employee_id;
+            form.customer_id = transaction.customer.id;
+            form.employee_id = transaction.employee.id;
             form.status = transaction.status;
-            form.address = transaction.address;
+            form.address = transaction.address.address;
             form.times_to_pay = transaction.times_to_pay;
             form.full_price = transaction.full_price;
             form.service_id = transaction.service_id;
-            form.project_id = transaction.project_id;
-            form.services_id = transaction.services_id;
-
+            form.project_id = transaction.project;
+            form.services_id = transaction.services;
         }
     );
 
@@ -186,12 +185,25 @@
 </script>
 <template>
     <CardBox form @submit.prevent="submit">
+
+
+        <!-- project -->
+        <!--
+        <label class="block mb-2 font-bold">
+            Project
+        </label> -->
+        <!-- {{ transaction }} -->
+        <!-- <v-select :options="projects" label="title" v-model="form.project_id"
+            :reduce="option => option.id"></v-select>
+
+        <span v-if="form.errors.project_id" class="text-sm text-red-600">{{ form . errors . project_id }}</span>
+
+        <BaseDivider /> -->
+
         <label class="block mb-2 font-bold">
             Customer
         </label>
 
-        {{ employees }}
-        <!-- {{ customers }} -->
         <v-select :options="customers" label="name" v-model="form.customer_id"
             :reduce="option => option.id"></v-select>
 
@@ -213,23 +225,11 @@
         <label class="block mb-2 font-bold">
             Services
         </label>
-        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id" multiple></v-select>
+        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id"
+            multiple></v-select>
         <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
 
         <BaseDivider />
-
-
-        <!-- projects -->
-
-        <!-- <label class="block mb-2 font-bold">
-            Project
-        </label>
-        <v-select :options="projects" label="title" v-model="form.project_id"
-            :reduce="option => option.id"></v-select>
-        <span v-if="form.errors.project_id" class="text-sm text-red-600">{{ form . errors . project_id }}</span>
-
-        <BaseDivider /> -->
-
 
 
         <FormField label="Status">
@@ -244,17 +244,6 @@
             <FormControl :errorMessage="form.errors.address" v-model="form.address" />
         </FormField>
 
-        <BaseDivider />
-
-        <FormField label="About">
-            <FormControl :errorMessage="form.errors.about" v-model="form.about" />
-        </FormField>
-
-        <BaseDivider v-if="!isUpdate" />
-
-        <FormField v-if="!isUpdate" label="Password">
-            <FormControl type="password" :errorMessage="form.errors.password" v-model="form.password" />
-        </FormField>
 
         <template #footer>
             <BaseButtons>
