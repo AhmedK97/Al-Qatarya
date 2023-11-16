@@ -35,14 +35,6 @@
             type: Object,
             default: () => {},
         },
-        // customers: {
-        //     type: Array,
-        //     default: () => {},
-        // },
-        // employees: {
-        //     type: Array,
-        //     default: () => {},
-        // },
         services: {
             type: Array,
             default: () => {},
@@ -50,8 +42,6 @@
         project: {
             default: () => {},
         },
-
-
     });
 
     onMounted(() => {
@@ -79,18 +69,25 @@
 
     };
 
-    const statues = [{
-            id: "Pending",
-            name: "Pending",
-        },
-        {
-            id: "Paid",
-            name: "Paid",
-        },
-    ];
+    const formItems = reactive([{
+        name: '',
+        price: '',
+        quantity: '',
+    }, ]);
+
+    const addFormItem = () => {
+        formItems.push({
+            name: '',
+            price: '',
+            quantity: '',
+        });
+    };
+
+    watch(formItems, (filledFilters) => {
+        form.additional_info = filledFilters;
+    });
 
     const services = reactive(props.services || {});
-
 
     watch(
         () => cloneDeep(props),
@@ -156,46 +153,43 @@
         <label class="block mb-2 font-bold">
             Services
         </label>
-
         <div v-for="(service , id) in (services)" :key="id" class="mb-4">
-            <label class="block mb-2 font-bold">
-             اسم الخدمه :   {{ service . name }}
-            </label>
-            <div class="mb-3 ">
-                <div class="mb-5 md:flex">
-                    <label class="block mx-4 mb-2 font-bold">
-                        السعر :
-                    </label>
-
-                    <input type="number" v-model="form.services[id].price"
-                        class="w-full px-3 py-2 mb-2 mr-0 leading-tight text-gray-700 border rounded shadow appearance-none md:w-1/2 md:mb-0 md:mr-2 focus:outline-none focus:shadow-outline"
-                        placeholder="Enter Cost" />
-
-                    <p>دينار</p>
-
-                </div>
-
-                <!-- <span v-if="form.errors" class="text-sm text-red-600">{{ form . errors }}</span> -->
-                <div class="mb-5 md:flex">
-                    <label class="block mx-4 mb-2 font-bold">
-                        الكمية :
-                    </label>
-
-                    <input type="number" v-model="form.services[id].quantity"
-                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none md:w-1/2 focus:outline-none focus:shadow-outline"
-                        placeholder="Enter Quantity" />
-
-                    <p class="mx-2"> عدد</p>
-                </div>
-
-                <!-- error -->
-                <!-- <span v-if="form.errors.services[id].quantity" class="text-sm text-red-600">{{ form . errors . services[id] . quantity }}</span> -->
-
-
-            </div>
+            <FormField :label="`اسم الخدمة: ${service.name}`">
+                <FormControl v-model="form.services[id].price" placeholder="السعر" />
+                <FormControl v-model="form.services[id].quantity" placeholder="الكمية" />
+            </FormField>
             <base-divider />
         </div>
 
+
+        <div v-if="!isUpdate">
+            <BaseDivider />
+            <div v-for="(formItem, index) in formItems" :key="index">
+                <div class="flex justify-end">
+                    <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger" label="Remove"
+                        @click="formItems.splice(index, 1)" />
+                </div>
+
+                <FormField label="">
+                    <FormControl v-model="formItem.name"  placeholder="الاسم"/>
+                </FormField>
+
+                <FormField >
+                    <FormControl v-model="formItem.price" placeholder="السعر"/>
+                    <FormControl v-model="formItem.quantity" placeholder="الكمية"/>
+                </FormField>
+
+                <BaseDivider />
+            </div>
+
+            <div class="flex justify-end">
+                <BaseButton type="button" :icon="mdiPlus" color="info" label="Add More Info"
+                    @click="addFormItem" />
+            </div>
+            <BaseDivider />
+        </div>
+
+        <!-- {{ isUpdate }} -->
 
 
         <template #footer>
