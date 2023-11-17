@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Illuminate\Http\Request;
 use Arr;
+use Illuminate\Http\Request;
+
 class StoreProjectsAdminController extends Controller
 {
     /**
@@ -32,7 +33,6 @@ class StoreProjectsAdminController extends Controller
         $project->services()->attach($data['services']);
 
         dd($project);
-
 
         return redirect()
             ->route('index.projects')

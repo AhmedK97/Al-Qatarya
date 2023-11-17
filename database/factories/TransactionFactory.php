@@ -25,9 +25,9 @@ class TransactionFactory extends Factory
             //  4 - full price
             //  5 - how many times customer will pay to achieve the full price (will create another table for this)
             //  6 - payments (payments table)
-                    //  * 1 - main payment (from the full price)
-                    //  * 2 - extra payment (if there is any)
-                    //  * 3 - water container payment(if there is any)
+            //  * 1 - main payment (from the full price)
+            //  * 2 - extra payment (if there is any)
+            //  * 3 - water container payment(if there is any)
 
             // customer_id user where role = customer
             // employee_id user where role = employee
@@ -42,20 +42,19 @@ class TransactionFactory extends Factory
             // 'times_to_pay' => random number (1-6)
 
             // payments table
-                // --- create payments based on times_to_pay
-                // --- add or create extra payment on payments table
-                // --- add or make empty water container payment on payments table
+            // --- create payments based on times_to_pay
+            // --- add or create extra payment on payments table
+            // --- add or make empty water container payment on payments table
 
             'customer_id' => User::factory()->customer()->create()->id,
             'employee_id' => User::factory()->employee()->create()->id,
-            'service_id'  => $this->faker->randomElement(Service::all()->pluck('id')->toArray()),
-            'full_price'  => $this->faker->numberBetween(1000, 10000),
+            'service_id' => $this->faker->randomElement(Service::all()->pluck('id')->toArray()),
+            'full_price' => $this->faker->numberBetween(1000, 10000),
             'times_to_pay' => $this->faker->numberBetween(1, 6),
 
             // we will create payments based on times_to_pay
             // we will add or create extra payment on payments table
             // we will add or make empty water container payment on payments table
-            
 
         ];
     }

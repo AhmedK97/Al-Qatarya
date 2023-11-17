@@ -9,8 +9,6 @@ class Transaction extends Model
 {
     use HasFactory;
 
-
-
     protected $guarded = [];
 
     public function customer()
@@ -37,5 +35,4 @@ class Transaction extends Model
     {
         return $this->belongsTo(Project::class);
     }
-
 }

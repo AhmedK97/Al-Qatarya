@@ -50,6 +50,7 @@ class Project extends Model implements HasMedia
     {
         return $this->hasOne(Transaction::class);
     }
+
     // qatarya
     public function scopeQatarya()
     {
@@ -58,7 +59,7 @@ class Project extends Model implements HasMedia
 
     public function services()
     {
-        return $this->belongsToMany(Service::class ,'project_service')->withPivot('price', 'quantity');
+        return $this->belongsToMany(Service::class, 'project_service')->withPivot('price', 'quantity');
     }
 
     public function extraServices()

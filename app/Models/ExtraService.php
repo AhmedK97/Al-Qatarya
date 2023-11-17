@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ExtraService extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
     protected $table = 'extra_services';
@@ -17,5 +17,4 @@ class ExtraService extends Model
     {
         return $this->belongsTo(Project::class);
     }
-
 }

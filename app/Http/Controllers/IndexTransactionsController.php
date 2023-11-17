@@ -23,19 +23,19 @@ class IndexTransactionsController extends Controller
     public function __invoke(Request $request)
     {
         $transactions = QueryBuilder::for(Transaction::class)
-        ->allowedFilters([
-            AllowedFilter::partial('customer.name'),
-            AllowedFilter::partial('employee.name'),
-            AllowedFilter::partial('customer.phone'),
+            ->allowedFilters([
+                AllowedFilter::partial('customer.name'),
+                AllowedFilter::partial('employee.name'),
+                AllowedFilter::partial('customer.phone'),
 
-        ])
-        ->with('customer', 'employee', 'payments' , 'services' , 'project')
-        ->orderBy('id', 'desc')
-        ->paginate(10)
-        ->withQueryString()
-        ->through(function (Transaction $transactions) {
-            return new TransactionsAdminResource($transactions);
-        });
+            ])
+            ->with('customer', 'employee', 'payments', 'services', 'project')
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString()
+            ->through(function (Transaction $transactions) {
+                return new TransactionsAdminResource($transactions);
+            });
 
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,

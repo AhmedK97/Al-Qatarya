@@ -32,7 +32,6 @@ class Service extends Model implements HasMedia
 
     }
 
-
     public function scopeQatarya()
     {
         return $this->where('company_name', 'qatarya');
@@ -40,7 +39,7 @@ class Service extends Model implements HasMedia
 
     public function transactions()
     {
-        return $this->belongsToMany(Transaction::class , 'service_transaction');
+        return $this->belongsToMany(Transaction::class, 'service_transaction');
     }
 
     public function scopeOthman()

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
-use Illuminate\Http\Request;
 use Arr;
+use Illuminate\Http\Request;
+
 class UpdateTransactionsController extends Controller
 {
     /**
@@ -22,7 +23,6 @@ class UpdateTransactionsController extends Controller
             'status' => 'required|string|in:Pending,Paid',
         ]);
 
-
         $transaction->project->update([
             'customer_id' => $data['customer_id'],
             'employee_id' => $data['employee_id'],
@@ -35,8 +35,7 @@ class UpdateTransactionsController extends Controller
             'status' => $data['status'],
         ]);
         // dd($data['services_id']);
-        $transaction->project->services()->sync(Arr::pluck($data['services_id'], 'id' ));
-
+        $transaction->project->services()->sync(Arr::pluck($data['services_id'], 'id'));
 
         return redirect()
             ->route('index.transactions')

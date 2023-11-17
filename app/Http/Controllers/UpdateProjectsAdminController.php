@@ -42,7 +42,6 @@ class UpdateProjectsAdminController extends Controller
 
         $project->services()->sync($data['services_id']);
 
-        
         return redirect()
             ->route('index.projects')
             ->with('swalNotification', [

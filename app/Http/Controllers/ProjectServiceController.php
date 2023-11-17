@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Illuminate\Http\Request;
 use Arr;
+use Illuminate\Http\Request;
+
 class ProjectServiceController extends Controller
 {
     /**
@@ -31,7 +32,7 @@ class ProjectServiceController extends Controller
 
         });
 
-        if (!empty($data['extra_services'])) {
+        if (! empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])->pluck('id')->filter();
 
             $project->extraServices()->whereNotIn('id', $receivedIds)->delete();

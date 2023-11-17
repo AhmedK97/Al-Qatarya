@@ -126,7 +126,6 @@ Route::prefix('/admin')->group(function () {
 
     Route::delete('/transactions/{transaction}', DeleteTransactionsController::class)->name('delete.transactions');
 
-
     // --------------- service transaction -----------------//
     // ProjectServiceController
     Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');
