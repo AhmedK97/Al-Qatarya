@@ -225,10 +225,22 @@
         <label class="block mb-2 font-bold">
             Services
         </label>
-        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id"
+        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option"
             multiple></v-select>
         <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
 
+        <BaseDivider />
+
+        <label class="block mb-2 font-bold">
+            Times to pay
+        </label>
+        <FormControl :errorMessage="form.errors.times_to_pay" v-model="form.times_to_pay" />
+        <BaseDivider />
+
+        <label class="block mb-2 font-bold">
+            Full price
+        </label>
+        <FormControl :errorMessage="form.errors.full_price" v-model="form.full_price" />
         <BaseDivider />
 
 

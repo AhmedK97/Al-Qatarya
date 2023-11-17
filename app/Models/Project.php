@@ -61,7 +61,11 @@ class Project extends Model implements HasMedia
         return $this->belongsToMany(Service::class ,'project_service')->withPivot('price', 'quantity');
     }
 
-    // othman
+    public function extraServices()
+    {
+        return $this->hasMany(ExtraService::class);
+    }
+
     public function scopeOthman()
     {
         return $this->where('company', 'othman');

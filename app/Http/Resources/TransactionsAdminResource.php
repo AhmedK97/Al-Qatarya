@@ -24,6 +24,17 @@ class TransactionsAdminResource extends JsonResource
                 ];
             }),
 
+            'extra_services' => $this->whenLoaded('project', function () {
+                return $this->project->extraServices->map(function ($extraService) {
+                    return [
+                        'id' => $extraService->id,
+                        'name' => $extraService->name,
+                        'price' => $extraService->price,
+                        'quantity' => $extraService->quantity,
+                    ];
+                });
+            }),
+
             'employee' => $this->whenLoaded('project', function () {
                 return [
                     'id' => $this->project->employee->id,

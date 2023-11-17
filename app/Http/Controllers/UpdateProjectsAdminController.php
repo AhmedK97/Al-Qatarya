@@ -25,6 +25,7 @@ class UpdateProjectsAdminController extends Controller
             'notes' => ['nullable', 'string', 'max:255'],
             'services_id' => ['required', 'array'],
         ]);
+
         $project->update(
             [
                 'title' => $data['title'],
@@ -40,6 +41,8 @@ class UpdateProjectsAdminController extends Controller
         );
 
         $project->services()->sync($data['services_id']);
+
+        
         return redirect()
             ->route('index.projects')
             ->with('swalNotification', [

@@ -72,6 +72,10 @@
         });
     };
 
+    watch(formItems, (filledFilters) => {
+        form.additional_info = filledFilters;
+    });
+
     const form = useForm({
         name: service.name,
         company_name: service.company_name,
@@ -80,9 +84,6 @@
         lang: service.lang,
     });
 
-    watch(formItems, (filledFilters) => {
-        form.additional_info = filledFilters;
-    });
 
     const resetForm = () => {
         form.reset();
@@ -233,7 +234,7 @@
 
         <!-- {{ isUpdate }} -->
         <div v-if="isUpdate">
-            <div v-for="(formItem, index) in service.additional_info" :key="index">
+        <div v-for="(formItem, index) in service.additional_info" :key="index">
                 <!-- remove button -->
                 <div class="flex justify-end">
                     <BaseButton type="button" class="w-24 h-0" :icon="mdiMinus" color="danger" label="Remove"

@@ -122,7 +122,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::post('/transactions', StoreTransactionsController::class)->name('store.transactions');
 
-    Route::post('/transactions/{transaction}', UpdateTransactionsController::class)->name('store.transactions');
+    Route::put('/transactions/{transaction}', UpdateTransactionsController::class)->name('update.transactions');
 
     Route::delete('/transactions/{transaction}', DeleteTransactionsController::class)->name('delete.transactions');
 

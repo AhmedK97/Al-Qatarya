@@ -197,6 +197,7 @@
         <AddMoreTransactionsForm
         :project="currentAddMoreTransaction?.project.id"
         :services="currentAddMoreTransaction?.services"
+        :transaction="currentAddMoreTransaction"
          />
 
     </CardBoxModal>

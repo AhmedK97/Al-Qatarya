@@ -5,7 +5,8 @@
         watch,
         reactive,
         toRef,
-        onMounted
+        onMounted,
+        nextTick
     } from "vue";
     import cloneDeep from "lodash/cloneDeep";
     import {
@@ -20,10 +21,11 @@
     import BaseButtons from "@/Components/Admin/BaseButtons.vue";
     import BaseButton from "@/Components/Admin/BaseButton.vue";
     import BaseDivider from "@/Components/Admin/BaseDivider.vue";
-
     import {
         mdiAccount,
-        mdiMail
+        mdiMail,
+        mdiPlus,
+        mdiMinus
     } from "@mdi/js";
     import "vue-select/dist/vue-select.css";
     import eventBus from "@/Composables/eventBus.js";
@@ -55,12 +57,20 @@
     const form = useForm({
         services: props.services,
         project_id: props.project,
-        // price: props.services.price,
-        // quantity: props.services.quantity,
+        extra_services: props.transaction?.extra_services,
     });
+
+    const addFormItem = () => {
+        props.transaction.extra_services.push({
+            name: '',
+            price: '',
+            quantity: '',
+        });
+    };
 
     const resetForm = () => {
         // form reset
+
         form.reset();
         // remove errors
         Object.keys(form.errors).forEach((key) => {
@@ -68,24 +78,6 @@
         });
 
     };
-
-    const formItems = reactive([{
-        name: '',
-        price: '',
-        quantity: '',
-    }, ]);
-
-    const addFormItem = () => {
-        formItems.push({
-            name: '',
-            price: '',
-            quantity: '',
-        });
-    };
-
-    watch(formItems, (filledFilters) => {
-        form.additional_info = filledFilters;
-    });
 
     const services = reactive(props.services || {});
 
@@ -95,23 +87,23 @@
             if (!newProps.services) {
                 return;
             }
+        console.log('props'),
+
             resetForm();
             Object.assign(services, newProps.services);
-            form.services = services;
-            form.project_id = props.project;
+            form.services = newProps.services;
+            form.project_id = newProps.project;
+            form.extra_services = newProps.transaction?.extra_services;
 
-            for (let i = 0; i < newProps.services.length; i++) {
-                form.services[i] = {
-                    id: newProps.services[i].id,
-                    name: newProps.services[i].name,
-                    price: newProps.services[i].price,
-                    quantity: newProps.services[i].quantity,
-                };
-            }
+            form.services = newProps.services.map((service) => ({
+                id: service.id,
+                name: service.name,
+                price: service.price,
+                quantity: service.quantity,
+            }));
 
         }
     );
-
 
 
     const submit = () => {
@@ -149,7 +141,6 @@
 </script>
 <template>
     <CardBox form @submit.prevent="submit">
-
         <label class="block mb-2 font-bold">
             Services
         </label>
@@ -159,37 +150,53 @@
                 <FormControl v-model="form.services[id].quantity" placeholder="الكمية" />
             </FormField>
             <base-divider />
+            <div v-if="form && form.errors">
+
+            <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
+              {{ form?.errors['services.' + id + '.price'] }}
+            </span>
+             <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
+                {{ form?.errors['services.' + id + '.quantity'] }}
+             </span>
+
+            </div>
         </div>
 
-
-        <div v-if="!isUpdate">
-            <BaseDivider />
-            <div v-for="(formItem, index) in formItems" :key="index">
+            <div v-for="(formItem, index) in transaction?.extra_services" :key="index">
                 <div class="flex justify-end">
-                    <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger" label="Remove"
-                        @click="formItems.splice(index, 1)" />
+                    <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
+                        label="Remove" @click="transaction?.extra_services.splice(index, 1)" />
                 </div>
 
-                <FormField label="">
-                    <FormControl v-model="formItem.name"  placeholder="الاسم"/>
-                </FormField>
-
                 <FormField >
-                    <FormControl v-model="formItem.price" placeholder="السعر"/>
-                    <FormControl v-model="formItem.quantity" placeholder="الكمية"/>
+                    <FormControl v-model="form.extra_services[index].name" placeholder="الاســم" />
+
                 </FormField>
 
+                <FormField>
+                    <FormControl v-model="form.extra_services[index].price" placeholder="السعر" />
+                    <FormControl v-model="form.extra_services[index].quantity" placeholder="الكمية" />
+                </FormField>
                 <BaseDivider />
+
+                <div class="mb-5" v-if="form && form.errors">
+                    <span v-if="form?.errors['extra_services.' + index + '.name']" class="block text-sm text-red-600">
+                        {{ form?.errors['extra_services.' + index + '.name'] }}
+                    </span>
+                    <span v-if="form?.errors['extra_services.' + index + '.price']" class="block text-sm text-red-600">
+                        {{ form?.errors['extra_services.' + index + '.price'] }}
+                    </span>
+                    <span v-if="form?.errors['extra_services.' + index + '.quantity']" class="block text-sm text-red-600">
+                        {{ form?.errors['extra_services.' + index + '.quantity'] }}
+                    </span>
+                </div>
             </div>
 
             <div class="flex justify-end">
-                <BaseButton type="button" :icon="mdiPlus" color="info" label="Add More Info"
+                <BaseButton type="button" :icon="mdiPlus" color="info" label="خدمات اضافية"
                     @click="addFormItem" />
             </div>
             <BaseDivider />
-        </div>
-
-        <!-- {{ isUpdate }} -->
 
 
         <template #footer>
