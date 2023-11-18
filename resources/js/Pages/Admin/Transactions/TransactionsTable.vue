@@ -228,36 +228,42 @@
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
         v-model="isShowTransactionsPayment" :title="ShowTransactionsPaymentModalTitle">
         <div class="overflow-x-auto">
-            <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
-                تفاصيل حساب الخـــدمات
-            </h1>
-            <table class="table-auto">
-                <thead>
-                    <tr>
-                        <th>الكمية</th>
-                        <th>السعر</th>
-                        <th>اسم الخدمة</th>
-                    </tr>
-                </thead>
-                <tbody v-for="transactions in transactions.data" :key="transactions.id">
-                    <tr v-for="(service, index) in transactions.services" :key="index">
-                        <td>{{ service . quantity }}</td>
-                        <td>{{ service . price }}</td>
-                        <td>{{ service . name }}</td>
-                    </tr>
-                </tbody>
 
-                <!-- total price -->
-                <tfoot>
-                    <tr>
-                        <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
-                            {{ totalServicesPrice }}</td>
-                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">السعر الكلي</td>
-                    </tr>
-                </tfoot>
-            </table>
             <hr>
-            <div class="mt-5 ">
+            <div class="mt-5">
+                <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+                    تفاصيل حساب الخـــدمات
+                </h1>
+
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>الكمية</th>
+                            <th>السعر</th>
+                            <th>اسم الخدمة</th>
+                        </tr>
+                    </thead>
+                    <tbody v-for="transactions in transactions.data" :key="transactions.id">
+                        <tr v-for="(service, index) in transactions.services" :key="index">
+                            <td>{{ service . quantity }}</td>
+                            <td>{{ service . price }}</td>
+                            <td>{{ service . name }}</td>
+                        </tr>
+                    </tbody>
+
+                    <!-- total price -->
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
+                                {{ totalServicesPrice }}</td>
+                            <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">السعر الكلي</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <hr>
+            <div class="mt-5">
                 <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
                     تفاصيل حساب الخـــدمات الاضافية
                 </h1>
@@ -289,21 +295,19 @@
                 </table>
             </div>
 
-
+            <div class="mt-5">
+                <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+                    الحساب الكلى وما تم دفعة
+                </h1>
+            </div>
         </div>
 
-        <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
-            الحساب الكلى وما تم دفعة
-        </h1>
 
         <div>
             <div class="flex px-5">
                 <p class="w-1/2 font-black text-end">{{ totalPrice }}</p>
                 <p class="w-1/2 font-black text-end">المبلغ الكلي</p>
             </div>
-
-
-
         </div>
     </CardBoxModal>
 
@@ -430,6 +434,7 @@
     th {
         text-align: end;
     }
+
     td {
         text-align: end;
     }
