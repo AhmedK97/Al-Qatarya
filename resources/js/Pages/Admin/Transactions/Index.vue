@@ -107,6 +107,8 @@
                             () => eventBus.$emit('openModal', 'transaction::create')
                         "
                         color="info" :icon="mdiPlus" label="Add" small />
+
+
                     <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small />
 
                 </div>

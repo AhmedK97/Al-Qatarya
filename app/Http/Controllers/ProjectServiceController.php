@@ -13,14 +13,15 @@ class ProjectServiceController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
+        // dd($request->all());
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
             'services.*.price' => 'required|integer|min:0',
             'services.*.quantity' => 'required|integer|min:1',
             'extra_services.*.id' => 'nullable|integer|min:0',
-            'extra_services.*.name' => 'required_with:extra_services.*.price,extra_services.*.quantity|string',
-            'extra_services.*.price' => 'required_with:extra_services.*.name,extra_services.*.quantity|integer',
-            'extra_services.*.quantity' => 'required_with:extra_services.*.name,extra_services.*.price|integer',
+            'extra_services.*.name' => 'nullable|string',
+            'extra_services.*.price' => 'nullable|required_if:extra_services.*.name,!=,""|numeric',
+            'extra_services.*.quantity' => 'nullable|required_if:extra_services.*.name,!=,""|numeric',
         ]);
         collect($data['services'])->each(function ($serviceData) use ($project) {
             $service = $serviceData['id'];
@@ -28,8 +29,6 @@ class ProjectServiceController extends Controller
                 'price' => $serviceData['price'],
                 'quantity' => $serviceData['quantity'],
             ]);
-            // dd($serviceData['price']);
-
         });
 
         if (! empty($data['extra_services'])) {

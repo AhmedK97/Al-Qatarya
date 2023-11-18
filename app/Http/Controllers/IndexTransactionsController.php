@@ -29,13 +29,14 @@ class IndexTransactionsController extends Controller
                 AllowedFilter::partial('customer.phone'),
 
             ])
-            ->with('customer', 'employee', 'payments', 'services', 'project')
+            ->with('customer', 'employee',  'project')
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString()
             ->through(function (Transaction $transactions) {
                 return new TransactionsAdminResource($transactions);
             });
+            // dd($transactions);
 
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,

@@ -61,6 +61,7 @@
         },
     });
 
+
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
             if (modalToOpen === "transaction::create") {
@@ -108,6 +109,32 @@
 
     const currentAddMoreTransaction = ref(null);
 
+    const currentShowTransactionsPayment = ref(null);
+
+
+
+    const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
+
+    const isAddMoreTransactionModalOpen = ref(false && currentAddMoreTransaction.value);
+
+    const isShowTransactionsPayment = ref(false && currentShowTransactionsPayment.value);
+
+    const addMoreTransaction = (transaction) => {
+        currentAddMoreTransaction.value = transaction;
+        isAddMoreTransactionModalOpen.value = true;
+    };
+
+    const editTransaction = (transaction) => {
+        currentlyEditedTransaction.value = transaction;
+        isFormModalOpen.value = true;
+    };
+
+    const showTransactionsPayment = (transaction) => {
+        currentShowTransactionsPayment.value = transaction;
+        isShowTransactionsPayment.value = true;
+    };
+
+
     const formModalTitle = computed(() => {
         return currentlyEditedTransaction.value?.id ?
             `Edit ${currentlyEditedTransaction.value?.name} Transaction` :
@@ -120,29 +147,14 @@
             "Add More Transaction";
     });
 
-    // const viewModalTitle = computed(() => {
-    //     return currentlyViewedUser.value?.id ?
-    //         `View ${currentlyViewedUser.value?.name} Transaction` :
-    //         "View Transaction";
-    // });
-
-    // const currentlyViewedUser = ref(null);
-    const isViewModalOpen = ref(false && currentlyViewedUser.value);
-
-    const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
-
-    const isAddMoreTransactionModalOpen = ref(false && currentAddMoreTransaction.value);
+    const ShowTransactionsPaymentModalTitle = computed(() => {
+        console.log(currentShowTransactionsPayment.value);
+        return currentShowTransactionsPayment.value?.id ?
+            `Show  Transaction` :
+            "Show Transaction";
+    });
 
 
-    const addMoreTransaction = (transaction) => {
-        currentAddMoreTransaction.value = transaction;
-        isAddMoreTransactionModalOpen.value = true;
-    };
-
-    const editTransaction = (transaction) => {
-        currentlyEditedTransaction.value = transaction;
-        isFormModalOpen.value = true;
-    };
 
     const deleteTransaction = (transaction) => {
         Swal.fire({
@@ -175,45 +187,134 @@
     const openFormModal = () => {
         eventBus.$emit("openModal", "transaction::create");
     };
+
+    const totalServicesPrice = computed(() => {
+        let total = 0;
+        currentShowTransactionsPayment.value?.services.forEach((service) => {
+            total += service.price * service.quantity;
+        });
+        return total;
+    });
+
+    const totalExtraServicesPrice = computed(() => {
+        let total = 0;
+        currentShowTransactionsPayment.value?.extra_services.forEach((extraService) => {
+            total += extraService.price * extraService.quantity;
+        });
+        return total;
+    });
+
+    const totalPrice = computed(() => {
+        let total = 0;
+        currentShowTransactionsPayment.value?.services.forEach((service) => {
+            total += service.price * service.quantity;
+        });
+        currentShowTransactionsPayment.value?.extra_services.forEach((extraService) => {
+            total += extraService.price * extraService.quantity;
+        });
+        return total;
+    });
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
 
-        <TransactionsForm
-        :employees="employees"
-        :customers="customers"
-        :projects="projects"
-        :transaction="currentlyEditedTransaction"
-        :services="services" />
+        <TransactionsForm :employees="employees" :customers="customers" :projects="projects"
+            :transaction="currentlyEditedTransaction" :services="services" />
 
     </CardBoxModal>
-    <!-- {{  }} -->
+
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
-        v-model="isAddMoreTransactionModalOpen"
-        :title="AddMoreTransactionModalTitle">
+        v-model="isShowTransactionsPayment" :title="ShowTransactionsPaymentModalTitle">
+        <div class="overflow-x-auto">
+            <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+                تفاصيل حساب الخـــدمات
+            </h1>
+            <table class="table-auto">
+                <thead>
+                    <tr>
+                        <th>الكمية</th>
+                        <th>السعر</th>
+                        <th>اسم الخدمة</th>
+                    </tr>
+                </thead>
+                <tbody v-for="transactions in transactions.data" :key="transactions.id">
+                    <tr v-for="(service, index) in transactions.services" :key="index">
+                        <td>{{ service . quantity }}</td>
+                        <td>{{ service . price }}</td>
+                        <td>{{ service . name }}</td>
+                    </tr>
+                </tbody>
 
-        <AddMoreTransactionsForm
-        :project="currentAddMoreTransaction?.project.id"
-        :services="currentAddMoreTransaction?.services"
-        :transaction="currentAddMoreTransaction"
-         />
+                <!-- total price -->
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
+                            {{ totalServicesPrice }}</td>
+                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">السعر الكلي</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <hr>
+            <div class="mt-5 ">
+                <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+                    تفاصيل حساب الخـــدمات الاضافية
+                </h1>
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>الكمية</th>
+                            <th>السعر</th>
+                            <th>اسم الخدمة</th>
+                        </tr>
+                    </thead>
+                    <tbody v-for="transaction in transactions.data" :key="transaction.id">
+                        <tr v-for="(extraService, index) in transaction.extra_services" :key="index">
+                            <td>{{ extraService . price }}</td>
+                            <td>{{ extraService . quantity }}</td>
+                            <td>{{ extraService . name }}</td>
+                        </tr>
+                    </tbody>
+
+                    <!-- total price -->
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
+                                {{ totalExtraServicesPrice }} </td>
+                            <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">السعر الكلي</td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+
+        </div>
+
+        <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+            الحساب الكلى وما تم دفعة
+        </h1>
+
+        <div>
+            <div class="flex px-5">
+                <p class="w-1/2 font-black text-end">{{ totalPrice }}</p>
+                <p class="w-1/2 font-black text-end">المبلغ الكلي</p>
+            </div>
+
+
+
+        </div>
+    </CardBoxModal>
+
+    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
+        v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
+
+        <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
+            :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />
 
     </CardBoxModal>
-<!--
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
-        :title="viewModalTitle">
 
-        <TransactionsForm
-        :employees="employees"
-        :customers="customers"
-        :projects="projects"
-        :transaction="currentlyEditedTransaction"
-        :services="services"
-        />
-
-    </CardBoxModal> -->
 
     <table>
         <thead>
@@ -294,11 +395,14 @@
                         <BaseButton color="danger" :icon="mdiTrashCan" small
                             @click="deleteTransaction(transaction)" />
                         <!-- extra payments -->
-                        <BaseButton  color="success" :icon="mdiCashMultiple" small
+                        <BaseButton color="success" :icon="mdiCashMultiple" small
                             @click="addMoreTransaction(transaction)" />
-                        <!-- <BaseButton :icon="mdiCashMultiple" small
-                            @click="() => eventBus.$emit('openModal', 'transaction::create')" /> -->
-                        <!-- view -->
+
+                        <BaseButton color="success" :icon="mdiSend" small
+                            @click="showTransactionsPayment(transaction)" />
+                        <!-- file transaction table contain all payments -->
+
+
                     </BaseButtons>
                 </td>
             </tr>
@@ -320,3 +424,13 @@
         </BaseLevel>
     </div>
 </template>
+
+<style scope>
+    /* th text center */
+    th {
+        text-align: end;
+    }
+    td {
+        text-align: end;
+    }
+</style>

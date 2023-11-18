@@ -51,10 +51,14 @@ class Project extends Model implements HasMedia
         return $this->hasOne(Transaction::class);
     }
 
-    // qatarya
     public function scopeQatarya()
     {
         return $this->where('company', 'qatarya');
+    }
+    
+    public function scopeOthman()
+    {
+        return $this->where('company', 'othman');
     }
 
     public function services()
@@ -67,8 +71,5 @@ class Project extends Model implements HasMedia
         return $this->hasMany(ExtraService::class);
     }
 
-    public function scopeOthman()
-    {
-        return $this->where('company', 'othman');
-    }
+
 }

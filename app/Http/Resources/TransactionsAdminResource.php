@@ -67,17 +67,17 @@ class TransactionsAdminResource extends JsonResource
                 });
             }),
 
-            'payments' => $this->whenLoaded('payments', function () {
-                return $this->payments->map(function ($payment) {
-                    return [
-                        'id' => $payment->id,
-                        'amount' => $payment->amount,
-                        'type' => $payment->type,
-                        'description' => $payment->description,
-                        'created_at' => $payment->created_at,
-                    ];
-                });
-            }),
+            // 'payments' => $this->whenLoaded('payments', function () {
+            //     return $this->payments->map(function ($payment) {
+            //         return [
+            //             'id' => $payment->id,
+            //             'amount' => $payment->amount,
+            //             'type' => $payment->type,
+            //             'description' => $payment->description,
+            //             'created_at' => $payment->created_at,
+            //         ];
+            //     });
+            // }),
 
             'status' => $this->status,
             'full_price' => $this->full_price,

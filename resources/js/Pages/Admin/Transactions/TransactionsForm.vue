@@ -169,6 +169,7 @@
             form,
             Object.assign(sharedFormOptions, {
                 onSuccess: () => {
+                    console.log(sharedFormOptions);
                     resetForm();
                     eventBus.$emit("closeModal", "transaction::create");
                     Swal.fire({
@@ -186,75 +187,76 @@
 <template>
     <CardBox form @submit.prevent="submit">
 
-
         <!-- project -->
-        <!--
+
         <label class="block mb-2 font-bold">
             Project
-        </label> -->
+        </label>
         <!-- {{ transaction }} -->
-        <!-- <v-select :options="projects" label="title" v-model="form.project_id"
+        <v-select :options="projects" label="title" v-model="form.project_id"
             :reduce="option => option.id"></v-select>
 
         <span v-if="form.errors.project_id" class="text-sm text-red-600">{{ form . errors . project_id }}</span>
 
-        <BaseDivider /> -->
-
-        <label class="block mb-2 font-bold">
-            Customer
-        </label>
-
-        <v-select :options="customers" label="name" v-model="form.customer_id"
-            :reduce="option => option.id"></v-select>
-
-        <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form . errors . customer_id }}</span>
-
         <BaseDivider />
+        <div v-if="isUpdate">
+            <label class="block mb-2 font-bold">
+                Customer
+            </label>
 
-        <label class="block mb-2 font-bold">
-            Employee
-        </label>
-        <v-select :options="employees" label="name" v-model="form.employee_id"
-            :reduce="option => option.id"></v-select>
-        <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form . errors . employee_id }}</span>
+            <v-select :options="customers" label="name" v-model="form.customer_id"
+                :reduce="option => option.id"></v-select>
 
-        <BaseDivider />
+            <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form . errors . customer_id }}</span>
 
-        <!-- services -->
+            <BaseDivider />
 
-        <label class="block mb-2 font-bold">
-            Services
-        </label>
-        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option"
-            multiple></v-select>
-        <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
+            <label class="block mb-2 font-bold">
+                Employee
+            </label>
+            <v-select :options="employees" label="name" v-model="form.employee_id"
+                :reduce="option => option.id"></v-select>
+            <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form . errors . employee_id }}</span>
 
-        <BaseDivider />
+            <BaseDivider />
 
-        <label class="block mb-2 font-bold">
-            Times to pay
-        </label>
-        <FormControl :errorMessage="form.errors.times_to_pay" v-model="form.times_to_pay" />
-        <BaseDivider />
+            <!-- services -->
 
-        <label class="block mb-2 font-bold">
-            Full price
-        </label>
-        <FormControl :errorMessage="form.errors.full_price" v-model="form.full_price" />
-        <BaseDivider />
+            <label class="block mb-2 font-bold">
+                Services
+            </label>
+            <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option"
+                multiple></v-select>
+            <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
+
+            <BaseDivider />
+
+            <label class="block mb-2 font-bold">
+                Full price
+            </label>
+            <FormControl :errorMessage="form.errors.full_price" v-model="form.full_price" />
+            <BaseDivider />
 
 
-        <FormField label="Status">
-            <select-field :errorMessage="form.errors.status"
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.status" :items="statues" />
-        </FormField>
+            <label class="block mb-2 font-bold">
+                Times to pay
+            </label>
+            <FormControl :errorMessage="form.errors.times_to_pay" v-model="form.times_to_pay" />
+            <BaseDivider />
 
-        <BaseDivider />
+            <FormField label="Status">
+                <select-field :errorMessage="form.errors.status"
+                    class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                    v-model="form.status" :items="statues" />
+            </FormField>
 
-        <FormField label="address">
-            <FormControl :errorMessage="form.errors.address" v-model="form.address" />
-        </FormField>
+            <BaseDivider />
+
+            <FormField label="address">
+                <FormControl :errorMessage="form.errors.address" v-model="form.address" />
+            </FormField>
+
+        </div>
 
 
         <template #footer>

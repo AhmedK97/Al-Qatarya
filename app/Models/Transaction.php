@@ -21,15 +21,15 @@ class Transaction extends Model
         return $this->belongsTo(User::class, 'employee_id');
     }
 
-    public function services()
-    {
-        return $this->belongsToMany(Service::class);
-    }
+    // public function services()
+    // {
+    //     return $this->belongsToMany(Service::class);
+    // }
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
+    // public function payments()
+    // {
+    //     return $this->hasMany(Payment::class);
+    // }
 
     public function project()
     {

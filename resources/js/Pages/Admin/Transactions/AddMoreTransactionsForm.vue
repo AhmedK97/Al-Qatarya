@@ -53,6 +53,7 @@
             }
         });
     });
+    const services = reactive(props.services || {});
 
     const form = useForm({
         services: props.services,
@@ -60,17 +61,8 @@
         extra_services: props.transaction?.extra_services,
     });
 
-    const addFormItem = () => {
-        props.transaction.extra_services.push({
-            name: '',
-            price: '',
-            quantity: '',
-        });
-    };
-
     const resetForm = () => {
         // form reset
-
         form.reset();
         // remove errors
         Object.keys(form.errors).forEach((key) => {
@@ -79,7 +71,19 @@
 
     };
 
-    const services = reactive(props.services || {});
+    const removeExtraServices = (index) => {
+        form.extra_services = form.extra_services.filter(
+            (item, i) => i !== index
+        );
+    };
+
+    const addFormItem = () => {
+        form.extra_services.push({
+            name: "",
+            price: "",
+            quantity: "",
+        });
+    };
 
     watch(
         () => cloneDeep(props),
@@ -87,24 +91,13 @@
             if (!newProps.services) {
                 return;
             }
-        console.log('props'),
-
             resetForm();
             Object.assign(services, newProps.services);
-            form.services = newProps.services;
             form.project_id = newProps.project;
             form.extra_services = newProps.transaction?.extra_services;
-
-            form.services = newProps.services.map((service) => ({
-                id: service.id,
-                name: service.name,
-                price: service.price,
-                quantity: service.quantity,
-            }));
-
+            form.services = newProps.services;
         }
     );
-
 
     const submit = () => {
         const sharedFormOptions = {
@@ -144,42 +137,45 @@
         <label class="block mb-2 font-bold">
             Services
         </label>
-        <div v-for="(service , id) in (services)" :key="id" class="mb-4">
+        <div v-for="(service , id) in (form.services)" :key="id" class="mb-4">
             <FormField :label="`اسم الخدمة: ${service.name}`">
-                <FormControl v-model="form.services[id].price" placeholder="السعر" />
-                <FormControl v-model="form.services[id].quantity" placeholder="الكمية" />
+                <FormControl v-model="service.price" placeholder="السعر" />
+                <FormControl v-model="service.quantity" placeholder="الكمية" />
             </FormField>
             <base-divider />
+
+
             <div v-if="form && form.errors">
-
-            <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
-              {{ form?.errors['services.' + id + '.price'] }}
-            </span>
-             <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
-                {{ form?.errors['services.' + id + '.quantity'] }}
-             </span>
-
+                <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
+                    {{ form?.errors['services.' + id + '.price'] }}
+                </span>
+                <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
+                    {{ form?.errors['services.' + id + '.quantity'] }}
+                </span>
             </div>
         </div>
-
-            <div v-for="(formItem, index) in transaction?.extra_services" :key="index">
+        <!-- {{ form?.extra_services }} -->
+            <div v-for="(formItem, index) in form.extra_services" :key="index">
+                {{}}
                 <div class="flex justify-end">
                     <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
-                        label="Remove" @click="transaction?.extra_services.splice(index, 1)" />
+                        label="Remove" @click="removeExtraServices(index)" />
                 </div>
 
                 <FormField >
-                    <FormControl v-model="form.extra_services[index].name" placeholder="الاســم" />
-
+                    <FormControl v-model="formItem.name" placeholder="الاســم" />
                 </FormField>
 
                 <FormField>
-                    <FormControl v-model="form.extra_services[index].price" placeholder="السعر" />
-                    <FormControl v-model="form.extra_services[index].quantity" placeholder="الكمية" />
+                    <FormControl v-model="formItem.price" placeholder="السعر" />
+                    <FormControl v-model="formItem.quantity" placeholder="الكمية" />
                 </FormField>
+
                 <BaseDivider />
 
-                <div class="mb-5" v-if="form && form.errors">
+                <!-- {{ form.errors }} -->
+
+                <!-- <div class="mb-5" v-if="form && form.errors">
                     <span v-if="form?.errors['extra_services.' + index + '.name']" class="block text-sm text-red-600">
                         {{ form?.errors['extra_services.' + index + '.name'] }}
                     </span>
@@ -189,7 +185,8 @@
                     <span v-if="form?.errors['extra_services.' + index + '.quantity']" class="block text-sm text-red-600">
                         {{ form?.errors['extra_services.' + index + '.quantity'] }}
                     </span>
-                </div>
+                </div> -->
+
             </div>
 
             <div class="flex justify-end">
