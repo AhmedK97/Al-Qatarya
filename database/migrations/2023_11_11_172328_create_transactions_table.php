@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('full_price')->nullable();
             $table->integer('times_to_pay')->nullable();
             $table->string('status')->nullable();
+            $table->json('payments')->nullable();
             $table->timestamps();
         });
     }

@@ -148,7 +148,6 @@
     });
 
     const ShowTransactionsPaymentModalTitle = computed(() => {
-        console.log(currentShowTransactionsPayment.value);
         return currentShowTransactionsPayment.value?.id ?
             `Show  Transaction` :
             "Show Transaction";
@@ -228,13 +227,10 @@
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
         v-model="isShowTransactionsPayment" :title="ShowTransactionsPaymentModalTitle">
         <div class="overflow-x-auto">
-
-            <hr>
             <div class="mt-5">
                 <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
                     تفاصيل حساب الخـــدمات
                 </h1>
-
                 <table class="table-auto">
                     <thead>
                         <tr>
@@ -243,12 +239,11 @@
                             <th>اسم الخدمة</th>
                         </tr>
                     </thead>
-                    <tbody v-for="transactions in transactions.data" :key="transactions.id">
-                        <tr v-for="(service, index) in transactions.services" :key="index">
-                            <td>{{ service . quantity }}</td>
-                            <td>{{ service . price }}</td>
-                            <td>{{ service . name }}</td>
-                        </tr>
+
+                    <tbody v-for="transaction in currentShowTransactionsPayment.services" :key="transaction.id">
+                            <td>{{ transaction . quantity }}</td>
+                            <td>{{ transaction . price }}</td>
+                            <td>{{ transaction . name }}</td>
                     </tbody>
 
                     <!-- total price -->
@@ -275,12 +270,10 @@
                             <th>اسم الخدمة</th>
                         </tr>
                     </thead>
-                    <tbody v-for="transaction in transactions.data" :key="transaction.id">
-                        <tr v-for="(extraService, index) in transaction.extra_services" :key="index">
-                            <td>{{ extraService . price }}</td>
-                            <td>{{ extraService . quantity }}</td>
-                            <td>{{ extraService . name }}</td>
-                        </tr>
+                    <tbody v-for="transaction in currentShowTransactionsPayment.extra_services" :key="transaction.id">
+                            <td>{{ transaction . price }}</td>
+                            <td>{{ transaction . quantity }}</td>
+                            <td>{{ transaction . name }}</td>
                     </tbody>
 
                     <!-- total price -->
@@ -295,11 +288,13 @@
                 </table>
             </div>
 
+            <hr>
             <div class="mt-5">
                 <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
                     الحساب الكلى وما تم دفعة
                 </h1>
             </div>
+
         </div>
 
 
