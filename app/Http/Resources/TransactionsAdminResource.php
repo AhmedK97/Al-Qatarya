@@ -78,7 +78,7 @@ class TransactionsAdminResource extends JsonResource
             //         ];
             //     });
             // }),
-
+            'payments' => json_decode($this->payments),
             'status' => $this->status,
             'full_price' => $this->full_price,
             'times_to_pay' => $this->times_to_pay,

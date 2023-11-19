@@ -123,7 +123,7 @@
                     Swal.fire({
                         icon: "success",
                         title: "Success",
-                        text: "Transaction created successfully",
+                        text: "Payment Updated successfully",
                         timer: 3000,
                         timerProgressBar: true,
                     });

@@ -26,6 +26,8 @@
     import TransactionsForm from "@/Pages/Admin/Transactions/TransactionsForm.vue";
     import AddMoreTransactionsForm from "@/Pages/Admin/Transactions/AddMoreTransactionsForm.vue";
     import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
+    import TransactionsPayment from "@/Pages/Admin/Transactions/TransactionsPayment.vue";
+
     import {
         router
     } from "@inertiajs/vue3";
@@ -77,14 +79,23 @@
             }
         });
 
+        eventBus.$on("openModal", (modalToOpen) => {
+            if (modalToOpen === "transaction::ShowTransactionsPayment") {
+                currentShowTransactionsPayment.value = null;
+                isShowTransactionsPayment.value = true;
+            }
+        });
+
         eventBus.$on("closeModal", (modalToClose) => {
             if (
                 modalToClose === "transaction::create" ||
                 modalToClose === "transaction::update" ||
+                modalToClose === "transaction::ShowTransactionsPayment" ||
                 modalToClose === "transaction::AddMoreTransactionForm"
             ) {
                 isFormModalOpen.value = false;
                 isAddMoreTransactionModalOpen.value = false;
+                isShowTransactionsPayment.value = false;
             }
         });
     });
@@ -110,7 +121,6 @@
     const currentAddMoreTransaction = ref(null);
 
     const currentShowTransactionsPayment = ref(null);
-
 
 
     const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
@@ -186,132 +196,29 @@
     const openFormModal = () => {
         eventBus.$emit("openModal", "transaction::create");
     };
-
-    const totalServicesPrice = computed(() => {
-        let total = 0;
-        currentShowTransactionsPayment.value?.services.forEach((service) => {
-            total += service.price * service.quantity;
-        });
-        return total;
-    });
-
-    const totalExtraServicesPrice = computed(() => {
-        let total = 0;
-        currentShowTransactionsPayment.value?.extra_services.forEach((extraService) => {
-            total += extraService.price * extraService.quantity;
-        });
-        return total;
-    });
-
-    const totalPrice = computed(() => {
-        let total = 0;
-        currentShowTransactionsPayment.value?.services.forEach((service) => {
-            total += service.price * service.quantity;
-        });
-        currentShowTransactionsPayment.value?.extra_services.forEach((extraService) => {
-            total += extraService.price * extraService.quantity;
-        });
-        return total;
-    });
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-
         <TransactionsForm :employees="employees" :customers="customers" :projects="projects"
             :transaction="currentlyEditedTransaction" :services="services" />
-
     </CardBoxModal>
+
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
         v-model="isShowTransactionsPayment" :title="ShowTransactionsPaymentModalTitle">
-        <div class="overflow-x-auto">
-            <div class="mt-5">
-                <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
-                    تفاصيل حساب الخـــدمات
-                </h1>
-                <table class="table-auto">
-                    <thead>
-                        <tr>
-                            <th>الكمية</th>
-                            <th>السعر</th>
-                            <th>اسم الخدمة</th>
-                        </tr>
-                    </thead>
-
-                    <tbody v-for="transaction in currentShowTransactionsPayment.services" :key="transaction.id">
-                            <td>{{ transaction . quantity }}</td>
-                            <td>{{ transaction . price }}</td>
-                            <td>{{ transaction . name }}</td>
-                    </tbody>
-
-                    <!-- total price -->
-                    <tfoot>
-                        <tr>
-                            <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
-                                {{ totalServicesPrice }}</td>
-                            <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">السعر الكلي</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-
-            <hr>
-            <div class="mt-5">
-                <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
-                    تفاصيل حساب الخـــدمات الاضافية
-                </h1>
-                <table class="table-auto">
-                    <thead>
-                        <tr>
-                            <th>الكمية</th>
-                            <th>السعر</th>
-                            <th>اسم الخدمة</th>
-                        </tr>
-                    </thead>
-                    <tbody v-for="transaction in currentShowTransactionsPayment.extra_services" :key="transaction.id">
-                            <td>{{ transaction . price }}</td>
-                            <td>{{ transaction . quantity }}</td>
-                            <td>{{ transaction . name }}</td>
-                    </tbody>
-
-                    <!-- total price -->
-                    <tfoot>
-                        <tr>
-                            <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
-                                {{ totalExtraServicesPrice }} </td>
-                            <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">السعر الكلي</td>
-                        </tr>
-                    </tfoot>
-
-                </table>
-            </div>
-
-            <hr>
-            <div class="mt-5">
-                <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
-                    الحساب الكلى وما تم دفعة
-                </h1>
-            </div>
-
-        </div>
-
-
-        <div>
-            <div class="flex px-5">
-                <p class="w-1/2 font-black text-end">{{ totalPrice }}</p>
-                <p class="w-1/2 font-black text-end">المبلغ الكلي</p>
-            </div>
-        </div>
+        <TransactionsPayment :transaction="currentShowTransactionsPayment"
+            :payments="currentShowTransactionsPayment?.payments" :totalServicesPrice="totalServicesPrice"
+            :totalExtraServicesPrice="totalExtraServicesPrice" :totalPrice="totalPrice" />
     </CardBoxModal>
+
+
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
         v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
-
         <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
             :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />
-
     </CardBoxModal>
 
 
