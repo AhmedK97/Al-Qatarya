@@ -58,9 +58,7 @@
         name: customer.name,
         phone: customer.phone,
         address: customer.address,
-        status: customer.status,
         about: customer.about,
-        password: "",
     });
 
 
@@ -96,7 +94,6 @@
             form.name = newProps.customer.name;
             form.phone = newProps.customer.phone;
             form.address = newProps.customer.address;
-            form.status = newProps.customer.status;
             form.about = newProps.customer.about;
         }
     );
@@ -170,13 +167,6 @@
 
         <BaseDivider />
 
-        <FormField label="Status">
-            <select-field :errorMessage="form.errors.status"
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.status" :items="statues" />
-        </FormField>
-
-        <BaseDivider />
 
         <FormField label="address">
             <FormControl :errorMessage="form.errors.address" v-model="form.address" />
@@ -190,9 +180,6 @@
 
         <BaseDivider v-if="!isUpdate" />
 
-        <FormField v-if="!isUpdate" label="Password">
-            <FormControl type="password" :errorMessage="form.errors.password" v-model="form.password" />
-        </FormField>
 
         <template #footer>
             <BaseButtons>

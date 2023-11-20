@@ -74,6 +74,7 @@
                 modalToClose === "project::update"
             ) {
                 isFormModalOpen.value = false;
+                isUploadMediaModalOpen.value = false;
             }
         });
     });
@@ -111,16 +112,6 @@
             `Upload Media ${currentlyUploadMediaProject.value?.title} Project` :
             "Upload Media Project";
     });
-
-
-    // const viewModalTitle = computed(() => {
-    //     return currentlyEditedProject.value?.id ?
-    //         `View ${currentlyEditedProject.value?.title} Project` :
-    //         "View Project";
-    // });
-
-    // const currentlyViewedUser = ref(null);
-    // const isViewModalOpen = ref(false && currentlyViewedUser.value);
 
     const isFormModalOpen = ref(false && currentlyEditedProject.value);
 
@@ -170,12 +161,12 @@
         window.open(url, '_blank');
     };
 
-
     const upload = ref(false);
 
     const uploading = (value) => {
         upload.value = value;
     };
+
 </script>
 
 <template>
@@ -193,6 +184,7 @@
         :noExit="upload" :title="formUploadMediaModalTitle">
         <ProjectsUploadMediaForm :project="currentlyUploadMediaProject" @uploading="uploading" />
     </CardBoxModal>
+
     <table>
         <thead>
             <tr>

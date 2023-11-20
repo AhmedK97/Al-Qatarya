@@ -147,13 +147,13 @@
 
     const formModalTitle = computed(() => {
         return currentlyEditedTransaction.value?.id ?
-            `Edit ${currentlyEditedTransaction.value?.name} Transaction` :
+            `Edit Transaction` :
             "Add New Transaction";
     });
 
     const AddMoreTransactionModalTitle = computed(() => {
         return currentAddMoreTransaction.value?.id ?
-            `Add More ${currentAddMoreTransaction.value?.name} Transaction` :
+            `Add More Transaction` :
             "Add More Transaction";
     });
 
@@ -168,7 +168,7 @@
     const deleteTransaction = (transaction) => {
         Swal.fire({
             title: "Are you sure?",
-            text: `You won't be able to revert this - ${transaction.name}!`,
+            text: `You won't be able to revert this!`,
             icon: "error",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",

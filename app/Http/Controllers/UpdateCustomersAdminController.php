@@ -17,9 +17,7 @@ class UpdateCustomersAdminController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')->ignore($user->id)],
-            'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
             'about' => ['required', 'string', 'max:255'],
         ]);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Arr;
 use Illuminate\Http\Request;
+use Laravel\Jetstream\Rules\Role;
 
 class ProjectServiceController extends Controller
 {
@@ -19,9 +20,9 @@ class ProjectServiceController extends Controller
             'services.*.price' => 'required|integer|min:0',
             'services.*.quantity' => 'required|integer|min:1',
             'extra_services.*.id' => 'nullable|integer|min:0',
-            'extra_services.*.name' => 'nullable|string',
-            'extra_services.*.price' => 'nullable|required_if:extra_services.*.name,!=,""|numeric',
-            'extra_services.*.quantity' => 'nullable|required_if:extra_services.*.name,!=,""|numeric',
+            'extra_services.*.name' => 'required|string',
+            'extra_services.*.price' => ['required', 'integer', 'min:0'],
+            'extra_services.*.quantity' => ['required', 'integer', 'min:0'],
         ]);
 
         if (!empty($data['services'])) {
@@ -34,7 +35,6 @@ class ProjectServiceController extends Controller
             });
         }
 
-        
         if (!empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
                 ->pluck('id')

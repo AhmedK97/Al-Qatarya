@@ -16,6 +16,7 @@ class PaymentTransactionsController extends Controller
             'payments.*.amount' => 'required|integer',
             'payments.*.date' => 'nullable',
         ]);
+        
 
         if (! $data) {
             $transaction->update([

@@ -34,7 +34,7 @@ class UpdateTransactionsController extends Controller
             'times_to_pay' => $data['times_to_pay'],
             'status' => $data['status'],
         ]);
-        // dd($data['services_id']);
+
         $transaction->project->services()->sync(Arr::pluck($data['services_id'], 'id'));
 
         return redirect()

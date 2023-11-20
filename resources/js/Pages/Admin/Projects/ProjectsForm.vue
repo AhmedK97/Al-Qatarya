@@ -65,6 +65,7 @@
             }
         });
     });
+    
 
     const isUpdate = computed(() => {
         if (!props.project) {
@@ -161,6 +162,8 @@
                 Object.assign(form.errors, errors);
             },
         };
+
+        console.log(isUpdate.value);
 
         if (isUpdate.value) {
             router.put(

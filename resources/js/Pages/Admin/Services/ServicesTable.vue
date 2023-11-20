@@ -43,6 +43,7 @@
         },
     });
 
+
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
             if (modalToOpen === "service::create") {
@@ -83,15 +84,6 @@
             `Edit ${currentlyEditedService.value?.name} Service` :
             "Add New Service";
     });
-
-    // const viewModalTitle = computed(() => {
-    //     return currentlyViewedUser.value?.id ?
-    //         `View ${currentlyViewedUser.value?.name} Service` :
-    //         "View Service";
-    // });
-
-    // const currentlyViewedUser = ref(null);
-    const isViewModalOpen = ref(false && currentlyViewedUser.value);
 
     const isFormModalOpen = ref(false && currentlyEditedService.value);
 
@@ -138,10 +130,10 @@
         :title="formModalTitle">
         <ServicesForm :service="currentlyEditedService" />
     </CardBoxModal>
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
+    <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
         :title="viewModalTitle">
         <ServicesForm :service="currentlyEditedService" />
-    </CardBoxModal>
+    </CardBoxModal> -->
 
     <table>
         <thead>

@@ -13,6 +13,7 @@ class StoreProjectsAdminController extends Controller
      */
     public function __invoke(Request $request)
     {
+
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'company' => ['required', 'string', 'max:255'],
@@ -23,16 +24,13 @@ class StoreProjectsAdminController extends Controller
             'project_date' => ['required', 'date'],
             'address' => ['required', 'string', 'max:255'],
             'notes' => ['nullable', 'string', 'max:255'],
-            'services' => ['required', 'array'],
+            'services_id' => ['required', 'array'],
+            'description' => ['nullable', 'string', 'max:255'],
         ]);
 
-        // except data services
+        $project = Project::create(Arr::except($data, 'services_id'));
 
-        $project = Project::create(Arr::except($data, 'services'));
-
-        $project->services()->attach($data['services']);
-
-        dd($project);
+        $project->services()->attach($data['services_id']);
 
         return redirect()
             ->route('index.projects')

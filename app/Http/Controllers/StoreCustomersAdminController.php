@@ -16,23 +16,20 @@ class StoreCustomersAdminController extends Controller
      */
     public function __invoke(Request $request, User $user)
     {
-        dd($request->all());
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')],
-            'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
             'about' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:5'],
         ]);
 
         $data['role'] = UserRoleEnum::CUSTOMER->value;
 
-        if ($request->has('password')) {
-            $data['password'] = bcrypt($request->password);
-        }
 
-        User::create($data);
+
+        User::create($data + [
+            'password' => 'password',
+        ]);
 
         return redirect()
             ->route('index.customers')

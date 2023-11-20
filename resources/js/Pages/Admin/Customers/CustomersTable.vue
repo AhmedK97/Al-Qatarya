@@ -64,7 +64,6 @@
         filteredBy: {
             name: filters?.filteredBy?.name,
             phone: filters?.filteredBy?.phone,
-            status: filters?.filteredBy?.status,
         },
     });
 
@@ -148,7 +147,6 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Status</th>
                 <th>Address</th>
                 <th>About</th>
                 <th>Created At</th>
@@ -167,14 +165,7 @@
                     <input placeholder="Filter by Phone" v-model="activeFilters.filteredBy.phone"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td data-label="Filter Status">
-                    <select v-model="activeFilters.filteredBy.status"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">Filter</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                </td>
+
                 <td></td>
                 <td></td>
                 <td></td>
@@ -195,7 +186,6 @@
                 <td data-label="ID">{{ customer . id }}</td>
                 <td data-label="Name">{{ customer . name }}</td>
                 <td data-label="Phone">{{ customer . phone }}</td>
-                <td data-label="Status">{{ customer . status }}</td>
                 <td data-label="Address">{{ customer . address }}</td>
                 <td data-label="About">{{ customer . about }}</td>
                 <td data-label="Created At">{{ customer . created_at }}</td>

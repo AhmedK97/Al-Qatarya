@@ -12,7 +12,6 @@ class UpdateProjectsAdminController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
-
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'company' => ['required', 'string', 'max:255'],
@@ -24,6 +23,7 @@ class UpdateProjectsAdminController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'notes' => ['nullable', 'string', 'max:255'],
             'services_id' => ['required', 'array'],
+            'description' => ['nullable', 'string', 'max:255'],
         ]);
 
         $project->update(

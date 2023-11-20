@@ -56,6 +56,9 @@
     const maxPaymentRetched = ref(false);
 
     const addFormItem = () => {
+        if (maxPaymentRetched.value === true) {
+            return;
+        }
         if (form.payments == null) {
             form.payments = [{
                 date: "",
@@ -66,6 +69,10 @@
                 date: "",
                 amount: "",
             });
+        }
+        if (form.payments.length === transaction.times_to_pay) {
+            maxPaymentRetched.value = true;
+            return;
         }
     };
 

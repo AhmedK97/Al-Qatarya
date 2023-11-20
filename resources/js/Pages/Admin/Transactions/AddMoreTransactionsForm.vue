@@ -69,6 +69,7 @@
             delete form.errors[key];
         });
 
+
     };
 
     const removeExtraServices = (index) => {
@@ -128,6 +129,7 @@
                         timerProgressBar: true,
                     });
                 },
+
             })
         );
     };
@@ -146,11 +148,15 @@
 
 
             <div v-if="form && form.errors">
-                <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
+                <!-- <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
                     {{ form?.errors['services.' + id + '.price'] }}
                 </span>
                 <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
                     {{ form?.errors['services.' + id + '.quantity'] }}
+                </span> -->
+
+                <span v-if="form?.errors['services.' + id + '.price'] ||  form?.errors['services.' + id + '.quantity'] " class="block text-sm text-red-600">
+                    يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                 </span>
             </div>
         </div>
@@ -175,8 +181,8 @@
 
                 <!-- {{ form.errors }} -->
 
-                <!-- <div class="mb-5" v-if="form && form.errors">
-                    <span v-if="form?.errors['extra_services.' + index + '.name']" class="block text-sm text-red-600">
+                <div class="mb-5" v-if="form && form.errors">
+                    <!-- <span v-if="form?.errors['extra_services.' + index + '.name']" class="block text-sm text-red-600">
                         {{ form?.errors['extra_services.' + index + '.name'] }}
                     </span>
                     <span v-if="form?.errors['extra_services.' + index + '.price']" class="block text-sm text-red-600">
@@ -184,8 +190,17 @@
                     </span>
                     <span v-if="form?.errors['extra_services.' + index + '.quantity']" class="block text-sm text-red-600">
                         {{ form?.errors['extra_services.' + index + '.quantity'] }}
+                    </span> -->
+                    <span
+                    v-if="form?.errors['extra_services.' + index + '.name'] ||
+                    form?.errors['extra_services.' + index + '.price'] ||
+                    form?.errors['extra_services.' + index + '.quantity']
+                    "  class="block text-sm text-red-600">
+                        يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                     </span>
-                </div> -->
+
+
+                </div>
 
             </div>
 
