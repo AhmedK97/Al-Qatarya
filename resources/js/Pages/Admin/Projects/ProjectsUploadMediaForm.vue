@@ -30,11 +30,26 @@
         project: props.project,
     })
 
+    //
+
     const file = ref(null);
 
     const emit = defineEmits(['uploading'])
 
     function submit() {
+        if (form.files.length > 0) {
+            for (let i = 0; i < form.files.length; i++) {
+                if (form.files[i].size > 50000000) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'يوجد ملف بحجم اكبير من 50 ميجا',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                    })
+                    return;
+                }
+            }
+        }
         emit('uploading', true);
         form.post(route('uploadMedia.projects', props.project?.id), {
             preserveScroll: true,
@@ -52,6 +67,16 @@
                     // close modal
                     // eventBus.$emit('closeModal', 'project::uploadMedia');
                 })
+            },
+            onError: () => {
+                emit('uploading', false);
+                file.value.value = null;
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'يوجد ملف بحجم اكبير من 50 ميجا',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                })
             }
         })
     }
@@ -66,6 +91,8 @@
             :disabled="form.progress" />
         <BaseButton :disabled="form.progress" color="info" :icon="mdiPlus" label="Add" small type="submit">
             Submit</BaseButton>
+            {{ form.errors['files']}}
+
         <!--
         <div v-if="form.project">
             <img v-for="file in form.project.media_files" :src="file.path">

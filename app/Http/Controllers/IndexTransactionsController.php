@@ -36,7 +36,6 @@ class IndexTransactionsController extends Controller
             ->through(function (Transaction $transactions) {
                 return new TransactionsAdminResource($transactions);
             });
-        // dd($transactions);
 
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
