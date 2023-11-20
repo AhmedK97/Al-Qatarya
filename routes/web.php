@@ -134,6 +134,4 @@ Route::prefix('/admin')->group(function () {
 
     Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');
 
-
-
 });

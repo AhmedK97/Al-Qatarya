@@ -10,7 +10,7 @@ class DeleteTransactionsController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request , Transaction $transaction)
+    public function __invoke(Request $request, Transaction $transaction)
     {
 
         $transaction->project->services()->detach();

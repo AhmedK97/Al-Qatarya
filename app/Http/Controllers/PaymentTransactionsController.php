@@ -24,7 +24,7 @@ class PaymentTransactionsController extends Controller
             ];
         });
 
-        $transaction->update( [
+        $transaction->update([
             'payments' => $data['payments'],
         ]);
 
