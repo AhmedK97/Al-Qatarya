@@ -11,6 +11,7 @@ module.exports = {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.vue",
+        "./resources/css/**/*.css",
         "./resources/js/**/*.js",
     ],
     darkMode: "class", // or 'media' or 'class'

@@ -1,67 +1,75 @@
 <script setup>
-import { computed } from "vue";
-import { mdiClose } from "@mdi/js";
-import BaseButton from "@/Components/Admin/BaseButton.vue";
-import BaseButtons from "@/Components/Admin/BaseButtons.vue";
-import CardBox from "@/Components/Admin/CardBox.vue";
-import OverlayLayer from "@/Components/Admin/OverlayLayer.vue";
-import CardBoxComponentTitle from "@/Components/Admin/CardBoxComponentTitle.vue";
+    import {
+        computed
+    } from "vue";
+    import {
+        mdiClose
+    } from "@mdi/js";
+    import BaseButton from "@/Components/Admin/BaseButton.vue";
+    import BaseButtons from "@/Components/Admin/BaseButtons.vue";
+    import CardBox from "@/Components/Admin/CardBox.vue";
+    import OverlayLayer from "@/Components/Admin/OverlayLayer.vue";
+    import CardBoxComponentTitle from "@/Components/Admin/CardBoxComponentTitle.vue";
 
-const props = defineProps({
-    title: {
-        type: String,
-        required: true,
-    },
-    button: {
-        type: String,
-        default: "info",
-    },
-    buttonLabel: {
-        type: String,
-        default: "Done",
-    },
-    hasCancel: Boolean,
-    hasCancelButton: Boolean,
-    hasConfirm: Boolean,
-    scrollable: Boolean,
-    cardWidthClass: {
-        type: String,
-        default: "w-11/12 md:w-3/5 lg:w-2/5 xl:w-4/12",
-    },
-    modelValue: {
-        type: [String, Number, Boolean],
-        default: null,
-    },
-    noExit: {
-        type: Boolean,
-        default: false,
-    },
-});
+    const props = defineProps({
+        title: {
+            type: String,
+            required: true,
+        },
+        button: {
+            type: String,
+            default: "info",
+        },
+        buttonLabel: {
+            type: String,
+            default: "Done",
+        },
+        hasCancel: Boolean,
+        hasCancelButton: Boolean,
+        hasConfirm: Boolean,
+        scrollable: Boolean,
+        cardWidthClass: {
+            type: String,
+            default: "w-11/12 md:w-3/5 lg:w-2/5 xl:w-4/12",
+        },
+        modelValue: {
+            type: [String, Number, Boolean],
+            default: null,
+        },
+        noExit: {
+            type: Boolean,
+            default: false,
+        },
+        customClass: {
+            type: String,
+            default: "",
+        }
+    });
 
-const emit = defineEmits(["update:modelValue", "cancel", "confirm"]);
+    const emit = defineEmits(["update:modelValue", "cancel", "confirm"]);
 
-const value = computed({
-    get: () => props.modelValue,
-    set: (value) => emit("update:modelValue", value),
-});
+    const value = computed({
+        get: () => props.modelValue,
+        set: (value) => emit("update:modelValue", value),
+    });
 
-const confirmCancel = (mode) => {
-    if (props.noExit) {
-        return;
-    }
-    value.value = false;
-    emit(mode);
-};
+    const confirmCancel = (mode) => {
+        if (props.noExit) {
+            return;
+        }
+        value.value = false;
+        emit(mode);
+    };
 
-const confirm = () => confirmCancel("confirm");
+    const confirm = () => confirmCancel("confirm");
 
-const cancel = () => confirmCancel("cancel");
+    const cancel = () => confirmCancel("cancel");
 
-window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && value.value) {
-        cancel();
-    }
-});
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && value.value) {
+            cancel();
+        }
+    });
 </script>
 
 <template>
@@ -70,13 +78,14 @@ window.addEventListener("keydown", (e) => {
         <CardBox :class="{
             'overflow-y-auto': scrollable,
             [cardWidthClass]: true,
-        }" v-show="value" class="z-50 shadow-lg max-h-modal" is-modal>
+        }"
+            v-show="value" class="z-50 shadow-lg max-h-modal" is-modal>
             <CardBoxComponentTitle :title="title">
                 <BaseButton v-if="hasCancel" :icon="mdiClose" color="whiteDark" small rounded-full
                     @click.prevent="cancel" />
             </CardBoxComponentTitle>
 
-            <div class="space-y-3">
+            <div class="space-y-3  {{ customClass }}">
                 <slot />
             </div>
 

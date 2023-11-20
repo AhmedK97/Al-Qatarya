@@ -133,7 +133,7 @@
     };
 </script>
 <template>
-    <CardBox form @submit.prevent="submit">
+    <CardBox form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
         <label class="block mb-2 font-bold">
             Services
         </label>

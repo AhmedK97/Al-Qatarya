@@ -17,6 +17,22 @@ class PaymentTransactionsController extends Controller
             'payments.*.date' => 'nullable',
         ]);
 
+        if (! $data) {
+            $transaction->update([
+                'payments' => null,
+            ]);
+
+            return redirect()
+                ->route('index.transactions')
+                ->with('swalNotification', [
+                    'title' => __('common.success'),
+                    'text' => __('common.updated'),
+                    'icon' => 'success',
+                    'timer' => 5000,
+                ]);
+        }
+
+
         $data['payments'] = collect($data['payments'])->map(function ($payment) {
             return [
                 'amount' => $payment['amount'],

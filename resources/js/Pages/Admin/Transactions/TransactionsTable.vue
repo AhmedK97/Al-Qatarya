@@ -215,7 +215,7 @@
 
 
 
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
+    <CardBoxModal cardWidthClass="w-96 overflow-y-auto 2xl:w-4/12" scrollable :hasCancel="true"
         v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
         <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
             :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />

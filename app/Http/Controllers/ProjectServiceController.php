@@ -23,18 +23,27 @@ class ProjectServiceController extends Controller
             'extra_services.*.price' => 'nullable|required_if:extra_services.*.name,!=,""|numeric',
             'extra_services.*.quantity' => 'nullable|required_if:extra_services.*.name,!=,""|numeric',
         ]);
-        collect($data['services'])->each(function ($serviceData) use ($project) {
-            $service = $serviceData['id'];
-            $project->services()->updateExistingPivot($service, [
-                'price' => $serviceData['price'],
-                'quantity' => $serviceData['quantity'],
-            ]);
-        });
 
-        if (! empty($data['extra_services'])) {
-            $receivedIds = collect($data['extra_services'])->pluck('id')->filter();
+        if (!empty($data['services'])) {
+            collect($data['services'])->each(function ($serviceData) use ($project) {
+                $service = $serviceData['id'];
+                $project->services()->updateExistingPivot($service, [
+                    'price' => $serviceData['price'],
+                    'quantity' => $serviceData['quantity'],
+                ]);
+            });
+        }
 
-            $project->extraServices()->whereNotIn('id', $receivedIds)->delete();
+        
+        if (!empty($data['extra_services'])) {
+            $receivedIds = collect($data['extra_services'])
+                ->pluck('id')
+                ->filter();
+
+            $project
+                ->extraServices()
+                ->whereNotIn('id', $receivedIds)
+                ->delete();
 
             collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
                 $id = Arr::get($extraServiceData, 'id');

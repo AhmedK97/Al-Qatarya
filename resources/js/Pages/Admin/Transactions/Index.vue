@@ -67,26 +67,26 @@
         },
     });
 
-    const exportTable = () => {
-        // ask for confirmation
-        Swal.fire({
-            title: "Are you sure?",
-            text: "Export Transactions table to excel file!",
-            icon: "info",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, export it!",
-        }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.cancel) {
-                // User clicked cancel button
-                console.log('Export cancelled');
-            } else if (result.value) {
-                // User clicked export button
-                window.open(route("export.transactions"), "_blank");
-            }
-        });
-    };
+    // const exportTable = () => {
+    //     // ask for confirmation
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "Export Transactions table to excel file!",
+    //         icon: "info",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, export it!",
+    //     }).then((result) => {
+    //         if (result.dismiss === Swal.DismissReason.cancel) {
+    //             // User clicked cancel button
+    //             console.log('Export cancelled');
+    //         } else if (result.value) {
+    //             // User clicked export button
+    //             window.open(route("export.transactions"), "_blank");
+    //         }
+    //     });
+    // };
 </script>
 
 <template>
@@ -109,7 +109,7 @@
                         color="info" :icon="mdiPlus" label="Add" small />
 
 
-                    <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small />
+                    <!-- <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small /> -->
 
                 </div>
             </SectionTitleLineWithButton>
