@@ -67,7 +67,6 @@ const props = defineProps({
                     color="text-blue-500"
                 />
             </div>
-
             <SectionTitleLineWithButton :icon="mdiDomain" title="Services">
                 <div class="flex items-center space-x-3">
                     <BaseButton

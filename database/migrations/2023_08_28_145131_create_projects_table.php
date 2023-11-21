@@ -23,10 +23,8 @@ return new class extends Migration
             $table->string('cost')->nullable();
             $table->string('status');
             $table->string('company');
-
-            $table->foreignId('employee_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('customer_id')->constrained('users')->onDelete('cascade');
-
+            $table->foreignId('employee_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('customer_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
 
         });

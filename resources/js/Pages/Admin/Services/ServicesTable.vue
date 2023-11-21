@@ -103,16 +103,18 @@
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                router.delete(route("delete.services", service.id), {
+                form.delete(route("delete.services", {
+                    service: service.id
+                }), {
                     preserveState: true,
                     replace: true,
                     onSuccess: () => {
                         Swal.fire({
-                            title: "Deleted!",
-                            text: `${service.name} has been deleted.`,
                             icon: "success",
-                            showConfirmButton: true,
-                            timer: 2000,
+                            title: "Success",
+                            text: "Service deleted successfully",
+                            timer: 3000,
+                            timerProgressBar: true,
                         });
                     },
                 });
@@ -184,18 +186,19 @@
             </tr>
 
             <!-- User data -->
-            <!-- {{ services.data }} -->
+            <!-- {{ services . data }} -->
             <tr v-for="service in services.data" :key="service.id">
                 <td data-label="ID">{{ service . id }}</td>
                 <td data-label="Name">{{ service . name }}</td>
                 <td data-label="Status">{{ service . company_name }}</td>
-                <td data-label="Language">{{ service . lang == 'ar'  ? 'Arabic' : 'English'}}</td>
+                <td data-label="Language">{{ service . lang == 'ar' ? 'Arabic' : 'English' }}</td>
                 <td data-label="Created At">{{ service . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                        <BaseButton color="info" :icon="mdiSquareEditOutline" small
-                            @click = "editService(service)" />
-                        <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteService(service)" />
+                        <BaseButton color="info" :icon="mdiSquareEditOutline" small @click = "editService(service)" />
+                        <BaseButton v-if="!service.is_used" color="danger" :icon="mdiTrashCan" small
+                            @click="deleteService(service)" />
+                        <BaseButton v-if="service.is_used" color="danger" :icon="mdiTrashCan" small disabled />
                     </BaseButtons>
                 </td>
             </tr>

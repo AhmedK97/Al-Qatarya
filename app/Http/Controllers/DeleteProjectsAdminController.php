@@ -12,6 +12,12 @@ class DeleteProjectsAdminController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
+        $project->extraServices()->delete();
+
+        $project->services()->detach();
+
+        $project->transaction()->delete();
+
         $project->delete();
 
         return redirect()

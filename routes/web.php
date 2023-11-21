@@ -93,7 +93,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::Put('customers/{user}', UpdateCustomersAdminController::class)->name('update.customers');
 
-    Route::delete('customers/{user}', DeleteCustomersAdminController::class)->name('delete.customers');
+    Route::delete('customers/{user}', DeleteCustomersAdminController::class)->name('delete.customer');
 
     Route::get('/customers/export', ExportCustomersAdminController::class)->name('export.customers');
 
@@ -115,7 +115,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::post('/services/{service}', UpdateServicesAdminController::class)->name('update.services');
 
-    Route::delete('/services/{service}', DeleteServicesAdminController::class)->name('delete.services');
+    Route::post('/services/{service}', DeleteServicesAdminController::class)->name('delete.services');
 
     // --------------- Transaction -----------------//
 
@@ -130,7 +130,6 @@ Route::prefix('/admin')->group(function () {
     Route::post('/transactions/{transaction}/payments', PaymentTransactionsController::class)->name('store.payments.transactions');
 
     // --------------- service transaction -----------------//
-    // ProjectServiceController
 
     Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');
 

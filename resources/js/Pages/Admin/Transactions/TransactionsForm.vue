@@ -79,7 +79,6 @@
         status: transaction.status,
         address: transaction.address,
         times_to_pay: transaction.times_to_pay,
-        full_price: transaction.full_price,
         service_id: transaction.service_id,
         project_id: transaction.project,
         services_id: transaction.services,
@@ -120,7 +119,6 @@
             form.status = transaction.status;
             form.address = transaction.address.address;
             form.times_to_pay = transaction.times_to_pay;
-            form.full_price = transaction.full_price;
             form.service_id = transaction.service_id;
             form.project_id = transaction.project;
             form.services_id = transaction.services;
@@ -230,11 +228,6 @@
 
             <BaseDivider />
 
-            <label class="block mb-2 font-bold">
-                Full price
-            </label>
-            <FormControl :errorMessage="form.errors.full_price" v-model="form.full_price" />
-            <BaseDivider />
 
 
             <label class="block mb-2 font-bold">

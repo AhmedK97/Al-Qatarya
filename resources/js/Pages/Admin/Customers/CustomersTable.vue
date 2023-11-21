@@ -98,7 +98,7 @@
         isFormModalOpen.value = true;
     };
 
-    const deleteEmployee = (customer) => {
+    const deleteCustomer = (customer) => {
         Swal.fire({
             title: "Are you sure?",
             text: `You won't be able to revert this - ${customer.name}!`,
@@ -109,13 +109,13 @@
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                router.delete(route("delete.customers", customers.id), {
+                router.delete(route("delete.customer", customer.id), {
                     preserveState: true,
                     replace: true,
                     onSuccess: () => {
                         Swal.fire({
                             title: "Deleted!",
-                            text: `${customers.name} has been deleted.`,
+                            text: `${customer.name} has been deleted.`,
                             icon: "success",
                             showConfirmButton: true,
                             timer: 2000,
@@ -193,7 +193,7 @@
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
                         <BaseButton color="info" :icon="mdiSquareEditOutline" small
                             @click = "editEmployee(customer)" />
-                        <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteEmployee(customer)" />
+                        <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteCustomer(customer)" />
                     </BaseButtons>
                 </td>
             </tr>

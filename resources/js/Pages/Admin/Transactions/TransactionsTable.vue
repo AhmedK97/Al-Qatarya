@@ -231,7 +231,6 @@
                 <th>Phone Number</th>
                 <th>Employee Name</th>
                 <th>Address</th>
-                <th>Total Price</th>
                 <th>Times To Pay</th>
                 <th>Status</th>
                 <th>Created At</th>
@@ -286,7 +285,6 @@
                 <td data-label="Phone Number">{{ transaction . customer . phone }}</td>
                 <td data-label="Customer Employee">{{ transaction . employee . name }}</td>
                 <td data-label="Address">{{ transaction . address . address }}</td>
-                <td data-label="Full Price">{{ transaction . full_price }}</td>
                 <td data-label="Times To Pay">{{ transaction . times_to_pay }}</td>
                 <td data-label="Status">
                     <PillTag :color="transaction.status === 'Paid' ? 'success' : 'info'"

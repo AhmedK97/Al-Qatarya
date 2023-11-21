@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { Head, Link, router } from "@inertiajs/vue3";
+import { Head, Link, router , usePage } from "@inertiajs/vue3";
 import ApplicationMark from "@/Components/ApplicationMark.vue";
 import Banner from "@/Components/Banner.vue";
 import Dropdown from "@/Components/Dropdown.vue";
@@ -28,6 +28,24 @@ const serviceDropdown = ref(false);
 const showServices = () => {
     serviceDropdown.value = !serviceDropdown.value;
 };
+
+const fireSwalOnNotification = (pageInstance) => {
+    if (
+        Object.keys(pageInstance.props.flash.swalNotification ?? {}).length > 0
+    ) {
+        const swalConfig = pageInstance.props.flash.swalNotification;
+        console.log(swalConfig);
+        Swal.fire(
+            Object.assign(swalConfig, {
+                timer: swalConfig.timer ?? 3000,
+                timerProgressBar: true,
+            })
+        );
+    }
+};
+
+fireSwalOnNotification(usePage());
+
 
 const logout = () => {
     router.post(route("logout"));

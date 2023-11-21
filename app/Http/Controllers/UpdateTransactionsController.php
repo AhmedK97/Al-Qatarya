@@ -17,7 +17,6 @@ class UpdateTransactionsController extends Controller
             'customer_id' => 'required|integer|min:0',
             'employee_id' => 'required|integer|min:0',
             'address' => 'required|string',
-            'full_price' => 'required|integer|min:1',
             'times_to_pay' => 'required|integer|min:1',
             'services_id' => 'required|array',
             'status' => 'required|string|in:Pending,Paid',
@@ -30,7 +29,6 @@ class UpdateTransactionsController extends Controller
         ]);
 
         $transaction->update([
-            'full_price' => $data['full_price'],
             'times_to_pay' => $data['times_to_pay'],
             'status' => $data['status'],
         ]);

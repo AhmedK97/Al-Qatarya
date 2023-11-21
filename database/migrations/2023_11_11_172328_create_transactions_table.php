@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->constrained('projects');
-            $table->integer('full_price')->nullable();
             $table->integer('times_to_pay')->nullable();
             $table->string('status')->nullable();
             $table->json('payments')->nullable();

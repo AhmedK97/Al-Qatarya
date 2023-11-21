@@ -33,13 +33,13 @@ export default [
         icon: mdiAccountGroup,
     },
     {
-        route: "index.projects",
-        label: "Projects",
+        route: "index.services",
+        label: "Services",
         icon: mdiSquareEditOutline,
     },
     {
-        route: "index.services",
-        label: "Services",
+        route: "index.projects",
+        label: "Projects",
         icon: mdiSquareEditOutline,
     },
     {

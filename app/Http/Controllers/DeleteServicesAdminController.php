@@ -12,6 +12,8 @@ class DeleteServicesAdminController extends Controller
      */
     public function __invoke(Request $request, Service $service)
     {
+       
+
         $service->delete();
 
         return redirect()
