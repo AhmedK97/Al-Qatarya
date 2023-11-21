@@ -127,7 +127,6 @@
                 " class="container m-auto max-w-4xl mt-6 mx-auto w-[92%]">
                 <div class="flex flex-wrap rtl:space-x-reverse">
                     <div v-for="video in project.videos" :key="video" class="w-full p-2 sm:w-1/2 lg:w-1/3">
-
                         <video class="h-72" width="320" height="240" controls>
                             <source :src="video" type="video/mp4">
                             <source :src="video" type="video/ogg">

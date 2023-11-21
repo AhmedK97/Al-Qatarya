@@ -63,11 +63,13 @@
             form.payments = [{
                 date: "",
                 amount: "",
+                percentage: "",
             }, ];
         } else {
             form.payments.push({
                 date: "",
                 amount: "",
+                percentage: "",
             });
         }
         if (form.payments.length === transaction.times_to_pay) {
@@ -144,6 +146,10 @@
     });
 
 
+    const calculateAdjustedAmount = (percentage, index) => {
+        // form.payments[index].amount = (totalPrice.value - totalPaid.value) * (percentage / 100);
+        return (totalPrice.value ) * (percentage / 100);
+    };
 
     const submit = () => {
 
@@ -184,20 +190,22 @@
 </script>
 <template>
     <div>
-        <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow lg:px-10">
+        <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
             <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
                 تفاصيل حساب الخـــدمات
             </h1>
-            <table class="table-auto">
-                <thead>
+            <table class="my-4 bg-gray-200 table-auto rounded-2xl">
+                <thead class="">
                     <tr>
-                        <th class="font-bold text-center">السعر</th>
-                        <th class="font-bold text-center">الكمية</th>
+                        <th class="font-bold text-center">الاجمالى</th>
+                        <th class="font-bold text-center">سعر المتر</th>
+                        <th class="font-bold text-center">عدد الامتار</th>
                         <th class="font-bold text-center">اسم الخدمة</th>
                     </tr>
                 </thead>
 
                 <tbody v-for="transaction in transaction.services" :key="transaction.id">
+                    <td class="font-bold text-center">{{ transaction . price * transaction . quantity }}</td>
                     <td class="font-bold text-center">{{ transaction . price }}</td>
                     <td class="font-bold text-center">{{ transaction . quantity }}</td>
                     <td class="font-bold text-center">{{ transaction . name }}</td>
@@ -206,7 +214,7 @@
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
+                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-600">
                             {{ totalServicesPrice }}</td>
                         <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">الحساب الكلي</td>
                     </tr>
@@ -215,19 +223,21 @@
         </div>
 
         <hr>
-        <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow lg:px-10">
+        <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
             <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
                 تفاصيل حساب الخـــدمات الاضافية
             </h1>
-            <table class="table-auto">
+            <table class="my-4 bg-gray-200 table-auto rounded-2xl">
                 <thead>
                     <tr>
+                        <th class="font-bold text-center">الاجمالي</th>
                         <th class="font-bold text-center">السعر</th>
                         <th class="font-bold text-center">الكمية</th>
                         <th class="font-bold text-center">اسم الخدمة</th>
                     </tr>
                 </thead>
                 <tbody v-for="transaction in transaction.extra_services" :key="transaction.id">
+                    <td class="font-bold text-center">{{ transaction . price * transaction . quantity }}</td>
                     <td class="font-bold text-center">{{ transaction . price }}</td>
                     <td class="font-bold text-center">{{ transaction . quantity }}</td>
                     <td class="font-bold text-center">{{ transaction . name }}</td>
@@ -236,7 +246,7 @@
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="2" class="font-bold text-center text-red-500 bg-gray-600">
+                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-600">
                             {{ totalExtraServicesPrice }} </td>
                         <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">الحساب الكلي</td>
                     </tr>
@@ -245,7 +255,7 @@
         </div>
     </div>
 
-    <div class="px-2 py-4 overflow-x-auto bg-white rounded-lg shadow lg:px-10">
+    <div class="px-2 py-4 overflow-x-auto bg-white rounded-lg shadow ">
         <div v-if="transaction.times_to_pay > 0">
             <div class="mt-5">
                 <h1 class="text-lg text-center underline bg-blue-500 rounded-full decoration-sky-500">
@@ -275,14 +285,27 @@
                                         <span v-if="payment.date" class="ml-2 font-bold">{{ payment . date }}</span>
                                         <span v-else class="ml-2 font-bold">-------------</span>
                                     </td>
-                                    <td class="py-2 font-bold text-center">
+                                    <td class="py-2 font-bold ">
                                         <div
                                             class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                             <input type="text" id="first-name"
-                                                class="w-40 py-3 pl-10 pr-4 mt-2 text-gray-700 bg-gray-200 border border-transparent rounded-md text-end focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
+                                                class="w-24 py-3 pr-4 mt-2 text-center text-gray-700 bg-gray-200 border border-transparent rounded-md focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
                                                 placeholder="المبلغ" v-model="payment.amount" />
                                         </div>
                                     </td>
+                                    <td class="py-2 font-bold ">
+                                        <div
+                                            class="relative text-center text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
+                                            <input type="text" id="percentage"
+                                                class="w-12 py-3 pr-4 mt-2 text-gray-700 bg-gray-200 border border-transparent rounded-md focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
+                                                placeholder="%" v-model="payment.percentage" />
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2 font-bold text-center">
+                                        <span>{{ calculateAdjustedAmount(payment . percentage, index) }}</span>
+                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -329,11 +352,11 @@
         </div>
     </div>
 
-    <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow lg:px-10">
+    <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
         <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
             الحساب الكلى
         </h1>
-        <table class="table-auto">
+        <table class="my-4 bg-gray-200 table-auto rounded-2xl">
             <thead>
                 <tr>
                     <th class="font-bold text-center">الحساب الكلى للخدمات</th>
@@ -355,7 +378,8 @@
                 </tr>
 
                 <tr v-else-if="totalPrice === totalPaid && totalPrice !== 0">
-                    <td colspan="2" class="font-bold text-center text-green-500 bg-gray-600 ">الحســـــاب مكتمل</td>
+                    <td colspan="2" class="font-bold text-center text-green-500 bg-gray-600 ">الحســـــاب مكتمل
+                    </td>
                 </tr>
 
                 <tr v-else-if="totalPrice === 0">

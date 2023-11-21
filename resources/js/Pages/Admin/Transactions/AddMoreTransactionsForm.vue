@@ -141,8 +141,8 @@
         </label>
         <div v-for="(service , id) in (form.services)" :key="id" class="mb-4">
             <FormField :label="`اسم الخدمة: ${service.name}`">
-                <FormControl v-model="service.price" placeholder="السعر" />
-                <FormControl v-model="service.quantity" placeholder="الكمية" />
+                <FormControl v-model="service.price" placeholder="سعر المتر" />
+                <FormControl v-model="service.quantity" placeholder="عدد الامتار" />
             </FormField>
             <base-divider />
 
