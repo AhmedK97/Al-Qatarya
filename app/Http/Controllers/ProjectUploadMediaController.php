@@ -14,23 +14,16 @@ class ProjectUploadMediaController extends Controller
             'files.*' => 'file|mimes:jpeg,png,mkv,mp4|max:51200',
         ]);
 
-        $fileTypeMappings = [
-            'mkv' => Project::PROJECT_VIDEOS,
-            'mp4' => Project::PROJECT_VIDEOS,
-            'jpeg' => Project::PROJECT_IMAGES,
-            'png' => Project::PROJECT_IMAGES,
-        ];
-
         $files = $request->file('files');
 
         foreach ($files as $file) {
-            $extension = $file->getMimeType();
+            $extension = mime_content_type($file->getRealPath());
 
-            $extension = str_replace(['image/', 'video/'], '', $extension);
-
-            $fileType = $fileTypeMappings[$extension];
-
-            $mediaCollection = $fileType === Project::PROJECT_VIDEOS ? Project::PROJECT_VIDEOS : Project::PROJECT_IMAGES;
+            if (str_contains($extension, 'image')) {
+                $mediaCollection = Project::PROJECT_IMAGES;
+            } else {
+                $mediaCollection = Project::PROJECT_VIDEOS;
+            }
 
             $project->addMedia($file)->toMediaCollection($mediaCollection);
         }

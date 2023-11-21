@@ -117,7 +117,7 @@
             " class="container m-auto max-w-4xl mt-6 mx-auto w-[92%]">
                 <div class="flex flex-wrap rtl:space-x-reverse">
                     <div v-for="image in project.images" :key="image" class="w-full p-2 sm:w-1/2 lg:w-1/3">
-                        <img :src="image" alt="" class="w-64 m-auto rounded-lg">
+                        <img class="w-64 h-56 m-auto rounded-lg" width="320" height="240" :src="image" alt="" >
                     </div>
                 </div>
             </div>
@@ -127,12 +127,8 @@
                 " class="container m-auto max-w-4xl mt-6 mx-auto w-[92%]">
                 <div class="flex flex-wrap rtl:space-x-reverse">
                     <div v-for="video in project.videos" :key="video" class="w-full p-2 sm:w-1/2 lg:w-1/3">
-                        <!-- <img :src="video" alt="" class="w-64 m-auto rounded-lg"> -->
-                        <!-- <video>
-                            <source :src="video" type="video/mp4">
-                        </video> -->
-                        <!-- <h1>{{ video }}</h1> -->
-                        <video width="320" height="240" controls>
+
+                        <video class="h-72" width="320" height="240" controls>
                             <source :src="video" type="video/mp4">
                             <source :src="video" type="video/ogg">
                             Your browser does not support the video tag.
