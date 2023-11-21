@@ -103,7 +103,7 @@
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                form.delete(route("delete.services", {
+                router.delete(route("delete.services", {
                     service: service.id
                 }), {
                     preserveState: true,

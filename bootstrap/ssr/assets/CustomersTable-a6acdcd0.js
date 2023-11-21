@@ -89,7 +89,7 @@ const _sfc_main = {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          router.delete(route("delete.customers", customers.id), {
+          router.delete(route("delete.customerss", customers.id), {
             preserveState: true,
             replace: true,
             onSuccess: () => {
