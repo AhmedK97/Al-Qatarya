@@ -26,6 +26,7 @@ class UpdateProjectsAdminController extends Controller
             'description' => ['nullable', 'string', 'max:255'],
         ]);
 
+
         $project->update(
             [
                 'title' => $data['title'],
@@ -37,6 +38,7 @@ class UpdateProjectsAdminController extends Controller
                 'project_date' => $data['project_date'],
                 'address' => $data['address'],
                 'notes' => $data['notes'],
+                'description' => $data['description'] ?? '',
             ]
         );
 

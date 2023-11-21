@@ -3,7 +3,7 @@
         <slot name="upper-title" />
     </p> -->
     <div>
-        <h1 class="text-2xl text-center capitalize md:text-4xl font-black text-gray-900 underline underline-offset-[20px]">
+        <h1 class="text-2xl text-center capitalize  font-black text-gray-900 underline underline-offset-[20px]">
             <slot name="title" />
         </h1>
     </div>

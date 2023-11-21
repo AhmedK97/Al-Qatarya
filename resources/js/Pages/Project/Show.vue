@@ -28,10 +28,10 @@
                                 <div class="flex flex-col">
                                     <SectionTitleShadow>
                                         <template #upper-title>
-                                            <span class="text-3xl md:text-4xl">{{ project . title }}</span>
+                                            <span class="text-3xl ">{{ project . title }}</span>
                                         </template>
                                         <template #title>
-                                            <span class="text-2xl md:text-3xl">{{ project . title }}</span>
+                                            <span class="text-2xl ">{{ project . title }}</span>
                                         </template>
                                     </SectionTitleShadow>
                                 </div>
