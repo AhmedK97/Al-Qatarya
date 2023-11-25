@@ -62,8 +62,6 @@
 
     onMounted(() => {
         eventBus.$on("openModal", (modalToOpen) => {
-            console.log(modalToOpen)
-
             if (modalToOpen === "project::create") {
                 currentlyEditedProject.value = null;
                 isFormModalOpen.value = true;
@@ -71,7 +69,6 @@
         });
 
         eventBus.$on("closeModal", (modalToClose) => {
-            console.log(modalToClose)
             if (
                 modalToClose === "project::create" ||
                 modalToClose === "project::update"
