@@ -65,7 +65,7 @@
             }
         });
     });
-    
+
 
     const isUpdate = computed(() => {
         if (!props.project) {
@@ -187,11 +187,11 @@
         }
 
         router.post(
-            route("store.projects", form),
+            route("store.projects"), form,
             Object.assign(sharedFormOptions, {
                 onSuccess: () => {
-                    resetForm();
                     eventBus.$emit("closeModal", "project::create");
+                    resetForm();
                     Swal.fire({
                         icon: "success",
                         title: "Success",
@@ -241,7 +241,8 @@
         <label class="block mb-2 font-bold">
             Services
         </label>
-        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id" multiple></v-select>
+        <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id"
+            multiple></v-select>
         <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form . errors . services_id }}</span>
 
         <BaseDivider />
