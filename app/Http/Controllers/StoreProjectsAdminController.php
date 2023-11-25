@@ -23,7 +23,7 @@ class StoreProjectsAdminController extends Controller
             'status' => ['required', 'string', 'max:255'],
             'project_date' => ['required', 'date'],
             'address' => ['required', 'string', 'max:255'],
-            'notes' => ['nullable', 'string', 'max:255'],
+            'notes' => ['nullable', 'string'],
             'services_id' => ['required', 'array'],
             'description' => ['nullable', 'string', 'max:255'],
         ]);

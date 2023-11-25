@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('address')->nullable();
             $table->string('space_area')->nullable();
             $table->json('description')->nullable();
-            $table->string('notes')->nullable();
+            $table->text('notes')->nullable();
             $table->string('cost')->nullable();
             $table->string('status');
             $table->string('company');

@@ -166,18 +166,13 @@
     const uploading = (value) => {
         upload.value = value;
     };
-
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <ProjectsForm
-        :employees="employees"
-        :customers="customers"
-        :project="currentlyEditedProject"
-        :services="services"
-        />
+        <ProjectsForm :employees="employees" :customers="customers" :project="currentlyEditedProject"
+            :services="services" />
     </CardBoxModal>
 
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isUploadMediaModalOpen"
@@ -261,9 +256,20 @@
                         :color="project.company === 'othman' ? 'success' : project.company === 'qatarya' ? 'info' : 'danger'"
                         :label="project.company" small />
                 </td>
+                <!-- {{ project }} -->
                 <td data-label="Phone">{{ project . customer_name }}</td>
                 <td data-label="Status">{{ project . employee_name }}</td>
-                <td data-label="Services">{{ project . services }}</td>
+                <td data-label="Services">
+                    <span
+                    v-if="project.services_name.length > 0">
+                        <span v-for="service_name in project.services_name" :key="service_name">
+                            {{ service_name }}
+                        </span>
+                    </span>
+                    <span v-else>
+                        <span class="text-red-500">No Services</span>
+                    </span>
+                </td>
                 <td data-label="Address">{{ project . space_area }}</td>
                 <td data-label="status">
                     <PillTag
@@ -273,7 +279,14 @@
                 </td>
                 <td data-label="project_date">{{ project . project_date }}</td>
                 <td data-label="About">{{ project . address }}</td>
-                <td data-label="notes">{{ project . notes }}</td>
+                <td data-label="notes">
+                    <span v-if="project.notes.length > 50">
+                        {{ project . notes . substring(0, 50) }}...
+                    </span>
+                    <span v-else>
+                        {{ project . notes }}
+                    </span>
+                </td>
                 <td data-label="Created At">{{ project . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>

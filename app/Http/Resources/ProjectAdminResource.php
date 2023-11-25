@@ -19,7 +19,7 @@ class ProjectAdminResource extends JsonResource
             'id' => $this?->id,
             'title' => $this?->title,
             'slug' => $this?->slug,
-            'notes' => Str::limit($this->notes, 100),
+            'notes' => $this->notes,
             'description' => $this?->description,
             'project_date' => $this?->project_date,
             'cost' => $this?->cost,
@@ -32,6 +32,7 @@ class ProjectAdminResource extends JsonResource
             'space_area' => $this?->space_area,
             'address' => $this?->address,
             'services_id' => $this?->services?->pluck('id'),
+            'services_name' => $this?->services?->pluck('name'),
             'created_at' => $this?->created_at->diffForHumans(),
             // 'media_files' => MediaFilesResource::collection($this->getMedia("*")),
         ];
