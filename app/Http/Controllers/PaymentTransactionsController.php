@@ -15,8 +15,9 @@ class PaymentTransactionsController extends Controller
         $data = $request->validate([
             'payments.*.amount' => 'required|integer',
             'payments.*.date' => 'nullable',
+            'payments.*.percentage' => 'nullable|numeric',
         ]);
-        
+
 
         if (! $data) {
             $transaction->update([
@@ -37,6 +38,7 @@ class PaymentTransactionsController extends Controller
         $data['payments'] = collect($data['payments'])->map(function ($payment) {
             return [
                 'amount' => $payment['amount'],
+                'percentage' => $payment['percentage'] ?? null,
                 'date' => $payment['date'] ?? now()->format('Y-m-d'),
             ];
         });

@@ -4,7 +4,8 @@
         ref,
         watch,
         reactive,
-        onMounted
+        onMounted,
+        nextTick
     } from "vue";
     import cloneDeep from "lodash/cloneDeep";
     import {
@@ -79,9 +80,6 @@
     };
 
     const removePayment = (index) => {
-        // if (form.payments.length === 1) {
-        //     return;
-        // }
         form.payments.splice(index, 1);
         maxPaymentRetched.value = false;
     };
@@ -108,6 +106,19 @@
             form.payments = newProps.payments;
         }
     );
+
+    // any change in amount should update percentage
+    // watch(form.payments, (payments) => {
+    //     payments.forEach((payment) => {
+    //         if (payment.amount) {
+    //             return payment.percentage = (payment.amount / totalPrice.value) * 100;
+    //         } else {
+    //             return payment.percentage = 0;
+    //         }
+    //     });
+    // });
+
+
 
     const totalExtraServicesPrice = computed(() => {
         let total = 0;
@@ -145,18 +156,7 @@
         return total;
     });
 
-
-    const calculateAdjustedAmount = (percentage, index) => {
-        // form.payments[index].amount = (totalPrice.value - totalPaid.value) * (percentage / 100);
-        return (totalPrice.value ) * (percentage / 100);
-    };
-
     const submit = () => {
-
-        // if (totalPrice.value < totalPaid.value) {
-        //     return;
-        // }
-
         const sharedFormOptions = {
             preserveState: true,
             preserveScroll: true,
@@ -191,10 +191,10 @@
 <template>
     <div>
         <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
-            <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+            <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-200">
                 تفاصيل حساب الخـــدمات
             </h1>
-            <table class="my-4 bg-gray-200 table-auto rounded-2xl">
+            <table class="my-4 bg-gray-100 table-auto rounded-2xl">
                 <thead class="">
                     <tr>
                         <th class="font-bold text-center">الاجمالى</th>
@@ -214,9 +214,9 @@
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-600">
+                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-400">
                             {{ totalServicesPrice }}</td>
-                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">الحساب الكلي</td>
+                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400 ">الحساب الكلي</td>
                     </tr>
                 </tfoot>
             </table>
@@ -224,10 +224,10 @@
 
         <hr>
         <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
-            <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+            <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-200">
                 تفاصيل حساب الخـــدمات الاضافية
             </h1>
-            <table class="my-4 bg-gray-200 table-auto rounded-2xl">
+            <table class="my-4 bg-gray-100 table-auto rounded-2xl">
                 <thead>
                     <tr>
                         <th class="font-bold text-center">الاجمالي</th>
@@ -246,9 +246,9 @@
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-600">
+                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-400">
                             {{ totalExtraServicesPrice }} </td>
-                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">الحساب الكلي</td>
+                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400 ">الحساب الكلي</td>
                     </tr>
                 </tfoot>
             </table>
@@ -258,7 +258,7 @@
     <div class="px-2 py-4 overflow-x-auto bg-white rounded-lg shadow ">
         <div v-if="transaction.times_to_pay > 0">
             <div class="mt-5">
-                <h1 class="text-lg text-center underline bg-blue-500 rounded-full decoration-sky-500">
+                <h1 class="text-lg text-center underline bg-orange-200 rounded-full decoration-sky-500">
                     ما تم دفعه من اصل
                     ({{ transaction . times_to_pay }})
                     دفعات
@@ -275,21 +275,67 @@
                 <div>
                     <div>
                         <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th class="font-bold text-center">تاريخ الدفع</th>
+                                    <th class="font-bold text-center">المدفوع</th>
+                                    <th class="font-bold text-center"> % النسبة</th>
+                                    <th class="font-bold text-center">المبلغ بحساب النسبة</th>
+
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr v-for="(payment, index) in form.payments" :key="index">
+                                    <td
+                                        v-if="(payment.amount != (payment.percentage * totalPrice) / 100) && payment.percentage">
+                                        <span v-if="payment.amount">
+
+                                            <span class="font-bold text-red-800"
+                                                v-if="payment.amount - (payment.percentage * totalPrice) / 100 < 0">
+                                                <span>
+                                                    {{ Math . abs(payment . amount - (payment . percentage * totalPrice) / 100) . toFixed(2) }}
+                                                </span>
+                                                ناقص
+                                            </span>
+
+                                            <span class="font-bold text-red-800"
+                                                v-if="payment.amount - (payment.percentage * totalPrice) / 100 > 0">
+                                                <span>{{ Math . abs(payment . amount - (payment . percentage * totalPrice) / 100) . toFixed(2) }}</span>
+                                                زائدة
+                                            </span>
+
+                                        </span>
+                                    </td>
+
+                                    <td v-else-if="payment.amount == (payment.percentage * totalPrice) / 100">
+                                        <span>
+                                            مكتمل
+                                        </span>
+                                    </td>
+
+                                    <td v-else>
+                                        <span class="ml-2 font-bold">
+                                            -------------
+                                        </span>
+                                    </td>
+
                                     <td class="py-2 font-bold text-center">
-                                        <BaseButton :class="'w-5 h-5'" type="button" class="w-24 h-0 mb-4"
+                                        <BaseButton :class="'w-5 h-5'" type="button" class="w-20 h-0 mb-4"
                                             :icon="mdiMinus" color="danger" @click="removePayment(index)" />
                                     </td>
                                     <td class="py-2 font-bold text-center">
                                         <span v-if="payment.date" class="ml-2 font-bold">{{ payment . date }}</span>
-                                        <span v-else class="ml-2 font-bold">-------------</span>
+                                        <span v-else class="ml-2 font-bold">
+                                            -------------
+                                        </span>
                                     </td>
                                     <td class="py-2 font-bold ">
                                         <div
                                             class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                             <input type="text" id="first-name"
-                                                class="w-24 py-3 pr-4 mt-2 text-center text-gray-700 bg-gray-200 border border-transparent rounded-md focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
+                                                class="w-20 py-3 pr-4 mt-2 text-center text-gray-700 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
                                                 placeholder="المبلغ" v-model="payment.amount" />
                                         </div>
                                     </td>
@@ -297,18 +343,37 @@
                                         <div
                                             class="relative text-center text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                             <input type="text" id="percentage"
-                                                class="w-12 py-3 pr-4 mt-2 text-gray-700 bg-gray-200 border border-transparent rounded-md focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
+                                                class="w-20 py-3 pr-4 mt-2 text-center text-gray-700 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:bg-white focus:border-gray-500 dark:focus:border-purple-400 dark:bg-gray-700 dark:text-gray-300"
                                                 placeholder="%" v-model="payment.percentage" />
                                         </div>
                                     </td>
 
                                     <td class="py-2 font-bold text-center">
-                                        <span>{{ calculateAdjustedAmount(payment . percentage, index) }}</span>
+                                        <span class="ml-2 font-bold">
+                                            {{ (payment . percentage * totalPrice) / 100 . toFixed(2) }}
+                                        </span>
                                     </td>
-
                                 </tr>
                             </tbody>
                         </table>
+
+                        <div v-if="(totalPrice - totalPaid) !== 0" class="m-5">
+                            <div class="flex justify-end">
+                                <span class="font-bold text-center text-red-500 ">
+                                    {{ 100 - (totalPaid / totalPrice) * 100 }}
+                                </span>
+                                <span class="font-bold text-center text-red-500 ">% :المتبقى بالنسبة</span>
+                            </div>
+
+                            <div class="flex justify-end">
+                                <span class="font-bold text-center text-red-500 ">
+                                    {{ totalPrice - totalPaid }}
+                                </span>
+                                <span class="font-bold text-center text-red-500 ">
+                                    &nbsp; المتبقى
+                                </span>
+                            </div>
+                        </div>
 
                         <div v-for="(payment, index) in form.payments" :key="index" class="mt-3 text-center">
                             <span v-if="form?.errors['payments.' + index + '.amount']"
@@ -353,10 +418,10 @@
     </div>
 
     <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
-        <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-500">
+        <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-200">
             الحساب الكلى
         </h1>
-        <table class="my-4 bg-gray-200 table-auto rounded-2xl">
+        <table class="my-4 bg-gray-100 table-auto rounded-2xl">
             <thead>
                 <tr>
                     <th class="font-bold text-center">الحساب الكلى للخدمات</th>
@@ -378,18 +443,18 @@
                 </tr>
 
                 <tr v-else-if="totalPrice === totalPaid && totalPrice !== 0">
-                    <td colspan="2" class="font-bold text-center text-green-500 bg-gray-600 ">الحســـــاب مكتمل
+                    <td colspan="2" class="font-bold text-center text-green-500 bg-gray-400 ">الحســـــاب مكتمل
                     </td>
                 </tr>
 
                 <tr v-else-if="totalPrice === 0">
-                    <td colspan="2" class="font-bold text-center text-white bg-gray-600 ">لا يوجد حسابات</td>
+                    <td colspan="2" class="font-bold text-center text-white bg-gray-400 ">لا يوجد حسابات</td>
                 </tr>
 
                 <tr v-else>
-                    <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600">
+                    <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400">
                         {{ totalPrice - totalPaid }}</td>
-                    <td colspan="1" class="font-bold text-center text-red-500 bg-gray-600 ">المتبقى</td>
+                    <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400 ">المتبقى</td>
                 </tr>
             </tfoot>
         </table>

@@ -206,7 +206,7 @@
     </CardBoxModal>
 
 
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true"
+    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true"
         v-model="isShowTransactionsPayment" :title="ShowTransactionsPaymentModalTitle">
         <TransactionsPayment :transaction="currentShowTransactionsPayment"
             :payments="currentShowTransactionsPayment?.payments" :totalServicesPrice="totalServicesPrice"

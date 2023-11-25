@@ -247,7 +247,6 @@
                 <td></td>
 
             </tr>
-            <!-- User data -->
             <tr v-for="project in projects.data" :key="project.id">
                 <td data-label="ID">{{ project . id }}</td>
                 <td data-label="Name">{{ project . title }}</td>
@@ -256,7 +255,6 @@
                         :color="project.company === 'othman' ? 'success' : project.company === 'qatarya' ? 'info' : 'danger'"
                         :label="project.company" small />
                 </td>
-                <!-- {{ project }} -->
                 <td data-label="Phone">{{ project . customer_name }}</td>
                 <td data-label="Status">{{ project . employee_name }}</td>
                 <td data-label="Services">

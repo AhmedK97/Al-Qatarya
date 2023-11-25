@@ -248,7 +248,7 @@
         <BaseDivider />
 
         <FormField label="Space Area">
-            <FormControl :errorMessage="form.errors.space_area" v-model="form.space_area" />
+            <FormControl type="textarea" :errorMessage="form.errors.space_area" v-model="form.space_area" />
         </FormField>
         <BaseDivider />
 
