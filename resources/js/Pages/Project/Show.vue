@@ -6,7 +6,6 @@
     import AppLayout from "@/Layouts/AppLayout.vue";
     import ImageCarousel from "@/Components/ImageCarousel.vue";
     import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
-    import ProjectDescription from "@/Components/ProjectDescription.vue";
     const props = defineProps({
         project: Object,
     });
@@ -91,8 +90,6 @@
                                     </div>
                                 </div>
                             </header>
-                            <!-- <ImageCarousel :Gallery="project.images" /> -->
-                            <!-- <ProjectDescription :project="project" /> -->
                         </div>
                     </div>
                 </article>
@@ -153,7 +150,6 @@
                 </div>
             </div>
 
-            <!-- <ProjectDescription class="mt-4" :project="project" /> -->
         </main>
     </AppLayout>
 </template>

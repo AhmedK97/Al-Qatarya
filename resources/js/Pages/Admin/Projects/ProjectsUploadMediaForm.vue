@@ -87,16 +87,12 @@
         Progress : {{ form . progress . percentage }}%
     </progress>
     <form @submit.prevent="submit">
-        <input ref="file" type="file" multiple @input="form.files = $event.target.files"
-            :disabled="form.progress" />
+        <input ref="file" type="file" multiple @input="form.files = $event.target.files" :disabled="form.progress"
+            accept=".jpg, .jpeg, .png, .mkv, .mp4" />
+
         <BaseButton :disabled="form.progress" color="info" :icon="mdiPlus" label="Add" small type="submit">
             Submit</BaseButton>
-            {{ form.errors['files']}}
-
-        <!--
-        <div v-if="form.project">
-            <img v-for="file in form.project.media_files" :src="file.path">
-        </div> -->
+        {{ form . errors['files'] }}
 
     </form>
 </template>
