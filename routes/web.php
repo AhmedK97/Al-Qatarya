@@ -36,6 +36,7 @@ use App\Http\Controllers\UpdateEmployeesAdminController;
 use App\Http\Controllers\UpdateProjectsAdminController;
 use App\Http\Controllers\UpdateServicesAdminController;
 use App\Http\Controllers\UpdateTransactionsController;
+use App\Http\Controllers\WatsappMessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// send whatsapp message
+Route::get('/send', WatsappMessageController::class)->name('send.message');
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -132,5 +135,4 @@ Route::prefix('/admin')->group(function () {
     // --------------- service transaction -----------------//
 
     Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');
-
 });
