@@ -185,8 +185,8 @@ const logout = () => {
                                 <p class="text-sm font-medium text-gray-300">
                                     {{ $t("home.phone_number") }}
                                 </p>
-                                <p class="font-medium text-md text-gray-50">
-                                    0123456789
+                                <p class="font-medium direction text-md text-gray-50 ">
+                                    +96599959053
                                 </p>
                             </div>
                         </div>
@@ -203,7 +203,7 @@ const logout = () => {
                                     {{ $t("home.email") }}
                                 </p>
                                 <p class="font-medium text-md text-gray-50">
-                                    info@alqatarya.com
+                                    alqataryacom@gmail.com
                                 </p>
                             </div>
                         </div>
@@ -482,6 +482,14 @@ const logout = () => {
 .slide-enter-active,
 .slide-leave-active {
     transition: all 0.3s ease-in-out;
+}
+
+html[dir="ltr"] .direction {
+    direction: rtl !important;
+}
+
+html[dir="rtl"] .direction {
+    direction: ltr !important;
 }
 
 .slide-enter-from,
