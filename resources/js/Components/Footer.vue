@@ -209,9 +209,9 @@ import { Link } from "@inertiajs/vue3";
 </template>
 
 <style scoped>
-html[dir="ltr"] .direction {
-    direction: rtl !important;
-}
+/* html[dir="ltr"] .direction { */
+    /* direction: rtl !important; */
+/* } */
 
 html[dir="rtl"] .direction {
     direction: ltr !important;

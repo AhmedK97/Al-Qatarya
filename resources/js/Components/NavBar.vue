@@ -483,10 +483,10 @@ const logout = () => {
 .slide-leave-active {
     transition: all 0.3s ease-in-out;
 }
-
+/* 
 html[dir="ltr"] .direction {
     direction: rtl !important;
-}
+} */
 
 html[dir="rtl"] .direction {
     direction: ltr !important;
