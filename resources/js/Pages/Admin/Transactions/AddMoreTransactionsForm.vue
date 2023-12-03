@@ -137,10 +137,10 @@
 <template>
     <CardBox form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
         <label class="block mb-2 font-bold">
-            Services
+            الخدمات الاساسية
         </label>
         <div v-for="(service , id) in (form.services)" :key="id" class="mb-4">
-            <FormField :label="`اسم الخدمة: ${service.name}`">
+            <FormField :label="`اسم الخدمة : ${service.name}`">
                 <FormControl v-model="service.price" placeholder="سعر المتر" />
                 <FormControl v-model="service.quantity" placeholder="عدد الامتار" />
             </FormField>
@@ -165,7 +165,7 @@
                 {{}}
                 <div class="flex justify-end">
                     <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
-                        label="Remove" @click="removeExtraServices(index)" />
+                        label="حــذف" @click="removeExtraServices(index)" />
                 </div>
 
                 <FormField >

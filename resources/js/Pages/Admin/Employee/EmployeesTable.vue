@@ -81,7 +81,7 @@
     const formModalTitle = computed(() => {
         return currentlyEditedEmployee.value?.id ?
             `Edit ${currentlyEditedEmployee.value?.name} Employee` :
-            "Add New Employee";
+            "اضافة موظف جديد";
     });
 
     // const viewModalTitle = computed(() => {
@@ -102,13 +102,14 @@
 
     const deleteEmployee = (employee) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: `You won't be able to revert this - ${employee.name}!`,
+            title: "هل انت متاكد ؟",
+            text: `لن تتمكن من التراجع عن هذا - ${employee.name}!`,
             icon: "error",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+             confirmButtonText: "نعم، احذفه!",
+            cancelButtonText: "الغاء",
         }).then((result) => {
             if (result.isConfirmed) {
                 router.delete(route("delete.employees", employee.id), {
@@ -147,13 +148,14 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Status</th>
-                <th>Address</th>
-                <th>About</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>الاسم</th>
+                <th>الموبايل</th>
+                <th>الحالة</th>
+                <th>العنوان</th>
+                <th>نبذة</th>
+                <th>تاريخ الاضافة</th>
+                <th>الإجراءات
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -161,20 +163,20 @@
             <tr key="filters">
                 <td></td>
                 <td data-label="Filter Name">
-                    <input placeholder="Filter by name" v-model="activeFilters.filteredBy.name"
+                    <input placeholder="الاســم" v-model="activeFilters.filteredBy.name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
 
                 <td data-label="Filter Phone">
-                    <input placeholder="Filter by Phone" v-model="activeFilters.filteredBy.phone"
+                    <input placeholder="الموبايــل" v-model="activeFilters.filteredBy.phone"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td data-label="Filter Status">
+                <td data-label="الحــالة">
                     <select v-model="activeFilters.filteredBy.status"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">Filter</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
+                        <option :value="null">فلترة</option>
+                        <option value="active">نشط</option>
+                        <option value="inactive">غير نشط</option>
                     </select>
                 </td>
                 <td></td>
@@ -197,7 +199,8 @@
                 <td data-label="ID">{{ employee . id }}</td>
                 <td data-label="Name">{{ employee . name }}</td>
                 <td data-label="Phone">{{ employee . phone }}</td>
-                <td data-label="Status">{{ employee . status }}</td>
+                <td data-label="Status" v-if="employee . status == 'Active'">نشظ</td>
+                <td data-label="Status" v-else-if="employee . status == 'Inactive'">غير نشط</td>
                 <td data-label="Address">{{ employee . address }}</td>
                 <td data-label="About">{{ employee . about }}</td>
                 <td data-label="Created At">{{ employee . created_at }}</td>

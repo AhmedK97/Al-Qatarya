@@ -90,7 +90,7 @@
         <input ref="file" type="file" multiple @input="form.files = $event.target.files" :disabled="form.progress"
             accept=".jpg, .jpeg, .png, .mkv, .mp4" />
 
-        <BaseButton :disabled="form.progress" color="info" :icon="mdiPlus" label="Add" small type="submit">
+        <BaseButton :disabled="form.progress" color="info" :icon="mdiPlus" label="اضافة" small type="submit">
             Submit</BaseButton>
         {{ form . errors['files'] }}
 

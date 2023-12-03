@@ -74,11 +74,11 @@
 
     const statues = [{
             id: "Active",
-            name: "Active",
+            name: "نشط",
         },
         {
             id: "Inactive",
-            name: "Inactive",
+            name: "غير نشط",
         },
     ];
 
@@ -155,30 +155,30 @@
 </script>
 <template>
     <CardBox form @submit.prevent="submit">
-        <FormField label="Name">
+        <FormField label="الاسم">
             <FormControl :errorMessage="form.errors.name" v-model="form.name" />
         </FormField>
 
         <BaseDivider />
 
-        <FormField label="Phone">
+        <FormField label="موبايل">
             <FormControl :errorMessage="form.errors.phone" v-model="form.phone" />
         </FormField>
 
         <BaseDivider />
 
 
-        <FormField label="address">
+        <FormField label="عنوان">
             <FormControl :errorMessage="form.errors.address" v-model="form.address" />
         </FormField>
 
         <BaseDivider />
 
-        <FormField label="About">
+        <FormField label="نبذة">
             <FormControl :errorMessage="form.errors.about" v-model="form.about" />
         </FormField>
 
-        <BaseDivider v-if="!isUpdate" />
+        <!-- <BaseDivider v-if="!isUpdate" /> -->
 
 
         <template #footer>

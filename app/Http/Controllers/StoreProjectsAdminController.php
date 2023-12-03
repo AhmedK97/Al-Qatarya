@@ -16,7 +16,6 @@ class StoreProjectsAdminController extends Controller
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'company' => ['required', 'string', 'max:255'],
             'customer_id' => ['required', 'integer', 'exists:users,id'],
             'employee_id' => ['required', 'integer', 'exists:users,id'],
             'space_area' => ['required', 'string', 'max:255'],
@@ -27,6 +26,8 @@ class StoreProjectsAdminController extends Controller
             'services_id' => ['required', 'array'],
             'description' => ['nullable', 'string', 'max:255'],
         ]);
+
+        $data['company'] = 'qatarya';
 
         $project = Project::create(Arr::except($data, 'services_id'));
 

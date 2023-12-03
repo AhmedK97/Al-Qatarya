@@ -31,6 +31,8 @@
       @apply border-b-0;
     }
 
+
+
     tbody tr, tbody tr:nth-child(odd) {
       @apply lg:hover:bg-gray-100 lg:dark:hover:bg-slate-700/70;
     }
@@ -39,8 +41,8 @@
       @apply lg:bg-gray-100/50 lg:dark:bg-slate-800/50;
     }
 
-    td:before {
-      content: attr(data-label);
-      @apply pr-3 font-semibold text-left lg:hidden;
-    }
+    /* td:before { */
+      /* content: attr(data-label);
+      @apply pr-3 font-semibold text-left lg:hidden; */
+    /* } */
   }

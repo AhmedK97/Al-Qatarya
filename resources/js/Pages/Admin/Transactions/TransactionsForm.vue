@@ -187,7 +187,7 @@
         <!-- project -->
 
         <label class="block mb-2 font-bold">
-            Project
+            اختر المشروع
         </label>
         <!-- {{ transaction }} -->
         <v-select :options="projects" label="title" v-model="form.project_id"
@@ -198,7 +198,7 @@
         <BaseDivider />
         <div v-if="isUpdate">
             <label class="block mb-2 font-bold">
-                Customer
+                الموظف
             </label>
 
             <v-select :options="customers" label="name" v-model="form.customer_id"
@@ -209,7 +209,7 @@
             <BaseDivider />
 
             <label class="block mb-2 font-bold">
-                Employee
+                العميل
             </label>
             <v-select :options="employees" label="name" v-model="form.employee_id"
                 :reduce="option => option.id"></v-select>
@@ -220,7 +220,7 @@
             <!-- services -->
 
             <label class="block mb-2 font-bold">
-                Services
+                الخدمات
             </label>
             <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option"
                 multiple></v-select>
@@ -231,12 +231,12 @@
 
 
             <label class="block mb-2 font-bold">
-                Times to pay
+                عدد مرات الدفع
             </label>
             <FormControl :errorMessage="form.errors.times_to_pay" v-model="form.times_to_pay" />
             <BaseDivider />
 
-            <FormField label="Status">
+            <FormField label="الحالة">
                 <select-field :errorMessage="form.errors.status"
                     class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                     v-model="form.status" :items="statues" />
@@ -244,7 +244,7 @@
 
             <BaseDivider />
 
-            <FormField label="address">
+            <FormField label="العنوان">
                 <FormControl :errorMessage="form.errors.address" v-model="form.address" />
             </FormField>
 

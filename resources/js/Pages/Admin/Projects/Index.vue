@@ -52,26 +52,7 @@ const props = defineProps({
     },
 });
 
-const exportTable = () => {
-    // ask for confirmation
-    Swal.fire({
-        title: "Are you sure?",
-        text: "Export Projects table to excel file!",
-        icon: "info",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, export it!",
-    }).then((result) => {
-        if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked cancel button
-            console.log('Export cancelled');
-        } else if (result.value) {
-            // User clicked export button
-            window.open(route("export.employees"), "_blank");
-        }
-    });
-};
+
 
 </script>
 
@@ -83,29 +64,29 @@ const exportTable = () => {
                 <CardBoxWidget
                     :icon="mdiFileDocumentMultipleOutline"
                     :number="projectsCount"
-                    label="Projects"
+                    label="العدد الكلي للمشاريع"
                     color="text-blue-500"
                 />
             </div>
 
-            <SectionTitleLineWithButton :icon="mdiDomain" title="Projects">
-                <div class="flex items-center space-x-3">
+            <SectionTitleLineWithButton :icon="mdiDomain" title="المشاريع">
+                <div class="flex items-center">
                     <BaseButton
                         @click="
                             () => eventBus.$emit('openModal', 'project::create')
                         "
                         color="info"
                         :icon="mdiPlus"
-                        label="Add"
+                        label="اضافة"
                         small
                     />
-                    <BaseButton
+                    <!-- <BaseButton
                         @click="exportTable"
                         color="success"
                         :icon="mdiExport"
                         label="Export"
                         small
-                    />
+                    /> -->
 
                 </div>
              </SectionTitleLineWithButton>

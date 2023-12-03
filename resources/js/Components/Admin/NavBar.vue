@@ -24,7 +24,7 @@ const isMenuNavBarActive = ref(false);
 
 <template>
     <nav
-        class="fixed inset-x-0 top-0 z-30 w-screen bg-gray-50 h-14 transition-position lg:w-auto dark:bg-slate-800"
+        class="fixed inset-x-0 top-0 z-30 bg-gray-50 h-14 transition-position lg:w-auto dark:bg-slate-800"
     >
         <div class="flex lg:items-stretch" :class="containerMaxW">
             <div class="flex items-stretch flex-1 h-14">

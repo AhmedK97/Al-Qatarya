@@ -20,31 +20,31 @@ export default [
     {
         route: "dashboard",
         icon: mdiMonitor,
-        label: "Dashboard",
+        label: "لوحه التحكم",
     },
     {
         route: "index.employees",
-        label: "Employees",
+        label: "الموظفين",
         icon: mdiAccountMultipleOutline,
     },
     {
         route: "index.customers",
-        label: "Customers",
+        label: "العمــلاء",
         icon: mdiAccountGroup,
     },
     {
         route: "index.services",
-        label: "Services",
+        label: "الخدمــات",
         icon: mdiSquareEditOutline,
     },
     {
         route: "index.projects",
-        label: "Projects",
+        label: "المشــاريع",
         icon: mdiSquareEditOutline,
     },
     {
         route: "index.transactions",
-        label: "Transactions",
+        label: "المعــاملات المالية",
         icon: mdiCashMultiple,
     },
 
@@ -90,16 +90,5 @@ export default [
             },
         ],
     },
-    {
-        href: "https://github.com/justboil/admin-one-vue-tailwind",
-        label: "GitHub",
-        icon: mdiGithub,
-        target: "_blank",
-    },
-    {
-        href: "https://github.com/justboil/admin-one-react-tailwind",
-        label: "React version",
-        icon: mdiReact,
-        target: "_blank",
-    },
+
 ];

@@ -50,7 +50,7 @@
     const exportTable = () => {
         // ask for confirmation
         Swal.fire({
-            title: "Are you sure?",
+            title: "هل انت متاكد ؟",
             text: "Export Customers table to excel file!",
             icon: "info",
             showCancelButton: true,
@@ -76,17 +76,17 @@
 
         <SectionMain>
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
-                <CardBoxWidget :icon="mdiAccountPlus" :number="customersCount" label="Employees" color="text-blue-500" />
+                <CardBoxWidget :icon="mdiAccountPlus" :number="customersCount" label="عدد العملاء الكلي" color="text-blue-500" />
             </div>
 
-            <SectionTitleLineWithButton :icon="mdiDomain" title="Customers">
-                <div class="flex items-center space-x-3">
+            <SectionTitleLineWithButton :icon="mdiDomain" title="العمـلاء">
+                <div class="flex items-center">
                     <BaseButton
                         @click="
                             () => eventBus.$emit('openModal', 'customer::create')
                         "
-                        color="info" :icon="mdiPlus" label="Add" small />
-                    <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small />
+                        color="info" :icon="mdiPlus" label="اضافه عميل جديد" small />
+                    <!-- <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small /> -->
 
                 </div>
             </SectionTitleLineWithButton>

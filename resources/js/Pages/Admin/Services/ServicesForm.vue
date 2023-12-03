@@ -94,11 +94,11 @@
 
     const companies = [{
             id: "qatarya",
-            name: "qatarya",
+            name: "القطرية",
         },
         {
             id: "othman",
-            name: "othman",
+            name: "عثمان",
         },
     ];
 
@@ -186,20 +186,20 @@
 </script>
 <template>
     <CardBox form @submit.prevent="submit">
-        <FormField label="Name">
+        <FormField label="اسم الخدمة">
             <FormControl :errorMessage="form.errors.name" v-model="form.name" />
         </FormField>
 
         <BaseDivider />
-        <FormField label="Company">
+        <FormField label="الشركة">
             <select-field :errorMessage="form.errors.company_name"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.company_name" :items="companies" />
         </FormField>
 
-        <FormField label="Image">
+        <FormField label="صورة الخدمة">
 
-            <FormFilePicker :errorMessage="form.errors.files" accept="image/*" class="mt-5" label="Image Cover"
+            <FormFilePicker :errorMessage="form.errors.files" accept="image/*" class="mt-5" label="صورة الغلاف"
                 v-model="form.files" />
 
             <!-- <span v-if="form.errors.files" class="text-red-500 ">
@@ -212,14 +212,14 @@
         <div v-if="!isUpdate">
             <div v-for="(formItem, index) in formItems" :key="index">
                 <div class="flex justify-end">
-                    <BaseButton type="button" class="w-24 h-0" :icon="mdiMinus" color="danger" label="Remove"
+                    <BaseButton type="button" class="w-24 h-0" :icon="mdiMinus" color="danger" label="حــذف"
                         @click="formItems.splice(index, 1)" />
                 </div>
-                <FormField label="Title">
+                <FormField label="العنوان">
                     <FormControl v-model="formItem.title" />
                 </FormField>
 
-                <FormField label="Description">
+                <FormField label="الوصــف">
                     <FormControl type="textarea" v-model="formItem.description" />
                 </FormField>
 
@@ -237,15 +237,15 @@
         <div v-for="(formItem, index) in service.additional_info" :key="index">
                 <!-- remove button -->
                 <div class="flex justify-end">
-                    <BaseButton type="button" class="w-24 h-0" :icon="mdiMinus" color="danger" label="Remove"
+                    <BaseButton type="button" class="w-24 h-0" :icon="mdiMinus" color="danger" label="حــذف"
                         @click="service.additional_info.splice(index, 1)" />
                 </div>
-                <FormField label="Title">
+                <FormField label="العنوان">
                     <FormControl v-model="formItem.title"
                         :error-message="form.errors.additional_info ? form.errors.additional_info[index]?.title : null" />
                 </FormField>
 
-                <FormField label="Description">
+                <FormField label="الوصــف">
                     <FormControl type="textarea"
                         :error-message="form.errors.additional_info ? form.errors.additional_info[index]?.description : null"
                         v-model="formItem.description" />
@@ -259,14 +259,14 @@
             </span>
 
             <div class="flex justify-end">
-                <BaseButton type="button" :icon="mdiPlus" color="info" label="Add More Info"
+                <BaseButton type="button" :icon="mdiPlus" color="info" label="اضافة المزيد"
                     @click="addFormItemUpdate" />
             </div>
 
         </div>
         <BaseDivider />
 
-        <FormField label="Language">
+        <FormField label="اللغة">
             <select-field :errorMessage="form.errors.lang"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.lang" :items="lang" />

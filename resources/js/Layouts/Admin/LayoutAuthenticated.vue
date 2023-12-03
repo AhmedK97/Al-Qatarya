@@ -35,8 +35,9 @@ const menuClick = (event, item) => {
 };
 </script>
 
-<template>
+<template class="p-8">
     <div
+        style="direction: rtl;"
         :class="{
             dark: styleStore.darkMode,
             'overflow-hidden lg:overflow-visible': isAsideMobileExpanded,
@@ -78,7 +79,7 @@ const menuClick = (event, item) => {
                 >
                     <BaseIcon :path="mdiMenu" size="24" />
                 </NavBarItemPlain>
-               
+
             </NavBar>
             <AsideMenu
                 :is-aside-mobile-expanded="isAsideMobileExpanded"

@@ -43,7 +43,7 @@ const props = defineProps({
 const exportTable = () => {
     // ask for confirmation
     Swal.fire({
-        title: "Are you sure?",
+        title: "هل انت متاكد ؟",
         text: "Export Employees table to excel file!",
         icon: "info",
         showCancelButton: true,
@@ -73,29 +73,29 @@ const exportTable = () => {
                 <CardBoxWidget
                     :icon="mdiAccountPlus"
                     :number="employeesCount"
-                    label="Employees"
+                    label="عدد الموظفين"
                     color="text-blue-500"
                 />
             </div>
 
-            <SectionTitleLineWithButton :icon="mdiDomain" title="Employees">
-                <div class="flex items-center space-x-3">
+            <SectionTitleLineWithButton :icon="mdiDomain" title="الموظفين">
+                <div class="flex items-center">
                     <BaseButton
                         @click="
                             () => eventBus.$emit('openModal', 'employee::create')
                         "
                         color="info"
                         :icon="mdiPlus"
-                        label="Add"
+                        label="اضافه موظف جديد"
                         small
                     />
-                    <BaseButton
+                    <!-- <BaseButton
                         @click="exportTable"
                         color="success"
                         :icon="mdiExport"
                         label="Export"
                         small
-                    />
+                    /> -->
 
                 </div>
              </SectionTitleLineWithButton>

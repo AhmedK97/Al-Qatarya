@@ -70,7 +70,7 @@
     // const exportTable = () => {
     //     // ask for confirmation
     //     Swal.fire({
-    //         title: "Are you sure?",
+    //         title: "هل انت متاكد ؟",
     //         text: "Export Transactions table to excel file!",
     //         icon: "info",
     //         showCancelButton: true,
@@ -96,17 +96,17 @@
 
         <SectionMain>
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
-                <CardBoxWidget :icon="mdiCashMultiple" :number="transactionsCount" label="Transactions"
+                <CardBoxWidget :icon="mdiCashMultiple" :number="transactionsCount" label="عدد المعاملات "
                     color="text-blue-500" />
             </div>
 
-            <SectionTitleLineWithButton :icon="mdiDomain" title="Transactions">
-                <div class="flex items-center space-x-3">
+            <SectionTitleLineWithButton :icon="mdiDomain" title="المعاملات المالية">
+                <div class="flex items-center">
                     <BaseButton
                         @click="
                             () => eventBus.$emit('openModal', 'transaction::create')
                         "
-                        color="info" :icon="mdiPlus" label="Add" small />
+                        color="info" :icon="mdiPlus" label="اضافة" small />
 
 
                     <!-- <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small /> -->

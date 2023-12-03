@@ -44,13 +44,13 @@
         });
     });
 
+
     const form = useForm({
         transaction: props.transaction,
         payments: props?.payments,
     });
 
-    // on mounted if payments is empty add one payment
-
+ 
     const transaction = reactive(props.transaction || {});
     const payments = reactive(props.payments || {});
 
@@ -106,17 +106,6 @@
             form.payments = newProps.payments;
         }
     );
-
-    // any change in amount should update percentage
-    // watch(form.payments, (payments) => {
-    //     payments.forEach((payment) => {
-    //         if (payment.amount) {
-    //             return payment.percentage = (payment.amount / totalPrice.value) * 100;
-    //         } else {
-    //             return payment.percentage = 0;
-    //         }
-    //     });
-    // });
 
 
 
@@ -283,7 +272,6 @@
                                     <th class="font-bold text-center">المدفوع</th>
                                     <th class="font-bold text-center"> % النسبة</th>
                                     <th class="font-bold text-center">المبلغ بحساب النسبة</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -317,7 +305,7 @@
 
                                     <td v-else>
                                         <span class="ml-2 font-bold">
-                                            -------------
+                                            -----------
                                         </span>
                                     </td>
 
@@ -328,7 +316,7 @@
                                     <td class="py-2 font-bold text-center">
                                         <span v-if="payment.date" class="ml-2 font-bold">{{ payment . date }}</span>
                                         <span v-else class="ml-2 font-bold">
-                                            -------------
+                                            -----------
                                         </span>
                                     </td>
                                     <td class="py-2 font-bold ">
@@ -358,19 +346,19 @@
                         </table>
 
                         <div v-if="(totalPrice - totalPaid) !== 0" class="m-5">
-                            <div class="flex justify-end">
+                            <div class="flex">
+                                <span class="font-bold text-center text-red-500 ">المتبقى بالنسبة : %</span>
                                 <span class="font-bold text-center text-red-500 ">
                                     {{ 100 - (totalPaid / totalPrice) * 100 }}
                                 </span>
-                                <span class="font-bold text-center text-red-500 ">% :المتبقى بالنسبة</span>
                             </div>
 
-                            <div class="flex justify-end">
+                            <div class="flex">
                                 <span class="font-bold text-center text-red-500 ">
-                                    {{ totalPrice - totalPaid }}
+                                    المتبقى من المبلغ : &nbsp;
                                 </span>
                                 <span class="font-bold text-center text-red-500 ">
-                                    &nbsp; المتبقى
+                                    {{ totalPrice - totalPaid }}
                                 </span>
                             </div>
                         </div>
@@ -399,8 +387,9 @@
                             <BaseButtons>
                                 <BaseButton @click="submit" type="submit" color="info" label="حفظ" />
                             </BaseButtons>
-
-                            <BaseButton type="button" :icon="mdiPlus" color="info" label="اضافة دفعة"
+                            <BaseButton type="button"
+                                v-if="form.payments.length < transaction.times_to_pay"
+                            :icon="mdiPlus" color="info" label="اضافة دفعة"
                                 @click="addFormItem" />
                         </div>
                     </div>

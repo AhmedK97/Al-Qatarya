@@ -94,13 +94,14 @@
 
     const deleteService = (service) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: `You won't be able to revert this - ${service.name}!`,
+            title: "هل انت متاكد ؟",
+            text: `لن تتمكن من التراجع عن هذا - ${service.name}!`,
             icon: "error",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+             confirmButtonText: "نعم، احذفه!",
+            cancelButtonText: "الغاء",
         }).then((result) => {
             if (result.isConfirmed) {
                 router.delete(route("delete.services", {
@@ -141,11 +142,11 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Company</th>
-                <th>Language</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>الاســم</th>
+                <th>الشــركة</th>
+                <th>اللــغة</th>
+                <th>تاريخ الاضافه</th>
+                <th>اجزاء</th>
             </tr>
         </thead>
         <tbody>
@@ -153,21 +154,21 @@
             <tr key="filters">
                 <td></td>
                 <td data-label="Filter Name">
-                    <input placeholder="Filter by name" v-model="activeFilters.filteredBy.name"
+                    <input placeholder="الاســم" v-model="activeFilters.filteredBy.name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td data-label="Filter Status">
+                <td data-label="Filter Company">
                     <select v-model="activeFilters.filteredBy.company_name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">Filter</option>
-                        <option value="qatarya">Qatarya</option>
-                        <option value="othman">Othman</option>
+                        <option :value="null">فلترة</option>
+                        <option value="qatarya">القطرية</option>
+                        <option value="othman">عثمان</option>
                     </select>
                 </td>
                 <td data-label="Filter Status">
                     <select v-model="activeFilters.filteredBy.company_name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">Filter</option>
+                        <option :value="null">فلترة</option>
                         <option value="ar">Arabic</option>
                         <option value="en">English</option>
                     </select>
@@ -185,12 +186,16 @@
                 </td>
             </tr>
 
+                <!-- {{ services }} -->
             <!-- User data -->
             <!-- {{ services . data }} -->
             <tr v-for="service in services.data" :key="service.id">
                 <td data-label="ID">{{ service . id }}</td>
                 <td data-label="Name">{{ service . name }}</td>
-                <td data-label="Status">{{ service . company_name }}</td>
+                <td class="text-center" data-label="Company">
+                    <PillTag v-if="service.company_name == 'qatarya'" color="primary" class="text-center text-blue-800 bg-blue-100 rounded-full" label="القطرية" />
+                    <PillTag v-else-if="service.company_name == 'othman'" color="danger" class="text-center text-red-800 bg-red-100 rounded-full" label="عثمان" />
+                </td>
                 <td data-label="Language">{{ service . lang == 'ar' ? 'Arabic' : 'English' }}</td>
                 <td data-label="Created At">{{ service . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">

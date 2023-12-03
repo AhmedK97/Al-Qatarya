@@ -79,7 +79,7 @@
 
     const form = useForm({
         title: project.title,
-        company: project.company,
+        // company: project.company,
         customer_id: project.customer_id,
         employee_id: project.employee_id,
         space_area: project.space_area,
@@ -100,32 +100,31 @@
 
     const statues = [{
             id: "pending",
-            name: "Pending",
+            name: "قيد الانتظار",
         },
         {
             id: "in_progress",
-            name: "In Progress",
+            name: "جاري العمل عليها",
         },
         {
             id: "finished",
-            name: "Finished",
+            name: "منتهي",
         },
         {
             id: "canceled",
-            name: "Canceled",
+            name: "ملغي",
         },
     ];
 
-    const companies = [{
-            'id': 'othman',
-            'name': 'othman'
-        },
-        {
-            'id': 'qatarya',
-            'name': 'qatarya'
-        }
-
-    ];
+    // const companies = [{
+    //         'id': 'othman',
+    //         'name': 'othman'
+    //     },
+    //     {
+    //         'id': 'qatarya',
+    //         'name': 'qatarya'
+    //     }
+    // ];
 
     watch(
         () => cloneDeep(props),
@@ -136,7 +135,7 @@
             resetForm();
             Object.assign(project, newProps.project);
             form.title = newProps.project.title;
-            form.company = newProps.project.company;
+            // form.company = newProps.project.company;
             form.customer_id = newProps.project.customer_id;
             form.employee_id = newProps.project.employee_id;
             form.space_area = newProps.project.space_area;
@@ -206,20 +205,20 @@
 </script>
 <template>
     <CardBox form @submit.prevent="submit">
-        <FormField label="Name">
+        <FormField label="اسم المشورع">
             <FormControl :errorMessage="form.errors.title" v-model="form.title" />
         </FormField>
         <BaseDivider />
 
-        <FormField label="Company">
+        <!-- <FormField label="Company">
             <select-field :errorMessage="form.errors.company"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.company" :items="companies" />
-        </FormField>
-        <BaseDivider />
+        </FormField> -->
+        <!-- <BaseDivider /> -->
 
         <label class="block mb-2 font-bold">
-            Customer
+            العميل
         </label>
         <v-select :options="customers" label="name" v-model="form.customer_id"
             :reduce="option => option.id"></v-select>
@@ -229,7 +228,7 @@
         <BaseDivider />
 
         <label class="block mb-2 font-bold">
-            Employee
+            الموظف
         </label>
         <v-select :options="employees" label="name" v-model="form.employee_id"
             :reduce="option => option.id"></v-select>
@@ -237,9 +236,8 @@
 
         <BaseDivider />
 
-
         <label class="block mb-2 font-bold">
-            Services
+            الخدمات
         </label>
         <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option.id"
             multiple></v-select>
@@ -247,13 +245,14 @@
 
         <BaseDivider />
 
-        <FormField label="Space Area">
+
+        <FormField label="المساحات">
             <FormControl type="textarea" :errorMessage="form.errors.space_area" v-model="form.space_area" />
         </FormField>
         <BaseDivider />
 
 
-        <FormField label="Status">
+        <FormField label="الحالة">
             <select-field :errorMessage="form.errors.status"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.status" :items="statues" />
@@ -261,7 +260,7 @@
         <BaseDivider />
 
 
-        <FormField label="Project Date">
+        <FormField label="تاريخ البدء">
             <input type="date"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.project_date" :errorMessage="form.errors.project_date" />
@@ -270,18 +269,18 @@
         <BaseDivider />
 
 
-        <FormField label="Address">
+        <FormField label="العنوان">
             <FormControl :errorMessage="form.errors.address" v-model="form.address" />
         </FormField>
         <BaseDivider />
 
 
-        <FormField label="Notes">
+        <FormField label="ملاحظات">
             <FormControl type="textarea" :errorMessage="form.errors.notes" v-model="form.notes" />
         </FormField>
         <BaseDivider />
 
-        <FormField label="Description">
+        <FormField label="ملاحظات للعميل">
             <div id="app">
                 <ckeditor :editor="editor" v-model="form.description" :config="editorConfig"></ckeditor>
             </div>

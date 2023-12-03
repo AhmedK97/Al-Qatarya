@@ -131,7 +131,7 @@ const componentClass = computed(() => {
 </script>
 
 <template>
-    <component v-bind="$attrs" :is="is" :class="componentClass" :href="routeName ? route(routeName) : href"
+    <component class="mx-2" v-bind="$attrs" :is="is" :class="componentClass" :href="routeName ? route(routeName) : href"
         :type="computedType" :target="target" :disabled="disabled">
         <BaseIcon v-if="icon" :path="icon" :size="iconSize" />
         <span v-if="label && !renderLabelAsHtml" :class="labelClass">{{

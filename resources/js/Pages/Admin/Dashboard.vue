@@ -75,53 +75,53 @@
     <LayoutAuthenticated>
 
         <Head title="Dashboard" />
-        <h1 class="pb-2 ml-8 text-4xl font-semibold text-gray-500 border-b border-gray-500 dark:text-slate-400">
-            Dashboard
+        <h1 class="px-4 pb-2 ml-8 text-4xl font-semibold text-gray-500 border-b border-gray-500 dark:text-slate-400">
+            لوحة التحكم
         </h1>
 
         <SectionMain>
             <h1 class="text-2xl font-semibold text-gray-500 dark:text-slate-400">
-                Users
+                المستخدمين
             </h1>
             <div class="grid grid-cols-1 gap-6 mt-5 mb-6 lg:grid-cols-4">
-                <CardBoxWidget :icon="mdiAccountMultipleOutline" :number="employeesCount" label="Employers"
+                <CardBoxWidget :icon="mdiAccountMultipleOutline" :number="employeesCount" label="الموظفين"
                     color="text-green-500" />
 
-                <CardBoxWidget :icon="mdiAccountGroup" :number="customersCount" label="Customer" color="text-green-500" />
+                <CardBoxWidget :icon="mdiAccountGroup" :number="customersCount" label="العملاء" color="text-green-500" />
             </div>
 
 
             <h1 class="text-2xl font-semibold text-gray-500 dark:text-slate-400">
-                Projects
+                المشاريع
             </h1>
 
             <div class="grid grid-cols-1 gap-6 mt-5 mb-6 lg:grid-cols-4">
-                <CardBoxWidget :icon="mdiFileDocumentMultipleOutline" :number="allProjectCount" label="All Projects"
+                <CardBoxWidget :icon="mdiFileDocumentMultipleOutline" :number="allProjectCount" label="جميع المشاريع"
                     color="text-green-500" />
 
-                <CardBoxWidget :icon="mdiFileDocumentEditOutline" :number="pendingProjectCount" label="Pending Projects"
+                <CardBoxWidget :icon="mdiFileDocumentEditOutline" :number="pendingProjectCount" label="مشاريع قيد الانتظار"
                     color="text-green-500" />
 
                 <CardBoxWidget :icon="mdiFileDocumentCheckOutline" :number="finishedProjectCount"
-                    label="Finished Projects" color="text-green-500" />
+                    label="مشاريع منتهية" color="text-green-500" />
 
                 <CardBoxWidget :icon="mdiFileDocumentRefreshOutline" :number="inProgressProjectCount"
-                    label="In Progress Projects" color="text-green-500" />
+                    label="مشاريع جارى العمل عليها" color="text-green-500" />
 
                 <CardBoxWidget :icon="mdiFileDocumentRemoveOutline" :number="canceledProjectCount"
-                    label="Canceled Projects" color="text-green-500" />
+                    label="مشاريع ملغية" color="text-green-500" />
             </div>
 
 
             <h1 class="text-2xl font-semibold text-gray-500 dark:text-slate-400">
-                Companies
+                الشركــــات
             </h1>
 
             <div class="grid grid-cols-1 gap-6 mt-5 mb-6 lg:grid-cols-4">
                 <CardBoxWidget :icon="mdiDomain" :number="serviceAlqataryaProjectCount"
-                    label="Alqatarya Projects" color="text-green-500" />
+                    label="القطرية" color="text-green-500" />
 
-                <CardBoxWidget :icon="mdiDomain" :number="serviceOthmanProjectCount" label="Othman Projects"
+                <CardBoxWidget :icon="mdiDomain" :number="serviceOthmanProjectCount" label="عثمان"
                     color="text-green-500" />
             </div>
 

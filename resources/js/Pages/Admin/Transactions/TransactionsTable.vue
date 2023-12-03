@@ -147,33 +147,34 @@
 
     const formModalTitle = computed(() => {
         return currentlyEditedTransaction.value?.id ?
-            `Edit Transaction` :
-            "Add New Transaction";
+            `المعاملات المالية` :
+            "المعاملات المالية";
     });
 
     const AddMoreTransactionModalTitle = computed(() => {
         return currentAddMoreTransaction.value?.id ?
-            `Add More Transaction` :
-            "Add More Transaction";
+            `ضبط الخدمات للمعاملة ` :
+            "ضبط الخدمات للمعاملة";
     });
 
     const ShowTransactionsPaymentModalTitle = computed(() => {
         return currentShowTransactionsPayment.value?.id ?
-            `Show  Transaction` :
-            "Show Transaction";
+            `المعاملات الملية` :
+            "المعاملات الملية";
     });
 
 
 
     const deleteTransaction = (transaction) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: `You won't be able to revert this!`,
+            title: "هل انت متاكد ؟",
+            text: `لن تتمكن من التراجع عن هذا!`,
             icon: "error",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+             confirmButtonText: "نعم، احذفه!",
+            cancelButtonText: "الغاء",
         }).then((result) => {
             if (result.isConfirmed) {
                 router.delete(route("delete.transactions", transaction.id), {
@@ -226,15 +227,15 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Project Name</th>
-                <th>Customer Name</th>
-                <th>Phone Number</th>
-                <th>Employee Name</th>
-                <th>Address</th>
-                <th>Times To Pay</th>
-                <th>Status</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>اسم المشورع</th>
+                <th>العميل</th>
+                <th>موبايل</th>
+                <th>الموظف</th>
+                <th>العنوان</th>
+                <th>عدد مرات الدفع</th>
+                <th>الحاله</th>
+                <th>تاريخ الانشاء</th>
+                <th>اجراء</th>
             </tr>
         </thead>
         <tbody>

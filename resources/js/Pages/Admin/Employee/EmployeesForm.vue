@@ -76,11 +76,11 @@
 
     const statues = [{
             id: "Active",
-            name: "Active",
+            name: "نشط",
         },
         {
             id: "Inactive",
-            name: "Inactive",
+            name: "غير نشط",
         },
     ];
 
@@ -158,19 +158,19 @@
 </script>
 <template>
     <CardBox form @submit.prevent="submit">
-        <FormField label="Name">
+        <FormField label="الاسم">
             <FormControl :errorMessage="form.errors.name" v-model="form.name" />
         </FormField>
 
         <BaseDivider />
 
-        <FormField label="Phone">
+        <FormField label="موبايل">
             <FormControl :errorMessage="form.errors.phone" v-model="form.phone" />
         </FormField>
 
         <BaseDivider />
 
-        <FormField label="Status">
+        <FormField label="الحالة">
             <select-field :errorMessage="form.errors.status"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.status" :items="statues" />
@@ -178,19 +178,19 @@
 
         <BaseDivider />
 
-        <FormField label="address">
+        <FormField label="العنوان">
             <FormControl :errorMessage="form.errors.address" v-model="form.address" />
         </FormField>
 
         <BaseDivider />
 
-        <FormField label="About">
+        <FormField label="نبذة">
             <FormControl :errorMessage="form.errors.about" v-model="form.about" />
         </FormField>
 
         <BaseDivider v-if="!isUpdate" />
 
-        <FormField v-if="!isUpdate" label="Password">
+        <FormField v-if="!isUpdate" label="باسورد">
             <FormControl type="password" :errorMessage="form.errors.password" v-model="form.password" />
         </FormField>
 

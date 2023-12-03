@@ -57,25 +57,25 @@ const props = defineProps({
                 <CardBoxWidget
                     :icon="mdiBriefcase"
                     :number="servicesCountQatarya"
-                    label="Qatarya Services"
+                    label="خدمات شركة قطرية"
                     color="text-blue-500"
                 />
                 <CardBoxWidget
                     :icon="mdiBriefcase"
                     :number="servicesCountOthman"
-                    label="Othman Services"
+                    label="خدمات شركة عثمان"
                     color="text-blue-500"
                 />
             </div>
             <SectionTitleLineWithButton :icon="mdiDomain" title="Services">
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center">
                     <BaseButton
                         @click="
                             () => eventBus.$emit('openModal', 'service::create')
                         "
                         color="info"
                         :icon="mdiPlus"
-                        label="Add"
+                        label="اضافة"
                         small
                     />
                 </div>

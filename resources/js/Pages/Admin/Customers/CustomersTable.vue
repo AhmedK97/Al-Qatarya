@@ -79,7 +79,7 @@
     const formModalTitle = computed(() => {
         return currentlyEditedCustomer.value?.id ?
             `Edit ${currentlyEditedCustomer.value?.name} Customer` :
-            "Add New Employee";
+            "اضافة عميل جديد";
     });
 
     // const viewModalTitle = computed(() => {
@@ -100,13 +100,14 @@
 
     const deleteCustomer = (customer) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: `You won't be able to revert this - ${customer.name}!`,
+            title: "هل انت متاكد ؟",
+            text: `لن تتمكن من التراجع عن هذا - ${customer.name}!`,
             icon: "error",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+             confirmButtonText: "نعم، احذفه!",
+            cancelButtonText: "الغاء",
         }).then((result) => {
             if (result.isConfirmed) {
                 router.delete(route("delete.customers", customer.id), {
@@ -145,12 +146,13 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>About</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>الاسم</th>
+                <th>الموبايل</th>
+                <th>العنوان</th>
+                <th>نبذة</th>
+                <th>تاريخ الاضافة</th>
+                <th>الإجراءات
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -158,11 +160,11 @@
             <tr key="filters">
                 <td></td>
                 <td data-label="Filter Name">
-                    <input placeholder="Filter by name" v-model="activeFilters.filteredBy.name"
+                    <input placeholder="الأســم" v-model="activeFilters.filteredBy.name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td data-label="Filter Phone">
-                    <input placeholder="Filter by Phone" v-model="activeFilters.filteredBy.phone"
+                    <input placeholder="موبــايل" v-model="activeFilters.filteredBy.phone"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
 

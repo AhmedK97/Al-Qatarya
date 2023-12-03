@@ -109,8 +109,8 @@
 
     const formUploadMediaModalTitle = computed(() => {
         return currentlyUploadMediaProject.value?.id ?
-            `Upload Media ${currentlyUploadMediaProject.value?.title} Project` :
-            "Upload Media Project";
+            `رفع فديوهات وصور ${currentlyUploadMediaProject.value?.title}
+            ` : "رفع فديوهات وصور";
     });
 
     const isFormModalOpen = ref(false && currentlyEditedProject.value);
@@ -129,13 +129,14 @@
 
     const deleteProject = (project) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: `You won't be able to revert this - ${project.title}!`,
+            title: "هل انت متاكد ؟",
+            text: `لن تتمكن من التراجع عن هذا - ${project.title}!`,
             icon: "error",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "نعم، احذفه!",
+            cancelButtonText: "الغاء",
         }).then((result) => {
             if (result.isConfirmed) {
                 router.delete(route("delete.projects", project.id), {
@@ -184,18 +185,17 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Company</th>
-                <th>Customer</th>
-                <th>Employee</th>
-                <th>Services</th>
-                <th>Space Area</th>
-                <th>Status</th>
-                <th>Project Date</th>
-                <th>Address</th>
-                <th>Notes</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>اسم المشروع</th>
+                <th>العميل</th>
+                <th>الموظف</th>
+                <th>الخدمات</th>
+                <th>المساحه</th>
+                <th>الحالة</th>
+                <th>تاريخ البدء</th>
+                <th>العنوان</th>
+                <th>ملاحظات</th>
+                <th>تاريخ الاضافة</th>
+                <th>اجراء</th>
             </tr>
         </thead>
         <tbody>
@@ -206,14 +206,7 @@
                     <input placeholder="Filter by name" v-model="activeFilters.filteredBy.title"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td data-label="Filter Company">
-                    <select v-model="activeFilters.filteredBy.company"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">Filter</option>
-                        <option value="othman">othman</option>
-                        <option value="qatarya">qatarya</option>
-                    </select>
-                </td>
+
 
                 <td data-label="Filter Customer">
                     <input placeholder="Filter by Customer" v-model="activeFilters.filteredBy.customer"
@@ -230,11 +223,11 @@
                 <td data-label="Filter status">
                     <select v-model="activeFilters.filteredBy.status"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">Filter</option>
-                        <option value="pending">Pending</option>
-                        <option value="in_progress">In Progress</option>
-                        <option value="finished">Finished</option>
-                        <option value="canceled">Canceled</option>
+                        <option :value="null">فلترة</option>
+                        <option value="pending">قيد الانتظار</option>
+                        <option value="in_progress">جارى العمل عليها</option>
+                        <option value="finished">منتهي</option>
+                        <option value="canceled">ملغى</option>
                     </select>
                 </td>
                 <td data-label="Filter Address">
@@ -250,16 +243,11 @@
             <tr v-for="project in projects.data" :key="project.id">
                 <td data-label="ID">{{ project . id }}</td>
                 <td data-label="Name">{{ project . title }}</td>
-                <td data-label="company">
-                    <PillTag
-                        :color="project.company === 'othman' ? 'success' : project.company === 'qatarya' ? 'info' : 'danger'"
-                        :label="project.company" small />
-                </td>
+
                 <td data-label="Phone">{{ project . customer_name }}</td>
                 <td data-label="Status">{{ project . employee_name }}</td>
                 <td data-label="Services">
-                    <span
-                    v-if="project.services_name.length > 0">
+                    <span v-if="project.services_name.length > 0">
                         <span v-for="service_name in project.services_name" :key="service_name">
                             {{ service_name }}
                         </span>
@@ -270,10 +258,18 @@
                 </td>
                 <td data-label="Address">{{ project . space_area }}</td>
                 <td data-label="status">
-                    <PillTag
-                        :color="project.status === 'pending' ? 'warning' : project.status === 'in_progress' ? 'info' : project
-                            .status === 'finished' ? 'success' : 'danger'"
-                        :label="project.status" small />
+                    <PillTag v-if="project.status == 'pending'" label="قيد الانتظار"
+                        class="inline-flex px-2 text-xs font-semibold leading-5 text-center text-yellow-800 bg-yellow-100 rounded-full" />
+
+                    <PillTag v-else-if="project.status == 'in_progress'" label="جارى العمل عليها"
+                        class="inline-flex px-2 text-xs font-semibold leading-5 text-center text-blue-800 bg-blue-100 rounded-full" />
+
+                    <PillTag v-else-if="project.status == 'finished'" label="منتهي"
+                        class="inline-flex px-2 text-xs font-semibold leading-5 text-center text-green-800 bg-green-100 rounded-full" />
+
+                    <PillTag v-else-if="project.status == 'canceled'" label="ملغى"
+                        class="inline-flex px-2 text-xs font-semibold leading-5 text-center text-red-800 bg-red-100 rounded-full" />
+
                 </td>
                 <td data-label="project_date">{{ project . project_date }}</td>
                 <td data-label="About">{{ project . address }}</td>
