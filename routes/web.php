@@ -46,5 +46,4 @@ Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 
 Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
 
-// -------------------------- Admin ----------------------------
 

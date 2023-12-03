@@ -49,7 +49,7 @@ const asideLgCloseClick = (event) => {
                 <div
                     class="flex-1 text-center lg:text-left lg:pl-6 xl:text-center xl:pl-0"
                 >
-                    <b class="font-black">One</b>
+                    <b class="font-black">الشركه القطريه للمقاولات العامه للمباني</b>
                 </div>
                 <button
                     class="hidden p-3 lg:inline-block xl:hidden"
