@@ -74,7 +74,7 @@ Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projec
 
 // -------------------------- Admin ----------------------------
 
-// prefex admin group
+// prefix admin group
 Route::prefix('/admin')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 

@@ -194,31 +194,31 @@ class ServiceSeeder extends Seeder
                     'ar' => 'طلاء الأرضيات',
                 ],
 
-                // 'body' => [
-                //     'en' => 'Floor coating enhances the appearance and durability of floors in various settings.',
-                //     'ar' => 'يعزز طلاء الأرضيات من مظهر ومتانة الأرضيات في مختلف الإعدادات.',
-                // ],
-                // 'seo_title' => [
-                //     'en' => 'Floor Coating Services',
-                //     'ar' => 'خدمات طلاء الأرضيات',
-                // ],
-                // 'seo_description' => [
-                //     'en' => 'We offer professional floor coating services for residential and commercial properties.',
-                //     'ar' => 'نحن نقدم خدمات طلاء الأرضيات المهنية للممتلكات السكنية والتجارية.',
-                // ],
-                // 'seo_keywords' => [
-                //     'en' => 'floor coating, appearance, durability, residential, commercial properties',
-                //     'ar' => 'طلاء الأرضيات، المظهر، المتانة، ممتلكات سكنية، ممتلكات تجارية',
-                // ],
+                'body' => [
+                    'en' => 'Floor coating enhances the appearance and durability of floors in various settings.',
+                    'ar' => 'يعزز طلاء الأرضيات من مظهر ومتانة الأرضيات في مختلف الإعدادات.',
+                ],
+                'seo_title' => [
+                    'en' => 'Floor Coating Services',
+                    'ar' => 'خدمات طلاء الأرضيات',
+                ],
+                'seo_description' => [
+                    'en' => 'We offer professional floor coating services for residential and commercial properties.',
+                    'ar' => 'نحن نقدم خدمات طلاء الأرضيات المهنية للممتلكات السكنية والتجارية.',
+                ],
+                'seo_keywords' => [
+                    'en' => 'floor coating, appearance, durability, residential, commercial properties',
+                    'ar' => 'طلاء الأرضيات، المظهر، المتانة، ممتلكات سكنية، ممتلكات تجارية',
+                ],
             ],
         ];
 
         foreach ($services as $servicesData) {
             $name = json_encode(Arr::only($servicesData['name'], ['en', 'ar']));
             $body = json_encode(Arr::only($servicesData['body'], ['en', 'ar']));
-            // $seo_title = json_encode(Arr::only($servicesData['seo_title'], ['en', 'ar']));
-            // $seo_description = json_encode(Arr::only($servicesData['seo_description'], ['en', 'ar']));
-            // $seo_keywords = json_encode(Arr::only($servicesData['seo_keywords'], ['en', 'ar']));
+            $seo_title = json_encode(Arr::only($servicesData['seo_title'], ['en', 'ar']));
+            $seo_description = json_encode(Arr::only($servicesData['seo_description'], ['en', 'ar']));
+            $seo_keywords = json_encode(Arr::only($servicesData['seo_keywords'], ['en', 'ar']));
             // $image = 'https://picsum.photos/720.webp';
 
             $service = Service::create([
@@ -228,7 +228,6 @@ class ServiceSeeder extends Seeder
                 // 'seo_description' => json_decode($seo_description, true),
                 // 'seo_keywords' => json_decode($seo_keywords, true),
                 'company_name' => Arr::random(['qatarya', 'othman']),
-
             ]);
 
             // $service->addMediaFromUrl($image)->toMediaCollection('services_main_image');
@@ -236,7 +235,6 @@ class ServiceSeeder extends Seeder
             // $service->addMediaFromUrl($image)->toMediaCollection('services');
             // $service->addMediaFromUrl($image)->toMediaCollection('services');
             // $service->addMediaFromUrl($image)->toMediaCollection('services');
-
         }
     }
 }

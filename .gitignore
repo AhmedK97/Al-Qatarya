@@ -1,4 +1,6 @@
 /.phpunit.cache
+/bootstrap/ssr
+/bootstrap/ssr
 /node_modules
 /public/build
 /public/hot
@@ -8,7 +10,6 @@
 .env
 .env.backup
 .env.production
-.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 auth.json
@@ -17,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/lang/php_*.json
+/local_node_modules/vue3-recaptcha-v2/node_modules
+**/.DS_Store
+/laravel.log

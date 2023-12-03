@@ -484,9 +484,9 @@ const logout = () => {
     transition: all 0.3s ease-in-out;
 }
 
-html[dir="ltr"] .direction {
+/* html[dir="ltr"] .direction {
     direction: rtl !important;
-}
+} */
 
 html[dir="rtl"] .direction {
     direction: ltr !important;
