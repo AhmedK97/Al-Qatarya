@@ -203,18 +203,18 @@
             <tr key="filters">
                 <td></td>
                 <td data-label="Filter Name">
-                    <input placeholder="Filter by name" v-model="activeFilters.filteredBy.title"
+                    <input placeholder="الاسـم" v-model="activeFilters.filteredBy.title"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
 
 
                 <td data-label="Filter Customer">
-                    <input placeholder="Filter by Customer" v-model="activeFilters.filteredBy.customer"
+                    <input placeholder="العميل" v-model="activeFilters.filteredBy.customer"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
 
                 <td data-label="Filter Employee">
-                    <input placeholder="Filter by Employee" v-model="activeFilters.filteredBy.employee"
+                    <input placeholder="الموظف" v-model="activeFilters.filteredBy.employee"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td></td>
@@ -223,18 +223,19 @@
                 <td data-label="Filter status">
                     <select v-model="activeFilters.filteredBy.status"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">فلترة</option>
+                        <option value="">فلترة</option>
                         <option value="pending">قيد الانتظار</option>
                         <option value="in_progress">جارى العمل عليها</option>
                         <option value="finished">منتهي</option>
                         <option value="canceled">ملغى</option>
                     </select>
                 </td>
+                <td></td>
+
                 <td data-label="Filter Address">
-                    <input placeholder="Filter by Address" v-model="activeFilters.filteredBy.address"
+                    <input placeholder="العنوان" v-model="activeFilters.filteredBy.address"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

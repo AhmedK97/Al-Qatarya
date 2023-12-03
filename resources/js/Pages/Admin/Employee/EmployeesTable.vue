@@ -175,8 +175,8 @@
                     <select v-model="activeFilters.filteredBy.status"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
                         <option :value="null">فلترة</option>
-                        <option value="active">نشط</option>
-                        <option value="inactive">غير نشط</option>
+                        <option value="Active">نشط</option>
+                        <option value="Inactive">غير نشط</option>
                     </select>
                 </td>
                 <td></td>
@@ -199,8 +199,9 @@
                 <td data-label="ID">{{ employee . id }}</td>
                 <td data-label="Name">{{ employee . name }}</td>
                 <td data-label="Phone">{{ employee . phone }}</td>
-                <td data-label="Status" v-if="employee . status == 'Active'">نشظ</td>
-                <td data-label="Status" v-else-if="employee . status == 'Inactive'">غير نشط</td>
+                <td data-label="Phone">{{ employee . status }}</td>
+                <!-- <td data-label="Status" v-if="employee . status == 'Active'">نشظ</td> -->
+                <!-- <td data-label="Status" v-else-if="employee . status == 'Inactive'">غير نشط</td> -->
                 <td data-label="Address">{{ employee . address }}</td>
                 <td data-label="About">{{ employee . about }}</td>
                 <td data-label="Created At">{{ employee . created_at }}</td>

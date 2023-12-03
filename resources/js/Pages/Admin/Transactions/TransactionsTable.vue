@@ -102,10 +102,12 @@
 
     const activeFilters = reactive({
         filteredBy: {
+            project_name: filters?.filteredBy?.project_name,
             customer_name: filters?.filteredBy?.customer_name,
             phone: filters?.filteredBy?.phone,
             employee_name: filters?.filteredBy?.employee_name,
             address: filters?.filteredBy?.address,
+            status: filters?.filteredBy?.status,
         },
     });
 
@@ -242,27 +244,38 @@
             <!-- Filters -->
             <tr key="filters">
                 <td></td>
-                <td></td>
+                <td data-label="Filter project Name">
+                    <input placeholder="الاسـم" v-model="activeFilters.filteredBy.project_name"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                </td>
+
                 <td data-label="Filter Customer Name">
-                    <input placeholder="Filter by Customer Name" v-model="activeFilters.filteredBy.customer_name"
+                    <input placeholder="العميل" v-model="activeFilters.filteredBy.customer_name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
 
                 <td data-label="Filter Phone Number">
-                    <input placeholder="Filter by Phone Number" v-model="activeFilters.filteredBy.phone"
+                    <input placeholder="الموبايل" v-model="activeFilters.filteredBy.phone"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
 
                 <td data-label="Filter Employee Name">
-                    <input placeholder="Filter by Employee Name" v-model="activeFilters.filteredBy.employee_name"
+                    <input placeholder="الموظف" v-model="activeFilters.filteredBy.employee_name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td data-label="Address">
-                    <input placeholder="Filter by Address" v-model="activeFilters.filteredBy.address"
+                    <input placeholder="العنوان" v-model="activeFilters.filteredBy.address"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
                 <td></td>
-                <td></td>
+                <td>
+                    <select v-model="activeFilters.filteredBy.status"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
+                        <option :value="null">فلترة</option>
+                        <option value="Paid">مدفوع</option>
+                        <option value="Pending">لم يكتمل الدفع</option>
+                    </select>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -288,9 +301,8 @@
                 <td data-label="Address">{{ transaction . address . address }}</td>
                 <td data-label="Times To Pay">{{ transaction . times_to_pay }}</td>
                 <td data-label="Status">
-                    <PillTag :color="transaction.status === 'Paid' ? 'success' : 'info'"
-                        :label="transaction.status">
-                    </PillTag>
+                    <PillTag v-if="transaction . status === 'Paid'" color="success" class="text-center" label="مدفوع" />
+                    <PillTag v-if="transaction . status === 'Pending'" color="danger" class="text-center" label="لم يكتمل الدفع" />
                 </td>
                 <td data-label="Created At">{{ transaction . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">

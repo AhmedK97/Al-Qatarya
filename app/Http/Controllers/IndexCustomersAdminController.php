@@ -16,7 +16,6 @@ class IndexCustomersAdminController extends Controller
      */
     public function __invoke(Request $request)
     {
-
         $customers = QueryBuilder::for(User::class)
             ->allowedFilters([
                 AllowedFilter::partial('name'),

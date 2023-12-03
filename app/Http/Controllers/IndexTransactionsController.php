@@ -24,9 +24,45 @@ class IndexTransactionsController extends Controller
     {
         $transactions = QueryBuilder::for(Transaction::class)
             ->allowedFilters([
-                AllowedFilter::partial('customer.name'),
-                AllowedFilter::partial('employee.name'),
-                AllowedFilter::partial('customer.phone'),
+                AllowedFilter::callback('customer_name', function ($query, $value) {
+                    $query->whereHas('project', function ($query) use ($value) {
+                        $query->whereHas('customer', function ($query) use ($value) {
+                            $query->where('name', 'like', '%' . $value . '%');
+                        });
+                    });
+                }),
+
+                AllowedFilter::callback('employee_name', function ($query, $value) {
+                    $query->whereHas('project', function ($query) use ($value) {
+                        $query->whereHas('employee', function ($query) use ($value) {
+                            $query->where('name', 'like', '%' . $value . '%');
+                        });
+                    });
+                }),
+
+                AllowedFilter::callback('phone', function ($query, $value) {
+                    $query->whereHas('project', function ($query) use ($value) {
+                        $query->whereHas('customer', function ($query) use ($value) {
+                            $query->where('phone', 'like', '%' . $value . '%');
+                        });
+                    });
+                }),
+
+                AllowedFilter::callback('address', function ($query, $value) {
+                    $query->whereHas('project', function ($query) use ($value) {
+                        $query->where('address', 'like', '%' . $value . '%');
+                    });
+                }),
+
+                AllowedFilter::callback('status', function ($query, $value) {
+                    $query->where('status', 'like', '%' . $value . '%');
+                }),
+
+                AllowedFilter::callback('project_name', function ($query, $value) {
+                    $query->whereHas('project', function ($query) use ($value) {
+                        $query->where('title', 'like', '%' . $value . '%');
+                    });
+                }),
 
             ])
             ->with('customer', 'employee', 'project')

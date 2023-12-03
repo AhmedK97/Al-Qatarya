@@ -43,7 +43,7 @@ const props = defineProps({
 const exportTable = () => {
     // ask for confirmation
     Swal.fire({
-        title: "هل انت متاكد ؟",
+        title: "Are you sure?",
         text: "Export Employees table to excel file!",
         icon: "info",
         showCancelButton: true,

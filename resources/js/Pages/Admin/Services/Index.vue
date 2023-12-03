@@ -67,7 +67,7 @@ const props = defineProps({
                     color="text-blue-500"
                 />
             </div>
-            <SectionTitleLineWithButton :icon="mdiDomain" title="Services">
+            <SectionTitleLineWithButton :icon="mdiDomain" title="الخدمات">
                 <div class="flex items-center">
                     <BaseButton
                         @click="

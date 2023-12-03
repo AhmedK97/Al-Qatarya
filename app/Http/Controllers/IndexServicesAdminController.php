@@ -20,6 +20,7 @@ class IndexServicesAdminController extends Controller
             ->allowedFilters([
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('company_name'),
+                AllowedFilter::partial('lang'),
             ])
             ->orderBy('id', 'desc')
             ->paginate(10)

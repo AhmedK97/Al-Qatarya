@@ -16,32 +16,41 @@ use Spatie\QueryBuilder\QueryBuilder;
 class IndexProjectsAdminController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * @var Project $project
      */
+
     public function __invoke(Request $request)
     {
+        // $request->dd();
         $projects = QueryBuilder::for(Project::class)
             ->allowedFilters([
-                AllowedFilter::partial('name'),
-                AllowedFilter::partial('notes'),
-                AllowedFilter::partial('cost'),
+                AllowedFilter::partial('title'),
+                AllowedFilter::partial('address'),
                 AllowedFilter::partial('status'),
                 AllowedFilter::partial('company'),
-                AllowedFilter::partial('customer'),
-                AllowedFilter::partial('employee'),
+                AllowedFilter::callback('customer', function ($query, $value) {
+                    $query->whereHas('customer', function ($query) use ($value) {
+                        $query->where('name', 'like', '%' . $value . '%');
+                    });
+                }),
+                AllowedFilter::callback('employee', function ($query, $value) {
+                    $query->whereHas('employee', function ($query) use ($value) {
+                        $query->where('name', 'like', '%' . $value . '%');
+                    });
+                }),
                 AllowedFilter::partial('space_area'),
             ])
+            ->latest()
             ->with(['employee:id,name', 'customer:id,name'])
             ->orderBy('id', 'desc')
             ->paginate(10)
-            ->withQueryString()
             ->through(function (Project $project) {
                 return new ProjectAdminResource($project);
             });
 
         return Inertia::render('Admin/Projects/Index', [
             'projects' => $projects,
-            'filters' => $request->all('search'),
+            'filters' => $request->all(),
             'projectsCount' => Project::count(),
             'customers' => UsersProjectsResource::collection(User::Customers()->get()),
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),

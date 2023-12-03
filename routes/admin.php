@@ -54,9 +54,6 @@ Route::delete('employees/{user}', DeleteEmployeesAdminController::class)->name('
 
 Route::get('/employees/export', ExportEmployeesAdminController::class)->name('export.employees');
 
-
-
-
 //--------------- Employees -----------------//
 Route::get('/customers', IndexCustomersAdminController::class)->name('index.customers');
 
@@ -67,9 +64,6 @@ Route::Put('customers/{user}', UpdateCustomersAdminController::class)->name('upd
 Route::delete('customers/{user}', DeleteCustomersAdminController::class)->name('delete.customers');
 
 Route::get('/customers/export', ExportCustomersAdminController::class)->name('export.customers');
-
-
-
 
 // --------------- Projects -----------------//
 Route::get('/projects', IndexProjectsAdminController::class)->name('index.projects');
@@ -82,10 +76,6 @@ Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name
 
 Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
 
-
-
-
-
 // --------------- Services -----------------//
 Route::get('/services', IndexServicesAdminController::class)->name('index.services');
 
@@ -94,10 +84,6 @@ Route::post('/services', StoreServicesAdminController::class)->name('store.servi
 Route::post('/services/{service}', UpdateServicesAdminController::class)->name('update.services');
 
 Route::delete('/services/{service}', DeleteServicesAdminController::class)->name('delete.services');
-
-
-
-
 
 // --------------- Transaction -----------------//
 
@@ -110,10 +96,6 @@ Route::put('/transactions/{transaction}', UpdateTransactionsController::class)->
 Route::delete('/transactions/{transaction}', DeleteTransactionsController::class)->name('delete.transactions');
 
 Route::post('/transactions/{transaction}/payments', PaymentTransactionsController::class)->name('store.payments.transactions');
-
-
-
-
 
 // --------------- service transaction -----------------//
 

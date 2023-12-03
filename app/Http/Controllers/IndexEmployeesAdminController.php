@@ -16,14 +16,16 @@ class IndexEmployeesAdminController extends Controller
      */
     public function __invoke(Request $request)
     {
-
+        // $request->dd();
         $employees = QueryBuilder::for(User::class)
+            ->employees()
             ->allowedFilters([
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
                 AllowedFilter::partial('phone'),
                 AllowedFilter::partial('status'),
-            ])->employees()
+            ])
+            ->latest()
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString()

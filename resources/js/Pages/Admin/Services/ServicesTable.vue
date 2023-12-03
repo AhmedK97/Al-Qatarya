@@ -65,8 +65,8 @@
     const activeFilters = reactive({
         filteredBy: {
             name: filters?.filteredBy?.name,
-            phone: filters?.filteredBy?.phone,
             company_name: filters?.filteredBy?.company_name,
+            lang: filters?.filteredBy?.lang,
         },
     });
 
@@ -166,7 +166,7 @@
                     </select>
                 </td>
                 <td data-label="Filter Status">
-                    <select v-model="activeFilters.filteredBy.company_name"
+                    <select v-model="activeFilters.filteredBy.lang"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
                         <option :value="null">فلترة</option>
                         <option value="ar">Arabic</option>
