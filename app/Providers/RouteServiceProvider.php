@@ -39,6 +39,20 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware(['web', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
                 ->prefix(LaravelLocalization::setLocale())
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware(['web', 'withoutLanguageMiddleware'])
+            ->prefix('admin')
+            ->group(base_path('routes/admin.php'));
+        });
+    }
+
+    /**
+     * Configure the rate limiters for the application.
+     */
+    public function configureRateLimiting(): void
+    {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
 }
