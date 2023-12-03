@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title inertia>{{ config('app.name', 'القطريه للعوازل') }}</title>
+    <title inertia>{{ config('app.name', 'الشركه القطريه للمقاولات العامه للمباني') }}</title>
 
     {{-- icon --}}
     <link rel="icon" href="{{ asset('images/logo.webp') }}" type="image/webp" sizes="16x16">

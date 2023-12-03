@@ -18,7 +18,7 @@ import "@ebcom/dotlottie-player";
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText ||
-    "القطريه للعوازل";
+    "الشركه القطريه للمقاولات العامه للمباني";
 
 const pinia = createPinia();
 
