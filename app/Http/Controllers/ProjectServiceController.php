@@ -33,6 +33,7 @@ class ProjectServiceController extends Controller
                 ]);
             });
         }
+        // dd($data['extra_services']);
 
         if (!empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
@@ -46,6 +47,7 @@ class ProjectServiceController extends Controller
 
             collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
                 $id = Arr::get($extraServiceData, 'id');
+                // dd($id);
                 $project->extraServices()->updateOrCreate(
                     ['id' => $id],
                     [

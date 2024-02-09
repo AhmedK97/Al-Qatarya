@@ -1,14 +1,14 @@
 @layer components {
   .checkbox, .radio, .switch {
-    @apply inline-flex items-center cursor-pointer relative;
+    @apply relative inline-flex items-center cursor-pointer;
   }
 
   .checkbox input[type=checkbox], .radio input[type=radio], .switch input[type=checkbox] {
-    @apply absolute left-0 opacity-0 -z-1;
+    @apply absolute left-0 opacity-0;
   }
 
   .checkbox input[type=checkbox]+.check, .radio input[type=radio]+.check, .switch input[type=checkbox]+.check {
-    @apply border-gray-700 border transition-colors duration-200 dark:bg-slate-800;
+    @apply transition-colors duration-200 border border-gray-700 dark:bg-slate-800;
   }
 
   .checkbox input[type=checkbox]:focus+.check, .radio input[type=radio]:focus+.check, .switch input[type=checkbox]:focus+.check {
@@ -32,7 +32,7 @@
   }
 
   .checkbox input[type=checkbox]:checked+.check, .radio input[type=radio]:checked+.check {
-    @apply bg-no-repeat bg-center border-4;
+    @apply bg-center bg-no-repeat border-4;
   }
 
   .checkbox input[type=checkbox]:checked+.check {

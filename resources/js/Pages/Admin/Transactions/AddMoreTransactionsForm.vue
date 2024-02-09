@@ -162,7 +162,6 @@
         </div>
         <!-- {{ form?.extra_services }} -->
             <div v-for="(formItem, index) in form.extra_services" :key="index">
-                {{}}
                 <div class="flex justify-end">
                     <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
                         label="حــذف" @click="removeExtraServices(index)" />

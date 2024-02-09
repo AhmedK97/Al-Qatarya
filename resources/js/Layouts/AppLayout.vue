@@ -19,7 +19,6 @@ const showDropDown = ref(false);
 
 const dropDownService = () => {
     showDropDown.value = !showDropDown.value;
-    console.log(showDropDown.value);
 };
 
 const showingNavigationDropdown = ref(false);
@@ -34,7 +33,6 @@ const fireSwalOnNotification = (pageInstance) => {
         Object.keys(pageInstance.props.flash.swalNotification ?? {}).length > 0
     ) {
         const swalConfig = pageInstance.props.flash.swalNotification;
-        console.log(swalConfig);
         Swal.fire(
             Object.assign(swalConfig, {
                 timer: swalConfig.timer ?? 3000,

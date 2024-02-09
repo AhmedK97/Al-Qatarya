@@ -50,7 +50,7 @@
         payments: props?.payments,
     });
 
- 
+
     const transaction = reactive(props.transaction || {});
     const payments = reactive(props.payments || {});
 
@@ -73,7 +73,7 @@
                 percentage: "",
             });
         }
-        if (form.payments.length === transaction.times_to_pay) {
+        if (form.payments?.length === transaction.times_to_pay) {
             maxPaymentRetched.value = true;
             return;
         }
@@ -252,7 +252,7 @@
                     ({{ transaction . times_to_pay }})
                     دفعات
                 </h1>
-                <div v-if="!Array.isArray(form.payments) || form.payments.length === 0">
+                <div v-if="!Array.isArray(form.payments) || form.payments?.length === 0">
                     <h1
                         class="w-1/2 m-auto mt-10 text-lg text-center underline bg-red-500 rounded-full decoration-sky-500">
                         لا يوجد دفعات
@@ -388,7 +388,7 @@
                                 <BaseButton @click="submit" type="submit" color="info" label="حفظ" />
                             </BaseButtons>
                             <BaseButton type="button"
-                                v-if="form.payments.length < transaction.times_to_pay"
+                                v-if="form.payments?.length != transaction.times_to_pay"
                             :icon="mdiPlus" color="info" label="اضافة دفعة"
                                 @click="addFormItem" />
                         </div>
