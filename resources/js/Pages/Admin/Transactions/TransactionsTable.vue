@@ -16,6 +16,7 @@ import {
     mdiFactory,
     mdiCity,
     mdiPlaneCar,
+    mdiCashSync,
     mdiCashMultiple,
 } from "@mdi/js";
 import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
@@ -25,6 +26,7 @@ import BaseButton from "@/Components/Admin/BaseButton.vue";
 import PillTag from "@/Components/Admin/PillTag.vue";
 import TransactionsForm from "@/Pages/Admin/Transactions/TransactionsForm.vue";
 import AddMoreTransactionsForm from "@/Pages/Admin/Transactions/AddMoreTransactionsForm.vue";
+import ProfitDetailsForm from "@/Pages/Admin/Transactions/ProfitDetailsForm.vue";
 import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
 import TransactionsPayment from "@/Pages/Admin/Transactions/TransactionsPayment.vue";
 
@@ -86,12 +88,20 @@ onMounted(() => {
         }
     });
 
+    eventBus.$on("openModal", (modalToOpen) => {
+        if (modalToOpen === "transaction::ShowProfitDetails") {
+            currentShowProfitDetails.value = null;
+            isProfitDetailsModalOpen.value = true;
+        }
+    });
+
     eventBus.$on("closeModal", (modalToClose) => {
         if (
             modalToClose === "transaction::create" ||
             modalToClose === "transaction::update" ||
             modalToClose === "transaction::ShowTransactionsPayment" ||
-            modalToClose === "transaction::AddMoreTransactionForm"
+            modalToClose === "transaction::AddMoreTransactionForm" ||
+            modalToClose === "transaction::profitDetails"
         ) {
             isFormModalOpen.value = false;
             isAddMoreTransactionModalOpen.value = false;
@@ -124,12 +134,16 @@ const currentAddMoreTransaction = ref(null);
 
 const currentShowTransactionsPayment = ref(null);
 
+const currentShowProfitDetails = ref(null);
+
 
 const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
 
 const isAddMoreTransactionModalOpen = ref(false && currentAddMoreTransaction.value);
 
 const isShowTransactionsPayment = ref(false && currentShowTransactionsPayment.value);
+
+const isProfitDetailsModalOpen = ref(false && currentShowProfitDetails.value);
 
 const addMoreTransaction = (transaction) => {
     currentAddMoreTransaction.value = transaction;
@@ -144,6 +158,11 @@ const editTransaction = (transaction) => {
 const showTransactionsPayment = (transaction) => {
     currentShowTransactionsPayment.value = transaction;
     isShowTransactionsPayment.value = true;
+};
+
+const profitDetails = (transaction) => {
+    currentShowProfitDetails.value = transaction;
+    isProfitDetailsModalOpen.value = true;
 };
 
 
@@ -161,8 +180,8 @@ const AddMoreTransactionModalTitle = computed(() => {
 
 const ShowTransactionsPaymentModalTitle = computed(() => {
     return currentShowTransactionsPayment.value?.id ?
-        `المعاملات الملية` :
-        "المعاملات الملية";
+        `المعاملات  المالية وحساب الارباح` :
+        "المعاملات  المالية وحساب الارباح";
 });
 
 
@@ -208,7 +227,6 @@ const openFormModal = () => {
             :transaction="currentlyEditedTransaction" :services="services" />
     </CardBoxModal>
 
-
     <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isShowTransactionsPayment"
         :title="ShowTransactionsPaymentModalTitle">
         <TransactionsPayment :transaction="currentShowTransactionsPayment"
@@ -216,12 +234,16 @@ const openFormModal = () => {
             :totalExtraServicesPrice="totalExtraServicesPrice" :totalPrice="totalPrice" />
     </CardBoxModal>
 
-
-
     <CardBoxModal cardWidthClass="w-96 overflow-y-auto 2xl:w-4/12" scrollable :hasCancel="true"
         v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
         <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
             :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />
+    </CardBoxModal>
+
+    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12 " scrollable :hasCancel="true" v-model="isProfitDetailsModalOpen"
+        :title="ShowTransactionsPaymentModalTitle">
+        <ProfitDetailsForm :project="currentShowProfitDetails?.project.id" :services="currentShowProfitDetails?.services"
+            :transaction="currentShowProfitDetails" />
     </CardBoxModal>
 
 
@@ -316,6 +338,9 @@ const openFormModal = () => {
 
                         <BaseButton color="success" :icon="mdiSend" small @click="showTransactionsPayment(transaction)" />
                         <!-- file transaction table contain all payments -->
+
+                        <!-- profit details -->
+                        <BaseButton color="success" :icon="mdiCashSync" small @click="profitDetails(transaction)" />
                     </BaseButtons>
                 </td>
             </tr>
