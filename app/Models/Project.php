@@ -63,7 +63,7 @@ class Project extends Model implements HasMedia
 
     public function services()
     {
-        return $this->belongsToMany(Service::class, 'project_service')->withPivot('price', 'quantity');
+        return $this->belongsToMany(Service::class, 'project_service')->withPivot('price', 'quantity', 'details')->withTimestamps();
     }
 
     public function extraServices()
