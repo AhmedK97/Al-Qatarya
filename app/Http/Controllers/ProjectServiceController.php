@@ -16,12 +16,12 @@ class ProjectServiceController extends Controller
     {
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
-            'services.*.price' => 'required|integer|min:0',
-            'services.*.quantity' => 'required|integer|min:1',
+            'services.*.price' => 'required|numeric|min:0',
+            'services.*.quantity' => 'required|numeric|min:1',
             'extra_services.*.id' => 'nullable|integer|min:0',
             'extra_services.*.name' => 'required|string',
-            'extra_services.*.price' => 'required|integer|min:0',
-            'extra_services.*.quantity' => 'required|integer|min:0',
+            'extra_services.*.price' => 'required|numeric|min:0',
+            'extra_services.*.quantity' => 'required|numeric|min:0',
         ]);
 
         if (!empty($data['services'])) {
