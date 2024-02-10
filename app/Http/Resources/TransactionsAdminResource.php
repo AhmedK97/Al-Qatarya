@@ -31,6 +31,8 @@ class TransactionsAdminResource extends JsonResource
                         'name' => $extraService->name,
                         'price' => $extraService->price,
                         'quantity' => $extraService->quantity,
+                        'details' => $extraService->details,
+                        'created_at' => $extraService->created_at->format('Y-m-d'),
                     ];
                 });
             }),
@@ -63,6 +65,8 @@ class TransactionsAdminResource extends JsonResource
                         'name' => $service->name,
                         'price' => $service->pivot->price,
                         'quantity' => $service->pivot->quantity,
+                        'details' => $service->pivot->details,
+                        'created_at' => $service->created_at->format('Y-m-d'),
                     ];
                 });
             }),
