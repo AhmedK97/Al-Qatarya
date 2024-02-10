@@ -1,181 +1,181 @@
 <script setup>
-    import {
-        computed,
-        ref,
-        watch,
-        reactive,
-        onMounted,
-        nextTick
-    } from "vue";
-    import cloneDeep from "lodash/cloneDeep";
-    import {
-        router,
-        useForm
-    } from "@inertiajs/vue3";
-    import BaseButtons from "@/Components/Admin/BaseButtons.vue";
-    import BaseButton from "@/Components/Admin/BaseButton.vue";
+import {
+    computed,
+    ref,
+    watch,
+    reactive,
+    onMounted,
+    nextTick
+} from "vue";
+import cloneDeep from "lodash/cloneDeep";
+import {
+    router,
+    useForm
+} from "@inertiajs/vue3";
+import BaseButtons from "@/Components/Admin/BaseButtons.vue";
+import BaseButton from "@/Components/Admin/BaseButton.vue";
 
-    import {
-        mdiAccount,
-        mdiMail,
-        mdiPlus,
-        mdiMinus
-    } from "@mdi/js";
-    import "vue-select/dist/vue-select.css";
-    import eventBus from "@/Composables/eventBus.js";
-    import Swal from "sweetalert2";
+import {
+    mdiAccount,
+    mdiMail,
+    mdiPlus,
+    mdiMinus
+} from "@mdi/js";
+import "vue-select/dist/vue-select.css";
+import eventBus from "@/Composables/eventBus.js";
+import Swal from "sweetalert2";
 
-    const props = defineProps({
-        transaction: {
-            type: Object,
-            default: () => {},
-        },
-        payments: {
-            type: Array,
-            default: () => {},
-        },
-    });
+const props = defineProps({
+    transaction: {
+        type: Object,
+        default: () => { },
+    },
+    payments: {
+        type: Array,
+        default: () => { },
+    },
+});
 
-    onMounted(() => {
-        eventBus.$on("openModal", (modalToOpen) => {
-            if (modalToOpen === "transaction::ShowTransactionsPayment") {
-                resetForm();
-            }
-        });
-    });
-
-
-    const form = useForm({
-        transaction: props.transaction,
-        payments: props?.payments,
-    });
-
-
-    const transaction = reactive(props.transaction || {});
-    const payments = reactive(props.payments || {});
-
-    const maxPaymentRetched = ref(false);
-
-    const addFormItem = () => {
-        if (maxPaymentRetched.value === true) {
-            return;
-        }
-        if (form.payments == null) {
-            form.payments = [{
-                date: "",
-                amount: "",
-                percentage: "",
-            }, ];
-        } else {
-            form.payments.push({
-                date: "",
-                amount: "",
-                percentage: "",
-            });
-        }
-        if (form.payments?.length === transaction.times_to_pay) {
-            maxPaymentRetched.value = true;
-            return;
-        }
-    };
-
-    const removePayment = (index) => {
-        form.payments.splice(index, 1);
-        maxPaymentRetched.value = false;
-    };
-
-    const resetForm = () => {
-        // form reset
-        form.reset();
-        // remove errors
-        Object.keys(form.errors).forEach((key) => {
-            delete form.errors[key];
-        });
-        maxPaymentRetched.value = false;
-    };
-
-    watch(
-        () => cloneDeep(props),
-        (newProps) => {
-            if (!newProps.transaction) {
-                return;
-            }
+onMounted(() => {
+    eventBus.$on("openModal", (modalToOpen) => {
+        if (modalToOpen === "transaction::ShowTransactionsPayment") {
             resetForm();
-            Object.assign(transaction, newProps.transaction);
-            form.transaction = newProps.transaction;
-            form.payments = newProps.payments;
         }
-    );
+    });
+});
 
 
+const form = useForm({
+    transaction: props.transaction,
+    payments: props?.payments,
+});
 
-    const totalExtraServicesPrice = computed(() => {
-        let total = 0;
-        transaction.extra_services?.forEach((extraService) => {
-            total += extraService.price * extraService.quantity;
+
+const transaction = reactive(props.transaction || {});
+const payments = reactive(props.payments || {});
+
+const maxPaymentRetched = ref(false);
+
+const addFormItem = () => {
+    if (maxPaymentRetched.value === true) {
+        return;
+    }
+    if (form.payments == null) {
+        form.payments = [{
+            date: "",
+            amount: "",
+            percentage: "",
+        },];
+    } else {
+        form.payments.push({
+            date: "",
+            amount: "",
+            percentage: "",
         });
-        return total;
+    }
+    if (form.payments?.length === transaction.times_to_pay) {
+        maxPaymentRetched.value = true;
+        return;
+    }
+};
+
+const removePayment = (index) => {
+    form.payments.splice(index, 1);
+    maxPaymentRetched.value = false;
+};
+
+const resetForm = () => {
+    // form reset
+    form.reset();
+    // remove errors
+    Object.keys(form.errors).forEach((key) => {
+        delete form.errors[key];
+    });
+    maxPaymentRetched.value = false;
+};
+
+watch(
+    () => cloneDeep(props),
+    (newProps) => {
+        if (!newProps.transaction) {
+            return;
+        }
+        resetForm();
+        Object.assign(transaction, newProps.transaction);
+        form.transaction = newProps.transaction;
+        form.payments = newProps.payments;
+    }
+);
+
+
+
+const totalExtraServicesPrice = computed(() => {
+    let total = 0;
+    transaction.extra_services?.forEach((extraService) => {
+        total += extraService.price * extraService.quantity;
+    });
+    return total;
+});
+
+const totalServicesPrice = computed(() => {
+    let total = 0;
+    transaction.services?.forEach((service) => {
+        total += service.price * service.quantity;
+    });
+    return total;
+});
+
+const totalPaid = computed(() => {
+    let total = 0;
+    transaction.payments?.forEach((payment) => {
+        total += payment.amount * 1;
+    });
+    return total;
+});
+
+const totalPrice = computed(() => {
+    let total = 0;
+    transaction.services?.forEach((service) => {
+        total += service.price * service.quantity;
+    });
+    transaction.extra_services?.forEach((extraService) => {
+        total += extraService.price * extraService.quantity;
     });
 
-    const totalServicesPrice = computed(() => {
-        let total = 0;
-        transaction.services?.forEach((service) => {
-            total += service.price * service.quantity;
-        });
-        return total;
-    });
+    return total;
+});
 
-    const totalPaid = computed(() => {
-        let total = 0;
-        transaction.payments?.forEach((payment) => {
-            total += payment.amount * 1;
-        });
-        return total;
-    });
+const submit = () => {
+    const sharedFormOptions = {
+        preserveState: true,
+        preserveScroll: true,
+        onError: (errors) => {
+            Object.keys(form.errors).forEach((key) => {
+                delete form.errors[key];
+            });
 
-    const totalPrice = computed(() => {
-        let total = 0;
-        transaction.services?.forEach((service) => {
-            total += service.price * service.quantity;
-        });
-        transaction.extra_services?.forEach((extraService) => {
-            total += extraService.price * extraService.quantity;
-        });
-
-        return total;
-    });
-
-    const submit = () => {
-        const sharedFormOptions = {
-            preserveState: true,
-            preserveScroll: true,
-            onError: (errors) => {
-                Object.keys(form.errors).forEach((key) => {
-                    delete form.errors[key];
-                });
-
-                Object.assign(form.errors, errors);
-            },
-        };
-
-        router.post(
-            route("store.payments.transactions", transaction.id),
-            form,
-            Object.assign(sharedFormOptions, {
-                onSuccess: () => {
-                    resetForm();
-                    eventBus.$emit("closeModal", "transaction::ShowTransactionsPayment");
-                    Swal.fire({
-                        icon: "success",
-                        title: "Success",
-                        text: "Transaction created successfully",
-                        timer: 3000,
-                        timerProgressBar: true,
-                    });
-                },
-            })
-        );
+            Object.assign(form.errors, errors);
+        },
     };
+
+    router.post(
+        route("store.payments.transactions", transaction.id),
+        form,
+        Object.assign(sharedFormOptions, {
+            onSuccess: () => {
+                resetForm();
+                eventBus.$emit("closeModal", "transaction::ShowTransactionsPayment");
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Transaction created successfully",
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            },
+        })
+    );
+};
 </script>
 <template>
     <div>
@@ -194,10 +194,10 @@
                 </thead>
 
                 <tbody v-for="transaction in transaction.services" :key="transaction.id">
-                    <td class="font-bold text-center">{{ transaction . price * transaction . quantity }}</td>
-                    <td class="font-bold text-center">{{ transaction . price }}</td>
-                    <td class="font-bold text-center">{{ transaction . quantity }}</td>
-                    <td class="font-bold text-center">{{ transaction . name }}</td>
+                    <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td>
+                    <td class="font-bold text-center">{{ transaction.price }}</td>
+                    <td class="font-bold text-center">{{ transaction.quantity }}</td>
+                    <td class="font-bold text-center">{{ transaction.name }}</td>
                 </tbody>
 
                 <!-- total price -->
@@ -226,10 +226,10 @@
                     </tr>
                 </thead>
                 <tbody v-for="transaction in transaction.extra_services" :key="transaction.id">
-                    <td class="font-bold text-center">{{ transaction . price * transaction . quantity }}</td>
-                    <td class="font-bold text-center">{{ transaction . price }}</td>
-                    <td class="font-bold text-center">{{ transaction . quantity }}</td>
-                    <td class="font-bold text-center">{{ transaction . name }}</td>
+                    <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td>
+                    <td class="font-bold text-center">{{ transaction.price }}</td>
+                    <td class="font-bold text-center">{{ transaction.quantity }}</td>
+                    <td class="font-bold text-center">{{ transaction.name }}</td>
                 </tbody>
 
                 <!-- total price -->
@@ -249,12 +249,11 @@
             <div class="mt-5">
                 <h1 class="text-lg text-center underline bg-orange-200 rounded-full decoration-sky-500">
                     ما تم دفعه من اصل
-                    ({{ transaction . times_to_pay }})
+                    ({{ transaction.times_to_pay }})
                     دفعات
                 </h1>
                 <div v-if="!Array.isArray(form.payments) || form.payments?.length === 0">
-                    <h1
-                        class="w-1/2 m-auto mt-10 text-lg text-center underline bg-red-500 rounded-full decoration-sky-500">
+                    <h1 class="w-1/2 m-auto mt-10 text-lg text-center underline bg-red-500 rounded-full decoration-sky-500">
                         لا يوجد دفعات
                     </h1>
                 </div>
@@ -283,14 +282,16 @@
                                             <span class="font-bold text-red-800"
                                                 v-if="payment.amount - (payment.percentage * totalPrice) / 100 < 0">
                                                 <span>
-                                                    {{ Math . abs(payment . amount - (payment . percentage * totalPrice) / 100) . toFixed(2) }}
+                                                    {{ Math.abs(payment.amount - (payment.percentage * totalPrice) /
+                                                        100).toFixed(2) }}
                                                 </span>
                                                 ناقص
                                             </span>
 
                                             <span class="font-bold text-red-800"
                                                 v-if="payment.amount - (payment.percentage * totalPrice) / 100 > 0">
-                                                <span>{{ Math . abs(payment . amount - (payment . percentage * totalPrice) / 100) . toFixed(2) }}</span>
+                                                <span>{{ Math.abs(payment.amount - (payment.percentage * totalPrice) /
+                                                    100).toFixed(2) }}</span>
                                                 زائدة
                                             </span>
 
@@ -310,11 +311,11 @@
                                     </td>
 
                                     <td class="py-2 font-bold text-center">
-                                        <BaseButton :class="'w-5 h-5'" type="button" class="w-20 h-0 mb-4"
-                                            :icon="mdiMinus" color="danger" @click="removePayment(index)" />
+                                        <BaseButton :class="'w-5 h-5'" type="button" class="w-20 h-0 mb-4" :icon="mdiMinus"
+                                            color="danger" @click="removePayment(index)" />
                                     </td>
                                     <td class="py-2 font-bold text-center">
-                                        <span v-if="payment.date" class="ml-2 font-bold">{{ payment . date }}</span>
+                                        <span v-if="payment.date" class="ml-2 font-bold">{{ payment.date }}</span>
                                         <span v-else class="ml-2 font-bold">
                                             -----------
                                         </span>
@@ -338,7 +339,7 @@
 
                                     <td class="py-2 font-bold text-center">
                                         <span class="ml-2 font-bold">
-                                            {{ (payment . percentage * totalPrice) / 100 . toFixed(2) }}
+                                            {{ (payment.percentage * totalPrice) / 100 .toFixed(2) }}
                                         </span>
                                     </td>
                                 </tr>
@@ -364,8 +365,7 @@
                         </div>
 
                         <div v-for="(payment, index) in form.payments" :key="index" class="mt-3 text-center">
-                            <span v-if="form?.errors['payments.' + index + '.amount']"
-                                class="block text-sm text-red-600">
+                            <span v-if="form?.errors['payments.' + index + '.amount']" class="block text-sm text-red-600">
                                 يجيب ان يكون المبلغ عددا صحيحا
                             </span>
                         </div>
@@ -387,10 +387,8 @@
                             <BaseButtons>
                                 <BaseButton @click="submit" type="submit" color="info" label="حفظ" />
                             </BaseButtons>
-                            <BaseButton type="button"
-                                v-if="form.payments?.length != transaction.times_to_pay"
-                            :icon="mdiPlus" color="info" label="اضافة دفعة"
-                                @click="addFormItem" />
+                            <BaseButton type="button" v-if="form.payments?.length != transaction.times_to_pay"
+                                :icon="mdiPlus" color="info" label="اضافة دفعة" @click="addFormItem" />
                         </div>
                     </div>
                 </div>
@@ -448,5 +446,4 @@
             </tfoot>
         </table>
     </div>
-
 </template>
