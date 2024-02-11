@@ -234,13 +234,13 @@ const openFormModal = () => {
             :totalExtraServicesPrice="totalExtraServicesPrice" :totalPrice="totalPrice" />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-96 overflow-y-auto 2xl:w-4/12" scrollable :hasCancel="true"
-        v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
+    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isAddMoreTransactionModalOpen"
+        :title="AddMoreTransactionModalTitle">
         <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
             :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12 " scrollable :hasCancel="true" v-model="isProfitDetailsModalOpen"
+    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isProfitDetailsModalOpen"
         :title="ShowTransactionsPaymentModalTitle">
         <ProfitDetailsForm :project="currentShowProfitDetails?.project.id" :services="currentShowProfitDetails?.services"
             :transaction="currentShowProfitDetails" />
