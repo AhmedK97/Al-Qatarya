@@ -31,7 +31,8 @@ class TransactionsAdminResource extends JsonResource
                         'name' => $extraService->name,
                         'price' => $extraService->price,
                         'quantity' => $extraService->quantity,
-                        'details' => $extraService->details,
+                        'type' => $extraService->type,
+                        'details' => json_decode($extraService->details),
                         'created_at' => $extraService->created_at->format('Y-m-d'),
                     ];
                 });
