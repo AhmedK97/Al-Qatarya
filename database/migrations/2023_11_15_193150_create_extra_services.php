@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('price')->nullable();
+            $table->string('type')->nullable();
             $table->foreignId('project_id')->constrained();
             $table->integer('quantity')->nullable();
             $table->json('details')->nullable();
