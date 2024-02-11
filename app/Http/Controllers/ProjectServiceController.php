@@ -14,14 +14,17 @@ class ProjectServiceController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
+        // $request->dd();
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
             'services.*.price' => 'required|numeric|min:0',
             'services.*.quantity' => 'required|numeric|min:1',
             'extra_services.*.id' => 'nullable|integer|min:0',
             'extra_services.*.name' => 'required|string',
-            'extra_services.*.price' => 'required|numeric|min:0',
-            'extra_services.*.quantity' => 'required|numeric|min:0',
+            'extra_services.*.price' => 'required_if:extra_services.*.type,service|numeric|min:0',
+            'extra_services.*.quantity' => 'required_if:extra_services.*.type,service|numeric|min:1',
+            'extra_services.*.type' => 'required|string|in:service,worker',
+            'extra_services.*.details' => 'nullable',
         ]);
 
         if (!empty($data['services'])) {
@@ -33,7 +36,6 @@ class ProjectServiceController extends Controller
                 ]);
             });
         }
-        // dd($data['extra_services']);
 
         if (!empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
@@ -47,13 +49,14 @@ class ProjectServiceController extends Controller
 
             collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
                 $id = Arr::get($extraServiceData, 'id');
-                // dd($id);
                 $project->extraServices()->updateOrCreate(
                     ['id' => $id],
                     [
                         'name' => $extraServiceData['name'],
                         'price' => $extraServiceData['price'],
                         'quantity' => $extraServiceData['quantity'],
+                        // 'type' => $extraServiceData['type'], // 'service' or 'employee'
+                        // 'details' => json_encode(Arr::get($extraServiceData, 'details', [])),
                     ],
                 );
             });
