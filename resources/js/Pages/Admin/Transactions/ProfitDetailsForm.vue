@@ -176,7 +176,9 @@ const toggleWorkerTabs = (tabNumber) => {
     openWorkerTab.value = tabNumber;
 };
 
-
+const calculateWorkerPayment = (worker) => {
+    return (worker.details['originPrice']) + (worker.details['discount'] + worker.details['tips']);
+};
 
 
 </script>
@@ -205,6 +207,7 @@ const toggleWorkerTabs = (tabNumber) => {
                         <div class="tab-content tab-space">
                             <div v-for="(service, id) in  (form.services) " :key="id"
                                 v-bind:class="{ 'hidden': openServiceTab !== service.id, 'block': openServiceTab === service.id }">
+                                <h1 class="m-3 font-bold text-center bg-red-200">{{ service.name }}</h1>
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead>
                                         <tr>
@@ -339,6 +342,8 @@ const toggleWorkerTabs = (tabNumber) => {
                         'hidden': (openExtraServiceTab ? openExtraServiceTab : filteredServices[0]?.id)
                             !== formItem.id, 'block': openExtraServiceTab === formItem.id
                     }">
+                        <h1 class="m-3 font-bold text-center bg-red-200">{{ formItem.name }}</h1>
+
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead>
                                 <tr>
@@ -385,7 +390,6 @@ const toggleWorkerTabs = (tabNumber) => {
                             <FormField :label="'سعر المتر في المادة الخام :'">
                                 <FormControl v-model="formItem.details['originPrice']"
                                     placeholder="سعر المتر في المادة الخام" />
-                                <!-- <input type="hidden" v-model="formItem.type" value="employ" /> -->
                             </FormField>
 
                             <p class="m-auto" v-if="calculateExtraServiceProfit(formItem) > 0">
@@ -504,6 +508,8 @@ const toggleWorkerTabs = (tabNumber) => {
                     <div v-for="( formWorker, index ) in  filteredWorkers " :key="index" v-bind:class="{
                         'hidden': (openWorkerTab ? openWorkerTab : filteredWorkers[0]?.id) !== formWorker.id, 'block': openWorkerTab === formWorker.id
                     }">
+                        <h1 class="m-3 font-bold text-center bg-red-200">{{ formWorker.name }}</h1>
+
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead>
                                 <tr>
@@ -551,43 +557,32 @@ const toggleWorkerTabs = (tabNumber) => {
                         <br>
                         <h1 class="font-bold text-cyan-700">حساب الارباح :</h1>
                         <div class="grid grid-flow-row grid-cols-2">
-                            <FormField :label="'اليومية :'">
+
+                            <FormField class="mx-2" :label="'اليومية :'">
                                 <FormControl v-model="formWorker.details['originPrice']" placeholder="اليومية" />
                             </FormField>
 
-                            <p class="m-auto" v-if="calculateWorkerProfit(formWorker) > 0">
-                                <span class="block ">
-                                    <strong class="font-bold text-red-700">
-                                        {{ formWorker.details['originPrice'] * formWorker.quantity }}
-                                        دينار
-                                    </strong>
-                                </span>
-                                <span v-if="formWorker.details['originPrice']" class="block font-bold text-green-700">
-                                    الربح : {{ calculateWorkerProfit(formWorker) }} دينار
+                            <div class="grid grid-flow-col grid-cols-2">
+                                <FormField class="mx-2" :label="'اكرامية :'">
+                                    <FormControl v-model="formWorker.details['tips']" placeholder="اكرامية ان وجد" />
+                                </FormField>
+
+                                <FormField class="mx-2" :label="'خصم :'">
+                                    <FormControl v-model="formWorker.details['discount']" placeholder="خصم ان وجد" />
+                                </FormField>
+                            </div>
+
+                            <p>
+                                الاجمالى
+                                <span class="block text-red-700 font -bold">
+                                    <!-- اليومية + (الخصم + اكراميو) -->
+                                    {{ calculateWorkerPayment(formWorker) }}
                                 </span>
                             </p>
 
-                            <p class="m-auto" v-else-if="calculateWorkerProfit(formWorker) === 0">
-                                <span class="block font-bold text-red-700">
-                                    لا يوجد ربح
-                                </span>
-                            </p>
-
-                            <p class="m-auto" v-else>
-                                <span class="block ">
-                                    المجموع : (سعر المتر الخام * عدد الامتار)=
-                                    <strong class="font-bold text-red-700">
-                                        {{ formWorker.details['originPrice'] * formWorker.quantity }}
-                                        دينار
-                                    </strong>
-                                </span>
-                                <span class="block font-bold text-red-700">
-                                    الخسارة : {{ calculateWorkerProfit(formWorker) }} دينار
-                                </span>
-                            </p>
                         </div>
                         <input type="hidden" v-bind:value="'worker'">
-
+                        {{ form?.errors }}
                         <!-- form worker -->
                         <!-- formWorker.details['type'] == service  // hidden -->
                         <!-- <FormField :label="'نوع العمالة :'">
@@ -606,7 +601,7 @@ const toggleWorkerTabs = (tabNumber) => {
                                 class="block text-sm text-red-600">
                                 يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                             </span>
-                            <BaseButtons>
+                            <BaseButtons class="mx-2 mt-5">
                                 <BaseButton @click="submit" type="submit" color="info" label="حفظ" />
                             </BaseButtons>
                         </div>
