@@ -33,6 +33,12 @@ class TransactionsAdminResource extends JsonResource
                         'quantity' => $extraService->quantity,
                         'type' => $extraService->type,
                         'details' => json_decode($extraService->details),
+                        // 'details' => [
+                        //     'originPrice' => json_decode($extraService->details)->originPrice ?? 0,
+                        //     'tips' => json_decode($extraService->details)->tips ?? 0,
+                        //     'discount' => json_decode($extraService->details)->discount ?? 0,
+                        //     'created_at' => json_decode($extraService->details)->created_at ?? 0,
+                        // ],
                         'created_at' => $extraService->created_at->format('Y-m-d'),
                     ];
                 });
@@ -61,12 +67,17 @@ class TransactionsAdminResource extends JsonResource
 
             'services' => $this->whenLoaded('project', function () {
                 return $this->project->services->map(function ($service) {
+                    // dd(json_decode($service->pivot->details));
                     return [
                         'id' => $service->id,
                         'name' => $service->name,
                         'price' => $service->pivot->price,
                         'quantity' => $service->pivot->quantity,
-                        'details' => $service->pivot->details,
+                        // 'details' => json_decode($service->details),
+                        'details' => [
+                            'originPrice' => json_decode($service->pivot->details)->originPrice ?? 0,
+                            // 'originQuantity' => json_decode($service->details)->originQuantity ?? 0,
+                        ],
                         'created_at' => $service->created_at->format('Y-m-d'),
                     ];
                 });

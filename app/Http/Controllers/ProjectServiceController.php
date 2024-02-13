@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Arr;
 use Illuminate\Http\Request;
-use Laravel\Jetstream\Rules\Role;
+use Illuminate\Validation\Rule;
 
 class ProjectServiceController extends Controller
 {
@@ -14,14 +14,20 @@ class ProjectServiceController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
+        $request->dd();
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
             'services.*.price' => 'required|numeric|min:0',
             'services.*.quantity' => 'required|numeric|min:1',
+            'services.*.details' => 'nullable',
             'extra_services.*.id' => 'nullable|integer|min:0',
             'extra_services.*.name' => 'required|string',
-            'extra_services.*.price' => 'required_if:extra_services.*.type,service|numeric|min:0',
-            'extra_services.*.quantity' => 'required_if:extra_services.*.type,service|numeric|min:1',
+            'extra_services.*.price' => Rule::requiredIf(function () use ($request) {
+                return $request->input('extra_services.*.type') === 'service';
+            }),
+            'extra_services.*.quantity' => Rule::requiredIf(function () use ($request) {
+                return $request->input('extra_services.*.type') === 'service';
+            }),
             'extra_services.*.type' => 'required|string|in:service,worker',
             'extra_services.*.details' => 'nullable',
         ]);
@@ -32,6 +38,7 @@ class ProjectServiceController extends Controller
                 $project->services()->updateExistingPivot($service, [
                     'price' => $serviceData['price'],
                     'quantity' => $serviceData['quantity'],
+                    'details' => json_encode(Arr::get($serviceData, 'details', [])),
                 ]);
             });
         }

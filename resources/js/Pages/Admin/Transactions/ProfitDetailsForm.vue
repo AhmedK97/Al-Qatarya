@@ -55,12 +55,14 @@ onMounted(() => {
     });
 });
 const services = reactive(props.services || {});
-
+const extra_services = reactive(props.extra_services || {});
 const form = useForm({
     services: props.services,
     project_id: props.project,
     extra_services: props.transaction?.extra_services,
 });
+
+
 
 const resetForm = () => {
     // form reset
@@ -71,19 +73,7 @@ const resetForm = () => {
     });
 };
 
-
-const addFormItem = () => {
-    form.extra_services.push({
-        name: "",
-        price: "",
-        quantity: "",
-        details: [
-            type = "",
-            originPrice = "",
-        ],
-    });
-};
-
+const clonedProps = ref(cloneDeep(props));
 watch(
     () => cloneDeep(props),
     (newProps) => {
@@ -168,8 +158,6 @@ const toggleExtraServiceTabs = (tabNumber) => {
     openExtraServiceTab.value = tabNumber;
 };
 
-// const firstWorkerId = form.extra_services[0]?.id; there is no 0
-// just use the first id from the array of workers couse it filtered so maybe the first one is not the first one in the array
 
 const openWorkerTab = ref("");
 const toggleWorkerTabs = (tabNumber) => {
@@ -180,11 +168,25 @@ const calculateWorkerPayment = (worker) => {
     return (worker.details['originPrice']) + (worker.details['discount'] + worker.details['tips']);
 };
 
+const newDetail = ref({
+    originPrice: '',
+    tips: '',
+    discount: '',
+});
+
+
+const addNewDetail = (id) => {
+    const newId = parseInt(id)
+    form.extra_services[newId - 1].details.push({ ...newDetail.value });
+};
+
+const deleteDetail = (index) => {
+    form.extra_services[index - 1].details.splice(index, 1);
+};
 
 </script>
 <template class="bg-gray-500">
     <CardBox form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
-
         <div class="flex flex-wrap">
             <div class="w-full">
                 <label class="block mb-2 font-bold">
@@ -252,18 +254,19 @@ const calculateWorkerPayment = (worker) => {
                                 <h1 class="font-bold text-cyan-700">حساب الارباح :</h1>
                                 <div class="grid grid-flow-row grid-cols-2">
                                     <FormField :label="'سعر المتر في المادة الخام :'">
-                                        <FormControl v-model="service.details" placeholder="سعر المتر في المادة الخام" />
+                                        <FormControl v-model="service.details.originPrice"
+                                            placeholder="سعر المتر في المادة الخام" />
                                     </FormField>
 
                                     <p class="m-auto" v-if="calculateServiceProfit(service) > 0">
                                         <span class="block ">
                                             المجموع : (سعر المتر الخام * عدد الامتار)=
                                             <strong class="font-bold text-red-700">
-                                                {{ service.details * service.quantity }}
+                                                {{ service.details.originPrice * service.quantity }}
                                                 دينار
                                             </strong>
                                         </span>
-                                        <span v-if="service.details" class="block font-bold text-green-700">
+                                        <span v-if="service.details.originPrice" class="block font-bold text-green-700">
                                             الربح : {{ calculateServiceProfit(service) }} دينار
                                         </span>
                                     </p>
@@ -278,7 +281,7 @@ const calculateWorkerPayment = (worker) => {
                                         <span class="block ">
                                             المجموع : (سعر المتر الخام * عدد الامتار)=
                                             <strong class="font-bold text-red-700">
-                                                {{ service.details * service.quantity }}
+                                                {{ service.details.originPrice * service.quantity }}
                                                 دينار
                                             </strong>
                                         </span>
@@ -313,6 +316,7 @@ const calculateWorkerPayment = (worker) => {
             </div>
         </div>
     </CardBox>
+
 
     <BaseDivider :bold="true" />
 
@@ -515,6 +519,11 @@ const calculateWorkerPayment = (worker) => {
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                        #
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                                         اليومية
                                     </th>
 
@@ -530,59 +539,85 @@ const calculateWorkerPayment = (worker) => {
 
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
-                                        التــريح
+                                        التاريخ
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                        اجراء
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <!-- total -->
+                                <tr v-for="(details, index) in formWorker.details" :key="details.id">
+                                    <!-- {{ details }} -->
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ formWorker.price * formWorker.quantity }} دينار
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ formWorker.details['tips'] }} دينار
+                                        {{ index + 1 }}
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ formWorker.details['discount'] }} دينار
+                                        {{ details.originPrice }} دينار
                                     </td>
-                                    <!-- created at -->
+
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ formWorker.created_at }}
+                                        {{ details.tips }} دينار
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{ details.discount }} دينار
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{ details.created_at }}
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <button @click="deleteDetail(index)" type="button" class="text-red-600">حذف</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
                         <h1 class="font-bold text-cyan-700">حساب الارباح :</h1>
-                        <div class="grid grid-flow-row grid-cols-2">
+                        <div>
 
-                            <FormField class="mx-2" :label="'اليومية :'">
-                                <FormControl v-model="formWorker.details['originPrice']" placeholder="اليومية" />
-                            </FormField>
-
-                            <div class="grid grid-flow-col grid-cols-2">
-                                <FormField class="mx-2" :label="'اكرامية :'">
-                                    <FormControl v-model="formWorker.details['tips']" placeholder="اكرامية ان وجد" />
+                            <!-- Form fields for new entry -->
+                            <div class="grid grid-flow-row grid-cols-4">
+                                <FormField class="mx-2" :label="'اليومية :'">
+                                    <FormControl v-model="newDetail.originPrice" placeholder="اليومية" />
                                 </FormField>
 
-                                <FormField class="mx-2" :label="'خصم :'">
-                                    <FormControl v-model="formWorker.details['discount']" placeholder="خصم ان وجد" />
-                                </FormField>
+                                <div class="grid grid-flow-col grid-cols-2 col-span-2">
+                                    <FormField class="mx-2" :label="'اكرامية :'">
+                                        <FormControl v-model="newDetail.tips" placeholder="اكرامية ان وجد" />
+                                    </FormField>
+
+                                    <FormField class="mx-2" :label="'خصم :'">
+                                        <FormControl v-model="newDetail.discount" placeholder="خصم ان وجد" />
+                                    </FormField>
+                                </div>
+                                <BaseButtons class="mx-2 mt-5">
+                                    <BaseButton @click="addNewDetail(formWorker.id)" type="submit" color="info"
+                                        label="اضافة يومية" />
+                                </BaseButtons>
                             </div>
 
-                            <p>
-                                الاجمالى
-                                <span class="block text-red-700 font -bold">
-                                    <!-- اليومية + (الخصم + اكراميو) -->
-                                    {{ calculateWorkerPayment(formWorker) }}
-                                </span>
-                            </p>
+                            <!-- <BaseButtons class="mx-2 mt-5">
+                            <BaseButton @click="addNewDetail(formWorker.id)" type="submit" color="info"
+                                label="اضافة يومية" />
+                            </BaseButtons> -->
 
                         </div>
+                        <p>
+                            الاجمالى
+                            <span class="block text-red-700 font -bold">
+                                <!-- اليومية + (الخصم + اكراميو) -->
+                                {{ calculateWorkerPayment(formWorker) }}
+                            </span>
+                        </p>
                         <input type="hidden" v-bind:value="'worker'">
-                        {{ form?.errors }}
+                        <!-- input created at -->
+
+                        <!-- {{ form?.errors }} -->
                         <!-- form worker -->
                         <!-- formWorker.details['type'] == service  // hidden -->
                         <!-- <FormField :label="'نوع العمالة :'">
@@ -591,16 +626,17 @@ const calculateWorkerPayment = (worker) => {
 
                         <div v-if="form && form.errors">
                             <!-- <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
-                    {{ form?.errors['services.' + id + '.price'] }}
-                </span>
-                <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
-                    {{ form?.errors['services.' + id + '.quantity'] }}
-                </span> -->
+                                {{ form?.errors['services.' + id + '.price'] }}
+                            </span>
+                            <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
+                                {{ form?.errors['services.' + id + '.quantity'] }}
+                            </span> -->
                             <span
                                 v-if="form?.errors['services.' + id + '.price'] || form?.errors['services.' + id + '.quantity']"
                                 class="block text-sm text-red-600">
                                 يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                             </span>
+
                             <BaseButtons class="mx-2 mt-5">
                                 <BaseButton @click="submit" type="submit" color="info" label="حفظ" />
                             </BaseButtons>
