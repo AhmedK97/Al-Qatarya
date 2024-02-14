@@ -250,16 +250,16 @@ const openFormModal = () => {
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>اسم المشورع</th>
-                <th>العميل</th>
-                <th>موبايل</th>
-                <th>الموظف</th>
-                <th>العنوان</th>
-                <th>عدد مرات الدفع</th>
-                <th>الحاله</th>
-                <th>تاريخ الانشاء</th>
-                <th>اجراء</th>
+                <th class="text-center">#</th>
+                <th class="text-center">اسم المشورع</th>
+                <th class="text-center">العميل</th>
+                <th class="text-center">موبايل</th>
+                <th class="text-center">الموظف</th>
+                <th class="text-center">العنوان</th>
+                <th class="text-center">عدد مرات الدفع</th>
+                <th class="text-center">الحاله</th>
+                <th class="text-center">تاريخ الانشاء</th>
+                <th class="text-center">اجراء</th>
             </tr>
         </thead>
         <tbody>
@@ -298,7 +298,6 @@ const openFormModal = () => {
                         <option value="Pending">لم يكتمل الدفع</option>
                     </select>
                 </td>
-                <td></td>
                 <td></td>
                 <td></td>
             </tr>
