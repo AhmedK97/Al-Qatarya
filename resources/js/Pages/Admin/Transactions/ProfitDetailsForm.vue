@@ -127,7 +127,7 @@ const extraServicesService = computed(() => {
 });
 
 const calculateServiceProfit = (service) => {
-    return (service.price * service.quantity) - (service.details * service.quantity);
+    return (service.price * service.quantity) - (service.details['originPrice'] * service.quantity);
 };
 
 const calculateExtraServiceProfit = (service) => {
@@ -168,20 +168,27 @@ const calculateWorkerPayment = (worker) => {
     return (worker.details['originPrice']) + (worker.details['discount'] + worker.details['tips']);
 };
 
-const newDetail = ref({
+const newDetailWorker = ref({
     originPrice: '',
     tips: '',
     discount: '',
 });
 
-
+const validateOriginPriceWorker = ref('')
 const addNewDetail = (id) => {
+    // originPrice required
+    if (!newDetailWorker.value.originPrice) {
+        validateOriginPriceWorker.value = 'اليومية مطلوبة';
+        return
+    }
+
     const newId = parseInt(id)
-    form.extra_services[newId - 1].details.push({ ...newDetail.value });
+    form.extra_services[newId - 1].details.push({ ...newDetailWorker.value });
 };
 
-const deleteDetail = (index) => {
-    form.extra_services[index - 1].details.splice(index, 1);
+const deleteDetail = (id, index) => {
+    const newId = parseInt(id)
+    form.extra_services[newId - 1].details.splice(index, 1);
 };
 
 </script>
@@ -254,7 +261,7 @@ const deleteDetail = (index) => {
                                 <h1 class="font-bold text-cyan-700">حساب الارباح :</h1>
                                 <div class="grid grid-flow-row grid-cols-2">
                                     <FormField :label="'سعر المتر في المادة الخام :'">
-                                        <FormControl v-model="service.details.originPrice"
+                                        <FormControl v-model="service.details['originPrice']"
                                             placeholder="سعر المتر في المادة الخام" />
                                     </FormField>
 
@@ -262,11 +269,11 @@ const deleteDetail = (index) => {
                                         <span class="block ">
                                             المجموع : (سعر المتر الخام * عدد الامتار)=
                                             <strong class="font-bold text-red-700">
-                                                {{ service.details.originPrice * service.quantity }}
+                                                {{ service.details['originPrice'] * service.quantity }}
                                                 دينار
                                             </strong>
                                         </span>
-                                        <span v-if="service.details.originPrice" class="block font-bold text-green-700">
+                                        <span v-if="service.details['originPrice']" class="block font-bold text-green-700">
                                             الربح : {{ calculateServiceProfit(service) }} دينار
                                         </span>
                                     </p>
@@ -281,7 +288,8 @@ const deleteDetail = (index) => {
                                         <span class="block ">
                                             المجموع : (سعر المتر الخام * عدد الامتار)=
                                             <strong class="font-bold text-red-700">
-                                                {{ service.details.originPrice * service.quantity }}
+                                                <!-- {{ service }} -->
+                                                {{ service.details['originPrice'] * service.quantity }}
                                                 دينار
                                             </strong>
                                         </span>
@@ -571,7 +579,8 @@ const deleteDetail = (index) => {
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <button @click="deleteDetail(index)" type="button" class="text-red-600">حذف</button>
+                                        <button @click="deleteDetail(formWorker.id, index)" type="button"
+                                            class="text-red-600">حذف</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -583,22 +592,28 @@ const deleteDetail = (index) => {
                             <!-- Form fields for new entry -->
                             <div class="grid grid-flow-row grid-cols-4">
                                 <FormField class="mx-2" :label="'اليومية :'">
-                                    <FormControl v-model="newDetail.originPrice" placeholder="اليومية" />
+                                    <FormControl v-model="newDetailWorker.originPrice" placeholder="اليومية" />
                                 </FormField>
 
                                 <div class="grid grid-flow-col grid-cols-2 col-span-2">
                                     <FormField class="mx-2" :label="'اكرامية :'">
-                                        <FormControl v-model="newDetail.tips" placeholder="اكرامية ان وجد" />
+                                        <FormControl v-model="newDetailWorker.tips" placeholder="اكرامية ان وجد" />
                                     </FormField>
 
                                     <FormField class="mx-2" :label="'خصم :'">
-                                        <FormControl v-model="newDetail.discount" placeholder="خصم ان وجد" />
+                                        <FormControl v-model="newDetailWorker.discount" placeholder="خصم ان وجد" />
                                     </FormField>
                                 </div>
                                 <BaseButtons class="mx-2 mt-5">
                                     <BaseButton @click="addNewDetail(formWorker.id)" type="submit" color="info"
                                         label="اضافة يومية" />
                                 </BaseButtons>
+
+                                <p class="text-red-600">
+                                    {{ validateOriginPriceWorker }}
+                                </p>
+
+
                             </div>
 
                             <!-- <BaseButtons class="mx-2 mt-5">
@@ -607,13 +622,13 @@ const deleteDetail = (index) => {
                             </BaseButtons> -->
 
                         </div>
-                        <p>
+                        <!-- <p>
                             الاجمالى
                             <span class="block text-red-700 font -bold">
-                                <!-- اليومية + (الخصم + اكراميو) -->
                                 {{ calculateWorkerPayment(formWorker) }}
                             </span>
-                        </p>
+                        </p> -->
+
                         <input type="hidden" v-bind:value="'worker'">
                         <!-- input created at -->
 
