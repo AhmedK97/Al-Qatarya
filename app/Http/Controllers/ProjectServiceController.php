@@ -14,7 +14,6 @@ class ProjectServiceController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
-        $request->dd();
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
             'services.*.price' => 'required|numeric|min:0',
