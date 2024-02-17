@@ -165,13 +165,27 @@ const toggleWorkerTabs = (tabNumber) => {
 };
 
 const calculateWorkerPayment = (worker) => {
-    return (worker.details['originPrice']) + (worker.details['discount'] + worker.details['tips']);
+    const originPrice = Number(worker['originPrice']) || 0;
+    const discount = Number(worker['discount']) || 0;
+    const tips = Number(worker['tips']) || 0;
+
+    console.log(originPrice, discount, tips);
+
+    return originPrice + tips - discount;
 };
+const date = new Date();
+
+const day = date.getDate();
+const month = date.getMonth() + 1;
+const year = date.getFullYear();
+
+const currentDate = `${year}-${month}-${day}`;
 
 const newDetailWorker = ref({
     originPrice: '',
     tips: '',
     discount: '',
+    created_at: '',
 });
 
 const validateOriginPriceWorker = ref('')
@@ -183,13 +197,26 @@ const addNewDetail = (id) => {
     }
 
     const newId = parseInt(id)
+
+    newDetailWorker.value.created_at = currentDate;
+
     form.extra_services[newId - 1].details.push({ ...newDetailWorker.value });
+
+    newDetailWorker.value = {
+        originPrice: '',
+        tips: '',
+        discount: '',
+        created_at: '',
+    };
+
 };
 
 const deleteDetail = (id, index) => {
     const newId = parseInt(id)
     form.extra_services[newId - 1].details.splice(index, 1);
 };
+
+
 
 </script>
 <template class="bg-gray-500">
@@ -325,9 +352,7 @@ const deleteDetail = (id, index) => {
         </div>
     </CardBox>
 
-
     <BaseDivider :bold="true" />
-
 
     <CardBox form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
         <label class="block mb-2 font-bold">
@@ -544,6 +569,10 @@ const deleteDetail = (id, index) => {
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                                         خصم
                                     </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                        المجموع
+                                    </th>
 
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
@@ -567,12 +596,20 @@ const deleteDetail = (id, index) => {
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ details.tips }} دينار
+                                        <span v-if="details.tips"> {{ details.tips }} دينار </span>
+                                        <span v-else> لا يوجـد</span>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ details.discount }} دينار
+                                        <span v-if="details.discount"> {{ details.discount ?? 0 }} دينار</span>
+                                        <span v-else> لا يوجـد</span>
                                     </td>
+
+                                    <!-- المجموع -->
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{ calculateWorkerPayment(details) }} دينار
+                                    </td>
+
 
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{ details.created_at }}
