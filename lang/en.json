@@ -296,5 +296,7 @@
     "agent": "Agent",
     "location": "Location",
     "project-date": "Date",
+    "payment.coupon.success": "Coupon applied successfully",
+    "payment.coupon.cancel": "Coupon canceled successfully",
     "space-area": "Space Area"
 }
