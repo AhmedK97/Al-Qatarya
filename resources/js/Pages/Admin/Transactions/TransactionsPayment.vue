@@ -176,15 +176,20 @@ const submit = () => {
         })
     );
 };
+
+
+const filteredTransactions = computed(() => {
+    return transaction?.extra_services?.filter((service) => service.type === "service");
+});
 </script>
-<template>
+<template >
     <div>
         <div class="px-2 py-4 mt-5 overflow-x-auto bg-white rounded-lg shadow ">
             <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-200">
                 تفاصيل حساب الخـــدمات
             </h1>
-            <table class="my-4 bg-gray-100 table-auto rounded-2xl">
-                <thead class="">
+            <table style="direction  : ltr;" class="my-4 bg-gray-100 table-auto dark rounded-2xl">
+                <thead>
                     <tr>
                         <th class="font-bold text-center">الاجمالى</th>
                         <th class="font-bold text-center">سعر المتر</th>
@@ -216,7 +221,7 @@ const submit = () => {
             <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-200">
                 تفاصيل حساب الخـــدمات الاضافية
             </h1>
-            <table class="my-4 bg-gray-100 table-auto rounded-2xl">
+            <table style="direction  : ltr;" class="my-4 bg-gray-100 table-auto dark rounded-2xl">
                 <thead>
                     <tr>
                         <th class="font-bold text-center">الاجمالي</th>
@@ -225,7 +230,7 @@ const submit = () => {
                         <th class="font-bold text-center">اسم الخدمة</th>
                     </tr>
                 </thead>
-                <tbody v-for="transaction in transaction.extra_services" :key="transaction.id">
+                <tbody v-for="transaction in filteredTransactions" :key="transaction.id">
                     <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td>
                     <td class="font-bold text-center">{{ transaction.price }}</td>
                     <td class="font-bold text-center">{{ transaction.quantity }}</td>
@@ -408,8 +413,8 @@ const submit = () => {
         <h1 class="text-lg text-center underline rounded-full decoration-sky-500 bg-emerald-200">
             الحساب الكلى
         </h1>
-        <table class="my-4 bg-gray-100 table-auto rounded-2xl">
-            <thead>
+        <table class="my-4 bg-gray-100 table-auto dark rounded-2xl">
+            <thead style="direction  : ltr;">
                 <tr>
                     <th class="font-bold text-center">الحساب الكلى للخدمات</th>
                     <th class="font-bold text-center">ما تم دفعة حتى الان</th>
