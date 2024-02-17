@@ -13,13 +13,13 @@ class PaymentTransactionsController extends Controller
     public function __invoke(Request $request, Transaction $transaction)
     {
         $data = $request->validate([
-            'payments.*.amount' => 'required|integer',
+            'payments.*.amount' => 'required|numeric',
             'payments.*.date' => 'nullable',
             'payments.*.percentage' => 'nullable|numeric',
         ]);
 
 
-        if (! $data) {
+        if (!$data) {
             $transaction->update([
                 'payments' => null,
             ]);
