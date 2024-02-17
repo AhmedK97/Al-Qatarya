@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained();
             $table->foreignId('service_id')->constrained();
-            $table->integer('price')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->string('price')->nullable();
+            $table->string('quantity')->nullable();
             $table->json('details')->nullable();
             $table->timestamps();
         });
