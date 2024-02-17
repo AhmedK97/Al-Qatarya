@@ -49,7 +49,7 @@ const props = defineProps({
 
 onMounted(() => {
     eventBus.$on("openModal", (modalToOpen) => {
-        if (modalToOpen === "transaction::AddMoreTransactionForm") {
+        if (modalToOpen === "transaction::ShowProfitDetails") {
             resetForm();
         }
     });
@@ -88,38 +88,6 @@ watch(
     }
 );
 
-const submit = () => {
-    const sharedFormOptions = {
-        preserveState: true,
-        preserveScroll: true,
-        onError: (errors) => {
-            // remove errors
-            Object.keys(form.errors).forEach((key) => {
-                delete form.errors[key];
-            });
-            Object.assign(form.errors, errors);
-        },
-    };
-
-    router.post(
-        route("store.service.transactions", form.project_id),
-        form,
-        Object.assign(sharedFormOptions, {
-            onSuccess: () => {
-                resetForm();
-                eventBus.$emit("closeModal", "transaction::AddMoreTransactionForm");
-                Swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: "Payment Updated successfully",
-                    timer: 3000,
-                    timerProgressBar: true,
-                });
-            },
-
-        })
-    );
-};
 
 // extra services where has type = service
 const extraServicesService = computed(() => {
@@ -215,6 +183,41 @@ const deleteDetail = (id, index) => {
     const newId = parseInt(id)
     form.extra_services[newId - 1].details.splice(index, 1);
 };
+
+
+const submit = () => {
+    const sharedFormOptions = {
+        preserveState: true,
+        preserveScroll: true,
+        onError: (errors) => {
+            // remove errors
+            Object.keys(form.errors).forEach((key) => {
+                delete form.errors[key];
+            });
+            Object.assign(form.errors, errors);
+        },
+    };
+
+    router.post(
+        route("store.service.transactions", form.project_id),
+        form,
+        Object.assign(sharedFormOptions, {
+            onSuccess: () => {
+                resetForm();
+                eventBus.$emit("closeModal", "transaction::ShowProfitDetails");
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Payment Updated successfully",
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            },
+
+        })
+    );
+};
+
 
 
 
