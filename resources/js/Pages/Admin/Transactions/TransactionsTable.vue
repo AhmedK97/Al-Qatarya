@@ -101,11 +101,12 @@ onMounted(() => {
             modalToClose === "transaction::update" ||
             modalToClose === "transaction::ShowTransactionsPayment" ||
             modalToClose === "transaction::AddMoreTransactionForm" ||
-            modalToClose === "transaction::profitDetails"
+            modalToClose === "transaction::ShowProfitDetails"
         ) {
             isFormModalOpen.value = false;
             isAddMoreTransactionModalOpen.value = false;
             isShowTransactionsPayment.value = false;
+            isProfitDetailsModalOpen.value = false;
         }
     });
 });
