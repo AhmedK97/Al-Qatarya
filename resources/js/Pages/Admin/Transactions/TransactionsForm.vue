@@ -184,12 +184,10 @@ const submit = () => {
 <template>
     <CardBox form @submit.prevent="submit">
 
-        <!-- project -->
 
         <label class="block mb-2 font-bold">
             اختر المشروع
         </label>
-        <!-- {{ transaction }} -->
         <v-select :options="projects" label="title" v-model="form.project_id" :reduce="option => option.id"></v-select>
 
         <span v-if="form.errors.project_id" class="text-sm text-red-600">{{ form.errors.project_id }}</span>
