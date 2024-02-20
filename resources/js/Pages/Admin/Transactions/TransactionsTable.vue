@@ -223,7 +223,7 @@ const showMessagesWhatsapp = () => {
 const Media = ref(null);
 
 const whatsappMedia = (keyId) => {
-    // /getWhatsappMedia/{keyId}
+    // getWhatsappMedia/{keyId}
     // we will send the keyId to the server and get the media
     axios.get(`/admin/getWhatsappMedia/${keyId}`).then((response) => {
         Media.value = response.data;
@@ -232,8 +232,6 @@ const whatsappMedia = (keyId) => {
         console.log(error);
     });
 };
-
-
 
 
 const deleteTransaction = (transaction) => {
@@ -305,11 +303,12 @@ const openFormModal = () => {
                     {{ message.content }}
                 </span>
                 <span v-else>
-                    <img @click="whatsappMedia(message.keyId)" :src="message.content.url" />
+
                     {{ message.keyId }}
                     {{ media }}
                     <br>
                     {{ message.messageType }}
+                    <base-button color="info" :icon="mdiDownload" label="تحميل" @click="whatsappMedia(message.keyId)" />
                 </span>
             </div>
         </div>
