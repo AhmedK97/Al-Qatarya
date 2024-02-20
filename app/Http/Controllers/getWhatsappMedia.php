@@ -10,7 +10,7 @@ class getWhatsappMedia extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke($keyId)
     {
 
         $response = Http::withHeaders([
@@ -18,26 +18,24 @@ class getWhatsappMedia extends Controller
             'Accept: application/json',
             'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbnN0YW5jZU5hbWUiOiJjb2RlY2hhdC1ib3QiLCJhcGlOYW1lIjoid2hhdHNhcHAtYXBpIiwidG9rZW5JZCI6IjM3NTNmNzAwLTNjZGMtNDMxMi1hZGRmLWI0NjA0ZTQ3ZDgwZiIsImlhdCI6MTcwODI4ODkxMiwiZXhwIjoxNzA4Mjg4OTEyLCJzdWIiOiJnLXQifQ.k6foHEseZc14c8j4dUP8BO7nmAgAgnzL6V0COdKD3HQ',
         ])->post('http://localhost:8084/chat/retrieverMediaMessage/codechat-bot', [
-            'keyId' => '3A044DB3CE5FBA2B15CC',
+            'keyId' => $keyId,
         ]);
 
-        // Check if the request was successful
-        if ($response->successful()) {
-            // Get the content from the response
-            $content = $response->body();
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $file_extension = explode('/', $response->header('Content-Type'))[1];
+        $file_name = $keyId . '.' . $file_extension;
+        $mime_type = finfo_buffer($finfo, $response->body());
+        $fileContent = $response->body();
 
-            // Set the appropriate headers for downloading
-            $headers = [
-                'Content-Type' => 'application/octet-stream',
-                'Content-Disposition' => 'attachment; filename="media_filename.ext"',
-            ];
+        $tempFile = $this->createTempFile($fileContent);
 
-            // Use the response() helper to create a download response
+        return response()->download($tempFile, $file_name, ['Content-Type' => $mime_type]);
+    }
 
-            return response($content, 200, $headers);
-        } else {
-            // Handle the case where the API request was not successful
-            return response('Failed to download media', $response->status());
-        }
+    private function createTempFile($content, $prefix = 'media')
+    {
+        $tempFile = tempnam(sys_get_temp_dir(), $prefix);
+        file_put_contents($tempFile, $content);
+        return $tempFile;
     }
 }
