@@ -8,6 +8,8 @@ use App\Http\Controllers\DeleteServicesAdminController;
 use App\Http\Controllers\DeleteTransactionsController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
+use App\Http\Controllers\getWhatsappClientChatMessages;
+use App\Http\Controllers\getWhatsappMedia;
 use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
 use App\Http\Controllers\IndexProjectsAdminController;
@@ -97,6 +99,11 @@ Route::delete('/transactions/{transaction}', DeleteTransactionsController::class
 
 Route::post('/transactions/{transaction}/payments', PaymentTransactionsController::class)->name('store.payments.transactions');
 
+// whatsapp Controllers
+Route::get('/getWhatsappClientChatMessages', getWhatsappClientChatMessages::class)->name('showWhatsappClientMessages');
+
+// getWhatsappMedia
+Route::get('/getWhatsappMedia/{keyId}', getWhatsappMedia::class)->name('showWhatsappMedia');
 // --------------- service transaction -----------------//
 
 Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');

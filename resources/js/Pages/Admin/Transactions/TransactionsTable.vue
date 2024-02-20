@@ -18,6 +18,7 @@ import {
     mdiPlaneCar,
     mdiCashSync,
     mdiCashMultiple,
+    mdiWhatsapp,
 } from "@mdi/js";
 import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
 import BaseLevel from "@/Components/Admin/BaseLevel.vue";
@@ -34,6 +35,7 @@ import {
     router
 } from "@inertiajs/vue3";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const {
     transactions,
@@ -95,6 +97,14 @@ onMounted(() => {
         }
     });
 
+    // whatsappTransaction
+    eventBus.$on("openModal", (modalToOpen) => {
+        if (modalToOpen === "transaction::whatsappTransaction") {
+            currentWhatsappTransaction.value = null;
+            isShowWhatsappTransactionModalOpen.value = true;
+        }
+    });
+
     eventBus.$on("closeModal", (modalToClose) => {
         if (
             modalToClose === "transaction::create" ||
@@ -137,6 +147,9 @@ const currentShowTransactionsPayment = ref(null);
 
 const currentShowProfitDetails = ref(null);
 
+const currentWhatsappTransaction = ref(null);
+
+const isShowWhatsappTransactionModalOpen = ref(false && currentWhatsappTransaction.value);
 
 const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
 
@@ -149,6 +162,13 @@ const isProfitDetailsModalOpen = ref(false && currentShowProfitDetails.value);
 const addMoreTransaction = (transaction) => {
     currentAddMoreTransaction.value = transaction;
     isAddMoreTransactionModalOpen.value = true;
+};
+
+const whatsappTransaction = (transaction) => {
+    currentWhatsappTransaction.value = transaction;
+    isShowWhatsappTransactionModalOpen.value = true;
+    showMessagesWhatsapp();
+
 };
 
 const editTransaction = (transaction) => {
@@ -184,6 +204,35 @@ const ShowTransactionsPaymentModalTitle = computed(() => {
         `المعاملات  المالية وحساب الارباح` :
         "المعاملات  المالية وحساب الارباح";
 });
+
+
+
+
+const messages = ref(null);
+
+const showMessagesWhatsapp = () => {
+    // showWhatsappClientMessages route
+    axios.get('/admin/getWhatsappClientChatMessages').then((response) => {
+        console.log(response.data.messages.records);
+        messages.value = response.data.messages.records;
+    }).catch((error) => {
+        console.log(error);
+    });
+};
+
+const Media = ref(null);
+
+const whatsappMedia = (keyId) => {
+    // /getWhatsappMedia/{keyId}
+    // we will send the keyId to the server and get the media
+    axios.get(`/admin/getWhatsappMedia/${keyId}`).then((response) => {
+        Media.value = response.data;
+        console.log(response.data);
+    }).catch((error) => {
+        console.log(error);
+    });
+};
+
 
 
 
@@ -247,6 +296,33 @@ const openFormModal = () => {
             :transaction="currentShowProfitDetails" />
     </CardBoxModal>
 
+    <CardBoxModal cardWidthClass="w-100 lg:w-2/5" scrollable :hasCancel="true" v-model="isShowWhatsappTransactionModalOpen"
+        title="ارسال المعاملة عبر الواتساب">
+        <div class="flex flex-col-reverse items-stretch justify-center">
+            <div v-for="message in messages" :key="message.id" class="p-4 my-2 text-lg rounded-2xl" :class="message.keyFromMe ? 'bg-green-500 text-left' : 'bg-gray-500'
+                ">
+                <span v-if="typeof message.content === 'string'">
+                    {{ message.content }}
+                </span>
+                <span v-else>
+                    <img @click="whatsappMedia(message.keyId)" :src="message.content.url" />
+                    {{ message.keyId }}
+                    {{ media }}
+                    <br>
+                    {{ message.messageType }}
+                </span>
+            </div>
+        </div>
+
+        <!-- input and Button to send message -->
+        <div class="flex items-center justify-center">
+            <input type="text" class="w-3/4 h-10 px-2 py-1 border rounded border-primary-100" />
+            <BaseButton color="success" :icon="mdiSend" label="ارسال" />
+        </div>
+
+
+
+    </CardBoxModal>
 
     <table>
         <thead>
@@ -330,17 +406,26 @@ const openFormModal = () => {
                 <td data-label="Created At">{{ transaction.created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                        <BaseButton color="info" :icon="mdiSquareEditOutline" small @click="editTransaction(transaction)" />
-                        <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteTransaction(transaction)" />
-                        <!-- extra payments -->
-                        <BaseButton color="success" :icon="mdiCashMultiple" small
-                            @click="addMoreTransaction(transaction)" />
+                        <div>
+                            <BaseButton color="success" :icon="mdiCashMultiple" small
+                                @click="addMoreTransaction(transaction)" />
 
-                        <BaseButton color="success" :icon="mdiSend" small @click="showTransactionsPayment(transaction)" />
-                        <!-- file transaction table contain all payments -->
+                            <BaseButton color="success" :icon="mdiCashSync" small @click="profitDetails(transaction)" />
 
-                        <!-- profit details -->
-                        <BaseButton color="success" :icon="mdiCashSync" small @click="profitDetails(transaction)" />
+                            <BaseButton color="success" :icon="mdiSend" small
+                                @click="showTransactionsPayment(transaction)" />
+
+                            <br />
+                            <BaseButton color="success" :icon="mdiWhatsapp" small
+                                @click="whatsappTransaction(transaction)" />
+
+                            <BaseButton color="info" :icon="mdiSquareEditOutline" small
+                                @click="editTransaction(transaction)" />
+
+                            <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteTransaction(transaction)" />
+
+                        </div>
+
                     </BaseButtons>
                 </td>
             </tr>
