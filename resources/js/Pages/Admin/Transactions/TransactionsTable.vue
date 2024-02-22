@@ -205,6 +205,9 @@ const ShowTransactionsPaymentModalTitle = computed(() => {
         "المعاملات  المالية وحساب الارباح";
 });
 
+const openFormModal = () => {
+    eventBus.$emit("openModal", "transaction::create");
+};
 
 
 
@@ -220,14 +223,17 @@ const showMessagesWhatsapp = () => {
     });
 };
 
-const Media = ref(null);
+const loader = ref(false);
 
-const whatsappMedia = (keyId) => {
+const getWhatsappMedia = (keyId) => {
+    loader.value = keyId;
     // getWhatsappMedia/{keyId}
     // we will send the keyId to the server and get the media
     axios.get(`/admin/getWhatsappMedia/${keyId}`).then((response) => {
-        Media.value = response.data;
-        console.log(response.data);
+        // console.log(response.data['file_url']);
+        // open the media in new tab
+        window.open(response.data['file_url'], '_blank');
+        loader.value = false;
     }).catch((error) => {
         console.log(error);
     });
@@ -262,9 +268,62 @@ const deleteTransaction = (transaction) => {
         }
     });
 };
+const messageClass = (keyFromMe) => ({
+    'p-4 my-2 text-lg rounded-2xl': true,
+    'bg-gray-500 ': !keyFromMe,
+    'bg-green-500': keyFromMe,
+});
 
-const openFormModal = () => {
-    eventBus.$emit("openModal", "transaction::create");
+const isTextMessage = (message) => typeof message.content === 'string';
+
+const getMessageContent = (message) => {
+    if (message.messageType === 'extendedTextMessage') {
+        return message.content.text;
+    }
+
+    // imageMessage // documentWithCaptionMessage // videoMessage // audioMessage // contactMessage // locationMessage
+
+    if (message.messageType === 'imageMessage') {
+        return 'صورة';
+    }
+
+    if (message.messageType === 'documentWithCaptionMessage') {
+        return 'ملف';
+    }
+
+    if (message.messageType === 'videoMessage') {
+        return 'فيديو';
+    }
+
+    if (message.messageType === 'audioMessage') {
+        return 'صوت';
+    }
+
+    if (message.messageType === 'contactMessage') {
+        return 'جهة اتصال';
+    }
+
+    if (message.messageType === 'locationMessage') {
+        return 'موقع';
+    }
+
+    return message.messageType;
+};
+
+const messageClasses = (keyFromMe) => ({
+    'single-message user mb-4 rounded-bl-lg rounded-br-lg rounded-tl-lg px-4 py-2 text-gray-200': keyFromMe,
+    'single-message mb-4 rounded-bl-lg rounded-br-lg rounded-tr-lg px-4 py-2 text-gray-200': !keyFromMe,
+});
+
+
+const messageDate = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
+};
+
+const messageTime = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleTimeString();
 };
 </script>
 
@@ -294,22 +353,112 @@ const openFormModal = () => {
             :transaction="currentShowProfitDetails" />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-100 lg:w-2/5" scrollable :hasCancel="true" v-model="isShowWhatsappTransactionModalOpen"
-        title="ارسال المعاملة عبر الواتساب">
+    <CardBoxModal cardWidthClass="w-100 lg:w-2/5 !bg-gray-900 text-green-200" scrollable :hasCancel="true"
+        v-model="isShowWhatsappTransactionModalOpen" title="التواصل عن طريق الواتس اب">
         <div class="flex flex-col-reverse items-stretch justify-center">
-            <div v-for="message in messages" :key="message.id" class="p-4 my-2 text-lg rounded-2xl" :class="message.keyFromMe ? 'bg-green-500 text-left' : 'bg-gray-500'
-                ">
-                <span v-if="typeof message.content === 'string'">
-                    {{ message.content }}
-                </span>
-                <span v-else>
+            <div v-for="message in messages" :key="message.id">
+                <div v-if="isTextMessage(message)">
+                    <!-- <div class="px-4 py-2 mb-4 text-gray-200 rounded-tr-lg rounded-bl-lg rounded-br-lg single-message"
+                        :class="messageClass(message.keyFromMe)">
+                        <p> {{ message.content }}</p>
+                        <div class="grid grid-cols-2 text-sm !max-w-[9rem]">
+                            <span class="mx-2">
+                                {{ messageDate(message.messageTimestamp) }}
+                            </span>
+                            <span>
+                                {{ messageTime(message.messageTimestamp) }}
+                            </span>
+                        </div>
+                    </div> -->
+                    <!-- <div class="flex justify-end">
+                        <div
+                            class="px-4 py-2 mb-4 text-gray-200 rounded-tl-lg rounded-bl-lg rounded-br-lg single-message user">
+                            Hey! Thought I'd reach out to say how are you? 😊</div>
+                    </div> -->
+                    <div class="flex " :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
+                        <div :class="messageClasses(message.keyFromMe)">
+                            {{ message.content }}
+                            <div class="grid grid-cols-2 text-[12px] !max-w-[9rem]">
+                                <span class="mx-2">
+                                    {{ messageDate(message.messageTimestamp) }}
+                                </span>
+                                <span>
+                                    {{ messageTime(message.messageTimestamp) }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <!-- <span class="font-bold" v-if="message.messageType === 'extendedTextMessage'">
+                        <p class="inline-block" :class="messageClass(message.keyFromMe)">
+                            {{ getMessageContent(message) }}
+                        </p>
+                    </span> -->
 
-                    {{ message.keyId }}
-                    {{ media }}
-                    <br>
-                    {{ message.messageType }}
-                    <base-button color="info" :icon="mdiDownload" label="تحميل" @click="whatsappMedia(message.keyId)" />
-                </span>
+                    <div class="flex " v-if="message.messageType === 'extendedTextMessage'"
+                        :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
+                        <div :class="messageClasses(message.keyFromMe)">
+                            {{ getMessageContent(message) }}
+                            <div class="grid grid-cols-2 text-[12px] !max-w-[9rem]">
+                                <span class="mx-2">
+                                    {{ messageDate(message.messageTimestamp) }}
+                                </span>
+                                <span>
+                                    {{ messageTime(message.messageTimestamp) }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div :class="messageClass(message.keyFromMe)" v-else
+                        class="!text-end gap-4 grid-cols-2 inline-block justify-items-center p-4 rounded-2xl">
+                        <div class="flex">
+                            <p class="m-auto mx-2 font-bold">{{ getMessageContent(message) }}</p>
+                            <button class="px-2 py-1 mx-2 bg-gray-100 border rounded hover:bg-gray-200"
+                                @click="getWhatsappMedia(message.keyId)">
+                                <div v-if="loader === message.keyId">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        class="w-12 h-12 animate-spin" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                        <path fill-rule="evenodd"
+                                            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                                    </svg>
+                                </div>
+                                <p v-else class="font-bold">عرض</p>
+                            </button>
+                        </div>
+                    </div> -->
+
+                    <div class="flex " v-else :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
+                        <div :class="messageClasses(message.keyFromMe)">
+                            {{ getMessageContent(message) }}
+                            <button class="px-2 mx-2 border rounded"
+                                :class="message.keyFromMe ? 'hover:bg-gray-200 hover:text-gray-900' : 'hover:bg-gray-200 hover:text-gray-900'"
+                                @click="getWhatsappMedia(message.keyId)">
+                                <div v-if="loader === message.keyId">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        class="w-12 h-12 animate-spin" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                        <path fill-rule="evenodd"
+                                            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                                    </svg>
+                                </div>
+                                <p v-else class="font-bold">عرض</p>
+                            </button>
+                            <div class="grid grid-cols-2 text-[12px] !max-w-[9rem]">
+                                <span class="mx-2">
+                                    {{ messageDate(message.messageTimestamp) }}
+                                </span>
+                                <span>
+                                    {{ messageTime(message.messageTimestamp) }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -318,8 +467,6 @@ const openFormModal = () => {
             <input type="text" class="w-3/4 h-10 px-2 py-1 border rounded border-primary-100" />
             <BaseButton color="success" :icon="mdiSend" label="ارسال" />
         </div>
-
-
 
     </CardBoxModal>
 
@@ -389,7 +536,7 @@ const openFormModal = () => {
 
             <!-- User data -->
 
-            <tr v-for="transaction in transactions.data" :key="transaction.id">
+            <tr v-for="  transaction   in   transactions.data  " :key="transaction.id">
                 <td data-label="ID">{{ transaction.id }}</td>
                 <td data-label="Project Name">{{ transaction.project.title }}</td>
                 <td data-label="Customer Name">{{ transaction.customer.name }}</td>
@@ -434,10 +581,11 @@ const openFormModal = () => {
     <div v-if="transactions?.data?.length" class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800">
         <BaseLevel>
             <BaseButtons>
-                <BaseButton v-for="(page, index) in transactions.links" :key="index" :active="page.active"
+                <BaseButton v-for="(  page, index  ) in   transactions.links  " :key="index" :active="page.active"
                     :label="page.label" :render-label-as-html="true" :class="{
                         'text-white': page.active,
-                    }" :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
+                    }
+                        " :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
                     :href="page.url" preserve-state :only="['transactions']" />
             </BaseButtons>
             <small>Page {{ transactions.current_page }} of {{ transactions.total }}</small>

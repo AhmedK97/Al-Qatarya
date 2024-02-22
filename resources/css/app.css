@@ -33,3 +33,17 @@
     }
 
 }
+
+
+.search-bar input,
+.message-active {
+    background-color: #323739;
+}
+
+.single-message {
+    background-color: #262d31;
+}
+
+.single-message.user {
+    background-color: #056162;
+}
