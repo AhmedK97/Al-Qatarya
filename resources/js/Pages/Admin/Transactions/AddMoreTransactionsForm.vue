@@ -179,6 +179,7 @@ const submit = () => {
                 الخدمات الاساسية
             </a>
         </li>
+
         <li class="flex-auto mr-2 -mb-px text-center">
             <a class="block px-5 py-3 text-xs font-bold leading-normal uppercase rounded shadow-lg"
                 v-on:click="toggleTabs(2)"
@@ -229,11 +230,9 @@ const submit = () => {
     </CardBox>
 
 
-    <CardBox v-if="openTab == 2" form @submit.prevent="submitExtraService" :customClass="'overflow-y-auto w-96'">
+    <CardBox v-if="openTab == 2" form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
         <div>
             <div v-for="(formItem, index) in filteredExtraServices" :key="index">
-
-
                 <div>
                     <div class="grid grid-cols-2">
                         <label class="block mb-2 font-bold">
@@ -313,7 +312,6 @@ const submit = () => {
     <CardBox v-if="openTab == 3" form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
         <div>
             <div v-for="(formItem, index) in filteredWorkers" :key="index">
-
                 <div>
                     <div class="grid grid-cols-2">
                         <label class="block mb-2 font-bold">

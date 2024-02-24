@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\getWhatsappClientChatMessages;
+use App\Http\Controllers\getWhatsappChatMessages;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;

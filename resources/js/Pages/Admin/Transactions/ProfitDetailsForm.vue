@@ -89,20 +89,13 @@ watch(
 );
 
 
-// extra services where has type = service
-const extraServicesService = computed(() => {
-    return form.extra_services.filter((service) => service.type === "service");
-});
+
 
 const calculateServiceProfit = (service) => {
     return (service.price * service.quantity) - (service.details['originPrice'] * service.quantity);
 };
 
 const calculateExtraServiceProfit = (service) => {
-    return (service.price * service.quantity) - (service.details['originPrice'] * service.quantity);
-};
-
-const calculateWorkerProfit = (service) => {
     return (service.price * service.quantity) - (service.details['originPrice'] * service.quantity);
 };
 
@@ -217,9 +210,6 @@ const submit = () => {
         })
     );
 };
-
-
-
 
 </script>
 <template class="bg-gray-500">

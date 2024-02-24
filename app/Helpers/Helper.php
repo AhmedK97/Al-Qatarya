@@ -28,10 +28,9 @@ if (!function_exists('currentLocale')) {
 // ]);
 
 
-// create http request with headers
 if (!function_exists('createHttpRequest')) {
     function HttpRequest($route, string $method, $headers, $formData)
     {
-        return Http::withHeaders($headers)->$method(env('WHATSAPP_API_URL') . $route, $formData);
+        return Http::withoutVerifying()->withHeaders($headers)->$method(env('WHATSAPP_API_URL') . $route, $formData);
     }
 }

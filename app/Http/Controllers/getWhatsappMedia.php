@@ -11,10 +11,13 @@ class getWhatsappMedia extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke($keyId)
+    public function __invoke(Request $request)
     {
 
-        $directory = 'whatsappMedia';
+        $keyId = $request->keyId;
+        $customerPhone = $request->customerPhone;
+
+        $directory = 'whatsappMedia/' . $customerPhone;
 
         $files = Storage::disk('public')->files($directory);
 

@@ -16,7 +16,6 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -171,6 +170,7 @@ return [
             App\Providers\FortifyServiceProvider::class,
             App\Providers\JetstreamServiceProvider::class,
             Maatwebsite\Excel\ExcelServiceProvider::class,
+
         ])
         ->toArray(),
 

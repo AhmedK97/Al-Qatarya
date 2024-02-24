@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
-class getWhatsappClientChatMessages extends Controller
+class SendTextMessageController extends Controller
 {
     /**
      * Handle the incoming request.
      */
     public function __invoke(Request $request)
     {
+
         $token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbnN0YW5jZU5hbWUiOiJjb2RlY2hhdC1ib3QiLCJhcGlOYW1lIjoid2hhdHNhcHAtYXBpIiwidG9rZW5JZCI6IjM3NTNmNzAwLTNjZGMtNDMxMi1hZGRmLWI0NjA0ZTQ3ZDgwZiIsImlhdCI6MTcwODI4ODkxMiwiZXhwIjoxNzA4Mjg4OTEyLCJzdWIiOiJnLXQifQ.k6foHEseZc14c8j4dUP8BO7nmAgAgnzL6V0COdKD3HQ';
 
 
@@ -21,19 +21,23 @@ class getWhatsappClientChatMessages extends Controller
             'Authorization' => $token,
         ];
 
+        $message = $request->message;
+        $customerPhone = $request->customerPhone;
+
         $formData =
             [
-                'where' => [
-                    'keyRemoteJid' => '201122061032@s.whatsapp.net',
+                'number' => $customerPhone,
+                'options' => [
+                    'delay' => 1200,
+                    'presence' => 'composing'
                 ],
-                'offset' => 20,
-                'page' => 1,
+                'textMessage' => [
+                    'text' => $message
+                ]
             ];
 
-        $messages = HttpRequest('/chat/findMessages/codechat-bot', 'post', $header, $formData);
+        // {{baseUrl}}/message/sendText/:instanceName
 
-
-
-        return $messages->json();
+        $httpRequest = HttpRequest('/message/sendText/codechat-bot', 'post', $header, $formData);
     }
 }

@@ -44,11 +44,17 @@ module.exports = {
                     from: { opacity: 0 },
                     to: { opacity: 1 },
                 },
+                wiggle: {
+                    "0%, 100%": { transform: "rotate(-3deg)" },
+                    "50%": { transform: "rotate(3deg)" },
+                },
             },
             animation: {
                 "fade-out": "fade-out 250ms ease-in-out",
                 "fade-in": "fade-in 250ms ease-in-out",
+                "spin-slow": "spin 3s linear infinite",
             },
+
             fontFamily: {
                 sans: ["Cairo", ...defaultTheme.fontFamily.sans],
                 nunito: "Tajawal, sans-serif",

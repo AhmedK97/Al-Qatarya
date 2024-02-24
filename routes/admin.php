@@ -8,7 +8,7 @@ use App\Http\Controllers\DeleteServicesAdminController;
 use App\Http\Controllers\DeleteTransactionsController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
-use App\Http\Controllers\getWhatsappClientChatMessages;
+use App\Http\Controllers\getWhatsappChatMessages;
 use App\Http\Controllers\getWhatsappMedia;
 use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
@@ -18,6 +18,8 @@ use App\Http\Controllers\IndexTransactionsController;
 use App\Http\Controllers\PaymentTransactionsController;
 use App\Http\Controllers\ProjectServiceController;
 use App\Http\Controllers\ProjectUploadMediaController;
+use App\Http\Controllers\SendInvoiceController;
+use App\Http\Controllers\SendTextMessageController;
 use App\Http\Controllers\StoreCustomersAdminController;
 use App\Http\Controllers\StoreEmployeesAdminController;
 use App\Http\Controllers\StoreProjectsAdminController;
@@ -100,10 +102,17 @@ Route::delete('/transactions/{transaction}', DeleteTransactionsController::class
 Route::post('/transactions/{transaction}/payments', PaymentTransactionsController::class)->name('store.payments.transactions');
 
 // whatsapp Controllers
-Route::get('/getWhatsappClientChatMessages', getWhatsappClientChatMessages::class)->name('showWhatsappClientMessages');
+Route::get('/getWhatsappChatMessages', getWhatsappChatMessages::class)->name('showWhatsappClientMessages');
 
 // getWhatsappMedia
-Route::get('/getWhatsappMedia/{keyId}', getWhatsappMedia::class)->name('showWhatsappMedia');
+Route::get('/getWhatsappMedia', getWhatsappMedia::class)->name('showWhatsappMedia');
+
+
+Route::post('/message/sendText', SendTextMessageController::class)->name('send.text.message');
+
+Route::post('/message/sendInvoice', SendInvoiceController::class)->name('send.invoice');
+
+
 // --------------- service transaction -----------------//
 
 Route::post('/service/{project}', ProjectServiceController::class)->name('store.service.transactions');

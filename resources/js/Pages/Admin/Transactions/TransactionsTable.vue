@@ -17,6 +17,8 @@ import {
     mdiCity,
     mdiPlaneCar,
     mdiCashSync,
+    mdiBookEdit,
+    mdiInvoiceCheck,
     mdiCashMultiple,
     mdiWhatsapp,
 } from "@mdi/js";
@@ -32,7 +34,8 @@ import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue"
 import TransactionsPayment from "@/Pages/Admin/Transactions/TransactionsPayment.vue";
 
 import {
-    router
+    router,
+    useForm
 } from "@inertiajs/vue3";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -195,8 +198,8 @@ const formModalTitle = computed(() => {
 
 const AddMoreTransactionModalTitle = computed(() => {
     return currentAddMoreTransaction.value?.id ?
-        `ضبط الخدمات للمعاملة ` :
-        "ضبط الخدمات للمعاملة";
+        `العمـــــالة ` :
+        "العمـــــالة";
 });
 
 const ShowTransactionsPaymentModalTitle = computed(() => {
@@ -210,32 +213,112 @@ const openFormModal = () => {
 };
 
 
-
 const messages = ref(null);
+const loader = ref(false);
+const sendTextMessageLoader = ref(false);
+
+const form = useForm({
+    message: null,
+});
+
+const customerPhone = computed(() => {
+    return currentWhatsappTransaction?.value?.customer?.phone + "@s.whatsapp.net";
+});
 
 const showMessagesWhatsapp = () => {
-    // showWhatsappClientMessages route
-    axios.get('/admin/getWhatsappClientChatMessages').then((response) => {
-        console.log(response.data.messages.records);
+    axios.get(`/admin/getWhatsappChatMessages?customerPhone=${customerPhone.value}`).then((response) => {
         messages.value = response.data.messages.records;
     }).catch((error) => {
         console.log(error);
     });
 };
 
-const loader = ref(false);
 
 const getWhatsappMedia = (keyId) => {
     loader.value = keyId;
-    // getWhatsappMedia/{keyId}
-    // we will send the keyId to the server and get the media
-    axios.get(`/admin/getWhatsappMedia/${keyId}`).then((response) => {
-        // console.log(response.data['file_url']);
-        // open the media in new tab
-        window.open(response.data['file_url'], '_blank');
-        loader.value = false;
-    }).catch((error) => {
-        console.log(error);
+    axios.get(`/admin/getWhatsappMedia?keyId=${keyId}&customerPhone=${customerPhone.value}`)
+        .then((response) => {
+            window.open(response.data['file_url'], '_blank');
+            loader.value = false;
+        }).catch((error) => {
+            console.log(error);
+        });
+};
+
+
+const sendInvoicePDF = () => {
+    Swal.fire({
+        title: "هل انت متاكد ؟",
+        text: `سيتم ارسال الفاتورة الى العميل`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "نعم، ارسلها!",
+        cancelButtonText: "الغاء",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const data = {
+                customerPhone: customerPhone.value,
+                projectId: currentWhatsappTransaction.value.id,
+            };
+            router.post(route("send.invoice"), data, {
+                preserveState: true,
+                replace: true,
+                preserveScroll: true,
+                onSuccess: () => {
+                    showMessagesWhatsapp();
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: "Transaction created successfully",
+                        timer: 3000,
+                        timerProgressBar: true,
+                    });
+                },
+                onError: () => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        timer: 3000,
+                        timerProgressBar: true,
+                    });
+                },
+            });
+        }
+    });
+
+
+
+}
+
+const sendTextMessage = () => {
+    sendTextMessageLoader.value = true;
+    const data = {
+        message: form.message,
+        customerPhone: customerPhone.value,
+    };
+    router.post(route("send.text.message"), data, {
+        preserveState: true,
+        replace: true,
+        preserveScroll: true,
+        onSuccess: () => {
+            form.message = null;
+            sendTextMessageLoader.value = false;
+            showMessagesWhatsapp();
+        },
+
+        onError: () => {
+            sendTextMessageLoader.value = false;
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                timer: 3000,
+                timerProgressBar: true,
+            });
+        },
     });
 };
 
@@ -268,11 +351,6 @@ const deleteTransaction = (transaction) => {
         }
     });
 };
-const messageClass = (keyFromMe) => ({
-    'p-4 my-2 text-lg rounded-2xl': true,
-    'bg-gray-500 ': !keyFromMe,
-    'bg-green-500': keyFromMe,
-});
 
 const isTextMessage = (message) => typeof message.content === 'string';
 
@@ -305,6 +383,10 @@ const getMessageContent = (message) => {
 
     if (message.messageType === 'locationMessage') {
         return 'موقع';
+    }
+    // documentMessage
+    if (message.messageType === 'documentMessage') {
+        return 'ملف';
     }
 
     return message.messageType;
@@ -353,28 +435,11 @@ const messageTime = (timestamp) => {
             :transaction="currentShowProfitDetails" />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-100 lg:w-2/5 !bg-gray-900 text-green-200" scrollable :hasCancel="true"
+    <CardBoxModal cardWidthClass="w-100 lg:w-[40rem] !bg-gray-900 text-green-200 mb-10 pb-10" scrollable :hasCancel="true"
         v-model="isShowWhatsappTransactionModalOpen" title="التواصل عن طريق الواتس اب">
         <div class="flex flex-col-reverse items-stretch justify-center">
             <div v-for="message in messages" :key="message.id">
                 <div v-if="isTextMessage(message)">
-                    <!-- <div class="px-4 py-2 mb-4 text-gray-200 rounded-tr-lg rounded-bl-lg rounded-br-lg single-message"
-                        :class="messageClass(message.keyFromMe)">
-                        <p> {{ message.content }}</p>
-                        <div class="grid grid-cols-2 text-sm !max-w-[9rem]">
-                            <span class="mx-2">
-                                {{ messageDate(message.messageTimestamp) }}
-                            </span>
-                            <span>
-                                {{ messageTime(message.messageTimestamp) }}
-                            </span>
-                        </div>
-                    </div> -->
-                    <!-- <div class="flex justify-end">
-                        <div
-                            class="px-4 py-2 mb-4 text-gray-200 rounded-tl-lg rounded-bl-lg rounded-br-lg single-message user">
-                            Hey! Thought I'd reach out to say how are you? 😊</div>
-                    </div> -->
                     <div class="flex " :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
                         <div :class="messageClasses(message.keyFromMe)">
                             {{ message.content }}
@@ -390,12 +455,6 @@ const messageTime = (timestamp) => {
                     </div>
                 </div>
                 <div v-else>
-                    <!-- <span class="font-bold" v-if="message.messageType === 'extendedTextMessage'">
-                        <p class="inline-block" :class="messageClass(message.keyFromMe)">
-                            {{ getMessageContent(message) }}
-                        </p>
-                    </span> -->
-
                     <div class="flex " v-if="message.messageType === 'extendedTextMessage'"
                         :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
                         <div :class="messageClasses(message.keyFromMe)">
@@ -410,41 +469,20 @@ const messageTime = (timestamp) => {
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div :class="messageClass(message.keyFromMe)" v-else
-                        class="!text-end gap-4 grid-cols-2 inline-block justify-items-center p-4 rounded-2xl">
-                        <div class="flex">
-                            <p class="m-auto mx-2 font-bold">{{ getMessageContent(message) }}</p>
-                            <button class="px-2 py-1 mx-2 bg-gray-100 border rounded hover:bg-gray-200"
-                                @click="getWhatsappMedia(message.keyId)">
-                                <div v-if="loader === message.keyId">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                        class="w-12 h-12 animate-spin" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-                                        <path fill-rule="evenodd"
-                                            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
-                                    </svg>
-                                </div>
-                                <p v-else class="font-bold">عرض</p>
-                            </button>
-                        </div>
-                    </div> -->
-
                     <div class="flex " v-else :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
                         <div :class="messageClasses(message.keyFromMe)">
                             {{ getMessageContent(message) }}
-                            <button class="px-2 mx-2 border rounded"
-                                :class="message.keyFromMe ? 'hover:bg-gray-200 hover:text-gray-900' : 'hover:bg-gray-200 hover:text-gray-900'"
-                                @click="getWhatsappMedia(message.keyId)">
+                            <button class="px-2 mx-2 border rounded" :class="message.keyFromMe ? 'hover:bg-gray-200 hover:text-gray-900' :
+                                'hover:bg-gray-200 hover:text-gray-900'" @click="getWhatsappMedia(message.keyId)">
                                 <div v-if="loader === message.keyId">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                        class="w-12 h-12 animate-spin" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-                                        <path fill-rule="evenodd"
-                                            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
-                                    </svg>
+                                    <div class="flex items-center justify-center">
+                                        <svg class="w-5 h-5 mr-3 -ml-1 text-blue-900 animate-spin"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                                stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+                                        </svg>
+                                    </div>
                                 </div>
                                 <p v-else class="font-bold">عرض</p>
                             </button>
@@ -462,10 +500,25 @@ const messageTime = (timestamp) => {
             </div>
         </div>
 
-        <!-- input and Button to send message -->
-        <div class="flex items-center justify-center">
-            <input type="text" class="w-3/4 h-10 px-2 py-1 border rounded border-primary-100" />
-            <BaseButton color="success" :icon="mdiSend" label="ارسال" />
+        <div class="fixed flex items-center w-2/5 bottom-28">
+            <input type="text" v-model="form.message" placeholder="اكتب رسالة"
+                class="w-3/4 h-10 px-2 py-1 text-black border rounded border-primary-100" />
+            <div>
+                <BaseButton v-if="!sendTextMessageLoader" @click="sendTextMessage()" color="success" :icon="mdiSend"
+                    label="ارسال" />
+                <div v-else
+                    class="inline-flex items-center justify-center px-3 py-2 mx-2 text-white transition-colors duration-150 border rounded cursor-pointer whitespace-nowrap focus:outline-none focus:ring border-emerald-600 dark:border-emerald-500 ring-emerald-300 dark:ring-emerald-700 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700 hover:dark:bg-emerald-600 hover:dark:border-emerald-600">
+                    <h1>جار الارسال</h1>
+                    <svg class="w-5 h-5 mr-3 -ml-1 text-green-900 animate-spin" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <BaseButton color="info" :icon="mdiInvoiceCheck" @click="sendInvoicePDF()" />
+
         </div>
 
     </CardBoxModal>
@@ -536,7 +589,7 @@ const messageTime = (timestamp) => {
 
             <!-- User data -->
 
-            <tr v-for="  transaction   in   transactions.data  " :key="transaction.id">
+            <tr v-for="    transaction     in     transactions.data    " :key="transaction.id">
                 <td data-label="ID">{{ transaction.id }}</td>
                 <td data-label="Project Name">{{ transaction.project.title }}</td>
                 <td data-label="Customer Name">{{ transaction.customer.name }}</td>
@@ -570,6 +623,7 @@ const messageTime = (timestamp) => {
 
                             <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteTransaction(transaction)" />
 
+
                         </div>
 
                     </BaseButtons>
@@ -581,7 +635,7 @@ const messageTime = (timestamp) => {
     <div v-if="transactions?.data?.length" class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800">
         <BaseLevel>
             <BaseButtons>
-                <BaseButton v-for="(  page, index  ) in   transactions.links  " :key="index" :active="page.active"
+                <BaseButton v-for="(    page, index    ) in     transactions.links    " :key="index" :active="page.active"
                     :label="page.label" :render-label-as-html="true" :class="{
                         'text-white': page.active,
                     }

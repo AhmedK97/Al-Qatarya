@@ -208,9 +208,9 @@ const filteredTransactions = computed(() => {
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-400">
+                        <td colspan="3" class="font-bold text-center text-red-700 bg-gray-400">
                             {{ totalServicesPrice }}</td>
-                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400 ">الحساب الكلي</td>
+                        <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">الحساب الكلي</td>
                     </tr>
                 </tfoot>
             </table>
@@ -240,9 +240,9 @@ const filteredTransactions = computed(() => {
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="font-bold text-center text-red-500 bg-gray-400">
+                        <td colspan="3" class="font-bold text-center text-red-700 bg-gray-400">
                             {{ totalExtraServicesPrice }} </td>
-                        <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400 ">الحساب الكلي</td>
+                        <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">الحساب الكلي</td>
                     </tr>
                 </tfoot>
             </table>
@@ -353,17 +353,17 @@ const filteredTransactions = computed(() => {
 
                         <div v-if="(totalPrice - totalPaid) !== 0" class="m-5">
                             <div class="flex">
-                                <span class="font-bold text-center text-red-500 ">المتبقى بالنسبة : %</span>
-                                <span class="font-bold text-center text-red-500 ">
+                                <span class="font-bold text-center text-red-700 ">المتبقى بالنسبة : %</span>
+                                <span class="font-bold text-center text-red-700 ">
                                     {{ 100 - (totalPaid / totalPrice) * 100 }}
                                 </span>
                             </div>
 
                             <div class="flex">
-                                <span class="font-bold text-center text-red-500 ">
+                                <span class="font-bold text-center text-red-700 ">
                                     المتبقى من المبلغ : &nbsp;
                                 </span>
-                                <span class="font-bold text-center text-red-500 ">
+                                <span class="font-bold text-center text-red-700 ">
                                     {{ totalPrice - totalPaid }}
                                 </span>
                             </div>
@@ -376,7 +376,7 @@ const filteredTransactions = computed(() => {
                         </div>
 
                         <div v-if="maxPaymentRetched" class="mt-8 text-center">
-                            <span class="block mt-5 text-red-500">
+                            <span class="block mt-5 text-red-700">
                                 تم الوصول للحد الاقصى المحدد لمرات الدفع
                             </span>
                             <div v-if="totalPrice < totalPaid" class="block mx-auto mt-5">
@@ -444,9 +444,9 @@ const filteredTransactions = computed(() => {
                 </tr>
 
                 <tr v-else>
-                    <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400">
+                    <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400">
                         {{ totalPrice - totalPaid }}</td>
-                    <td colspan="1" class="font-bold text-center text-red-500 bg-gray-400 ">المتبقى</td>
+                    <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">المتبقى</td>
                 </tr>
             </tfoot>
         </table>
