@@ -289,9 +289,6 @@ const sendInvoicePDF = () => {
             });
         }
     });
-
-
-
 }
 
 const sendTextMessage = () => {

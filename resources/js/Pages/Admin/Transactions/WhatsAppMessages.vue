@@ -31,11 +31,9 @@ import {
 } from "@inertiajs/vue3";
 import Swal from "sweetalert2";
 import axios from "axios";
+import cloneDeep from "lodash/cloneDeep";
 
-const {
-    transaction,
-    messages,
-} = defineProps({
+const props = defineProps({
     transaction: {
         type: Object,
         default: [],
@@ -46,20 +44,34 @@ const {
     },
 });
 
-// const messages = ref(null);
+const form = reactive({
+    message: null,
+    transaction: props.transaction,
+    messages: props.messages,
+});
+
+watch(
+    () => cloneDeep(props),
+    (newProps) => {
+        form.transaction = newProps.transaction;
+        form.messages = newProps.messages;
+    }, {
+    immediate: true,
+    deep: true,
+}
+);
+
+const messages = ref([]);
+
+
 const loader = ref(false);
 const sendTextMessageLoader = ref(false);
 
-const form = useForm({
-    message: null,
-});
-
-// const customerPhone = computed(() => {
-//     return transaction?.customer?.phone + "@s.whatsapp.net";
+// const form = useForm({
+//     message: null,
+//     transaction: props.transaction,
+//     messages: props.messages,
 // });
-
-const customerPhone = ref(transaction?.customer?.phone + "@s.whatsapp.net");
-
 
 
 onMounted(() => {
@@ -69,12 +81,6 @@ onMounted(() => {
             showMessagesWhatsapp();
         }
     });
-});
-
-watch(transaction, (newValue, oldValue) => {
-    if (newValue) {
-        customerPhone.value = newValue.customer.phone + "@s.whatsapp.net";
-    }
 });
 
 
@@ -90,7 +96,7 @@ const getWhatsappMedia = (keyId) => {
 };
 
 
-const sendInvoicePDF = () => {
+const sendInvoicePDF = (transactionId, customerPhone) => {
     Swal.fire({
         title: "هل انت متاكد ؟",
         text: `سيتم ارسال الفاتورة الى العميل`,
@@ -103,22 +109,22 @@ const sendInvoicePDF = () => {
     }).then((result) => {
         if (result.isConfirmed) {
             const data = {
-                customerPhone: customerPhone.value,
-                projectId: transaction.value.id,
+                customerPhone: parseInt(customerPhone) + "@s.whatsapp.net",
+                transactionId: transactionId,
             };
             router.post(route("send.invoice"), data, {
                 preserveState: true,
                 replace: true,
                 preserveScroll: true,
                 onSuccess: () => {
-                    showMessagesWhatsapp();
                     Swal.fire({
                         icon: "success",
                         title: "Success",
-                        text: "Transaction created successfully",
+                        text: "Invoice sent successfully",
                         timer: 3000,
                         timerProgressBar: true,
                     });
+                    eventBus.$emit("closeModal", "transaction::showMessagesWhatsapp");
                 },
                 onError: () => {
                     Swal.fire({
@@ -134,11 +140,21 @@ const sendInvoicePDF = () => {
     });
 }
 
+const showMessagesWhatsapp = (customerPhone) => {
+    axios.get(`/admin/getWhatsappChatMessages?customerPhone=${customerPhone}`).then((response) => {
+        form.messages = '';
+        form.messages = response.data.messages.records;
+    }).catch((error) => {
+        console.log(error);
+    });
+};
+
 const sendTextMessage = () => {
     sendTextMessageLoader.value = true;
+    let customerPhone = form.transaction?.customer.phone + "@s.whatsapp.net";
     const data = {
         message: form.message,
-        customerPhone: customerPhone.value,
+        customerPhone: customerPhone,
     };
     router.post(route("send.text.message"), data, {
         preserveState: true,
@@ -147,9 +163,8 @@ const sendTextMessage = () => {
         onSuccess: () => {
             form.message = null;
             sendTextMessageLoader.value = false;
-            showMessagesWhatsapp();
+            showMessagesWhatsapp(customerPhone);
         },
-
         onError: () => {
             sendTextMessageLoader.value = false;
             Swal.fire({
@@ -221,7 +236,7 @@ const messageTime = (timestamp) => {
 
 <template>
     <div class="flex flex-col-reverse items-stretch justify-center">
-        <div v-for="message in messages" :key="message.id">
+        <div v-for="message in form.messages" :key="message.id">
             <div v-if="isTextMessage(message)">
                 <div class="flex " :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
                     <div :class="messageClasses(message.keyFromMe)">
@@ -300,7 +315,8 @@ const messageTime = (timestamp) => {
             </div>
         </div>
 
-        <BaseButton color="info" :icon="mdiInvoiceCheck" @click="sendInvoicePDF()" />
+        <BaseButton color="info" :icon="mdiInvoiceCheck"
+            @click="sendInvoicePDF(transaction.id, transaction.customer.phone)" />
 
     </div>
 </template>

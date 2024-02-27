@@ -36,8 +36,6 @@ class SendTextMessageController extends Controller
                 ]
             ];
 
-        // {{baseUrl}}/message/sendText/:instanceName
-
         $httpRequest = HttpRequest('/message/sendText/codechat-bot', 'post', $header, $formData);
     }
 }

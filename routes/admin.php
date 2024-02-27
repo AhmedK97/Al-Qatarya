@@ -110,7 +110,7 @@ Route::get('/getWhatsappMedia', getWhatsappMedia::class)->name('showWhatsappMedi
 
 Route::post('/message/sendText', SendTextMessageController::class)->name('send.text.message');
 
-Route::get('/message/sendInvoice', SendInvoiceController::class)->name('send.invoice');
+Route::post('/message/sendInvoice', SendInvoiceController::class)->name('send.invoice');
 
 
 // --------------- service transaction -----------------//

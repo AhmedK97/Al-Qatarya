@@ -11,7 +11,7 @@
 
     <style>
         * {
-            font-family: DejaVu Sans, sans-serif;
+            font-family: DejaVu Sans, sans-serif !important;
         }
 
         .invoice-box {
@@ -126,7 +126,7 @@
             text-decoration: underline;
         }
 
-        body {
+        /* body {
             position: relative;
             width: 21cm;
             height: 29.7cm;
@@ -136,7 +136,7 @@
             font-family: Arial, sans-serif;
             font-size: 12px;
             font-family: Arial;
-        }
+        } */
 
         header {
             padding: 10px 0;
@@ -162,7 +162,6 @@
             text-align: center;
             margin: 0 0 20px 0;
             background: url('https://s3-eu-west-1.amazonaws.com/htmlpdfapi.production/free_html5_invoice_templates/example1/dimension.png');
-
         }
 
         #project {
@@ -271,13 +270,27 @@
             font-size: 1.2em;
             text-align: center !important;
         }
+
+        td {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        th {
+            padding: 0 !important;
+        }
+
+        .paddint-left-right {
+            padding-left: 2px !important;
+            padding-right: 2px !important;
+        }
     </style>
 </head>
 
 <body style="direction: rtl;">
     <header class="clearfix">
         <div id="logo">
-            <img class="logo" src="/storage/images/logo.webp" alt="Logo">
+            <img class="logo" src="https://alqataryakw.com/storage/images/logo.webp" alt="Logo">
         </div>
         <h1>فاتورة رقم #{{ $transactions->first()->id }}</h1>
         <div id="company" class="clearfix">
@@ -287,23 +300,27 @@
             <div><a href="https://alqataryakw.com">www.alqataryakw.com</a></div>
         </div>
         <div id="project">
-            <div><span class="text-bold">مشروع</span>{{ $transactions->first()->project->title }}</div>
-            <div><span class="text-bold">العــميل</span>{{ $transactions->first()->project->customer->name }}</div>
-            <div><span class="text-bold">العــنوان</span>{{ $transactions->first()->project->customer->address }} </div>
-            <div><span class="text-bold">تـاريــخ اليوم</span>
-                {{ now()->format('Y/m/d') }}
+            <div> <span class="text-bold paddint-left-right"> : مشروع
+                </span> <br /> {{ $transactions->first()->project->title }}</div>
+            <div> <span class="text-bold paddint-left-right"> :
+                    العــميل</span> <br /> {{ $transactions->first()->project->customer->name }}
             </div>
+            <div> <span class="text-bold paddint-left-right"> :
+                    العــنوان</span><br /> {{ $transactions->first()->project->customer->address }}
+            </div>
+            <div> <span class="text-bold paddint-left-right"> : تـاريــخ
+                    اليوم</span> <br /> {{ now()->format('Y/m/d') }} </div>
         </div>
         </div>
     </header>
     <main>
-        <table style="direction: ltr;">
+        <table>
             <thead>
                 <tr>
-                    <th class="center-table text-bold service">اســـم الخدمة</th>
-                    <th class="center-table text-bold desc">سعــر المتر / الكمــية</th>
+                    <th class="center-table text-bold">الاجمالي</th>
                     <th class="center-table text-bold">عدد الامتار / الكمية</th>
-                    <th class="center-table text-bold">الاجـــمالي</th>
+                    <th class="center-table text-bold desc">سعر المتر / الكمية</th>
+                    <th class="center-table text-bold service">اسم الخدمة</th>
                 </tr>
             </thead>
             <tbody>
@@ -313,29 +330,32 @@
                 @endphp
                 @foreach ($services as $service)
                     <tr>
-                        <td class="center-table service">{{ $service->name }}</td>
-                        <td class="center-table desc">دينار {{ $service->pivot->price }}</td>
-                        <td class="center-table unit">{{ $service->pivot->quantity }}</td>
-                        <td class="center-table unit">دينار {{ $service->pivot->price * $service->pivot->quantity }}
+                        <td class="center-table unit"><span>دينار</span>
+                            {{ $service->pivot->price * $service->pivot->quantity }}
                         </td>
+                        <td class="center-table unit">{{ $service->pivot->quantity }}</td>
+                        <td class="center-table desc"><span>دينار</span> {{ $service->pivot->price }} </td>
+                        <td class="center-table service">{{ $service->name }}</td>
                         @php $totalService += $service->pivot->price * $service->pivot->quantity; @endphp
                     </tr>
                 @endforeach
 
                 @foreach ($extraServices as $extraService)
                     <tr>
-                        <td class="center-table service">{{ $extraService->name }}</td>
-                        <td class="center-table desc">دينار {{ $extraService->price }}</td>
-                        <td class="center-table unit">{{ $extraService->quantity }}</td>
-                        <td class="center-table unit">دينار {{ $extraService->price * $extraService->quantity }}
+                        <td class="center-table unit"><span>دينار</span>
+                            {{ $extraService->price * $extraService->quantity }}
                         </td>
+                        <td class="center-table unit">{{ $extraService->quantity }}</td>
+                        <td class="center-table desc"><span>دينار</span> {{ $extraService->price }} </td>
+                        <td class="center-table service">{{ $extraService->name }}</td>
                         @php $totalExtraService += $extraService->price * $extraService->quantity; @endphp
                     </tr>
                 @endforeach
 
                 <tr>
+                    <td class="center-table total text-bold"><span>دينار</span>
+                        {{ $totalService + $totalExtraService }}</td>
                     <td class="center-table text-bold" colspan="3">المجـــموع الكلى</td>
-                    <td class="center-table total text-bold">دينار {{ $totalService + $totalExtraService }}</td>
                 </tr>
 
             </tbody>
