@@ -85,9 +85,7 @@ const removePayment = (index) => {
 };
 
 const resetForm = () => {
-    // form reset
     form.reset();
-    // remove errors
     Object.keys(form.errors).forEach((key) => {
         delete form.errors[key];
     });

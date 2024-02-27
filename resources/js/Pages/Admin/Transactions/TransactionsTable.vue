@@ -32,6 +32,7 @@ import AddMoreTransactionsForm from "@/Pages/Admin/Transactions/AddMoreTransacti
 import ProfitDetailsForm from "@/Pages/Admin/Transactions/ProfitDetailsForm.vue";
 import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
 import TransactionsPayment from "@/Pages/Admin/Transactions/TransactionsPayment.vue";
+import WhatsAppMessages from "@/Pages/Admin/Transactions/WhatsAppMessages.vue";
 
 import {
     router,
@@ -100,9 +101,8 @@ onMounted(() => {
         }
     });
 
-    // whatsappTransaction
     eventBus.$on("openModal", (modalToOpen) => {
-        if (modalToOpen === "transaction::whatsappTransaction") {
+        if (modalToOpen === "transaction::showMessagesWhatsapp") {
             currentWhatsappTransaction.value = null;
             isShowWhatsappTransactionModalOpen.value = true;
         }
@@ -114,12 +114,14 @@ onMounted(() => {
             modalToClose === "transaction::update" ||
             modalToClose === "transaction::ShowTransactionsPayment" ||
             modalToClose === "transaction::AddMoreTransactionForm" ||
-            modalToClose === "transaction::ShowProfitDetails"
+            modalToClose === "transaction::ShowProfitDetails" ||
+            modalToClose === "transaction::showMessagesWhatsapp"
         ) {
             isFormModalOpen.value = false;
             isAddMoreTransactionModalOpen.value = false;
             isShowTransactionsPayment.value = false;
             isProfitDetailsModalOpen.value = false;
+            isShowWhatsappTransactionModalOpen.value = false;
         }
     });
 });
@@ -171,7 +173,6 @@ const whatsappTransaction = (transaction) => {
     currentWhatsappTransaction.value = transaction;
     isShowWhatsappTransactionModalOpen.value = true;
     showMessagesWhatsapp();
-
 };
 
 const editTransaction = (transaction) => {
@@ -352,61 +353,61 @@ const deleteTransaction = (transaction) => {
     });
 };
 
-const isTextMessage = (message) => typeof message.content === 'string';
+// const isTextMessage = (message) => typeof message.content === 'string';
 
-const getMessageContent = (message) => {
-    if (message.messageType === 'extendedTextMessage') {
-        return message.content.text;
-    }
+// const getMessageContent = (message) => {
+//     if (message.messageType === 'extendedTextMessage') {
+//         return message.content.text;
+//     }
 
-    // imageMessage // documentWithCaptionMessage // videoMessage // audioMessage // contactMessage // locationMessage
+//     // imageMessage // documentWithCaptionMessage // videoMessage // audioMessage // contactMessage // locationMessage
 
-    if (message.messageType === 'imageMessage') {
-        return 'صورة';
-    }
+//     if (message.messageType === 'imageMessage') {
+//         return 'صورة';
+//     }
 
-    if (message.messageType === 'documentWithCaptionMessage') {
-        return 'ملف';
-    }
+//     if (message.messageType === 'documentWithCaptionMessage') {
+//         return 'ملف';
+//     }
 
-    if (message.messageType === 'videoMessage') {
-        return 'فيديو';
-    }
+//     if (message.messageType === 'videoMessage') {
+//         return 'فيديو';
+//     }
 
-    if (message.messageType === 'audioMessage') {
-        return 'صوت';
-    }
+//     if (message.messageType === 'audioMessage') {
+//         return 'صوت';
+//     }
 
-    if (message.messageType === 'contactMessage') {
-        return 'جهة اتصال';
-    }
+//     if (message.messageType === 'contactMessage') {
+//         return 'جهة اتصال';
+//     }
 
-    if (message.messageType === 'locationMessage') {
-        return 'موقع';
-    }
-    // documentMessage
-    if (message.messageType === 'documentMessage') {
-        return 'ملف';
-    }
+//     if (message.messageType === 'locationMessage') {
+//         return 'موقع';
+//     }
+//     // documentMessage
+//     if (message.messageType === 'documentMessage') {
+//         return 'ملف';
+//     }
 
-    return message.messageType;
-};
+//     return message.messageType;
+// };
 
-const messageClasses = (keyFromMe) => ({
-    'single-message user mb-4 rounded-bl-lg rounded-br-lg rounded-tl-lg px-4 py-2 text-gray-200': keyFromMe,
-    'single-message mb-4 rounded-bl-lg rounded-br-lg rounded-tr-lg px-4 py-2 text-gray-200': !keyFromMe,
-});
+// const messageClasses = (keyFromMe) => ({
+//     'single-message user mb-4 rounded-bl-lg rounded-br-lg rounded-tl-lg px-4 py-2 text-gray-200': keyFromMe,
+//     'single-message mb-4 rounded-bl-lg rounded-br-lg rounded-tr-lg px-4 py-2 text-gray-200': !keyFromMe,
+// });
 
 
-const messageDate = (timestamp) => {
-    const date = new Date(timestamp * 1000);
-    return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
-};
+// const messageDate = (timestamp) => {
+//     const date = new Date(timestamp * 1000);
+//     return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
+// };
 
-const messageTime = (timestamp) => {
-    const date = new Date(timestamp * 1000);
-    return date.toLocaleTimeString();
-};
+// const messageTime = (timestamp) => {
+//     const date = new Date(timestamp * 1000);
+//     return date.toLocaleTimeString();
+// };
 </script>
 
 <template>
@@ -437,89 +438,7 @@ const messageTime = (timestamp) => {
 
     <CardBoxModal cardWidthClass="w-100 lg:w-[40rem] !bg-gray-900 text-green-200 mb-10 pb-10" scrollable :hasCancel="true"
         v-model="isShowWhatsappTransactionModalOpen" title="التواصل عن طريق الواتس اب">
-        <div class="flex flex-col-reverse items-stretch justify-center">
-            <div v-for="message in messages" :key="message.id">
-                <div v-if="isTextMessage(message)">
-                    <div class="flex " :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
-                        <div :class="messageClasses(message.keyFromMe)">
-                            {{ message.content }}
-                            <div class="grid grid-cols-2 text-[12px] !max-w-[9rem]">
-                                <span class="mx-2">
-                                    {{ messageDate(message.messageTimestamp) }}
-                                </span>
-                                <span>
-                                    {{ messageTime(message.messageTimestamp) }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="flex " v-if="message.messageType === 'extendedTextMessage'"
-                        :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
-                        <div :class="messageClasses(message.keyFromMe)">
-                            {{ getMessageContent(message) }}
-                            <div class="grid grid-cols-2 text-[12px] !max-w-[9rem]">
-                                <span class="mx-2">
-                                    {{ messageDate(message.messageTimestamp) }}
-                                </span>
-                                <span>
-                                    {{ messageTime(message.messageTimestamp) }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex " v-else :class="message.keyFromMe ? '!justify-start' : '!justify-end'">
-                        <div :class="messageClasses(message.keyFromMe)">
-                            {{ getMessageContent(message) }}
-                            <button class="px-2 mx-2 border rounded" :class="message.keyFromMe ? 'hover:bg-gray-200 hover:text-gray-900' :
-                                'hover:bg-gray-200 hover:text-gray-900'" @click="getWhatsappMedia(message.keyId)">
-                                <div v-if="loader === message.keyId">
-                                    <div class="flex items-center justify-center">
-                                        <svg class="w-5 h-5 mr-3 -ml-1 text-blue-900 animate-spin"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                                stroke-width="4"></circle>
-                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p v-else class="font-bold">عرض</p>
-                            </button>
-                            <div class="grid grid-cols-2 text-[12px] !max-w-[9rem]">
-                                <span class="mx-2">
-                                    {{ messageDate(message.messageTimestamp) }}
-                                </span>
-                                <span>
-                                    {{ messageTime(message.messageTimestamp) }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="fixed flex items-center w-2/5 bottom-28">
-            <input type="text" v-model="form.message" placeholder="اكتب رسالة"
-                class="w-3/4 h-10 px-2 py-1 text-black border rounded border-primary-100" />
-            <div>
-                <BaseButton v-if="!sendTextMessageLoader" @click="sendTextMessage()" color="success" :icon="mdiSend"
-                    label="ارسال" />
-                <div v-else
-                    class="inline-flex items-center justify-center px-3 py-2 mx-2 text-white transition-colors duration-150 border rounded cursor-pointer whitespace-nowrap focus:outline-none focus:ring border-emerald-600 dark:border-emerald-500 ring-emerald-300 dark:ring-emerald-700 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700 hover:dark:bg-emerald-600 hover:dark:border-emerald-600">
-                    <h1>جار الارسال</h1>
-                    <svg class="w-5 h-5 mr-3 -ml-1 text-green-900 animate-spin" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
-                    </svg>
-                </div>
-            </div>
-
-            <BaseButton color="info" :icon="mdiInvoiceCheck" @click="sendInvoicePDF()" />
-
-        </div>
+        <WhatsAppMessages :transaction="currentWhatsappTransaction" :messages="messages" />
 
     </CardBoxModal>
 
@@ -589,7 +508,7 @@ const messageTime = (timestamp) => {
 
             <!-- User data -->
 
-            <tr v-for="    transaction     in     transactions.data    " :key="transaction.id">
+            <tr v-for="transaction in transactions.data" :key="transaction.id">
                 <td data-label="ID">{{ transaction.id }}</td>
                 <td data-label="Project Name">{{ transaction.project.title }}</td>
                 <td data-label="Customer Name">{{ transaction.customer.name }}</td>

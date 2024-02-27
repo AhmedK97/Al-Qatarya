@@ -114,131 +114,233 @@
             background: black !important;
             color: white !important;
         }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        a {
+            color: #5D6975;
+            text-decoration: underline;
+        }
+
+        body {
+            position: relative;
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0 auto;
+            color: #001028;
+            background: #FFFFFF;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-family: Arial;
+        }
+
+        header {
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+
+        #logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #logo img {
+            width: 90px;
+        }
+
+        h1 {
+            border-top: 1px solid #5D6975;
+            border-bottom: 1px solid #5D6975;
+            color: #5D6975;
+            font-size: 2.4em;
+            line-height: 1.4em;
+            font-weight: normal;
+            text-align: center;
+            margin: 0 0 20px 0;
+            background: url('https://s3-eu-west-1.amazonaws.com/htmlpdfapi.production/free_html5_invoice_templates/example1/dimension.png');
+
+        }
+
+        #project {
+            float: left;
+        }
+
+        #project span {
+            color: #5D6975;
+            text-align: right;
+            width: 52px;
+            margin-right: 10px;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+
+        #company {
+            float: right;
+            text-align: right;
+        }
+
+        #project div,
+        #company div {
+            white-space: nowrap;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin-bottom: 20px;
+        }
+
+        table tr:nth-child(2n-1) td {
+            background: #F5F5F5;
+        }
+
+        table th,
+        table td {
+            text-align: center;
+        }
+
+        table th {
+            padding: 5px 20px;
+            color: #5D6975;
+            border-bottom: 1px solid #C1CED9;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+
+        table .service,
+        table .desc {
+            text-align: left;
+        }
+
+        table td {
+            padding: 20px;
+            text-align: right;
+        }
+
+        table td.service,
+        table td.desc {
+            vertical-align: top;
+        }
+
+        table td.unit,
+        table td.qty,
+        table td.total {
+            font-size: 1.2em;
+        }
+
+        table td.grand {
+            border-top: 1px solid #5D6975;
+            ;
+        }
+
+        #notices .notice {
+            color: #5D6975;
+            font-size: 1.2em;
+        }
+
+        footer {
+            color: #5D6975;
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #C1CED9;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .logo {
+            border-radius: 900%;
+        }
+
+        .company-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .text-bold {
+            font-weight: bold;
+        }
+
+        .center-table {
+            font-size: 1.2em;
+            text-align: center !important;
+        }
     </style>
 </head>
 
 <body style="direction: rtl;">
-    <div class="invoice-box">
-        <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td class="title" style="display: flex; align-items: center;justify-content: center;">
-                                <img src="https://alqataryakw.com/storage/images/logo.webp"
-                                    style="width: 100%; max-width: 100px; margin-right: 10px;" />
-                                <p style="margin: 0 50 0 50; text-align: center font-size: x-large;">شركه القطرية
-                                    للعوازل</p>
-                            </td>
-
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
-                                Sparksuite, Inc.<br />
-                                12345 Sunny Road<br />
-                                Sunnyville, CA 12345
-                            </td>
-
-                            <td>
-                                Acme Corp.<br />
-                                John Doe<br />
-                                john@example.com
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            {{--
-            <tr class="heading">
-                <td>الخدمات</td>
-                <td>عدد الامتار</td>
-                <td>السعر النهائي</td>
-            </tr>
-
-            <tr class="details">
-                <td>Check</td>
-
-                <td>1000</td>
-            </tr>
-
-            <tr class="heading">
-                <td>Item</td>
-
-                <td>Price</td>
-            </tr>
-
-            <tr class="item">
-                <td>Website design</td>
-
-                <td>$300.00</td>
-            </tr>
-
-            <tr class="item">
-                <td>Hosting (3 months)</td>
-
-                <td>$75.00</td>
-            </tr>
-
-            <tr class="item last">
-                <td>Domain name (1 year)</td>
-
-                <td>$10.00</td>
-            </tr>
-
-            <tr class="total">
-                <td></td>
-
-                <td>Total: $385.00</td>
-            </tr> --}}
-        </table>
-
-        <h1 class="text-center">الخدمات</h1>
-
-        <table>
-            <tr class="trHead">
-                <th class="text-center">اسم الخدمة</th>
-                <th class="text-center">عدد الامتار</th>
-                <th class="text-center">سعر المتر</th>
-                <th class="text-center">السعر النهائي</th>
-
-            </tr>
-            @foreach ($services as $service)
-                <tr style="    background: aliceblue;">
-                    <td class="text-center">{{ $service->name }}</td> {{-- Display the service name --}}
-                    <td class="text-center">{{ $service->pivot->quantity }}</td> {{-- Display the quantity --}}
-                    <td class="text-center">{{ $service->pivot->price }}</td> {{-- Display the price per unit --}}
-                    <td class="text-center">{{ $service->pivot->quantity * $service->pivot->price }}</td>
+    <header class="clearfix">
+        <div id="logo">
+            <img class="logo" src="/storage/images/logo.webp" alt="Logo">
+        </div>
+        <h1>فاتورة رقم #{{ $transactions->first()->id }}</h1>
+        <div id="company" class="clearfix">
+            <div class="company-name">شـــركة القطــرية للــعوازل</div>
+            <div>455 Foggy Heights,<br /> AZ 85004, US</div>
+            <div>(602) 519-0450</div>
+            <div><a href="https://alqataryakw.com">www.alqataryakw.com</a></div>
+        </div>
+        <div id="project">
+            <div><span class="text-bold">مشروع</span>{{ $transactions->first()->project->title }}</div>
+            <div><span class="text-bold">العــميل</span>{{ $transactions->first()->project->customer->name }}</div>
+            <div><span class="text-bold">العــنوان</span>{{ $transactions->first()->project->customer->address }} </div>
+            <div><span class="text-bold">تـاريــخ اليوم</span>
+                {{ now()->format('Y/m/d') }}
+            </div>
+        </div>
+        </div>
+    </header>
+    <main>
+        <table style="direction: ltr;">
+            <thead>
+                <tr>
+                    <th class="center-table text-bold service">اســـم الخدمة</th>
+                    <th class="center-table text-bold desc">سعــر المتر / الكمــية</th>
+                    <th class="center-table text-bold">عدد الامتار / الكمية</th>
+                    <th class="center-table text-bold">الاجـــمالي</th>
                 </tr>
-            @endforeach
-        </table>
+            </thead>
+            <tbody>
+                @php
+                    $totalService = 0;
+                    $totalExtraService = 0;
+                @endphp
+                @foreach ($services as $service)
+                    <tr>
+                        <td class="center-table service">{{ $service->name }}</td>
+                        <td class="center-table desc">دينار {{ $service->pivot->price }}</td>
+                        <td class="center-table unit">{{ $service->pivot->quantity }}</td>
+                        <td class="center-table unit">دينار {{ $service->pivot->price * $service->pivot->quantity }}
+                        </td>
+                        @php $totalService += $service->pivot->price * $service->pivot->quantity; @endphp
+                    </tr>
+                @endforeach
 
-        {{-- extraService --}}
-        <h1 class="text-center">الخدمات الاضافية</h1>
+                @foreach ($extraServices as $extraService)
+                    <tr>
+                        <td class="center-table service">{{ $extraService->name }}</td>
+                        <td class="center-table desc">دينار {{ $extraService->price }}</td>
+                        <td class="center-table unit">{{ $extraService->quantity }}</td>
+                        <td class="center-table unit">دينار {{ $extraService->price * $extraService->quantity }}
+                        </td>
+                        @php $totalExtraService += $extraService->price * $extraService->quantity; @endphp
+                    </tr>
+                @endforeach
 
-        <table>
-            <tr class="trHead">
-                <th class="text-center">اسم الخدمة الاضافية</th>
-                <th class="text-center">عدد الامتار</th>
-                <th class="text-center">سعر المتر / الكمية</th>
-                <th class="text-center">السعر النهائي</th>
-            </tr>
-            @foreach ($extraServices as $extraService)
-                <tr style="    background: aliceblue;">
-                    <td class="text-center">{{ $extraService->name }}</td> {{-- Display the service name --}}
-                    <td class="text-center">{{ $extraService->price }}</td> {{-- Display the price per unit --}}
-                    <td class="text-center">{{ $extraService->quantity }}</td> {{-- Display the quantity --}}
-                    <td class="text-center">{{ $extraService->quantity * $extraService->price }}</td>
+                <tr>
+                    <td class="center-table text-bold" colspan="3">المجـــموع الكلى</td>
+                    <td class="center-table total text-bold">دينار {{ $totalService + $totalExtraService }}</td>
                 </tr>
-            @endforeach
 
-    </div>
+            </tbody>
+        </table>
+    </main>
 </body>
 
 </html>

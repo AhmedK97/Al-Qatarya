@@ -21,12 +21,13 @@ class SendInvoiceController extends Controller
         $customerPhone = $request->customerPhone;
         $transactions = $request->transactions;
 
-        $transactions = Transaction::find(1)->with('customer', 'employee', 'project')->get();
+        dd($transactions);
 
-        // TransactionsAdminResource($transactions)
+        $transactions = Transaction::whereId(1)->with('customer', 'employee', 'project')->get();
+
+        // dd($transactions);
 
         $transactions = TransactionsAdminResource::collection($transactions);
-
         $services = $transactions->map(function ($transaction) {
             return $transaction->project->services;
         })->flatten();
@@ -35,7 +36,9 @@ class SendInvoiceController extends Controller
             return $transaction->project->extraServices->where('type', 'service');
         })->flatten();
 
-        // dd($extraServices);
+        // dd($services->pivot());
+
+        // dd($transactions->first()->id);
         return view('invoice.index', compact(
             'services',
             'extraServices',

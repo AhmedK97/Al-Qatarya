@@ -33,12 +33,6 @@ class TransactionsAdminResource extends JsonResource
                         'quantity' => $extraService->quantity,
                         'type' => $extraService->type,
                         'details' => json_decode($extraService->details),
-                        // 'details' => [
-                        //     'originPrice' => json_decode($extraService->details)->originPrice ?? 0,
-                        //     'tips' => json_decode($extraService->details)->tips ?? 0,
-                        //     'discount' => json_decode($extraService->details)->discount ?? 0,
-                        //     'created_at' => json_decode($extraService->details)->created_at ?? 0,
-                        // ],
                         'created_at' => $extraService->created_at->format('Y-m-d'),
                     ];
                 });
@@ -73,27 +67,13 @@ class TransactionsAdminResource extends JsonResource
                         'name' => $service->name,
                         'price' => $service->pivot->price,
                         'quantity' => $service->pivot->quantity,
-                        // 'details' => json_decode($service->details),
                         'details' => [
                             'originPrice' => json_decode($service->pivot->details)->originPrice ?? 0,
-                            // 'originQuantity' => json_decode($service->details)->originQuantity ?? 0,
                         ],
                         'created_at' => $service->created_at->format('Y-m-d'),
                     ];
                 });
             }),
-
-            // 'payments' => $this->whenLoaded('payments', function () {
-            //     return $this->payments->map(function ($payment) {
-            //         return [
-            //             'id' => $payment->id,
-            //             'amount' => $payment->amount,
-            //             'type' => $payment->type,
-            //             'description' => $payment->description,
-            //             'created_at' => $payment->created_at,
-            //         ];
-            //     });
-            // }),
             'payments' => json_decode($this->payments),
             'status' => $this->status,
             'times_to_pay' => $this->times_to_pay,
