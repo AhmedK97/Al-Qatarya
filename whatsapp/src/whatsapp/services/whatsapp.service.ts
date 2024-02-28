@@ -667,6 +667,7 @@ export class WAStartupService {
       messages,
       chats,
       isLatest,
+      contacts,
     }: {
       chats: Chat[];
       contacts: Contact[];
@@ -683,6 +684,22 @@ export class WAStartupService {
         await this.sendDataWebhook('chatsSet', chatsRaw);
         await this.repository.chat.createMany({ data: chatsRaw });
       }
+
+      //   save contacts
+      const contactsRaw: PrismType.Contact[] = contacts.map((contact) => {
+        return {
+          remoteJid: contact.id,
+          pushName: contact?.name || contact?.notify,
+          profilePicUrl: contact?.imgUrl,
+          instanceId: this.instance.id,
+        } as unknown as PrismType.Contact;
+      });
+
+      await this.sendDataWebhook('contactsSet', contactsRaw);
+
+      await this.repository.contact.createMany({ data: contactsRaw });
+
+      //   save messages
 
       const messagesRaw: PrismType.Message[] = [];
       for await (const [, m] of Object.entries(messages)) {
