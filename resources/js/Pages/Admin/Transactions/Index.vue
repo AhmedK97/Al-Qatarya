@@ -21,7 +21,8 @@ import {
     mdiImport,
     mdiAccountCancelOutline,
     mdiCash,
-    mdiCashMultiple
+    mdiCashMultiple,
+    mdiTextBoxSearchOutline
 } from "@mdi/js";
 import SectionMain from "@/Components/Admin/SectionMain.vue";
 import TransactionsTable from "@/Pages/Admin/Transactions/TransactionsTable.vue";
@@ -32,6 +33,8 @@ import LayoutAuthenticated from "@/Layouts/Admin/LayoutAuthenticated.vue";
 import SectionTitleLineWithButton from "@/Components/Admin/SectionTitleLineWithButton.vue";
 import eventBus from "@/Composables/eventBus.js";
 import Swal from "sweetalert2";
+// import VueDatePicker from '@vuepic/vue-datepicker';
+// import '@vuepic/vue-datepicker/dist/main.css';
 // import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
 // import CompaniesImport from "@/Pages/Admin/Companies/CompaniesImport.vue";
 
@@ -87,6 +90,23 @@ const props = defineProps({
 //         }
 //     });
 // };
+
+const from = ref(null);
+
+const to = ref(null);
+
+
+const searchDates = () => {
+    console.log(from, to.value);
+    router.get(route("index.transactions"), {
+        from: from.value.year + '-' + (from.value.month + 1),
+        to: to.value.year + '-' + (to.value.month + 1)
+    }, {
+        preserveState: true,
+        replace: true,
+    });
+};
+
 </script>
 
 <template>
@@ -103,13 +123,23 @@ const props = defineProps({
             <SectionTitleLineWithButton :icon="mdiDomain" title="المعاملات المالية">
                 <div class="flex items-center">
                     <BaseButton @click="() => eventBus.$emit('openModal', 'transaction::create')
-                        " color="info" :icon="mdiPlus" label="اضافة" small />
-
-
-                    <!-- <BaseButton @click="exportTable" color="success" :icon="mdiExport" label="Export" small /> -->
+                    " color="info" :icon="mdiPlus" label="اضافة" small />
 
                 </div>
+
+
             </SectionTitleLineWithButton>
+
+            <!-- filter by between dates -->
+            <div class="grid grid-flow-col grid-cols-4 gap-4 space-x-3">
+                <VueDatePicker v-model="from" month-picker placeholder="من" />
+                <VueDatePicker v-model="to" month-picker placeholder="الى" />
+                <BaseButton @click="(searchDates)" color="info" :icon="mdiTextBoxSearchOutline" class="w-1/2"
+                    label="بحث" small />
+            </div>
+
+            <!-- search -->
+
             <CardBox has-table>
                 <TransactionsTable :projects="projects" :filters="filters" :customers="customers" :employees="employees"
                     :services="services" :transactions="transactions" />
