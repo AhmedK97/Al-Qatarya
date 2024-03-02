@@ -63,16 +63,9 @@ watch(
 
 const messages = ref([]);
 
-
 const loader = ref(false);
 const sendTextMessageLoader = ref(false);
-
-// const form = useForm({
-//     message: null,
-//     transaction: props.transaction,
-//     messages: props.messages,
-// });
-
+const PDFLoader = ref(false);
 
 onMounted(() => {
     eventBus.$on("openModal", (modalToOpen) => {
@@ -84,9 +77,9 @@ onMounted(() => {
 });
 
 
-const getWhatsappMedia = (keyId) => {
+const getWhatsappMedia = (keyId, customerPhone) => {
     loader.value = keyId;
-    axios.get(`/admin/getWhatsappMedia?keyId=${keyId}&customerPhone=${customerPhone.value}`)
+    axios.get(`/admin/getWhatsappMedia?keyId=${keyId}&customerPhone=${customerPhone}`)
         .then((response) => {
             window.open(response.data['file_url'], '_blank');
             loader.value = false;
@@ -107,6 +100,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
         confirmButtonText: "نعم، ارسلها!",
         cancelButtonText: "الغاء",
     }).then((result) => {
+        PDFLoader.value = true;
         if (result.isConfirmed) {
             const data = {
                 customerPhone: parseInt(customerPhone) + "@s.whatsapp.net",
@@ -124,6 +118,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
                         timer: 3000,
                         timerProgressBar: true,
                     });
+                    PDFLoader.value = false;
                     eventBus.$emit("closeModal", "transaction::showMessagesWhatsapp");
                 },
                 onError: () => {
@@ -134,6 +129,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
                         timer: 3000,
                         timerProgressBar: true,
                     });
+                    PDFLoader.value = false;
                 },
             });
         }
@@ -271,7 +267,8 @@ const messageTime = (timestamp) => {
                     <div :class="messageClasses(message.keyFromMe)">
                         {{ getMessageContent(message) }}
                         <button class="px-2 mx-2 border rounded" :class="message.keyFromMe ? 'hover:bg-gray-200 hover:text-gray-900' :
-                            'hover:bg-gray-200 hover:text-gray-900'" @click="getWhatsappMedia(message.keyId)">
+            'hover:bg-gray-200 hover:text-gray-900'"
+                            @click="getWhatsappMedia(message.keyId, transaction.customer.phone)">
                             <div v-if="loader === message.keyId">
                                 <div class="flex items-center justify-center">
                                     <svg class="w-5 h-5 mr-3 -ml-1 text-blue-900 animate-spin"
@@ -307,16 +304,27 @@ const messageTime = (timestamp) => {
             <div v-else
                 class="inline-flex items-center justify-center px-3 py-2 mx-2 text-white transition-colors duration-150 border rounded cursor-pointer whitespace-nowrap focus:outline-none focus:ring border-emerald-600 dark:border-emerald-500 ring-emerald-300 dark:ring-emerald-700 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 hover:border-emerald-700 hover:dark:bg-emerald-600 hover:dark:border-emerald-600">
                 <h1>جار الارسال</h1>
-                <svg class="w-5 h-5 mr-3 -ml-1 text-green-900 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24">
+                <svg class="w-5 h-5 mr-3 -ml-1 text-green-900 animate-spin" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
                 </svg>
             </div>
         </div>
 
-        <BaseButton color="info" :icon="mdiInvoiceCheck"
+        <BaseButton v-if="!PDFLoader
+            " color="info" :icon="mdiInvoiceCheck"
             @click="sendInvoicePDF(transaction.id, transaction.customer.phone)" />
 
+        <div v-else
+            class="inline-flex items-center justify-center px-3 py-2 mx-2 text-white transition-colors duration-150 bg-blue-700 border rounded cursor-pointer whitespace-nowrap focus:outline-none focus:ring border-emerald-600 dark:border-emerald-500 ring-emerald-300 dark:ring-emerald-700 dark:bg-blue-700 hover:bg-emerald-700 hover:border-emerald-700 hover:dark:bg-emerald-600 hover:dark:border-emerald-600">
+            <h1>جار الارسال</h1>
+            <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                </circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+            </svg>
+        </div>
     </div>
 </template>
