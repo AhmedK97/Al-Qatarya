@@ -27,7 +27,7 @@ import BaseLevel from "@/Components/Admin/BaseLevel.vue";
 import BaseButtons from "@/Components/Admin/BaseButtons.vue";
 import BaseButton from "@/Components/Admin/BaseButton.vue";
 import PillTag from "@/Components/Admin/PillTag.vue";
-import TransactionsForm from "@/Pages/Admin/Transactions/TransactionsForm.vue";
+import EditTransactionsForm from "@/Pages/Admin/Transactions/EditTransactionsForm.vue";
 import AddMoreTransactionsForm from "@/Pages/Admin/Transactions/AddMoreTransactionsForm.vue";
 import ProfitDetailsForm from "@/Pages/Admin/Transactions/ProfitDetailsForm.vue";
 import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
@@ -213,14 +213,7 @@ const openFormModal = () => {
     eventBus.$emit("openModal", "transaction::create");
 };
 
-
 const messages = ref(null);
-const loader = ref(false);
-const sendTextMessageLoader = ref(false);
-
-const form = useForm({
-    message: null,
-});
 
 const customerPhone = computed(() => {
     return currentWhatsappTransaction?.value?.customer?.phone + "@s.whatsapp.net";
@@ -231,92 +224,6 @@ const showMessagesWhatsapp = () => {
         messages.value = response.data.messages.records;
     }).catch((error) => {
         console.log(error);
-    });
-};
-
-
-const getWhatsappMedia = (keyId) => {
-    loader.value = keyId;
-    axios.get(`/admin/getWhatsappMedia?keyId=${keyId}&customerPhone=${customerPhone.value}`)
-        .then((response) => {
-            window.open(response.data['file_url'], '_blank');
-            loader.value = false;
-        }).catch((error) => {
-            console.log(error);
-        });
-};
-
-
-const sendInvoicePDF = () => {
-    Swal.fire({
-        title: "هل انت متاكد ؟",
-        text: `سيتم ارسال الفاتورة الى العميل`,
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "نعم، ارسلها!",
-        cancelButtonText: "الغاء",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            const data = {
-                customerPhone: customerPhone.value,
-                projectId: currentWhatsappTransaction.value.id,
-            };
-            router.post(route("send.invoice"), data, {
-                preserveState: true,
-                replace: true,
-                preserveScroll: true,
-                onSuccess: () => {
-                    showMessagesWhatsapp();
-                    Swal.fire({
-                        icon: "success",
-                        title: "Success",
-                        text: "Transaction created successfully",
-                        timer: 3000,
-                        timerProgressBar: true,
-                    });
-                },
-                onError: () => {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Something went wrong!",
-                        timer: 3000,
-                        timerProgressBar: true,
-                    });
-                },
-            });
-        }
-    });
-}
-
-const sendTextMessage = () => {
-    sendTextMessageLoader.value = true;
-    const data = {
-        message: form.message,
-        customerPhone: customerPhone.value,
-    };
-    router.post(route("send.text.message"), data, {
-        preserveState: true,
-        replace: true,
-        preserveScroll: true,
-        onSuccess: () => {
-            form.message = null;
-            sendTextMessageLoader.value = false;
-            showMessagesWhatsapp();
-        },
-
-        onError: () => {
-            sendTextMessageLoader.value = false;
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                timer: 3000,
-                timerProgressBar: true,
-            });
-        },
     });
 };
 
@@ -349,68 +256,12 @@ const deleteTransaction = (transaction) => {
         }
     });
 };
-
-// const isTextMessage = (message) => typeof message.content === 'string';
-
-// const getMessageContent = (message) => {
-//     if (message.messageType === 'extendedTextMessage') {
-//         return message.content.text;
-//     }
-
-//     // imageMessage // documentWithCaptionMessage // videoMessage // audioMessage // contactMessage // locationMessage
-
-//     if (message.messageType === 'imageMessage') {
-//         return 'صورة';
-//     }
-
-//     if (message.messageType === 'documentWithCaptionMessage') {
-//         return 'ملف';
-//     }
-
-//     if (message.messageType === 'videoMessage') {
-//         return 'فيديو';
-//     }
-
-//     if (message.messageType === 'audioMessage') {
-//         return 'صوت';
-//     }
-
-//     if (message.messageType === 'contactMessage') {
-//         return 'جهة اتصال';
-//     }
-
-//     if (message.messageType === 'locationMessage') {
-//         return 'موقع';
-//     }
-//     // documentMessage
-//     if (message.messageType === 'documentMessage') {
-//         return 'ملف';
-//     }
-
-//     return message.messageType;
-// };
-
-// const messageClasses = (keyFromMe) => ({
-//     'single-message user mb-4 rounded-bl-lg rounded-br-lg rounded-tl-lg px-4 py-2 text-gray-200': keyFromMe,
-//     'single-message mb-4 rounded-bl-lg rounded-br-lg rounded-tr-lg px-4 py-2 text-gray-200': !keyFromMe,
-// });
-
-
-// const messageDate = (timestamp) => {
-//     const date = new Date(timestamp * 1000);
-//     return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
-// };
-
-// const messageTime = (timestamp) => {
-//     const date = new Date(timestamp * 1000);
-//     return date.toLocaleTimeString();
-// };
 </script>
 
 <template>
     <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
         :title="formModalTitle">
-        <TransactionsForm :employees="employees" :customers="customers" :projects="projects"
+        <EditTransactionsForm :employees="employees" :customers="customers" :projects="projects"
             :transaction="currentlyEditedTransaction" :services="services" />
     </CardBoxModal>
 
@@ -421,20 +272,20 @@ const deleteTransaction = (transaction) => {
             :totalExtraServicesPrice="totalExtraServicesPrice" :totalPrice="totalPrice" />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isAddMoreTransactionModalOpen"
-        :title="AddMoreTransactionModalTitle">
+    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true"
+        v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
         <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
             :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />
     </CardBoxModal>
 
     <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isProfitDetailsModalOpen"
         :title="ShowTransactionsPaymentModalTitle">
-        <ProfitDetailsForm :project="currentShowProfitDetails?.project.id" :services="currentShowProfitDetails?.services"
-            :transaction="currentShowProfitDetails" />
+        <ProfitDetailsForm :project="currentShowProfitDetails?.project.id"
+            :services="currentShowProfitDetails?.services" :transaction="currentShowProfitDetails" />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-100 lg:w-[40rem] !bg-gray-900 text-green-200 mb-10 pb-10" scrollable :hasCancel="true"
-        v-model="isShowWhatsappTransactionModalOpen" title="التواصل عن طريق الواتس اب">
+    <CardBoxModal cardWidthClass="w-100 lg:w-[40rem] !bg-gray-900 text-green-200 mb-10 pb-10" scrollable
+        :hasCancel="true" v-model="isShowWhatsappTransactionModalOpen" title="التواصل عن طريق الواتس اب">
         <WhatsAppMessages :transaction="currentWhatsappTransaction" :messages="messages" />
 
     </CardBoxModal>
@@ -448,6 +299,10 @@ const deleteTransaction = (transaction) => {
                 <th class="text-center">موبايل</th>
                 <th class="text-center">الموظف</th>
                 <th class="text-center">العنوان</th>
+                <th class="text-center">التكلفة الكلية للمشروع</th>
+                <th class="text-center">تكلفة المواد الخام</th>
+                <th class="text-center">تكلفة العمال</th>
+                <th class="text-center">صافي الربح</th>
                 <th class="text-center">عدد مرات الدفع</th>
                 <th class="text-center">الحاله</th>
                 <th class="text-center">تاريخ الانشاء</th>
@@ -481,7 +336,18 @@ const deleteTransaction = (transaction) => {
                     <input placeholder="العنوان" v-model="activeFilters.filteredBy.address"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td></td>
+                <td>
+
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+
+                </td>
                 <td>
                     <select v-model="activeFilters.filteredBy.status"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
@@ -502,9 +368,6 @@ const deleteTransaction = (transaction) => {
                         description="You can add new user by clicking on the button below" @click="openFormModal" />
                 </td>
             </tr>
-
-            <!-- User data -->
-
             <tr v-for="transaction in transactions.data" :key="transaction.id">
                 <td data-label="ID">{{ transaction.id }}</td>
                 <td data-label="Project Name">{{ transaction.project.title }}</td>
@@ -512,13 +375,19 @@ const deleteTransaction = (transaction) => {
                 <td data-label="Phone Number">{{ transaction.customer.phone }}</td>
                 <td data-label="Customer Employee">{{ transaction.employee.name }}</td>
                 <td data-label="Address">{{ transaction.address.address }}</td>
-                <td data-label="Times To Pay">{{ transaction.times_to_pay }}</td>
+                <td data-label="Total Project Cost">{{ transaction.all_services_cost }} دينار</td>
+                <td data-label="all payments">{{ transaction.materials_cost }} دينار</td>
+                <td data-label="all payments">{{ transaction.worker_cost }} دينار</td>
+                <td data-label=" Net profit" class="font-bold"
+                    :class="{ 'text-green-500': transaction.profit > 0, 'text-red-500': transaction.profit < 0 }">
+                    {{ transaction.profit }} دينار</td>
+                <td data-label="Times To Pay">{{ transaction.times_to_pay }} دينار</td>
                 <td data-label="Status">
                     <PillTag v-if="transaction.status === 'Paid'" color="success" class="text-center" label="مدفوع" />
                     <PillTag v-if="transaction.status === 'Pending'" color="danger" class="text-center"
                         label="لم يكتمل الدفع" />
                 </td>
-                <td data-label="Created At">{{ transaction.created_at }}</td>
+                <td data-label="Created At" class="p-0">{{ transaction.created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
                         <div>
@@ -537,9 +406,8 @@ const deleteTransaction = (transaction) => {
                             <BaseButton color="info" :icon="mdiSquareEditOutline" small
                                 @click="editTransaction(transaction)" />
 
-                            <BaseButton color="danger" :icon="mdiTrashCan" small @click="deleteTransaction(transaction)" />
-
-
+                            <BaseButton color="danger" :icon="mdiTrashCan" small
+                                @click="deleteTransaction(transaction)" />
                         </div>
 
                     </BaseButtons>
@@ -551,12 +419,10 @@ const deleteTransaction = (transaction) => {
     <div v-if="transactions?.data?.length" class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800">
         <BaseLevel>
             <BaseButtons>
-                <BaseButton v-for="(    page, index    ) in     transactions.links    " :key="index" :active="page.active"
-                    :label="page.label" :render-label-as-html="true" :class="{
-                        'text-white': page.active,
-                    }
-                        " :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
-                    :href="page.url" preserve-state :only="['transactions']" />
+                <BaseButton v-for="(    page, index    ) in     transactions.links    " :key="index"
+                    :active="page.active" :label="page.label" :render-label-as-html="true"
+                    :class="{ 'text-white': page.active, }" :color="page.active ? 'contrast' : 'whiteDark'" small
+                    :as="page.url ? 'Link' : 'span'" :href="page.url" preserve-state :only="['transactions']" />
             </BaseButtons>
             <small>Page {{ transactions.current_page }} of {{ transactions.total }}</small>
         </BaseLevel>
