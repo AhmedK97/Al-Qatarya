@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Blogs\EmployeeStatusEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Enum;
 
 class UpdateCustomersAdminController extends Controller
 {
