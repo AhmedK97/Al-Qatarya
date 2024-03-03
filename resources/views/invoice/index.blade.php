@@ -173,7 +173,7 @@
             text-align: right;
             width: 52px;
             margin-right: 10px;
-            display: inline-block;
+            /* display: inline-block; */
             font-size: 0.8em;
         }
 
@@ -301,12 +301,16 @@
         </div>
         <div id="project">
             <div> <span class="text-bold paddint-left-right"> : مشروع
-                </span> <br /> {{ $transactions->first()->project->title }}</div>
-            <div> <span class="text-bold paddint-left-right"> :
-                    العــميل</span> <br /> {{ $transactions->first()->project->customer->name }}
+                </span> <br />
+                <p>{{ $transactions->first()->project->title }}</p>
             </div>
             <div> <span class="text-bold paddint-left-right"> :
-                    العــنوان</span><br /> {{ $transactions->first()->project->customer->address }}
+                    العــميل</span> <br />
+                <p>{{ $transactions->first()->project->customer->name }}</p>
+            </div>
+            <div> <span class="text-bold paddint-left-right"> :
+                    العــنوان</span>
+                <p style="max-width: 200px;">{{ $transactions->first()->project->customer->address }}</p>
             </div>
             <div> <span class="text-bold paddint-left-right"> : تـاريــخ
                     اليوم</span> <br /> {{ now()->format('Y/m/d') }} </div>
