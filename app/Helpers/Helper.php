@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-if (!function_exists('supportedLocales')) {
+if (! function_exists('supportedLocales')) {
     function supportedLocales()
     {
         return LaravelLocalization::getSupportedLocales();
@@ -11,13 +11,12 @@ if (!function_exists('supportedLocales')) {
 }
 
 // currentLocale
-if (!function_exists('currentLocale')) {
+if (! function_exists('currentLocale')) {
     function currentLocale()
     {
         return LaravelLocalization::getCurrentLocale();
     }
 }
-
 
 // $response = Http::withHeaders([
 //     'Content-Type: application/json',
@@ -27,10 +26,9 @@ if (!function_exists('currentLocale')) {
 //     'keyId' => $keyId,
 // ]);
 
-
-if (!function_exists('createHttpRequest')) {
+if (! function_exists('createHttpRequest')) {
     function HttpRequest($route, string $method, $headers, $formData)
     {
-        return Http::withoutVerifying()->withHeaders($headers)->$method(env('WHATSAPP_API_URL') . $route, $formData);
+        return Http::withoutVerifying()->withHeaders($headers)->$method(env('WHATSAPP_API_URL').$route, $formData);
     }
 }
