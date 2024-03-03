@@ -10,7 +10,9 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Services\CostCalculationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -19,15 +21,23 @@ class IndexTransactionsController extends Controller
 {
     /**
      * Handle the incoming request.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, CostCalculationService $costCalculationService)
     {
         $transactions = QueryBuilder::for(Transaction::class)
+            ->when($request->from && $request->to, function ($query) use ($request) {
+                $from = Carbon::createFromFormat('Y-m', $request->from)->startOfMonth();
+                $to = Carbon::createFromFormat('Y-m', $request->to)->endOfMonth();
+                $query->whereBetween('created_at', [$from, $to]);
+                $query->where('status', 'paid');
+            })
             ->allowedFilters([
                 AllowedFilter::callback('customer_name', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
                         $query->whereHas('customer', function ($query) use ($value) {
-                            $query->where('name', 'like', '%' . $value . '%');
+                            $query->where('name', 'like', '%'.$value.'%');
                         });
                     });
                 }),
@@ -35,7 +45,7 @@ class IndexTransactionsController extends Controller
                 AllowedFilter::callback('employee_name', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
                         $query->whereHas('employee', function ($query) use ($value) {
-                            $query->where('name', 'like', '%' . $value . '%');
+                            $query->where('name', 'like', '%'.$value.'%');
                         });
                     });
                 }),
@@ -43,34 +53,33 @@ class IndexTransactionsController extends Controller
                 AllowedFilter::callback('phone', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
                         $query->whereHas('customer', function ($query) use ($value) {
-                            $query->where('phone', 'like', '%' . $value . '%');
+                            $query->where('phone', 'like', '%'.$value.'%');
                         });
                     });
                 }),
 
                 AllowedFilter::callback('address', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
-                        $query->where('address', 'like', '%' . $value . '%');
+                        $query->where('address', 'like', '%'.$value.'%');
                     });
                 }),
 
                 AllowedFilter::callback('status', function ($query, $value) {
-                    $query->where('status', 'like', '%' . $value . '%');
+                    $query->where('status', 'like', '%'.$value.'%');
                 }),
 
                 AllowedFilter::callback('project_name', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
-                        $query->where('title', 'like', '%' . $value . '%');
+                        $query->where('title', 'like', '%'.$value.'%');
                     });
                 }),
-
             ])
             ->with('customer', 'employee', 'project')
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString()
-            ->through(function (Transaction $transactions) {
-                return new TransactionsAdminResource($transactions);
+            ->through(function (Transaction $transaction) {
+                return new TransactionsAdminResource($transaction);
             });
 
         return Inertia::render('Admin/Transactions/Index', [
