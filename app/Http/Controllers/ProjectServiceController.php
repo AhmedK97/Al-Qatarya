@@ -31,7 +31,7 @@ class ProjectServiceController extends Controller
             'extra_services.*.details' => 'nullable',
         ]);
 
-        if (!empty($data['services'])) {
+        if (! empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
                 $service = $serviceData['id'];
                 $project->services()->updateExistingPivot($service, [
@@ -42,7 +42,7 @@ class ProjectServiceController extends Controller
             });
         }
 
-        if (!empty($data['extra_services'])) {
+        if (! empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
                 ->pluck('id')
                 ->filter();
