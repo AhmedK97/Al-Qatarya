@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class getWhatsappChatMessages extends Controller
 {
@@ -33,8 +32,6 @@ class getWhatsappChatMessages extends Controller
             ];
 
         $messages = HttpRequest('/chat/findMessages/codechat-bot', 'post', $header, $formData);
-
-
 
         return $messages->json();
     }
