@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\getWhatsappChatMessages;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexBlogController;
 use App\Http\Controllers\IndexContactUsController;
@@ -49,8 +48,6 @@ Route::get('/blogs/{slug}', ShowBlogController::class)->name('show.blogs');
 Route::get('/projects/{slug}', ShowProjectsController::class)->name('show.projects');
 
 // send whatsapp message
-
-
 
 // Route::get('/send', function () {
 
