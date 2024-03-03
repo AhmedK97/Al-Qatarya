@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Services\CostCalculationService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +15,24 @@ class TransactionsAdminResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $costCalculationService = resolve(CostCalculationService::class);
+
+        $allServicesCost = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateTotalCost($this->resource);
+        });
+
+        $materialsCost = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateMaterialsCost($this->resource);
+        });
+
+        $profit = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateProfit($this->resource);
+        });
+
+        $workerCost = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateWorkerCost($this->resource);
+        });
+
         return [
             'id' => $this->id,
             'customer' => $this->whenLoaded('project', function () {
@@ -25,17 +44,7 @@ class TransactionsAdminResource extends JsonResource
             }),
 
             'extra_services' => $this->whenLoaded('project', function () {
-                return $this->project->extraServices->map(function ($extraService) {
-                    return [
-                        'id' => $extraService->id,
-                        'name' => $extraService->name,
-                        'price' => $extraService->price,
-                        'quantity' => $extraService->quantity,
-                        'type' => $extraService->type,
-                        'details' => json_decode($extraService->details),
-                        'created_at' => $extraService->created_at->format('Y-m-d'),
-                    ];
-                });
+                return extraServicesResource::collection($this->project->extraServices);
             }),
 
             'employee' => $this->whenLoaded('project', function () {
@@ -60,24 +69,16 @@ class TransactionsAdminResource extends JsonResource
             }),
 
             'services' => $this->whenLoaded('project', function () {
-                return $this->project->services->map(function ($service) {
-                    // dd(json_decode($service->pivot->details));
-                    return [
-                        'id' => $service->id,
-                        'name' => $service->name,
-                        'price' => $service->pivot->price,
-                        'quantity' => $service->pivot->quantity,
-                        'details' => [
-                            'originPrice' => json_decode($service->pivot->details)->originPrice ?? 0,
-                        ],
-                        'created_at' => $service->created_at->format('Y-m-d'),
-                    ];
-                });
+                return ServicesResource::collection($this->project->services);
             }),
             'payments' => json_decode($this->payments),
             'status' => $this->status,
             'times_to_pay' => $this->times_to_pay,
-            'created_at' => $this->created_at->diffForHumans(),
+            'all_services_cost' => $allServicesCost,
+            'materials_cost' => $materialsCost,
+            'worker_cost' => $workerCost,
+            'profit' => $profit,
+            'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }
 }
