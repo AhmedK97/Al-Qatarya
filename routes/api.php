@@ -19,16 +19,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 // http://alqatarya.test/api/webhook/whatsapp_api_hessin
 
-Route::post('/webhook/whatsapp_api_hessin', function (Request $request) {
+// Route::post('/webhook/whatsapp_api', function (Request $request) {
 
-    // save the whole request to a file append
-    Storage::disk('local')->append('whatsapp_api_hessin.txt', json_encode($request->all()));
+//     // save the whole request to a file append
+//     Storage::disk('local')->append('whatsapp_api_hessin.txt', json_encode($request->all()));
 
-    return response()->json([
-        'status' => 'success',
-        'message' => 'webhook received'
-    ]);
-});
+//     return response()->json([
+//         'status' => 'success',
+//         'message' => 'webhook received'
+//     ]);
+// });
