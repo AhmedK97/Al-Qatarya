@@ -14,7 +14,7 @@ class UpdateProjectsAdminController extends Controller
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-             'customer_id' => ['required', 'integer', 'exists:users,id'],
+            'customer_id' => ['required', 'integer', 'exists:users,id'],
             'employee_id' => ['required', 'integer', 'exists:users,id'],
             'space_area' => ['required', 'string', 'max:255'],
             'status' => ['required', 'string', 'max:255'],
