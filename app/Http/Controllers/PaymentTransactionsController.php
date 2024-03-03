@@ -18,8 +18,7 @@ class PaymentTransactionsController extends Controller
             'payments.*.percentage' => 'nullable|numeric',
         ]);
 
-
-        if (!$data) {
+        if (! $data) {
             $transaction->update([
                 'payments' => null,
             ]);
@@ -33,7 +32,6 @@ class PaymentTransactionsController extends Controller
                     'timer' => 5000,
                 ]);
         }
-
 
         $data['payments'] = collect($data['payments'])->map(function ($payment) {
             return [
