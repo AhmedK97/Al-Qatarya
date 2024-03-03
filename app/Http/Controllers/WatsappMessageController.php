@@ -22,11 +22,10 @@ class WatsappMessageController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS =>
-                '{
+            CURLOPT_POSTFIELDS => '{
             "messaging_product": "whatsapp",
-            "to": ' .
-                $phone .
+            "to": '.
+                $phone.
                 ',
             "type": "template",
             "template": {
