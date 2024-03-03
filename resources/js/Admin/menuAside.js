@@ -48,12 +48,12 @@ export default [
         icon: mdiCashMultiple,
     },
 
-    {
-        // Inventory
-        label: "Inventory",
-        icon: mdiTable,
-        route: "index.inventory",
-    },
+    // {
+    //     // Inventory
+    //     label: "Inventory",
+    //     icon: mdiTable,
+    //     route: "index.inventory",
+    // },
 
     // {
     //     route: "/ui",
