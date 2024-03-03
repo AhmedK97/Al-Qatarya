@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Blogs\EmployeeStatusEnum;
 use App\Enums\Blogs\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Enum;
 
 class StoreCustomersAdminController extends Controller
 {
@@ -24,8 +22,6 @@ class StoreCustomersAdminController extends Controller
         ]);
 
         $data['role'] = UserRoleEnum::CUSTOMER->value;
-
-
 
         User::create($data + [
             'password' => 'password',
