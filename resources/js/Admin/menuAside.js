@@ -13,7 +13,7 @@ import {
     mdiReact,
     mdiAccountMultipleOutline,
     mdiAccountGroup,
-    mdiCashMultiple
+    mdiCashMultiple,
 } from "@mdi/js";
 
 export default [
@@ -46,6 +46,13 @@ export default [
         route: "index.transactions",
         label: "المعــاملات المالية",
         icon: mdiCashMultiple,
+    },
+
+    {
+        // Inventory
+        label: "Inventory",
+        icon: mdiTable,
+        route: "index.inventory",
     },
 
     // {
@@ -90,5 +97,4 @@ export default [
             },
         ],
     },
-
 ];

@@ -1,6 +1,6 @@
 import "../css/app.css";
 import "../css/admin/main.css";
-import 'vue-select/dist/vue-select.css';
+import "vue-select/dist/vue-select.css";
 
 import { createApp, h } from "vue";
 import { createPinia } from "pinia";
@@ -12,8 +12,10 @@ import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { i18nVue } from "laravel-vue-i18n";
 import { MotionPlugin } from "@vueuse/motion";
 import vSelect from "vue-select";
-import CKEditor from '@ckeditor/ckeditor5-vue';
+import CKEditor from "@ckeditor/ckeditor5-vue";
 import "@ebcom/dotlottie-player";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const appName =
@@ -42,7 +44,9 @@ createInertiaApp({
             .use(pinia)
             .use(MotionPlugin)
             .use(CKEditor)
-            .mount(el)
+            .component("v-select", vSelect)
+            .component("VueDatePicker", VueDatePicker)
+            .mount(el);
     },
     progress: {
         color: "#4B5563",
