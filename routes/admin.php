@@ -12,6 +12,7 @@ use App\Http\Controllers\getWhatsappChatMessages;
 use App\Http\Controllers\getWhatsappMedia;
 use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
+use App\Http\Controllers\IndexInventoryController;
 use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexTransactionsController;
@@ -101,17 +102,13 @@ Route::delete('/transactions/{transaction}', DeleteTransactionsController::class
 
 Route::post('/transactions/{transaction}/payments', PaymentTransactionsController::class)->name('store.payments.transactions');
 
-// whatsapp Controllers
 Route::get('/getWhatsappChatMessages', getWhatsappChatMessages::class)->name('showWhatsappClientMessages');
 
-// getWhatsappMedia
 Route::get('/getWhatsappMedia', getWhatsappMedia::class)->name('showWhatsappMedia');
-
 
 Route::post('/message/sendText', SendTextMessageController::class)->name('send.text.message');
 
 Route::post('/message/sendInvoice', SendInvoiceController::class)->name('send.invoice');
-
 
 // --------------- service transaction -----------------//
 
