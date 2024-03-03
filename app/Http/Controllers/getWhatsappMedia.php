@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class getWhatsappMedia extends Controller
@@ -17,12 +16,12 @@ class getWhatsappMedia extends Controller
         $keyId = $request->keyId;
         $customerPhone = $request->customerPhone;
 
-        $directory = 'whatsappMedia/' . $customerPhone;
+        $directory = 'whatsappMedia/'.$customerPhone;
 
         $files = Storage::disk('public')->files($directory);
 
         $foundFile = collect($files)->first(function ($file) use ($keyId) {
-            return basename($file, '.' . pathinfo($file, PATHINFO_EXTENSION)) === $keyId;
+            return basename($file, '.'.pathinfo($file, PATHINFO_EXTENSION)) === $keyId;
         });
 
         if ($foundFile) {
@@ -52,16 +51,16 @@ class getWhatsappMedia extends Controller
         }
 
         $file_extension = explode('/', $response->header('Content-Type'))[1];
-        $file_name = $keyId . '.' . $file_extension;
+        $file_name = $keyId.'.'.$file_extension;
         $fileContent = $response->body();
 
-        if (!Storage::disk('public')->exists($directory)) {
+        if (! Storage::disk('public')->exists($directory)) {
             Storage::disk('public')->makeDirectory($directory);
         }
-        Storage::disk('public')->put($directory . '/' . $file_name, $fileContent);
+        Storage::disk('public')->put($directory.'/'.$file_name, $fileContent);
 
         return response()->json([
-            'file_url' => Storage::disk('public')->url($directory . '/' . $file_name),
+            'file_url' => Storage::disk('public')->url($directory.'/'.$file_name),
         ]);
     }
 }
