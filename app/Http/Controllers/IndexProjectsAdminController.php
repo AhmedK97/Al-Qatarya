@@ -16,9 +16,8 @@ use Spatie\QueryBuilder\QueryBuilder;
 class IndexProjectsAdminController extends Controller
 {
     /**
-     * @var Project $project
+     * @var Project
      */
-
     public function __invoke(Request $request)
     {
         // $request->dd();
@@ -30,12 +29,12 @@ class IndexProjectsAdminController extends Controller
                 AllowedFilter::partial('company'),
                 AllowedFilter::callback('customer', function ($query, $value) {
                     $query->whereHas('customer', function ($query) use ($value) {
-                        $query->where('name', 'like', '%' . $value . '%');
+                        $query->where('name', 'like', '%'.$value.'%');
                     });
                 }),
                 AllowedFilter::callback('employee', function ($query, $value) {
                     $query->whereHas('employee', function ($query) use ($value) {
-                        $query->where('name', 'like', '%' . $value . '%');
+                        $query->where('name', 'like', '%'.$value.'%');
                     });
                 }),
                 AllowedFilter::partial('space_area'),
