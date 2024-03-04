@@ -33,10 +33,6 @@ import LayoutAuthenticated from "@/Layouts/Admin/LayoutAuthenticated.vue";
 import SectionTitleLineWithButton from "@/Components/Admin/SectionTitleLineWithButton.vue";
 import eventBus from "@/Composables/eventBus.js";
 import Swal from "sweetalert2";
-// import VueDatePicker from '@vuepic/vue-datepicker';
-// import '@vuepic/vue-datepicker/dist/main.css';
-// import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
-// import CompaniesImport from "@/Pages/Admin/Companies/CompaniesImport.vue";
 
 const props = defineProps({
     transactions: {
@@ -68,6 +64,23 @@ const props = defineProps({
         type: Object,
         default: {},
     },
+    allServicesProfit: {
+        type: Number,
+        default: 0,
+    },
+    allExtraServicesProfit: {
+        type: Number,
+        default: 0,
+    },
+    allWorkerCosts: {
+        type: Number,
+        default: 0,
+    },
+    profits: {
+        type: Number,
+        default: 0,
+    },
+
 });
 
 // const exportTable = () => {
@@ -91,22 +104,31 @@ const props = defineProps({
 //     });
 // };
 
+
+const showTable = ref(false);
+
 const from = ref(null);
 
 const to = ref(null);
 
+onMounted(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    showTable.value = urlParams.get('showTable') === 'true';
+});
+
 
 const searchDates = () => {
-    console.log(from, to.value);
     router.get(route("index.transactions"), {
         from: from.value.year + '-' + (from.value.month + 1),
-        to: to.value.year + '-' + (to.value.month + 1)
+        to: to.value.year + '-' + (to.value.month + 1),
     }, {
         preserveState: true,
         replace: true,
     });
-};
 
+    showTable.value = true;
+
+};
 </script>
 
 <template>
@@ -138,8 +160,50 @@ const searchDates = () => {
                     label="بحث" small />
             </div>
 
-            <!-- search -->
+            <table :class="showTable ? '' : 'hidden'"
+                class="w-full border border-gray-200 divide-y divide-gray-200 table-fixed ">
+                <thead class="bg-gray-50">
+                    <tr>
 
+                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                            صافي الربح الخدمات
+                        </th>
+
+                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                            صافي الربح الخدمات الاضافية
+                        </th>
+
+                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                            تكلفة العمال
+                        </th>
+
+                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                            صافي الربح
+                        </th>
+
+                    </tr>
+
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        <td class="px-6 py-4 text-center text-gray-500">
+                            {{ allServicesProfit }}
+                        </td>
+                        <td class="px-6 py-4 text-center text-gray-500">
+                            {{ allExtraServicesProfit }}
+                        </td>
+                        <td class="px-6 py-4 text-center text-gray-500">
+                            {{ allWorkerCosts }}
+                        </td>
+                        <td class="px-6 py-4 text-center text-gray-500">
+                            {{ profits }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- search -->
             <CardBox has-table>
                 <TransactionsTable :projects="projects" :filters="filters" :customers="customers" :employees="employees"
                     :services="services" :transactions="transactions" />
