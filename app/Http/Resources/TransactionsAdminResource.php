@@ -33,6 +33,25 @@ class TransactionsAdminResource extends JsonResource
             return $costCalculationService->calculateWorkerCost($this->resource);
         });
 
+        $servicesCost = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateServicesCost($this->resource);
+        });
+
+        $extraServicesCost = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateExtraServicesCost($this->resource);
+        });
+
+        // calculateServicesProfit
+        // calculateExtraServiceProfit
+
+        $ServiceProfit = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateServicesProfit($this->resource);
+        });
+
+        $ExtraServiceProfit = $this->whenLoaded('project', function () use ($costCalculationService) {
+            return $costCalculationService->calculateExtraServiceProfit($this->resource);
+        });
+
         return [
             'id' => $this->id,
             'customer' => $this->whenLoaded('project', function () {
@@ -77,6 +96,10 @@ class TransactionsAdminResource extends JsonResource
             'all_services_cost' => $allServicesCost,
             'materials_cost' => $materialsCost,
             'worker_cost' => $workerCost,
+            'services_cost' => $servicesCost,
+            'extra_services_cost' => $extraServicesCost,
+            'service_profit' => $ServiceProfit,
+            'extra_service_profit' => $ExtraServiceProfit,
             'profit' => $profit,
             'created_at' => $this->created_at->format('Y-m-d'),
         ];
