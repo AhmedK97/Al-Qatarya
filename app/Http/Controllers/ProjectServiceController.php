@@ -14,6 +14,7 @@ class ProjectServiceController extends Controller
      */
     public function __invoke(Request $request, Project $project)
     {
+        // $request->dd();
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
             'services.*.price' => 'required|numeric|min:0',
@@ -31,7 +32,7 @@ class ProjectServiceController extends Controller
             'extra_services.*.details' => 'nullable',
         ]);
 
-        if (! empty($data['services'])) {
+        if (!empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
                 $service = $serviceData['id'];
                 $project->services()->updateExistingPivot($service, [
@@ -42,7 +43,7 @@ class ProjectServiceController extends Controller
             });
         }
 
-        if (! empty($data['extra_services'])) {
+        if (!empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
                 ->pluck('id')
                 ->filter();
@@ -66,7 +67,7 @@ class ProjectServiceController extends Controller
                 );
             });
         } else {
-            $project->extraServices()->delete();
+            // $project->extraServices()->delete();
         }
 
         return redirect()
