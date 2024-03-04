@@ -153,7 +153,7 @@ const searchDates = () => {
             </SectionTitleLineWithButton>
 
             <!-- filter by between dates -->
-            <div class="grid grid-flow-col grid-cols-4 gap-4 space-x-3">
+            <div class="grid grid-flow-col grid-cols-4 gap-4 mb-5 space-x-3">
                 <VueDatePicker v-model="from" month-picker placeholder="من" />
                 <VueDatePicker v-model="to" month-picker placeholder="الى" />
                 <BaseButton @click="(searchDates)" color="info" :icon="mdiTextBoxSearchOutline" class="w-1/2"
@@ -161,23 +161,23 @@ const searchDates = () => {
             </div>
 
             <table :class="showTable ? '' : 'hidden'"
-                class="w-full border border-gray-200 divide-y divide-gray-200 table-fixed ">
+                class="w-full mb-8 border border-gray-200 divide-y divide-gray-300 table-fixed ">
                 <thead class="bg-gray-50">
                     <tr>
 
-                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                        <th class="px-6 py-3 text-xs font-bold tracking-wider text-center text-gray-500 uppercase">
                             صافي الربح الخدمات
                         </th>
 
-                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                        <th class="px-6 py-3 text-xs font-bold tracking-wider text-center text-gray-500 uppercase">
                             صافي الربح الخدمات الاضافية
                         </th>
 
-                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                        <th class="px-6 py-3 text-xs font-bold tracking-wider text-center text-gray-500 uppercase">
                             تكلفة العمال
                         </th>
 
-                        <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
+                        <th class="px-6 py-3 text-xs font-bold tracking-wider text-center text-gray-500 uppercase">
                             صافي الربح
                         </th>
 
@@ -186,17 +186,17 @@ const searchDates = () => {
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     <tr>
-                        <td class="px-6 py-4 text-center text-gray-500">
-                            {{ allServicesProfit }}
+                        <td class="px-6 py-4 font-bold text-center text-gray-500">
+                            {{ allServicesProfit }} دينار
                         </td>
-                        <td class="px-6 py-4 text-center text-gray-500">
-                            {{ allExtraServicesProfit }}
+                        <td class="px-6 py-4 font-bold text-center text-gray-500">
+                            {{ allExtraServicesProfit }} دينار
                         </td>
-                        <td class="px-6 py-4 text-center text-gray-500">
-                            {{ allWorkerCosts }}
+                        <td class="px-6 py-4 font-bold text-center text-gray-500">
+                            {{ allWorkerCosts }} دينار
                         </td>
-                        <td class="px-6 py-4 text-center text-gray-500">
-                            {{ profits }}
+                        <td class="px-6 py-4 font-bold text-center text-green-500">
+                            {{ profits }} دينار
                         </td>
                     </tr>
                 </tbody>
