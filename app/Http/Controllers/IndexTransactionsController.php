@@ -37,7 +37,7 @@ class IndexTransactionsController extends Controller
                 AllowedFilter::callback('customer_name', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
                         $query->whereHas('customer', function ($query) use ($value) {
-                            $query->where('name', 'like', '%'.$value.'%');
+                            $query->where('name', 'like', '%' . $value . '%');
                         });
                     });
                 }),
@@ -45,7 +45,7 @@ class IndexTransactionsController extends Controller
                 AllowedFilter::callback('employee_name', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
                         $query->whereHas('employee', function ($query) use ($value) {
-                            $query->where('name', 'like', '%'.$value.'%');
+                            $query->where('name', 'like', '%' . $value . '%');
                         });
                     });
                 }),
@@ -53,24 +53,24 @@ class IndexTransactionsController extends Controller
                 AllowedFilter::callback('phone', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
                         $query->whereHas('customer', function ($query) use ($value) {
-                            $query->where('phone', 'like', '%'.$value.'%');
+                            $query->where('phone', 'like', '%' . $value . '%');
                         });
                     });
                 }),
 
                 AllowedFilter::callback('address', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
-                        $query->where('address', 'like', '%'.$value.'%');
+                        $query->where('address', 'like', '%' . $value . '%');
                     });
                 }),
 
                 AllowedFilter::callback('status', function ($query, $value) {
-                    $query->where('status', 'like', '%'.$value.'%');
+                    $query->where('status', 'like', '%' . $value . '%');
                 }),
 
                 AllowedFilter::callback('project_name', function ($query, $value) {
                     $query->whereHas('project', function ($query) use ($value) {
-                        $query->where('title', 'like', '%'.$value.'%');
+                        $query->where('title', 'like', '%' . $value . '%');
                     });
                 }),
             ])
@@ -82,6 +82,16 @@ class IndexTransactionsController extends Controller
                 return new TransactionsAdminResource($transaction);
             });
 
+        // we want to calculate the total cost services and extra services for all transactions in the selected month
+
+        $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
+
+        $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
+
+        $allWorkerCost = $costCalculationService->calculateAllWorkerCost($transactions);
+
+        $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
+
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
             'filters' => $request->all('search'),
@@ -90,6 +100,10 @@ class IndexTransactionsController extends Controller
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),
             'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
             'projects' => ProjectsAlqataryaaResource::collection(Project::qatarya()->get()),
+            'profits' => $profits,
+            'allServicesProfit' => $allServicesProfit,
+            'allExtraServicesProfit' => $allExtraServicesProfit,
+            'allWorkerCosts' => $allWorkerCost,
         ]);
     }
 }
