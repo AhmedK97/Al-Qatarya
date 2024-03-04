@@ -199,8 +199,8 @@ const formModalTitle = computed(() => {
 
 const AddMoreTransactionModalTitle = computed(() => {
     return currentAddMoreTransaction.value?.id ?
-        `العمـــــالة ` :
-        "العمـــــالة";
+        `اضافة وتعديل المعاملات المالية` :
+        "اضافة وتعديل المعاملات المالية` :";
 });
 
 const ShowTransactionsPaymentModalTitle = computed(() => {
