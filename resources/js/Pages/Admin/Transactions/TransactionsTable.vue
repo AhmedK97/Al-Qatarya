@@ -300,6 +300,7 @@ const deleteTransaction = (transaction) => {
                 <th class="text-center">الموظف</th>
                 <th class="text-center">العنوان</th>
                 <th class="text-center">التكلفة الكلية للمشروع</th>
+                <th class="text-center">اجمالى دفعات العميل</th>
                 <th class="text-center">تكلفة المواد الخام</th>
                 <th class="text-center">تكلفة العمال</th>
                 <th class="text-center">صافي الربح</th>
@@ -346,6 +347,8 @@ const deleteTransaction = (transaction) => {
                 <td>
                 </td>
                 <td>
+                </td>
+                <td>
 
                 </td>
                 <td>
@@ -376,12 +379,13 @@ const deleteTransaction = (transaction) => {
                 <td data-label="Customer Employee">{{ transaction.employee.name }}</td>
                 <td data-label="Address">{{ transaction.address.address }}</td>
                 <td data-label="Total Project Cost">{{ transaction.all_services_cost }} دينار</td>
+                <td data-label="Total Paid">{{ transaction.total_paid }} دينار</td>
                 <td data-label="all payments">{{ transaction.materials_cost }} دينار</td>
                 <td data-label="all payments">{{ transaction.worker_cost }} دينار</td>
                 <td data-label=" Net profit" class="font-bold"
                     :class="{ 'text-green-500': transaction.profit > 0, 'text-red-500': transaction.profit < 0 }">
                     {{ transaction.profit }} دينار</td>
-                <td data-label="Times To Pay">{{ transaction.times_to_pay }} دينار</td>
+                <td data-label="Times To Pay">{{ transaction.times_to_pay }} مــرات</td>
                 <td data-label="Status">
                     <PillTag v-if="transaction.status === 'Paid'" color="success" class="text-center" label="مدفوع" />
                     <PillTag v-if="transaction.status === 'Pending'" color="danger" class="text-center"
