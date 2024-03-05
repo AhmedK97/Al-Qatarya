@@ -178,7 +178,7 @@ const searchDates = () => {
                         </th>
 
                         <th class="px-6 py-3 text-xs font-bold tracking-wider text-center text-gray-500 uppercase">
-                            صافي الربح
+                            صافي الربح بعد خصم العمالة
                         </th>
 
                     </tr>
