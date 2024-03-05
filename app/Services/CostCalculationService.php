@@ -150,7 +150,6 @@ class CostCalculationService
         return $totalProfit;
     }
 
-    // worker cost
     public function calculateAllWorkerCost($transactions)
     {
         $totalCost = 0;
@@ -159,5 +158,20 @@ class CostCalculationService
         }
 
         return $totalCost;
+    }
+
+    ////////////////////////////////////
+    // ما تم دفعه من قبل العميل
+    public function calculateTotalPaid($transaction)
+    {
+        $totalPaid = 0;
+        if ($transaction->payments != null) {
+            foreach (json_decode($transaction->payments) as $payment) {
+                $totalPaid += $payment->amount;
+            }
+        }
+
+
+        return $totalPaid;
     }
 }
