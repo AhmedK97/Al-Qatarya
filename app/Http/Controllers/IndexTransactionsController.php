@@ -82,7 +82,6 @@ class IndexTransactionsController extends Controller
                 return new TransactionsAdminResource($transaction);
             });
 
-        // we want to calculate the total cost services and extra services for all transactions in the selected month
 
         $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
 
