@@ -1,16 +1,8 @@
 import {
-    mdiAccountCircle,
     mdiMonitor,
-    mdiGithub,
-    mdiLock,
-    mdiAlertCircle,
+    mdiWhatsapp,
     mdiSquareEditOutline,
-    mdiTable,
     mdiViewList,
-    mdiTelevisionGuide,
-    mdiResponsive,
-    mdiPalette,
-    mdiReact,
     mdiAccountMultipleOutline,
     mdiAccountGroup,
     mdiCashMultiple,
@@ -46,6 +38,11 @@ export default [
         route: "index.transactions",
         label: "المعــاملات المالية",
         icon: mdiCashMultiple,
+    },
+    {
+        route: "index.whatsapp",
+        label: "WhatsApp",
+        icon: mdiWhatsapp,
     },
 
     // {

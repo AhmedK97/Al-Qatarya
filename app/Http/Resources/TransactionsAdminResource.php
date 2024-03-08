@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Services\CostCalculationService;
+use App\Services\CalculationService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,7 +15,7 @@ class TransactionsAdminResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $costCalculationService = resolve(CostCalculationService::class);
+        $costCalculationService = resolve(CalculationService::class);
 
         $allServicesCost = $this->whenLoaded('project', function () use ($costCalculationService) {
             return $costCalculationService->calculateTotalCost($this->resource);

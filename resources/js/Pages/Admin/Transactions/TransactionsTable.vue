@@ -221,6 +221,7 @@ const customerPhone = computed(() => {
 
 const showMessagesWhatsapp = () => {
     axios.get(`/admin/getWhatsappChatMessages?customerPhone=${customerPhone.value}`).then((response) => {
+        console.log(response.data.messages);
         messages.value = response.data.messages.records;
     }).catch((error) => {
         console.log(error);

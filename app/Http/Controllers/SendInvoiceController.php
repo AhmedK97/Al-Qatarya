@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\TransactionsAdminResource;
 use App\Models\Transaction;
+use App\Models\WhatsApp;
 use ArPHP\I18N\Arabic;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class SendInvoiceController extends Controller
 
         $transactionId = $request->transactionId;
 
-        $transactions = Transaction::whereId(1)->with('customer', 'employee', 'project')->get();
+        $transactions = Transaction::whereId($transactionId)->with('customer', 'employee', 'project')->get();
 
         $transactions = TransactionsAdminResource::collection($transactions);
         $services = $transactions
@@ -44,18 +45,17 @@ class SendInvoiceController extends Controller
 
         $pdf = PDF::loadHTML($pdfContent);
 
-        $directory = 'whatsappMedia/'.$customerPhone;
+        $directory = 'whatsappMedia/' . $customerPhone;
 
-        if (! Storage::disk('public')->exists($directory)) {
+        if (!Storage::disk('public')->exists($directory)) {
             Storage::disk('public')->makeDirectory($directory);
         }
 
-        $pdf = $pdf->save(storage_path('app/public/'.$directory.'/invoice.pdf'));
+        $pdf = $pdf->save(storage_path('app/public/' . $directory . '/invoice.pdf'));
 
-        $token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbnN0YW5jZU5hbWUiOiJjb2RlY2hhdC1ib3QiLCJhcGlOYW1lIjoid2hhdHNhcHAtYXBpIiwidG9rZW5JZCI6IjM3NTNmNzAwLTNjZGMtNDMxMi1hZGRmLWI0NjA0ZTQ3ZDgwZiIsImlhdCI6MTcwODI4ODkxMiwiZXhwIjoxNzA4Mjg4OTEyLCJzdWIiOiJnLXQifQ.k6foHEseZc14c8j4dUP8BO7nmAgAgnzL6V0COdKD3HQ';
+        $fileContents = Storage::disk('public')->get($directory . '/invoice.pdf');
 
-        $fileContents = Storage::disk('public')->get($directory.'/invoice.pdf');
-
+        $info = WhatsApp::chat()->inRandomOrder()->first();
         $formData = [
             'number' => $customerPhone,
             'mediatype' => 'document',
@@ -63,10 +63,12 @@ class SendInvoiceController extends Controller
 
         $httpRequest = Http::withHeaders([
             'accept' => 'application/json',
-            'Authorization' => $token,
+            'Authorization' => $info->token,
+            'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'),
+            'groupJid' => env('WHATSAPP_GROUP_JID'),
         ])
             ->attach('attachment', $fileContents, 'invoice.pdf')
-            ->post(env('WHATSAPP_API_URL').'/message/sendMediaFile/codechat-bot', $formData);
+            ->post(env('WHATSAPP_API_URL') . '/message/sendMediaFile/' . $info->instance_name, $formData);
 
         if ($httpRequest->successful()) {
             return redirect()
@@ -79,14 +81,9 @@ class SendInvoiceController extends Controller
                 ]);
         }
 
-        return redirect()
-            ->route('index.transactions')
-            ->with('swalNotification', [
-                'title' => __('common.error'),
-                'text' => __('common.error'),
-                'icon' => 'error',
-                'timer' => 5000,
-            ]);
+        return response()->json([
+            'message' => 'Failed to send the invoice',
+        ], 500);
     }
 
     protected function convertArabicText($text): string

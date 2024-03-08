@@ -31,18 +31,7 @@ const props = defineProps({
         type: Object,
         default: [],
     },
-    servicesCountQatarya: {
-        type: Number,
-        default: 0,
-    },
-    servicesCountOthman: {
-        type: Number,
-        default: 0,
-    },
-    filters: {
-        type: Object,
-        default: {},
-    },
+
 });
 
 
@@ -50,42 +39,28 @@ const props = defineProps({
 
 <template>
     <LayoutAuthenticated>
+
         <Head title="List Services" />
 
         <SectionMain>
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
-                <CardBoxWidget
-                    :icon="mdiBriefcase"
-                    :number="servicesCountQatarya"
-                    label="خدمات شركة قطرية"
-                    color="text-blue-500"
-                />
-                <CardBoxWidget
-                    :icon="mdiBriefcase"
-                    :number="servicesCountOthman"
-                    label="خدمات شركة عثمان"
-                    color="text-blue-500"
-                />
+                <CardBoxWidget :icon="mdiBriefcase" :number="servicesCountQatarya" label="خدمات شركة قطرية"
+                    color="text-blue-500" />
+                <CardBoxWidget :icon="mdiBriefcase" :number="servicesCountOthman" label="خدمات شركة عثمان"
+                    color="text-blue-500" />
             </div>
-            <SectionTitleLineWithButton :icon="mdiDomain" title="الخدمات">
+            <!-- <SectionTitleLineWithButton :icon="mdiDomain" title="الخدمات">
                 <div class="flex items-center">
-                    <BaseButton
-                        @click="
-                            () => eventBus.$emit('openModal', 'service::create')
-                        "
-                        color="info"
-                        :icon="mdiPlus"
-                        label="اضافة"
-                        small
-                    />
+                    <BaseButton @click="() => eventBus.$emit('openModal', 'service::create')
+                    " color="info" :icon="mdiPlus" label="اضافة" small />
                 </div>
-             </SectionTitleLineWithButton>
+            </SectionTitleLineWithButton> -->
 
             <CardBox has-table>
-                <ServicesTable
+                <!-- <ServicesTable
                     :filters="filters"
                     :services="services"
-                />
+                /> -->
             </CardBox>
         </SectionMain>
     </LayoutAuthenticated>

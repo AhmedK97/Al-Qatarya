@@ -10,7 +10,7 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Models\Transaction;
 use App\Models\User;
-use App\Services\CostCalculationService;
+use App\Services\CalculationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Inertia\Inertia;
@@ -24,7 +24,7 @@ class IndexTransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, CostCalculationService $costCalculationService)
+    public function __invoke(Request $request, CalculationService $costCalculationService)
     {
         $transactions = QueryBuilder::for(Transaction::class)
             ->when($request->from && $request->to, function ($query) use ($request) {

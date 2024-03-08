@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\CreateWhatsAppQrCodeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeleteCustomersAdminController;
 use App\Http\Controllers\DeleteEmployeesAdminController;
 use App\Http\Controllers\DeleteProjectsAdminController;
 use App\Http\Controllers\DeleteServicesAdminController;
 use App\Http\Controllers\DeleteTransactionsController;
+use App\Http\Controllers\DeleteWhatsAppController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
 use App\Http\Controllers\getWhatsappChatMessages;
@@ -16,6 +18,7 @@ use App\Http\Controllers\IndexInventoryController;
 use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexTransactionsController;
+use App\Http\Controllers\IndexWhatsAppController;
 use App\Http\Controllers\PaymentTransactionsController;
 use App\Http\Controllers\ProjectServiceController;
 use App\Http\Controllers\ProjectUploadMediaController;
@@ -31,6 +34,7 @@ use App\Http\Controllers\UpdateEmployeesAdminController;
 use App\Http\Controllers\UpdateProjectsAdminController;
 use App\Http\Controllers\UpdateServicesAdminController;
 use App\Http\Controllers\UpdateTransactionsController;
+use App\Http\Controllers\UpdateWhatsAppController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -109,6 +113,20 @@ Route::get('/getWhatsappMedia', getWhatsappMedia::class)->name('showWhatsappMedi
 Route::post('/message/sendText', SendTextMessageController::class)->name('send.text.message');
 
 Route::post('/message/sendInvoice', SendInvoiceController::class)->name('send.invoice');
+// --------------- WhatsApp -----------------//
+
+// IndexWhatsAppController
+Route::get('/whatsapp', IndexWhatsAppController::class)->name('index.whatsapp');
+
+// CreateWhatsAppQrCodeController
+Route::get('/whatsapp/createQrCode', CreateWhatsAppQrCodeController::class)->name('create.qrCode.whatsapp');
+
+// UpdateWhatsAppController
+Route::post('/whatsapp/update/{whatsApp}', UpdateWhatsAppController::class)->name('update.whatsapp');
+
+// DeleteWhatsAppController
+Route::delete('/whatsapp/delete/{whatsApp}', DeleteWhatsAppController::class)->name('delete.whatsapp');
+
 
 // --------------- service transaction -----------------//
 

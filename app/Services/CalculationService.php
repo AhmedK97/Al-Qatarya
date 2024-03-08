@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class CostCalculationService
+class CalculationService
 {
 
     public function calculateTotalCost($transactions)
@@ -160,8 +160,6 @@ class CostCalculationService
         return $totalCost;
     }
 
-    ////////////////////////////////////
-    // ما تم دفعه من قبل العميل
     public function calculateTotalPaid($transaction)
     {
         $totalPaid = 0;

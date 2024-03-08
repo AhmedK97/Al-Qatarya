@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WhatsApp;
 use Illuminate\Http\Request;
 
 class getWhatsappChatMessages extends Controller
@@ -14,12 +15,14 @@ class getWhatsappChatMessages extends Controller
 
         $customerPhone = $request->customerPhone;
 
-        $token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbnN0YW5jZU5hbWUiOiJjb2RlY2hhdC1ib3QiLCJhcGlOYW1lIjoid2hhdHNhcHAtYXBpIiwidG9rZW5JZCI6IjM3NTNmNzAwLTNjZGMtNDMxMi1hZGRmLWI0NjA0ZTQ3ZDgwZiIsImlhdCI6MTcwODI4ODkxMiwiZXhwIjoxNzA4Mjg4OTEyLCJzdWIiOiJnLXQifQ.k6foHEseZc14c8j4dUP8BO7nmAgAgnzL6V0COdKD3HQ';
+        $info = WhatsApp::chat()->inRandomOrder()->first();
 
         $header = [
             'Content-Type: application/json',
             'Accept: application/json',
-            'Authorization' => $token,
+            'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'),
+            'groupJid' => env('WHATSAPP_GROUP_JID'),
+            'Authorization' => $info->token,
         ];
 
         $formData =
@@ -31,7 +34,7 @@ class getWhatsappChatMessages extends Controller
                 'page' => 1,
             ];
 
-        $messages = HttpRequest('/chat/findMessages/codechat-bot', 'post', $header, $formData);
+        $messages = HttpRequest('/chat/findMessages/' . $info->instance_name, 'post', $header, $formData);
 
         return $messages->json();
     }
