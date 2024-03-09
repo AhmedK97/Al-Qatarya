@@ -18,10 +18,12 @@ use App\Http\Controllers\IndexInventoryController;
 use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexTransactionsController;
+use App\Http\Controllers\IndexWhatsAppAdsController;
 use App\Http\Controllers\IndexWhatsAppController;
 use App\Http\Controllers\PaymentTransactionsController;
 use App\Http\Controllers\ProjectServiceController;
 use App\Http\Controllers\ProjectUploadMediaController;
+use App\Http\Controllers\SendBulkOfMessagesController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendTextMessageController;
 use App\Http\Controllers\StoreCustomersAdminController;
@@ -126,6 +128,13 @@ Route::post('/whatsapp/update/{whatsApp}', UpdateWhatsAppController::class)->nam
 
 // DeleteWhatsAppController
 Route::delete('/whatsapp/delete/{whatsApp}', DeleteWhatsAppController::class)->name('delete.whatsapp');
+
+// IndexWhatsAppAdsController
+Route::get('/whatsapp/ads', IndexWhatsAppAdsController::class)->name('index.whatsapp.ads');
+
+// send bulk message (SendBulkOfMessagesController)
+Route::post('/whatsapp/sendBulkMessages', SendBulkOfMessagesController::class)->name('send.bulk.messages.whatsapp');
+
 
 
 // --------------- service transaction -----------------//

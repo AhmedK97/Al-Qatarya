@@ -11,8 +11,8 @@ enum WhatsAppTypeEnum: string
     public static function getValues(): array
     {
         return [
-            self::ADS,
-            self::CHAT,
+            self::ADS->value,
+            self::CHAT->value,
         ];
     }
 }

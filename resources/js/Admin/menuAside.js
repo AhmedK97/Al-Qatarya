@@ -44,6 +44,11 @@ export default [
         label: "WhatsApp",
         icon: mdiWhatsapp,
     },
+    {
+        route: "index.whatsapp.ads",
+        label: "WhatsApp Ads",
+        icon: mdiWhatsapp,
+    },
 
     // {
     //     // Inventory
