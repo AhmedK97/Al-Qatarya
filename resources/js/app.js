@@ -1,5 +1,5 @@
 import "../css/app.css";
-import "../css/admin/main.css";
+// import "../css/admin/main.css";
 import "vue-select/dist/vue-select.css";
 
 import { createApp, h } from "vue";
