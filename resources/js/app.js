@@ -1,5 +1,5 @@
 import "../css/app.css";
-// import "../css/admin/main.css";
+import "../css/admin/main.css";
 import "vue-select/dist/vue-select.css";
 
 import { createApp, h } from "vue";
@@ -18,9 +18,7 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-const appName =
-    window.document.getElementsByTagName("title")[0]?.innerText ||
-    "الشركه القطريه للمقاولات العامه للمباني";
+const appName = "الشركه القطريه للمقاولات العامه للمباني";
 
 const pinia = createPinia();
 
@@ -35,8 +33,9 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18nVue, {
-                resolve: async (lang) => {
-                    const langs = import.meta.glob("../../lang/*.json");
+                resolve: async(lang) => {
+                    const langs =
+                        import.meta.glob("../../lang/*.json");
                     return await langs[`../../lang/${lang}.json`]();
                 },
             })
@@ -56,7 +55,7 @@ createInertiaApp({
 const styleStore = useStyleStore(pinia);
 
 /* App style */
-styleStore.setStyle(localStorage[styleKey] ?? "basic");
+styleStore.setStyle(localStorage[styleKey]);
 
 /* Dark mode */
 if (
