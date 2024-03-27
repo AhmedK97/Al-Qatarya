@@ -40,7 +40,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix(LaravelLocalization::setLocale())
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware(['web', 'withoutLanguageMiddleware'])
+            Route::middleware(['web', 'withoutLanguageMiddleware', 'AdminMiddleware'])
                 ->prefix('admin')
                 ->group(base_path('routes/admin.php'));
         });
