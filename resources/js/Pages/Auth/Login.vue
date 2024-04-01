@@ -72,7 +72,7 @@ const submit = () => {
                         <BaseButton v-if="canResetPassword" route-name="password.request" color="info" outline
                             label="Remind" />
                     </BaseButtons>
-                    <Link :href="route('register')"> Register </Link>
+                    <!-- <Link :href="route('register')"> Register </Link> -->
                 </BaseLevel>
             </CardBox>
         </SectionFullScreen>

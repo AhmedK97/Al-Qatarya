@@ -92,9 +92,7 @@ const upload = (event) => {
             <BaseButton as="a" :class="{ 'w-12 h-12': isRoundIcon, 'rounded-r-none': showFilename }"
                 :icon-size="isRoundIcon ? 24 : undefined" :label="isRoundIcon ? null : label" :icon="icon"
                 :color="color" :rounded-full="isRoundIcon" />
-            <input ref="root" type="file"
-                class="absolute top-0 left-0 w-full h-full outline-none opacity-0 cursor-pointer -z-1" :accept="accept"
-                @input="upload" />
+            <input ref="root" type="file" class="" :accept="accept" @input="upload" />
         </label>
         <div v-if="showFilename"
             class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-r dark:bg-slate-800 dark:border-slate-700">

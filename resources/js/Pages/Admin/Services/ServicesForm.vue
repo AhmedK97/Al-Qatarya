@@ -197,8 +197,8 @@ const submit = () => {
 
         <FormField label="صورة الخدمة">
 
-            <FormFilePicker :errorMessage="form.errors.files" accept="image/*" class="mt-5" label="صورة الغلاف"
-                v-model="form.files" />
+            <FormFilePicker :errorMessage="form.errors.files" accept="image/*" class="mt-5 text-center"
+                label="صورة الغلاف" v-model="form.files" />
 
             <!-- <span v-if="form.errors.files" class="text-red-500 ">
                 {{ form . errors . files }}
