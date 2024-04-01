@@ -427,7 +427,8 @@ const submit = () => {
                                             دينار
                                         </strong>
                                     </span>
-                                    <span v-if="formItem.details" class="block font-bold text-green-700">
+                                    <span v-if="formItem.details.length" class="block font-bold text-green-700">
+
                                         الربح : {{ calculateExtraServiceProfit(formItem) }} دينار
                                     </span>
                                 </p>
