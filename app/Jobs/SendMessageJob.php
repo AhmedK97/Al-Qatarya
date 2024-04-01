@@ -69,14 +69,14 @@ class SendMessageJob implements ShouldQueue
                 $httpRequest = Http::withHeaders([
                     'accept' => 'application/json',
                     'Authorization' => $this->info->token,
-                    'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'),
-                    'groupJid' => env('WHATSAPP_GROUP_JID'),
+                    'apikey' => config('app.global_whats_app_api_token'),
+                    'groupJid' => config('app.group_jid'),
                 ])
                     ->attach('attachment', $this->filePath, $this->fileName)
-                    ->post(env('WHATSAPP_API_URL') . '/message/sendMediaFile/' . $this->info->instance_name, $formData);
+                    ->post(config('app.whats_app_url') . '/message/sendMediaFile/' . $this->info->instance_name, $formData);
             }
 
-            $header = ['Content-Type: application/json', 'Accept: application/json', 'Authorization' => $this->info->token, 'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'), 'groupJid' => env('WHATSAPP_GROUP_JID')];
+            $header = ['Content-Type: application/json', 'Accept: application/json', 'Authorization' => $this->info->token, 'apikey' => config('app.global_whats_app_api_token'), 'groupJid' => config('app.group_jid')];
 
             $formData = [
                 'number' => $number . '@s.whatsapp.net',

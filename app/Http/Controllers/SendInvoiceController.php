@@ -64,11 +64,11 @@ class SendInvoiceController extends Controller
         $httpRequest = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => $info->token,
-            'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'),
-            'groupJid' => env('WHATSAPP_GROUP_JID'),
+            'apikey' => config('app.global_whats_app_api_token'),
+            'groupJid' => config('app.group_jid'),
         ])
             ->attach('attachment', $fileContents, 'invoice.pdf')
-            ->post(env('WHATSAPP_API_URL') . '/message/sendMediaFile/' . $info->instance_name, $formData);
+            ->post(config('app.whats_app_url') . '/message/sendMediaFile/' . $info->instance_name, $formData);
 
         if ($httpRequest->successful()) {
             return redirect()

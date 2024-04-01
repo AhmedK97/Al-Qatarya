@@ -20,8 +20,8 @@ class DeleteWhatsAppController extends Controller
         $header = [
             'Content-Type: application/json',
             'Accept: application/json',
-            'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'),
-            'groupJid' => env('WHATSAPP_GROUP_JID'),
+            'apikey' => config('app.global_whats_app_api_token'),
+            'groupJid' => config('app.group_jid'),
             'token' => $instanceInfo->token,
         ];
 
@@ -38,8 +38,8 @@ class DeleteWhatsAppController extends Controller
         $header = [
             'Content-Type: application/json',
             'Accept: application/json',
-            'apikey' => env('GLOBAL_WHATSAPP_API_TOKEN'),
-            'groupJid' => env('WHATSAPP_GROUP_JID'),
+            'apikey' => config('app.global_whats_app_api_token'),
+            'groupJid' => config('app.group_jid'),
             'token' => $instanceInfo->token,
         ];
 

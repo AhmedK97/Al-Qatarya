@@ -191,4 +191,10 @@ return [
             // 'Example' => App\Facades\Example::class,
         ])
         ->toArray(),
+
+    'whats_app_url' => env('WHATSAPP_API_URL'),
+    'global_whats_app_api_token' => env('GLOBAL_WHATSAPP_API_TOKEN'),
+    'group_jid' => env('WHATSAPP_GROUP_JID'),
+
+
 ];
