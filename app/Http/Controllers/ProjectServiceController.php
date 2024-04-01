@@ -24,10 +24,10 @@ class ProjectServiceController extends Controller
             'extra_services.*.name' => 'required|string',
             'extra_services.*.price' => Rule::requiredIf(function () use ($request) {
                 return $request->input('extra_services.*.type') === 'service';
-            }),
+            }) . '|nullable|numeric|min:0',
             'extra_services.*.quantity' => Rule::requiredIf(function () use ($request) {
                 return $request->input('extra_services.*.type') === 'service';
-            }),
+            }) . '|nullable|numeric|min:1',
             'extra_services.*.type' => 'required|string|in:service,worker',
             'extra_services.*.details' => 'nullable',
         ]);

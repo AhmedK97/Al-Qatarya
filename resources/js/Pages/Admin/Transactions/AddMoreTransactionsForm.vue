@@ -86,11 +86,9 @@ const resetForm = () => {
     });
 };
 
-// const removeExtraServices = (index) => {
-//     filteredExtraServices = filteredExtraServices.filter(
-//         (item, i) => i !== index
-//     );
-// };
+const removeExtraServices = (index) => {
+    form.extra_services.splice(index, 1);
+};
 
 const addFormWorker = () => {
     form.extra_services.push({
@@ -215,7 +213,8 @@ const submit = () => {
                     {{ form?.errors['services.' + id + '.quantity'] }}
                 </span> -->
 
-                    <span v-if="form?.errors['services.' + id + '.price'] || form?.errors['services.' + id + '.quantity']"
+                    <span
+                        v-if="form?.errors['services.' + id + '.price'] || form?.errors['services.' + id + '.quantity']"
                         class="block text-sm text-red-600">
                         يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                     </span>
@@ -239,8 +238,8 @@ const submit = () => {
                             الاســم
                         </label>
                         <div class="flex justify-end">
-                            <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger" label="حــذف"
-                                @click="removeExtraServices(index)" />
+                            <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
+                                label="حــذف" @click="removeExtraServices(index)" />
                         </div>
                     </div>
 
@@ -285,9 +284,9 @@ const submit = () => {
                         {{ form?.errors['extra_services.' + index + '.quantity'] }}
                     </span> -->
                     <span v-if="form?.errors['extra_services.' + index + '.name'] ||
-                        form?.errors['extra_services.' + index + '.price'] ||
-                        form?.errors['extra_services.' + index + '.quantity']
-                        " class="block text-sm text-red-600">
+                    form?.errors['extra_services.' + index + '.price'] ||
+                    form?.errors['extra_services.' + index + '.quantity']
+                    " class="block text-sm text-red-600">
                         يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                     </span>
 
@@ -298,7 +297,8 @@ const submit = () => {
         </div>
 
         <div class="flex justify-end">
-            <BaseButton type="button" :icon="mdiPlus" color="info" label="اضف خدمة اضافية" @click="addFormExtraService" />
+            <BaseButton type="button" :icon="mdiPlus" color="info" label="اضف خدمة اضافية"
+                @click="addFormExtraService" />
         </div>
 
         <template #footer>
@@ -318,8 +318,8 @@ const submit = () => {
                             الاســم
                         </label>
                         <div class="flex justify-end">
-                            <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger" label="حــذف"
-                                @click="removeExtraServices(index)" />
+                            <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
+                                label="حــذف" @click="removeExtraServices(index)" />
                         </div>
                     </div>
 
@@ -366,9 +366,9 @@ const submit = () => {
                         {{ form?.errors['extra_services.' + index + '.quantity'] }}
                     </span> -->
                     <span v-if="form?.errors['extra_services.' + index + '.name'] ||
-                        form?.errors['extra_services.' + index + '.price'] ||
-                        form?.errors['extra_services.' + index + '.quantity']
-                        " class="block text-sm text-red-600">
+                    form?.errors['extra_services.' + index + '.price'] ||
+                    form?.errors['extra_services.' + index + '.quantity']
+                    " class="block text-sm text-red-600">
                         يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                     </span>
 
