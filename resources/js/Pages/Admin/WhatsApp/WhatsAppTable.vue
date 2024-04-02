@@ -41,6 +41,11 @@ const type = {
     'chat': 'تواصل وفواتير',
 };
 
+const status = {
+    'active': 'مفعل',
+    'inactive': 'غير مفعل',
+};
+
 
 const deleteWhatsApp = (whatsapp) => {
     Swal.fire({
@@ -85,6 +90,7 @@ const deleteWhatsApp = (whatsapp) => {
 const updateWhatsAppType = (whatsapp) => {
     router.post(route("update.whatsapp", whatsapp.id), {
         type: whatsapp.type,
+        status: whatsapp.status,
         onSuccess: () => {
             Swal.fire({
                 icon: "success",
@@ -106,6 +112,7 @@ const updateWhatsAppType = (whatsapp) => {
                 <th>رقم الموبايل</th>
                 <th>الاسم</th>
                 <th>النوع</th>
+                <th>الحاله</th>
                 <th>تاريخ الاضافه</th>
                 <th>اجزاء</th>
             </tr>
@@ -125,6 +132,12 @@ const updateWhatsAppType = (whatsapp) => {
                     </select>
 
                 </td>
+                <td>
+                    <select v-model="whatsapp.status" class="form-select" @change="() => updateWhatsAppType(whatsapp)">
+                        <option v-for="(value, key) in status" :value="key">{{ value }}</option>
+                    </select>
+                </td>
+
                 <td>{{ whatsapp.created_at }}</td>
                 <td>
                     <BaseButton :icon="mdiTrashCan" color="danger" small @click="() => deleteWhatsApp(whatsapp)" />
