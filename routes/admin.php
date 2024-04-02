@@ -37,6 +37,7 @@ use App\Http\Controllers\UpdateProjectsAdminController;
 use App\Http\Controllers\UpdateServicesAdminController;
 use App\Http\Controllers\UpdateTransactionsController;
 use App\Http\Controllers\UpdateWhatsAppController;
+use App\Jobs\SendMessageJob;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -134,6 +135,18 @@ Route::get('/whatsapp/ads', IndexWhatsAppAdsController::class)->name('index.what
 
 // send bulk message (SendBulkOfMessagesController)
 Route::post('/whatsapp/sendBulkMessages', SendBulkOfMessagesController::class)->name('send.bulk.messages.whatsapp');
+
+// start send message job
+Route::post('/whatsapp/sendMessageJob', function () {
+    dispatch(new SendMessageJob());
+    return back()
+        ->with('swalNotification', [
+            'title' => __('common.success'),
+            'text' => __('whatsapp.message_sent'),
+            'icon' => 'success',
+            'timer' => 5000,
+        ]);
+})->name('send.message.job');
 
 
 

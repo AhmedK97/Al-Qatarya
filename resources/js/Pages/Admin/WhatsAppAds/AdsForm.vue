@@ -68,6 +68,15 @@ const submit = () => {
                     timerProgressBar: true,
                 });
             },
+            onError: (errors) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "لا يوجد رقم واتساب مدخل في للاعلانات",
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            },
         })
     );
 
@@ -79,11 +88,18 @@ const submit = () => {
             <FormControl type="textarea" v-model="form.numbers" />
         </FormField>
 
+        {{ form.errors.numbers }}
+
         <BaseDivider />
 
         <FormField label="الرسالة">
             <FormControl type="textarea" v-model="form.message" />
         </FormField>
+
+        {{ form.errors.message }}
+
+        <br>
+        <br>
 
         <FormFilePicker label="اختر الملف" multi v-model="form.file"
             accept="image/*,video/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />

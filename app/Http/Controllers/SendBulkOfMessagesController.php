@@ -17,13 +17,16 @@ class SendBulkOfMessagesController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'numbers' => 'required',
-            'message' => 'required',
+            'numbers' => 'required|
+            regex:/^[0-9\s]+$/',
+            'message' => 'required|string',
             'file' => 'nullable|file',
         ]);
 
         $numbers = $request->input('numbers');
         $message = $request->input('message');
+
+
 
 
         $filePath = null;
@@ -67,6 +70,17 @@ class SendBulkOfMessagesController extends Controller
                 'status' => 'pending',
                 'file_path' => $filePath ?? null,
                 'file_type' => $matchingType ?? null,
+            ]);
+        }
+
+        // check whatsapp instance
+        $whatsApp = WhatsApp::ads()->where('status', 'active')->first();
+        if (!$whatsApp) {
+            return back()->with('swalNotification', [
+                'title' => __('common.error'),
+                'text' => __('whatsapp.no_active_instance'),
+                'icon' => 'error',
+                'timer' => 5000,
             ]);
         }
 

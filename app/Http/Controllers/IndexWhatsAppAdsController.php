@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\whatsAppAdsResource;
+use App\Models\WhatsApp;
 use App\Models\WhatsAppAds;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -25,7 +26,10 @@ class IndexWhatsAppAdsController extends Controller
             });
 
 
+        $whatsAppAdsActiveNumbers = WhatsApp::where('status', 'active')->count();
+
         return Inertia::render('Admin/WhatsAppAds/Index', [
+            'whatsAppAdsActiveNumbers' => $whatsAppAdsActiveNumbers,
             'whatsAppAdsData' => $waData,
             'whatsAppAdsDataCount' => $waData->where('status', 'sent')->count(),
             'queueRunning' => \DB::table('jobs')->where('queue', 'default')->where('payload', 'like', '%SendMessageJob%')->exists(),

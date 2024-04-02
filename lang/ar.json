@@ -25,6 +25,7 @@
     "contact.email": "البريد الالكتروني",
     "contact.subject": "الموضوع",
     "contact.message": "الرسالة",
+    "whatsapp.no_active_instance": "لا يوجد رقم واتس اب نشط",
     "contact.send": "ارسال",
     "contact.fields": "القسم",
     "contact.file": "تحميل صورة المشروع",
