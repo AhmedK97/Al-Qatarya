@@ -232,7 +232,7 @@ const messageTime = (timestamp) => {
 
 <template>
     <div v-if="!form.messages" class="flex items-center justify-center h-96">
-        <h1>تاكد من اتصال الموقع بالوات اب // تاكد من رقم الهاتف</h1>
+        <h1>تاكد من اتصال الموقع بالواتس اب // تاكد من رقم الهاتف</h1>
     </div>
     <div v-else>
         <div class="flex flex-col-reverse items-stretch justify-center">
