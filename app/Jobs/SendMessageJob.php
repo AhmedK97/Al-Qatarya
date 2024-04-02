@@ -60,7 +60,7 @@ class SendMessageJob implements ShouldQueue
 
         // dd($this->filePath);
         foreach ($whatsAppNumbers as $number) {
-            // sleep(rand(5, 10));
+            sleep(rand(5, 10));
             if ($this->filePath) {
                 $formData = [
                     'number' => $number . '@s.whatsapp.net',
