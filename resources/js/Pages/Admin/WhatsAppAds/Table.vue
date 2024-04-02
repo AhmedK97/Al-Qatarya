@@ -121,6 +121,7 @@ const isFormModalOpen = ref(false && AddWhatsAppAds.value);
                     <PillTag v-if="whatsAppAd.status == 'sent'" color="success" label="Sent" />
                 </td>
                 <td>{{ whatsAppAd.created_at }}</td>
+
                 <!-- <td>
                     <a v-if="whatsAppAd.file_path" :href="whatsAppAd.file_path" target="_blank"
                         class="text-blue-500">File</a>
