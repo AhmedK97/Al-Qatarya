@@ -171,7 +171,12 @@ const addNewDetail = (id) => {
 
 const deleteDetail = (id, index) => {
     const newId = parseInt(id)
-    form.extra_services[newId - 1].details.splice(index, 1);
+    const service = form.extra_services.find(service => service.id === newId);
+    if (service) {
+        service.details.splice(index, 1);
+    }
+
+
 };
 
 
