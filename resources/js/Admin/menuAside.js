@@ -8,8 +8,7 @@ import {
     mdiCashMultiple,
 } from "@mdi/js";
 
-export default [
-    {
+export default [{
         route: "dashboard",
         icon: mdiMonitor,
         label: "لوحه التحكم",
@@ -87,16 +86,16 @@ export default [
     //     label: "Error",
     //     icon: mdiAlertCircle,
     // },
-    {
-        label: "Dropdown",
-        icon: mdiViewList,
-        menu: [
-            {
-                label: "Item One",
-            },
-            {
-                label: "Item Two",
-            },
-        ],
-    },
+    // {
+    //     label: "Dropdown",
+    //     icon: mdiViewList,
+    //     menu: [
+    //         {
+    //             label: "Item One",
+    //         },
+    //         {
+    //             label: "Item Two",
+    //         },
+    //     ],
+    // },
 ];
