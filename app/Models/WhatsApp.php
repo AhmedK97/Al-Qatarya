@@ -15,7 +15,7 @@ class WhatsApp extends Model
     protected $fillable = [
         'instance_name',
         'token',
-        'Status',
+        'status',
         'type',
         'ownerJid'
     ];
