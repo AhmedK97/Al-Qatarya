@@ -46,11 +46,12 @@ class SendMessageJob implements ShouldQueue
         $whatsAppData = WhatsAppAds::where('status', 'pending')->get();
         $whatsAppNumbers = $whatsAppData->pluck('number');
 
-        $this->info = WhatsApp::ads()->inRandomOrder()->first();
-
+        $this->info = WhatsApp::ads()->where('status', 'active')->first();
+        // dd($this->info);
         foreach ($whatsAppData as $data) {
             $this->message = $data->message;
-            $this->filePath = $data->file_path ? Storage::disk('public')->url($data->file_path) : '';
+            $this->filePath =  Storage::disk('public')->url($data->file_path);
+            // dd(Storage::disk('public')->url($data->file_path));
             $this->matchingType = $data->file_type;
             // $this->fileName = basename($data->file_path);
             // remove any spaces from the file name
@@ -59,7 +60,7 @@ class SendMessageJob implements ShouldQueue
 
         // dd($this->filePath);
         foreach ($whatsAppNumbers as $number) {
-            sleep(rand(5, 10));
+            // sleep(rand(5, 10));
             if ($this->filePath) {
                 $formData = [
                     'number' => $number . '@s.whatsapp.net',
@@ -72,7 +73,7 @@ class SendMessageJob implements ShouldQueue
                     'apikey' => config('app.global_whats_app_api_token'),
                     'groupJid' => config('app.group_jid'),
                 ])
-                    ->attach('attachment', $this->filePath, $this->fileName)
+                    ->attach('attachment', file_get_contents($this->filePath), $this->fileName)
                     ->post(config('app.whats_app_url') . '/message/sendMediaFile/' . $this->info->instance_name, $formData);
             }
 
@@ -116,7 +117,6 @@ class SendMessageJob implements ShouldQueue
 
     public function saveData($number, $message, $filePath, $httpRequest)
     {
-        // createOrUpdate([
         WhatsAppAds::where('number', $number)
             ->update([
                 'status' => $httpRequest->successful() ? 'sent' : 'failed',
