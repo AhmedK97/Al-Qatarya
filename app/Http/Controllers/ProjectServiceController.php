@@ -34,6 +34,11 @@ class ProjectServiceController extends Controller
 
         if (!empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
+                if ($serviceData['details']['originPrice'] == 0) {
+                    $serviceData['details'] = Null;
+                    // remove originPrice from details
+                    // unset($serviceData['details']['originPrice']);
+                }
                 $service = $serviceData['id'];
                 $project->services()->updateExistingPivot($service, [
                     'price' => $serviceData['price'],
