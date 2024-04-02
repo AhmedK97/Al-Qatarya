@@ -15,6 +15,8 @@ class DeleteWhatsAppController extends Controller
 
         $instanceInfo = WhatsApp::where('instance_name', $whatsApp->instance_name)->first();
 
+
+
         $route = '/instance/logout/' . $whatsApp->instance_name;
 
         $header = [
@@ -25,13 +27,20 @@ class DeleteWhatsAppController extends Controller
             'token' => $instanceInfo->token,
         ];
 
-        $request =  HttpRequest($route, 'DELETE', $header, null);
-
-        if ($request->status() != 200) {
-            return  response()->json([
-                'message' => 'Failed to logout the user',
-            ], 500);
+        try {
+            $request =  HttpRequest($route, 'DELETE', $header, null);
+        } catch (\Exception $e) {
+            // return  response()->json([
+            //     'message' => 'Failed to logout the user',
+            // ], 500);
         }
+        // $request =  HttpRequest($route, 'DELETE', $header, null);
+
+        // if ($request->status() != 200) {
+        //     return  response()->json([
+        //         'message' => 'Failed to logout the user',
+        //     ], 500);
+        // }
 
         $route = '/instance/delete/' . $whatsApp->instance_name . '?force=true';
 
@@ -47,22 +56,35 @@ class DeleteWhatsAppController extends Controller
             'instanceName' => $whatsApp->instance_name,
         ];
 
-        $request =  HttpRequest($route, 'DELETE', $header, $formData);
 
-        if ($request->status() == 200) {
-            $whatsApp->delete();
-            return redirect()
-                ->route('index.whatsapp')
-                ->with('swalNotification', [
-                    'title' => __('common.success'),
-                    'text' => __('common.deleted'),
-                    'icon' => 'success',
-                    'timer' => 5000,
-                ]);
+        try {
+            $request =  HttpRequest($route, 'DELETE', $header, $formData);
+        } catch (\Exception $e) {
+            // return  response()->json([
+            //     'message' => 'Failed to delete the instance',
+            // ], 500);
         }
+        // $request =  HttpRequest($route, 'DELETE', $header, $formData);
 
-        return  response()->json([
-            'message' => 'Failed to delete the instance',
-        ], 500);
+        // $delete = ;
+        // if ($request->status() == 200) {
+        //     $whatsApp->delete();
+        //     return redirect()
+        //         ->route('index.whatsapp')
+        //         ->with('swalNotification', [
+        //             'title' => __('common.success'),
+        //             'text' => __('common.deleted'),
+        //             'icon' => 'success',
+        //             'timer' => 5000,
+        //         ]);
+        // }
+
+        // delete the instance
+        WhatsApp::where('instance_name', $whatsApp->instance_name)->delete();
+        // dd($whatsApp->instance_name);
+
+        // return  response()->json([
+        //     'message' => 'Failed to delete the instance',
+        // ], 500);
     }
 }
