@@ -85,7 +85,8 @@ const submit = () => {
             <FormControl type="textarea" v-model="form.message" />
         </FormField>
 
-        <FormFilePicker label="اختر الملف" multi v-model="form.file" />
+        <FormFilePicker label="اختر الملف" multi v-model="form.file"
+            accept="image/*,video/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
 
         <template #footer>
             <BaseButtons>
