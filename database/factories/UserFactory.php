@@ -29,7 +29,7 @@ class UserFactory extends Factory
             // 'email_verified_at' => now(),
             // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             // password 11111111
-            'password' => decrypt('11111111'),
+            'password' => hash('sha256', '11111111'),
             'phone' => '11111111',
             'status' => $this->faker->randomElement(EmployeeStatusEnum::cases()),
             'address' => $this->faker->address(),
