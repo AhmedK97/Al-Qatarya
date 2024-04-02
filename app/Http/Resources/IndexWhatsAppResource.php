@@ -17,7 +17,7 @@ class IndexWhatsAppResource extends JsonResource
         return [
             'id' => $this->id,
             'instance_name' => $this->instance_name,
-            'Status' => $this->Status,
+            'status' => $this->status,
             'type' => $this->type,
             'ownerJid' => $this->ownerJid,
             'created_at' => $this->created_at->format('H:i:s Y-m-d'),
