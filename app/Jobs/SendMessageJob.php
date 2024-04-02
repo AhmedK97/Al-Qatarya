@@ -58,9 +58,11 @@ class SendMessageJob implements ShouldQueue
         //     $this->fileName = preg_replace('/\s+/', '', basename($data->file_path));
         // }
 
+
+
         // dd($this->filePath);
         foreach ($whatsAppData as $data) {
-            // sleep(rand(5, 10));
+            sleep(rand(5, 10));
             $filePath = $data->file_path ? Storage::disk('public')->url($data->file_path) : '';
             $fileName = basename($data->file_path);
 
