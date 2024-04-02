@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('instance_name')->nullable();
             $table->text('token')->nullable();
             $table->string('ownerJid')->nullable();
-            $table->string('Status')->nullable();
+            $table->string('status')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
         });
