@@ -385,7 +385,14 @@ const deleteTransaction = (transaction) => {
                 <td data-label="all payments">{{ transaction.worker_cost }} دينار</td>
                 <td data-label=" Net profit" class="font-bold"
                     :class="{ 'text-green-500': transaction.profit > 0, 'text-red-500': transaction.profit < 0 }">
-                    {{ transaction.profit }} دينار</td>
+
+                    <span v-if="transaction.profit > 0">
+                        {{ transaction.profit }} دينار
+                    </span>
+                    <span v-else>
+                        لم تيم حساب الربح
+                    </span>
+                </td>
                 <td data-label="Times To Pay">{{ transaction.times_to_pay }} مــرات</td>
                 <td data-label="Status">
                     <PillTag v-if="transaction.status === 'Paid'" color="success" class="text-center" label="مدفوع" />
