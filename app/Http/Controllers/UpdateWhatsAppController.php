@@ -28,14 +28,17 @@ class UpdateWhatsAppController extends Controller
                 },
                 Rule::in(WhatsAppTypeEnum::getValues())
             ],
+            'status' => 'required',
         ]);
-
 
         $whatsApp->update(
             [
                 'type' => $request->type,
+                'status' => $request->status,
             ]
         );
+
+        $whatsApp->save();
 
         return redirect()
             ->route('index.whatsapp')
