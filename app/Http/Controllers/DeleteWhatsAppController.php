@@ -65,7 +65,6 @@ class DeleteWhatsAppController extends Controller
             // ], 500);
         }
         // $request =  HttpRequest($route, 'DELETE', $header, $formData);
-
         // $delete = ;
         // if ($request->status() == 200) {
         //     $whatsApp->delete();
@@ -80,7 +79,7 @@ class DeleteWhatsAppController extends Controller
         // }
 
         // delete the instance
-        WhatsApp::where('instance_name', $whatsApp->instance_name)->delete();
+        $whatsApp->delete();
         // dd($whatsApp->instance_name);
 
         // return  response()->json([
