@@ -31,7 +31,7 @@ class IndexWhatsAppAdsController extends Controller
         return Inertia::render('Admin/WhatsAppAds/Index', [
             'whatsAppAdsActiveNumbers' => $whatsAppAdsActiveNumbers,
             'whatsAppAdsData' => $waData,
-            'whatsAppAdsDataCount' => WhatsApp::where('status', 'sent')->count(),
+            'whatsAppAdsDataCount' => WhatsAppAds::where('status', 'sent')->count(),
             'queueRunning' => \DB::table('jobs')->where('queue', 'default')->where('payload', 'like', '%SendMessageJob%')->exists(),
         ]);
     }
