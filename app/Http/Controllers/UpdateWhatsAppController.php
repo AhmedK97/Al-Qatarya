@@ -21,7 +21,7 @@ class UpdateWhatsAppController extends Controller
                 function ($attribute, $value, $fail) {
                     if ($value === 'chat') {
                         $chatCount = WhatsApp::where('type', 'chat')->count();
-                        if ($chatCount > 0) {
+                        if ($chatCount > 1) {
                             $fail(__('whatsapp.chat_type_exists'));
                         }
                     }
