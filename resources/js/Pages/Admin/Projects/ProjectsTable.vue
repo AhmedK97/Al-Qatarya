@@ -275,11 +275,11 @@
                 <td data-label="project_date">{{ project . project_date }}</td>
                 <td data-label="About">{{ project . address }}</td>
                 <td data-label="notes">
-                    <span v-if="project.notes.length > 50">
-                        {{ project . notes . substring(0, 50) }}...
+                    <span v-if="project?.notes?.length > 50">
+                        {{ project ?. notes . substring(0, 50) }}...
                     </span>
                     <span v-else>
-                        {{ project . notes }}
+                        {{ project ?. notes }}
                     </span>
                 </td>
                 <td data-label="Created At">{{ project . created_at }}</td>

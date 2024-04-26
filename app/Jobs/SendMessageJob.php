@@ -80,6 +80,8 @@ class SendMessageJob implements ShouldQueue
                 ])
                     ->attach('attachment', file_get_contents($filePath), $fileName)
                     ->post(config('app.whats_app_url') . '/message/sendMediaFile/' . $senderWhatsapp->instance_name, $formData);
+
+                return;
             }
 
             $header = ['Content-Type: application/json', 'Accept: application/json', 'Authorization' => $senderWhatsapp->token, 'apikey' => config('app.global_whats_app_api_token'), 'groupJid' => config('app.group_jid')];

@@ -26,9 +26,6 @@ class SendBulkOfMessagesController extends Controller
         $numbers = $request->input('numbers');
         $message = $request->input('message');
 
-
-
-
         $filePath = null;
 
         if ($request->hasFile('file')) {
