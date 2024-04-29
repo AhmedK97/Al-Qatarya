@@ -34,7 +34,10 @@ class CalculationService
                 if (!json_decode($extraService->details)) {
                     return 0;
                 }
-                $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : 0;
+                foreach (json_decode($extraService->details) as $service) {
+                    $materialsCost += $service->originPrice * $extraService->quantity;
+                }
+                $originPrice = $materialsCost ? $materialsCost : 0;
                 $materialsCost += $originPrice * $extraService->quantity ?? 0;
             }
         }
@@ -74,7 +77,11 @@ class CalculationService
                 return 0;
             }
             if ($extraService->type == 'service') {
-                $originPrice = json_decode($extraService->details)  ? json_decode($extraService->details) : 0;
+
+                foreach (json_decode($extraService->details) as $service) {
+                    $totalProfit += $service->originPrice * $extraService->quantity;
+                }
+                $originPrice = $totalProfit  ? $totalProfit : 0;
                 $totalProfit += $originPrice * $extraService->quantity ?? 0;
             }
             if ($extraService->type == 'worker') {

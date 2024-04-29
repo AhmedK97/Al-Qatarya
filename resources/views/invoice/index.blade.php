@@ -340,8 +340,6 @@
                             {{ $service->pivot->price * $service->pivot->quantity }}
                         </td>
                         <td class="center-table service">{{ $service->name }}</td>
-
-                        {{-- <td class="center-table desc"><span>دينار</span> {{ $service->pivot->price }} </td> --}}
                         @php $totalService += $service->pivot->price * $service->pivot->quantity; @endphp
                     </tr>
                 @endforeach
