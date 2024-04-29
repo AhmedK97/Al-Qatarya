@@ -93,13 +93,6 @@
             });
             const hasLabelSlot = () => !!slots.label;
 
-            // onMounted(() => {
-            //     // send customer id to parent component
-            //     emit("update:selectedIdValue", selectedValue.value);
-            //     console.log("selectedValue.value", selectedValue.value);
-            // });
-
-            // Watch for changes in currentVal
             watch(
                 () => props.currentVal,
                 (newVal) => {

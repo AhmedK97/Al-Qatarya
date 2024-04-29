@@ -19,9 +19,8 @@ class IndexWhatsAppController extends Controller
         $result = DB::connection('external_db')
             ->table('auth')
             ->join('instance', 'auth.instanceId', '=', 'instance.id')
-            ->select('auth.token', 'instance.name', 'ownerJid')
+            ->select('auth.token', 'instance.name', 'ownerJid' ,'connectionStatus')
             ->get();
-
 
         foreach ($result as $row) {
             WhatsApp::UpdateOrCreate(
@@ -29,6 +28,9 @@ class IndexWhatsAppController extends Controller
                     'token' => $row->token,
                     'instance_name' => $row->name,
                     'ownerJid' => $row->ownerJid,
+                    'status' => 'active',
+                    'type' => 'chat',
+                    'whatsapp_status' => $row->connectionStatus,
                 ],
             );
         }

@@ -189,24 +189,24 @@ const filteredTransactions = computed(() => {
             <table style="direction  : ltr;" class="my-4 bg-gray-100 table-auto dark rounded-2xl">
                 <thead>
                     <tr>
-                        <th class="font-bold text-center">الاجمالى</th>
-                        <th class="font-bold text-center">سعر المتر</th>
-                        <th class="font-bold text-center">عدد الامتار</th>
+                        <!-- <th class="font-bold text-center">الاجمالى</th> -->
+                        <th class="font-bold text-center">السعر</th>
+                        <!-- <th class="font-bold text-center">عدد الامتار</th> -->
                         <th class="font-bold text-center">اسم الخدمة</th>
                     </tr>
                 </thead>
 
                 <tbody v-for="transaction in transaction.services" :key="transaction.id">
-                    <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td>
+                    <!-- <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td> -->
                     <td class="font-bold text-center">{{ transaction.price }}</td>
-                    <td class="font-bold text-center">{{ transaction.quantity }}</td>
+                    <!-- <td class="font-bold text-center">{{ transaction.quantity }}</td> -->
                     <td class="font-bold text-center">{{ transaction.name }}</td>
                 </tbody>
 
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="font-bold text-center text-red-700 bg-gray-400">
+                        <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400">
                             {{ totalServicesPrice }}</td>
                         <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">الحساب الكلي</td>
                     </tr>
@@ -222,23 +222,23 @@ const filteredTransactions = computed(() => {
             <table style="direction  : ltr;" class="my-4 bg-gray-100 table-auto dark rounded-2xl">
                 <thead>
                     <tr>
-                        <th class="font-bold text-center">الاجمالي</th>
+                        <!-- <th class="font-bold text-center">الاجمالي</th> -->
                         <th class="font-bold text-center">السعر</th>
-                        <th class="font-bold text-center">الكمية</th>
+                        <!-- <th class="font-bold text-center">الكمية</th> -->
                         <th class="font-bold text-center">اسم الخدمة</th>
                     </tr>
                 </thead>
                 <tbody v-for="transaction in filteredTransactions" :key="transaction.id">
-                    <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td>
+                    <!-- <td class="font-bold text-center">{{ transaction.price * transaction.quantity }}</td> -->
                     <td class="font-bold text-center">{{ transaction.price }}</td>
-                    <td class="font-bold text-center">{{ transaction.quantity }}</td>
+                    <!-- <td class="font-bold text-center">{{ transaction.quantity }}</td> -->
                     <td class="font-bold text-center">{{ transaction.name }}</td>
                 </tbody>
 
                 <!-- total price -->
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="font-bold text-center text-red-700 bg-gray-400">
+                        <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400">
                             {{ totalExtraServicesPrice }} </td>
                         <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">الحساب الكلي</td>
                     </tr>
@@ -317,12 +317,14 @@ const filteredTransactions = computed(() => {
                                         <BaseButton :class="'w-5 h-5'" type="button" class="w-20 h-0 mb-4" :icon="mdiMinus"
                                             color="danger" @click="removePayment(index)" />
                                     </td>
+
                                     <td class="py-2 font-bold text-center">
                                         <span v-if="payment.date" class="ml-2 font-bold">{{ payment.date }}</span>
                                         <span v-else class="ml-2 font-bold">
                                             -----------
                                         </span>
                                     </td>
+
                                     <td class="py-2 font-bold ">
                                         <div
                                             class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
@@ -331,6 +333,7 @@ const filteredTransactions = computed(() => {
                                                 placeholder="المبلغ" v-model="payment.amount" />
                                         </div>
                                     </td>
+
                                     <td class="py-2 font-bold ">
                                         <div
                                             class="relative text-center text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
@@ -442,9 +445,9 @@ const filteredTransactions = computed(() => {
                 </tr>
 
                 <tr v-else>
+                    <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">المتبقى</td>
                     <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400">
                         {{ totalPrice - totalPaid }}</td>
-                    <td colspan="1" class="font-bold text-center text-red-700 bg-gray-400 ">المتبقى</td>
                 </tr>
             </tfoot>
         </table>

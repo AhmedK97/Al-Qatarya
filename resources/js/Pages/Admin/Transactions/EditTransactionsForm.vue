@@ -87,9 +87,7 @@ const form = useForm({
 
 
 const resetForm = () => {
-    // form reset
     form.reset();
-    // remove errors
     Object.keys(form.errors).forEach((key) => {
         delete form.errors[key];
     });
@@ -131,7 +129,6 @@ const submit = () => {
         preserveState: true,
         preserveScroll: true,
         onError: (errors) => {
-            // remove errors
             Object.keys(form.errors).forEach((key) => {
                 delete form.errors[key];
             });
@@ -166,7 +163,6 @@ const submit = () => {
         form,
         Object.assign(sharedFormOptions, {
             onSuccess: () => {
-                console.log(sharedFormOptions);
                 resetForm();
                 eventBus.$emit("closeModal", "transaction::create");
                 Swal.fire({
@@ -215,7 +211,6 @@ const submit = () => {
 
             <BaseDivider />
 
-            <!-- services -->
 
             <label class="block mb-2 font-bold">
                 الخدمات
@@ -225,7 +220,6 @@ const submit = () => {
             <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form.errors.services_id }}</span>
 
             <BaseDivider />
-
 
 
             <label class="block mb-2 font-bold">

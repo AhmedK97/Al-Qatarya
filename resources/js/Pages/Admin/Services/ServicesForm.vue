@@ -91,15 +91,15 @@ const resetForm = () => {
     });
 };
 
-const companies = [{
-    id: "qatarya",
-    name: "القطرية",
-},
-{
-    id: "othman",
-    name: "عثمان",
-},
-];
+// const companies = [{
+//     id: "qatarya",
+//     name: "القطرية",
+// },
+// {
+//     id: "othman",
+//     name: "عثمان",
+// },
+// ];
 
 const lang = [{
     id: "en",
@@ -189,11 +189,11 @@ const submit = () => {
         </FormField>
 
         <BaseDivider />
-        <FormField label="الشركة">
+        <!-- <FormField label="الشركة">
             <select-field :errorMessage="form.errors.company_name"
                 class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
                 v-model="form.company_name" :items="companies" />
-        </FormField>
+        </FormField> -->
 
         <FormField label="صورة الخدمة">
 

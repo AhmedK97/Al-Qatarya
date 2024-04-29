@@ -120,9 +120,6 @@
             <div class="grid grid-cols-1 gap-6 mt-5 mb-6 lg:grid-cols-4">
                 <CardBoxWidget :icon="mdiDomain" :number="serviceAlqataryaProjectCount"
                     label="القطرية" color="text-green-500" />
-
-                <CardBoxWidget :icon="mdiDomain" :number="serviceOthmanProjectCount" label="عثمان"
-                    color="text-green-500" />
             </div>
 
 

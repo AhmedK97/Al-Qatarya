@@ -1,11 +1,5 @@
 <script setup>
-import {
-    computed,
-    ref,
-    watch,
-    reactive,
-    onMounted
-} from "vue";
+import { computed, ref, watch, reactive, onMounted } from "vue";
 import eventBus from "@/Composables/eventBus.js";
 
 import {
@@ -24,15 +18,10 @@ import BaseButton from "@/Components/Admin/BaseButton.vue";
 import PillTag from "@/Components/Admin/PillTag.vue";
 import Form from "@/Pages/Admin/WhatsAppAds/AdsForm.vue";
 import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue";
-import {
-    router
-} from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 import Swal from "sweetalert2";
 
-const {
-    whatsAppAdsData,
-    filters,
-} = defineProps({
+const { whatsAppAdsData, filters } = defineProps({
     whatsAppAdsData: {
         type: Object,
         default: [],
@@ -42,7 +31,6 @@ const {
         default: {},
     },
 });
-
 
 onMounted(() => {
     eventBus.$on("openModal", (modalToOpen) => {
@@ -80,24 +68,22 @@ watch(activeFilters, (filledFilters) => {
 const AddWhatsAppAds = ref(null);
 
 const formModalTitle = computed(() => {
-    return AddWhatsAppAds.value?.id ?
-        `Send WhatsApp Ads` :
-        "Send WhatsApp Ads";
+    return AddWhatsAppAds.value?.id ? `Send WhatsApp Ads` : "Send WhatsApp Ads";
 });
 
 const isFormModalOpen = ref(false && AddWhatsAppAds.value);
 </script>
 
 <template>
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
-        :title="formModalTitle">
+    <CardBoxModal
+        cardWidthClass="w-[80%] 2xl:w-4/12"
+        scrollable
+        :hasCancel="true"
+        v-model="isFormModalOpen"
+        :title="formModalTitle"
+    >
         <Form :AddWhatsAppAds="AddWhatsAppAds" />
     </CardBoxModal>
-
-    <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
-        :title="viewModalTitle">
-        <Form :service="AddWhatsAppAds" />
-    </CardBoxModal> -->
 
     <table>
         <thead>
@@ -107,7 +93,6 @@ const isFormModalOpen = ref(false && AddWhatsAppAds.value);
                 <th>File Type</th>
                 <th>Status</th>
                 <th>Created At</th>
-                <!-- <th>file</th> -->
             </tr>
         </thead>
 
@@ -115,35 +100,51 @@ const isFormModalOpen = ref(false && AddWhatsAppAds.value);
             <tr v-for="whatsAppAd in whatsAppAdsData.data" :key="whatsAppAd.id">
                 <td>{{ whatsAppAd.number }}</td>
                 <td>{{ whatsAppAd.message }}</td>
-                <td>{{ whatsAppAd.file_type ?? 'لا يوجد' }}</td>
+                <td>{{ whatsAppAd.file_type ?? "لا يوجد" }}</td>
                 <td>
-                    <PillTag v-if="whatsAppAd.status == 'pending'" color="warning" label="Pending" />
-                    <PillTag v-if="whatsAppAd.status == 'sent'" color="success" label="Sent" />
+                    <PillTag
+                        v-if="whatsAppAd.status == 'pending'"
+                        color="warning"
+                        label="Pending"
+                    />
+                    <PillTag
+                        v-if="whatsAppAd.status == 'sent'"
+                        color="success"
+                        label="Sent"
+                    />
                 </td>
                 <td>{{ whatsAppAd.created_at }}</td>
 
-                <!-- <td>
-                    <a v-if="whatsAppAd.file_path" :href="whatsAppAd.file_path" target="_blank"
-                        class="text-blue-500">File</a>
-                </td> -->
             </tr>
         </tbody>
 
         <CardBoxComponentEmpty v-if="whatsAppAdsData.length === 0" />
     </table>
 
-    <div v-if="whatsAppAdsData.data.length > 0"
-        class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800">
+    <div
+        v-if="whatsAppAdsData.data.length > 0"
+        class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800"
+    >
         <BaseLevel>
             <BaseButtons>
-                <BaseButton v-for="(page, index) in whatsAppAdsData.links" :key="index" :active="page.active"
-                    :label="page.label" :render-label-as-html="true" :class="{
-        'text-white': page.active,
-    }" :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'" :href="page.url"
-                    preserve-state :only="['whatsAppAdsData']" />
+                <BaseButton
+                    v-for="(page, index) in whatsAppAdsData.links"
+                    :key="index"
+                    :active="page.active"
+                    :label="page.label"
+                    :render-label-as-html="true"
+                    :class="{
+                        'text-white': page.active,
+                    }"
+                    :color="page.active ? 'contrast' : 'whiteDark'"
+                    small
+                    :as="page.url ? 'Link' : 'span'"
+                    :href="page.url"
+                    preserve-state
+                    :only="['whatsAppAdsData']"
+                />
             </BaseButtons>
-            <small>Page {{ whatsAppAdsData.current_page }} of {{ whatsAppAdsData.total }}</small>
+            <!-- <small>Page {{ whatsAppAdsData.current_page }} of {{ whatsAppAdsData.total }}</small> -->
         </BaseLevel>
     </div>
-
 </template>

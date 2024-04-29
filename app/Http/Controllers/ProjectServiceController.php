@@ -17,20 +17,22 @@ class ProjectServiceController extends Controller
         // $request->dd();
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
-            'services.*.price' => 'required|numeric|min:0',
-            'services.*.quantity' => 'required|numeric|min:1',
+            'services.*.price' => 'required|numeric|min:1',
+            // 'services.*.quantity' => 'required|numeric|min:1',
             'services.*.details' => 'nullable',
             'extra_services.*.id' => 'nullable|integer|min:0',
             'extra_services.*.name' => 'required|string',
-            'extra_services.*.price' => Rule::requiredIf(function () use ($request) {
-                return $request->input('extra_services.*.type') === 'service';
-            }) . '|nullable|numeric|min:0',
-            'extra_services.*.quantity' => Rule::requiredIf(function () use ($request) {
-                return $request->input('extra_services.*.type') === 'service';
-            }) . '|nullable|numeric|min:1',
+            'extra_services.*.price' => 'nullable|numeric|min:1|required_if:extra_services.*.type,service',
+            // 'extra_services.*.quantity' => Rule::requiredIf(function () use ($request) {
+            //     return $request->input('extra_services.*.type') === 'service';
+            // }) . '|nullable|numeric|min:1',
             'extra_services.*.type' => 'required|string|in:service,worker',
             'extra_services.*.details' => 'nullable',
         ]);
+        // extra_services.*.quantity  will be 1 by default
+        // services.*.quantity will be 1 by default
+
+
 
         if (!empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
@@ -42,7 +44,7 @@ class ProjectServiceController extends Controller
                 $service = $serviceData['id'];
                 $project->services()->updateExistingPivot($service, [
                     'price' => $serviceData['price'],
-                    'quantity' => $serviceData['quantity'],
+                    'quantity' => 1,
                     'details' => json_encode(Arr::get($serviceData, 'details', [])),
                 ]);
             });
@@ -65,7 +67,7 @@ class ProjectServiceController extends Controller
                     [
                         'name' => $extraServiceData['name'],
                         'price' => $extraServiceData['price'],
-                        'quantity' => $extraServiceData['quantity'],
+                        'quantity' => 1,
                         'type' => $extraServiceData['type'], // 'service' or 'employee'
                         'details' => json_encode(Arr::get($extraServiceData, 'details', [])),
                     ],

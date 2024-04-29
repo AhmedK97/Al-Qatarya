@@ -1,13 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { defineProps } from "vue";
-// import Pagination from "@/Components/Pagination.vue";
-// import BlogsCards from "@/Components/BlogsCards.vue";
-// const props = defineProps({
-//     blog: Object,
-//     blogs: Array,
-// });
-// console.log(props.service);
+
 </script>
 
 <template>

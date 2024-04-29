@@ -60,7 +60,6 @@
         }).then((result) => {
             if (result.dismiss === Swal.DismissReason.cancel) {
                 // User clicked cancel button
-                console.log('Export cancelled');
             } else if (result.value) {
                 // User clicked export button
                 window.open(route("export.customers"), "_blank");

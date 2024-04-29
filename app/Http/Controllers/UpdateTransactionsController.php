@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Arr;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class UpdateTransactionsController extends Controller
 {
@@ -32,7 +33,6 @@ class UpdateTransactionsController extends Controller
             'times_to_pay' => $data['times_to_pay'],
             'status' => $data['status'],
         ]);
-
         $transaction->project->services()->sync(Arr::pluck($data['services_id'], 'id'));
 
         return redirect()

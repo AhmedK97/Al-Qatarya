@@ -12,7 +12,6 @@ class CreateWhatsAppQrCodeController extends Controller
      */
     public function __invoke(Request $request)
     {
-
         $fromData = [
             'instanceName' => 'alqatarya' . rand(1, 999999999),
         ];
@@ -26,15 +25,7 @@ class CreateWhatsAppQrCodeController extends Controller
             'groupJid' => config('app.group_jid'),
         ];
 
-
         $request =  HttpRequest($route, 'POST', $header, $fromData);
-
-        WhatsApp::create(
-            [
-                'token' => $request->json()['Auth']['token'],
-                'instance_name' => $request->json()['name'],
-            ]
-        );
 
         $qrCodeRoute = '/instance/connect/' . $request->json()['name'];
         $getQrCode = HttpRequest($qrCodeRoute, 'GET', $header, null); // get the qr code

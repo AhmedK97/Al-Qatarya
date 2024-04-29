@@ -12,7 +12,6 @@ const props = defineProps({
     services: Object,
 });
 
-console.log(props.services);
 </script>
 
 <template>

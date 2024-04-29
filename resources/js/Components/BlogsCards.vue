@@ -8,7 +8,6 @@
         blogs: Object,
     });
 
-    console.log(props.blogs);
 </script>
 
 <template>

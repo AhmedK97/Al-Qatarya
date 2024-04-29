@@ -213,7 +213,7 @@
                     :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
                     :href="page.url" preserve-state :only="['customers']" />
             </BaseButtons>
-            <small>Page {{ customers . current_page }} of {{ customers . total }}</small>
+            <!-- <small>Page {{ customers . current_page }} of {{ customers . total }}</small> -->
         </BaseLevel>
     </div>
 </template>

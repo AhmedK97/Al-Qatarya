@@ -23,8 +23,6 @@ import LayoutAuthenticated from "@/Layouts/Admin/LayoutAuthenticated.vue";
 import SectionTitleLineWithButton from "@/Components/Admin/SectionTitleLineWithButton.vue";
 import eventBus from "@/Composables/eventBus.js";
 import Swal from "sweetalert2";
-// import CardBoxModal from "@/Components/Admin/CardBoxModal.vue";
-// import CompaniesImport from "@/Pages/Admin/Companies/CompaniesImport.vue";
 
 const props = defineProps({
     services: {

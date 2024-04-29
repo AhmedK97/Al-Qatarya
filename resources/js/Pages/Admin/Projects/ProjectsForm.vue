@@ -162,8 +162,6 @@
             },
         };
 
-        console.log(isUpdate.value);
-
         if (isUpdate.value) {
             router.put(
                 route("update.projects", project.id),

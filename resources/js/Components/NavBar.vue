@@ -18,7 +18,6 @@ const showDropDown = ref(false);
 
 const dropDownService = () => {
     showDropDown.value = !showDropDown.value;
-    console.log(showDropDown.value);
 };
 
 const showingNavigationDropdown = ref(false);

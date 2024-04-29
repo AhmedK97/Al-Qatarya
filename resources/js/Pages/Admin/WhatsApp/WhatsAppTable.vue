@@ -58,7 +58,6 @@ const deleteWhatsApp = (whatsapp) => {
         confirmButtonText: "نعم، احذفه!",
         cancelButtonText: "الغاء",
     }).then((result) => {
-        console.log(result);
         if (result.isConfirmed) {
             router.delete(route("delete.whatsapp", whatsapp.id), {
                 preserveState: true,
@@ -113,6 +112,7 @@ const updateWhatsAppType = (whatsapp) => {
                 <th>الاسم</th>
                 <th>النوع</th>
                 <th>الحاله</th>
+                <th>حاله الاتصال للواتس</th>
                 <th>تاريخ الاضافه</th>
                 <th>اجزاء</th>
             </tr>
@@ -124,7 +124,6 @@ const updateWhatsAppType = (whatsapp) => {
                 <td>{{ whatsapp.id }}</td>
                 <td>{{ whatsapp.ownerJid }}</td>
                 <td>{{ whatsapp.instance_name }}</td>
-
                 <td>
                     <!-- type -->
                     <select v-model="whatsapp.type" class="form-select" @change="() => updateWhatsAppType(whatsapp)">
@@ -132,6 +131,11 @@ const updateWhatsAppType = (whatsapp) => {
                     </select>
 
                 </td>
+
+                <td>
+                    {{ whatsapp.whatsapp_status}}
+                </td>
+
                 <td>
                     <select v-model="whatsapp.status" class="form-select" @change="() => updateWhatsAppType(whatsapp)">
                         <option v-for="(value, key) in status" :value="key">{{ value }}</option>
@@ -155,7 +159,7 @@ const updateWhatsAppType = (whatsapp) => {
             }" :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'" :href="page.url"
                     preserve-state :only="['whatsAppData']" />
             </BaseButtons>
-            <small>Page {{ whatsAppData.current_page }} of {{ whatsAppData.total }}</small>
+            <!-- <small>Page {{ whatsAppData.current_page }} of {{ whatsAppData.total }}</small> -->
         </BaseLevel>
     </div>
 </template>

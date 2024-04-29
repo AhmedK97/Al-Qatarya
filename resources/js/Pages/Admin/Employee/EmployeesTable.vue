@@ -227,7 +227,7 @@
                     :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
                     :href="page.url" preserve-state :only="['employees']" />
             </BaseButtons>
-            <small>Page {{ employees . current_page }} of {{ employees . total }}</small>
+            <!-- <small>Page {{ employees . current_page }} of {{ employees . total }}</small> -->
         </BaseLevel>
     </div>
 </template>

@@ -133,17 +133,12 @@
         :title="formModalTitle">
         <ServicesForm :service="currentlyEditedService" />
     </CardBoxModal>
-    <!-- <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isViewModalOpen"
-        :title="viewModalTitle">
-        <ServicesForm :service="currentlyEditedService" />
-    </CardBoxModal> -->
 
-    <table>
+    <table class="text-end">
         <thead>
             <tr>
                 <th>#</th>
                 <th>الاســم</th>
-                <th>الشــركة</th>
                 <th>اللــغة</th>
                 <th>تاريخ الاضافه</th>
                 <th>اجزاء</th>
@@ -157,14 +152,7 @@
                     <input placeholder="الاســم" v-model="activeFilters.filteredBy.name"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
                 </td>
-                <td data-label="Filter Company">
-                    <select v-model="activeFilters.filteredBy.company_name"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
-                        <option :value="null">فلترة</option>
-                        <option value="qatarya">القطرية</option>
-                        <option value="othman">عثمان</option>
-                    </select>
-                </td>
+
                 <td data-label="Filter Status">
                     <select v-model="activeFilters.filteredBy.lang"
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100">
@@ -189,13 +177,10 @@
                 <!-- {{ services }} -->
             <!-- User data -->
             <!-- {{ services . data }} -->
-            <tr v-for="service in services.data" :key="service.id">
+            <tr  v-for="service in services.data" :key="service.id">
                 <td data-label="ID">{{ service . id }}</td>
                 <td data-label="Name">{{ service . name }}</td>
-                <td class="text-center" data-label="Company">
-                    <PillTag v-if="service.company_name == 'qatarya'" color="primary" class="text-center text-blue-800 bg-blue-100 rounded-full" label="القطرية" />
-                    <PillTag v-else-if="service.company_name == 'othman'" color="danger" class="text-center text-red-800 bg-red-100 rounded-full" label="عثمان" />
-                </td>
+
                 <td data-label="Language">{{ service . lang == 'ar' ? 'Arabic' : 'English' }}</td>
                 <td data-label="Created At">{{ service . created_at }}</td>
                 <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
@@ -221,7 +206,7 @@
                     :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
                     :href="page.url" preserve-state :only="['services']" />
             </BaseButtons>
-            <small>Page {{ services . current_page }} of {{ services . total }}</small>
+            <!-- <small>Page {{ services . current_page }} of {{ services . total }}</small> -->
         </BaseLevel>
     </div>
 </template>

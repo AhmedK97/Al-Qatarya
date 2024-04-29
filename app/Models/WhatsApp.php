@@ -12,13 +12,7 @@ class WhatsApp extends Model
 
     protected $table = 'whatsapp';
 
-    protected $fillable = [
-        'instance_name',
-        'token',
-        'status',
-        'type',
-        'ownerJid'
-    ];
+    protected $guarded = [];
 
     // where type ads
     public function scopeAds($query)

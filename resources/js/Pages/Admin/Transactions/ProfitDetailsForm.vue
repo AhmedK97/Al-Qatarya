@@ -94,6 +94,15 @@ const calculateExtraServiceProfit = (service) => {
     return (service.price * service.quantity) - (service.details * service.quantity);
 };
 
+const calculateExtraServiceDetailsProfit = (service) => {
+    let total = 0;
+    service.details.forEach((detail) => {
+        total += parseInt(detail.originPrice);
+    });
+    return total;
+
+};
+
 // filteredExtraServices
 const filteredExtraServices = computed(() => {
     return form.extra_services?.filter(item => item.type === 'service');
@@ -104,7 +113,7 @@ const filteredWorkers = computed(() => {
     return form.extra_services?.filter(item => item.type === 'worker');
 });
 
-const openServiceTab = ref(1);
+const openServiceTab = ref("");
 const toggleServiceTabs = (tabNumber) => {
     openServiceTab.value = tabNumber;
 };
@@ -141,7 +150,38 @@ const newDetailWorker = ref({
     created_at: '',
 });
 
+const NewDetailService = ref({
+    title : '',
+    originPrice: '',
+});
+
+const validateOriginPriceService = ref('');
+
+const addNewServiceDetail = (id) => {
+    if (!NewDetailService.value.originPrice) {
+        validateOriginPriceService.value = 'السعر مطلوب';
+        return
+    }
+    const newId = parseInt(id);
+    const service = form.extra_services.find(service => service.id === newId);
+
+    if (service) {
+        service.details.push({
+            originPrice: NewDetailService.value.originPrice,
+            title: NewDetailService.value.title,
+            created_at: currentDate,
+        });
+    }
+
+    NewDetailService.value = {
+        title: '',
+        originPrice: '',
+        created_at: '',
+    };
+};
+
 const validateOriginPriceWorker = ref('')
+
 const addNewDetail = (id) => {
     if (!newDetailWorker.value.originPrice) {
         validateOriginPriceWorker.value = 'اليومية مطلوبة';
@@ -175,8 +215,14 @@ const deleteDetail = (id, index) => {
     if (service) {
         service.details.splice(index, 1);
     }
+};
 
-
+const deleteServiceDetail = (id, index) => {
+    const newId = parseInt(id)
+    const service = form.extra_services.find(service => service.id === newId);
+    if (service) {
+        service.details.splice(index, 1);
+    }
 };
 
 
@@ -224,14 +270,13 @@ const submit = () => {
                         {{ form.services?.length }}
                     </span>
                 </label>
-
                 <div v-if="form.services?.length > 0">
                     <ul class="flex flex-row flex-wrap pt-3 pb-4 mb-0 list-none">
                         <li v-for="(service, id) in  (form.services) " :key="id"
                             class="flex-auto mr-2 -mb-px text-center">
                             <a class="block px-5 py-3 text-xs font-bold leading-normal uppercase rounded shadow-lg"
                                 v-on:click="toggleServiceTabs(service.id)"
-                                v-bind:class="{ 'text-blueGray-600 font-medium bg-gray-100 cursor-pointer': openServiceTab !== service.id, 'text-white font-bold bg-gray-700': openServiceTab === service.id }">
+                                v-bind:class="{ 'text-blueGray-600 font-medium bg-gray-100 cursor-pointer': openServiceTab !== service.id, 'text-white font-bold bg-gray-700': (openServiceTab ? openServiceTab : form.services[0]?.id) === service.id }">
                                 {{ service.name }}
                             </a>
                         </li>
@@ -240,25 +285,25 @@ const submit = () => {
                         <div class="flex-auto px-4 py-5">
                             <div class="tab-content tab-space">
                                 <div v-for="(service, id) in  (form.services) " :key="id"
-                                    v-bind:class="{ 'hidden': openServiceTab !== service.id, 'block': openServiceTab === service.id }">
+                                    v-bind:class="{ 'hidden': (openServiceTab ? openServiceTab : form.services[0]?.id) !== service.id, 'block': openServiceTab === service.id }">
                                     <h1 class="m-3 font-bold text-center bg-red-200">{{ service.name }}</h1>
                                     <table class="min-w-full divide-y divide-gray-200">
                                         <thead>
                                             <tr>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50">
                                                     سعر المتر
                                                 </th>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50">
                                                     عدد الامتار
                                                 </th>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50">
                                                     المجموع
                                                 </th>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50">
                                                     تاريخ الاضافة
                                                 </th>
                                             </tr>
@@ -377,86 +422,132 @@ const submit = () => {
                         <div v-for="( formItem, index ) in  filteredExtraServices " :key="index"
                             v-bind:class="{ 'hidden': (openExtraServiceTab ? openExtraServiceTab : filteredExtraServices[0]?.id) !== formItem.id, 'block': openExtraServiceTab === formItem.id }">
                             <h1 class="m-3 font-bold text-center bg-red-200">{{ formItem.name }}</h1>
-                            <table class="min-w-full divide-y divide-gray-200">
+                            <table style="direction: ltr;" class="min-w-full divide-y divide-gray-200">
                                 <thead>
                                     <tr>
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
-                                            سعر المتر
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
-                                            عدد الامتار
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
-                                            المجموع
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             تاريخ الاضافة
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            الربح
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            مجموع الخدمات المضافة
+                                        </th>
+
+
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            المجموع
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
+                                <tbody class="bg-white divide-y divide-gray-200" >
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            {{ formItem.price }} دينار
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            {{ formItem.quantity }} متر
-                                        </td>
-                                        <!-- total -->
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            {{ formItem.price * formItem.quantity }} دينار
-                                        </td>
-                                        <!-- created at -->
-                                        <td class="px-6 py-4 whitespace-nowrap">
                                             {{ formItem.created_at }}
+                                        </td>
+
+                                        <td class="px-6 py-4whitespace-nowrap" :class="formItem.price - calculateExtraServiceDetailsProfit(formItem) > 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'">
+                                            {{ formItem.price - calculateExtraServiceDetailsProfit(formItem) }} دينار
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ calculateExtraServiceDetailsProfit(formItem) }}
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ formItem.price }} دينار
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <BaseDivider />
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            #
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            اسم الخدمة
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            السعر
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            التاريخ
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
+                                            اجراء
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr v-for="(details, index) in formItem.details" :key="details.id">
+                                        <!-- {{ details }} -->
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ index + 1 }}
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ details.title }}
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ details.originPrice }} دينار
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ details.created_at }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <button @click="deleteServiceDetail(formItem.id, index)"
+                                                class="text-red-600">حذف</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
                             <br>
-                            <h1 class="font-bold text-cyan-700">حساب الارباح :</h1>
-                            <div class="grid grid-flow-row grid-cols-2">
-                                <FormField :label="'سعر المتر في المادة الخام :'">
-                                    <FormControl v-model="formItem.details" placeholder="سعر المتر في المادة الخام" />
-                                </FormField>
+                            <h1 class="font-bold text-cyan-700">الخدمات الاضافيه :</h1>
+                                <div class="grid grid-flow-row grid-cols-3">
+                                    <FormField class="mx-2" :label="'الخدمه :'">
+                                        <FormControl v-model="NewDetailService.title" placeholder="اسم الخدمه" />
+                                    </FormField>
 
-                                <p class="m-auto" v-if="calculateExtraServiceProfit(formItem) > 0">
-                                    <span class="block ">
-                                        المجموع : (سعر المتر الخام * عدد الامتار)=
-                                        <strong class="font-bold text-red-700">
-                                            {{ formItem.details * formItem.quantity }}
-                                            دينار
-                                        </strong>
-                                    </span>
-                                    <span v-if="formItem.details.length" class="block font-bold text-green-700">
+                                    <FormField class="mx-2" :label="'سعر الخدمة :'">
+                                        <FormControl v-model="NewDetailService.originPrice" placeholder="السعر" />
+                                    </FormField>
 
-                                        الربح : {{ calculateExtraServiceProfit(formItem) }} دينار
-                                    </span>
-                                </p>
+                                    <BaseButtons class="mx-2 mt-5">
+                                        <BaseButton @click="addNewServiceDetail(formItem.id)" type="submit" color="info"
+                                            label="اضافة" />
+                                    </BaseButtons>
 
-                                <p class="m-auto" v-else-if="calculateExtraServiceProfit(formItem) == 0">
-                                    <span class="block font-bold text-red-700">
-                                        لا يوجد ربح
-                                    </span>
-                                </p>
 
-                                <p class="m-auto" v-else>
-                                    <span class="block">
-                                        المجموع : (سعر المتر الخام * عدد الامتار)=
-                                        <strong class="font-bold text-red-700">
-                                            {{ formItem.details * formItem.quantity }}
-                                            دينار
-                                        </strong>
-                                    </span>
-                                    <span class="block font-bold text-red-700">
-                                        الخسارة : {{ calculateExtraServiceProfit(formItem) }} دينار
-                                    </span>
-                                </p>
+                                    <p class="text-red-600">
+                                        {{ validateOriginPriceService }}
+                                    </p>
+                                </div>
                             </div>
+
                             <input type="hidden" v-bind:value="'service'">
                             <div v-if="form && form.errors">
                                 <span
@@ -468,8 +559,8 @@ const submit = () => {
                                     <BaseButton @click="submit" type="submit" color="info" label="حفظ" />
                                 </BaseButtons>
                             </div>
-                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -525,35 +616,35 @@ const submit = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             #
                                         </th>
 
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             اليومية
                                         </th>
 
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             اكرامية
                                         </th>
 
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             خصم
                                         </th>
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             المجموع
                                         </th>
 
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             التاريخ
                                         </th>
                                         <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-50">
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
                                             اجراء
                                         </th>
                                     </tr>
@@ -588,7 +679,6 @@ const submit = () => {
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{ details.created_at }}
                                         </td>
-
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <button @click="deleteDetail(formWorker.id, index)" type="button"
                                                 class="text-red-600">حذف</button>
@@ -597,7 +687,7 @@ const submit = () => {
                                 </tbody>
                             </table>
                             <br>
-                            <h1 class="font-bold text-cyan-700">حساب الارباح :</h1>
+                            <h1 class="mx-4 mb-5 font-bold text-cyan-700">حساب يوميه العامل : {{ formWorker.name }}</h1>
                             <div>
                                 <div class="grid grid-flow-row grid-cols-4">
                                     <FormField class="mx-2" :label="'اليومية :'">
@@ -666,7 +756,6 @@ const submit = () => {
         <table class="w-full border border-gray-200 divide-y divide-gray-200 table-fixed ">
             <thead class="bg-gray-50">
                 <tr>
-
                     <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
                         تكلفة
                         العمالة الكلية:</th>
@@ -679,13 +768,9 @@ const submit = () => {
                         الربح
                         الكلى للخدمات الاضافية:</th>
 
-                    <!-- المجموع بعد خصم العمالة -->
-
                     <th class="px-6 py-3 text-xs font-extrabold tracking-wider text-center text-gray-500 uppercase">
                         المجموع
                         بعد خصم العمالة:</th>
-
-
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -699,7 +784,7 @@ const submit = () => {
                     <td class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap">
                         {{ transaction?.extra_service_profit }} دينار</td>
 
-                    <td class="px-6 py-4 text-2xl font-extrabold text-center text-green-600 whitespace-nowrap">
+                    <td class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" :class="transaction?.service_profit + transaction?.extra_service_profit - transaction?.worker_cost > 0 ? 'text-green-500' : 'text-red-500'">
                         {{ transaction?.service_profit + transaction?.extra_service_profit - transaction?.worker_cost }}
                         دينار
                     </td>

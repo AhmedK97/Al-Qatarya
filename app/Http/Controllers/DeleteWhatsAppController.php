@@ -15,9 +15,10 @@ class DeleteWhatsAppController extends Controller
 
         $instanceInfo = WhatsApp::where('instance_name', $whatsApp->instance_name)->first();
 
-
-
-        $route = '/instance/logout/' . $whatsApp->instance_name;
+        try {
+            $route = '/instance/logout/' . $whatsApp->instance_name;
+        } catch (\Exception $e) {
+        }
 
         $header = [
             'Content-Type: application/json',
@@ -30,19 +31,14 @@ class DeleteWhatsAppController extends Controller
         try {
             $request =  HttpRequest($route, 'DELETE', $header, null);
         } catch (\Exception $e) {
-            // return  response()->json([
-            //     'message' => 'Failed to logout the user',
-            // ], 500);
         }
-        // $request =  HttpRequest($route, 'DELETE', $header, null);
 
-        // if ($request->status() != 200) {
-        //     return  response()->json([
-        //         'message' => 'Failed to logout the user',
-        //     ], 500);
-        // }
 
-        $route = '/instance/delete/' . $whatsApp->instance_name . '?force=true';
+        try {
+            $route = '/instance/delete/' . $whatsApp->instance_name . '?force=true';
+        } catch (\Exception $e) {
+        }
+        // $route = '/instance/delete/' . $whatsApp->instance_name . '?force=true';
 
         $header = [
             'Content-Type: application/json',
@@ -55,6 +51,8 @@ class DeleteWhatsAppController extends Controller
         $formData = [
             'instanceName' => $whatsApp->instance_name,
         ];
+
+        $whatsApp->delete();
 
 
         try {
@@ -79,7 +77,6 @@ class DeleteWhatsAppController extends Controller
         // }
 
         // delete the instance
-        $whatsApp->delete();
         // dd($whatsApp->instance_name);
 
         // return  response()->json([

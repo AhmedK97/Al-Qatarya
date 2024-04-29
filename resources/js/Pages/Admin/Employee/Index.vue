@@ -53,7 +53,6 @@ const exportTable = () => {
     }).then((result) => {
         if (result.dismiss === Swal.DismissReason.cancel) {
             // User clicked cancel button
-            console.log('Export cancelled');
         } else if (result.value) {
             // User clicked export button
             window.open(route("export.employees"), "_blank");

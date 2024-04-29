@@ -14,7 +14,7 @@ class StoreServicesAdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'company_name' => 'required|string',
+            // 'company_name' => 'required|string',
             'additional_info' => 'sometimes|array',
             'additional_info.*.title' => 'string',
             'additional_info.*.description' => 'string',
@@ -24,7 +24,7 @@ class StoreServicesAdminController extends Controller
 
         $service = Service::create([
             'name' => $request->name,
-            'company_name' => $request->company_name,
+            'company_name' => 'qatarya',
             'additional_info' => json_encode($request->additional_info),
             'lang' => $request->lang,
         ]);

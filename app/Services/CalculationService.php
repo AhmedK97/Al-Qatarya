@@ -48,7 +48,9 @@ class CalculationService
         foreach ($transaction->project->extraServices as $extraService) {
             if ($extraService->type == 'worker') {
                 foreach (json_decode($extraService->details) as $worker) {
-                    $workerCost += $worker->originPrice;
+                    // $totalProfit += $worker->originPrice - $worker->tips - $worker->discount;
+
+                    $workerCost += $worker->originPrice + $worker->tips - $worker->discount;
                 }
             }
         }
@@ -138,7 +140,11 @@ class CalculationService
                 }
                 $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : 0;
                 $price = $extraService->price ?? 0;
-                $totalProfit += $price * $extraService->quantity - $originPrice * $extraService->quantity;
+                $sumOriginPrice = 0;
+                foreach ($originPrice as $price) {
+                    $sumOriginPrice += $price->originPrice;
+                }
+                $totalProfit +=  $extraService->quantity - $sumOriginPrice * $extraService->quantity;
             }
         }
 

@@ -42,7 +42,7 @@
 
 <script setup>
     import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
-    import {    
+    import {
         Link
     } from "@inertiajs/vue3";
 
@@ -50,7 +50,6 @@
         service: Object,
     });
 
-    console.log(props.service);
 </script>
 
 <style>

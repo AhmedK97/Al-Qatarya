@@ -307,7 +307,7 @@
                     :color="page.active ? 'contrast' : 'whiteDark'" small :as="page.url ? 'Link' : 'span'"
                     :href="page.url" preserve-state :only="['projects']" />
             </BaseButtons>
-            <small>Page {{ projects . current_page }} of {{ projects . total }}</small>
+            <!-- <small>Page {{ projects . current_page }} of {{ projects . total }}</small> -->
         </BaseLevel>
     </div>
 </template>

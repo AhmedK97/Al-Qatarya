@@ -21,7 +21,7 @@ const toggleTabs = (tabNumber) => {
         <ul
             class="flex flex-row flex-wrap pt-3 pb-4 m-auto mb-0 space-x-2 list-none rtl:space-x-reverse"
         >
-            <li class="flex-auto text-center">
+            <!-- <li class="flex-auto text-center">
                 <a
                     class="block p-5 font-bold leading-normal uppercase rounded shadow-lg text-md md:text-lg"
                     v-on:click="toggleTabs(1)"
@@ -34,8 +34,8 @@ const toggleTabs = (tabNumber) => {
                 >
                     {{ $t("insulation") }}
                 </a>
-            </li>
-            <li class="flex-auto text-center">
+            </li> -->
+            <!-- <li class="flex-auto text-center">
                 <a
                     class="block p-5 font-bold leading-normal uppercase rounded shadow-lg text-md md:text-lg"
                     v-on:click="toggleTabs(2)"
@@ -48,7 +48,7 @@ const toggleTabs = (tabNumber) => {
                 >
                     {{ $t("buildings") }}
                 </a>
-            </li>
+            </li> -->
         </ul>
 
         <ServicesImages

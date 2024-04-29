@@ -10,6 +10,14 @@
     }
 }
 
+td {
+    text-align: right !important;
+}
+
+th {
+    text-align: right !important;
+}
+
 .vuejs3-datepicker__value {
     min-width: 18rem !important;
     padding: 10px 15px !important;

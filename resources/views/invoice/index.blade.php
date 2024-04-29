@@ -318,12 +318,14 @@
         </div>
     </header>
     <main>
+
+        <h1>
+            <span>الخدمات</span>
+        </h1>
         <table>
             <thead>
                 <tr>
-                    <th class="center-table text-bold">الاجمالي</th>
-                    <th class="center-table text-bold">عدد الامتار / الكمية</th>
-                    <th class="center-table text-bold desc">سعر المتر / الكمية</th>
+                    <th class="center-table text-bold desc">السعر </th>
                     <th class="center-table text-bold service">اسم الخدمة</th>
                 </tr>
             </thead>
@@ -337,9 +339,9 @@
                         <td class="center-table unit"><span>دينار</span>
                             {{ $service->pivot->price * $service->pivot->quantity }}
                         </td>
-                        <td class="center-table unit">{{ $service->pivot->quantity }}</td>
-                        <td class="center-table desc"><span>دينار</span> {{ $service->pivot->price }} </td>
                         <td class="center-table service">{{ $service->name }}</td>
+
+                        {{-- <td class="center-table desc"><span>دينار</span> {{ $service->pivot->price }} </td> --}}
                         @php $totalService += $service->pivot->price * $service->pivot->quantity; @endphp
                     </tr>
                 @endforeach
@@ -349,20 +351,76 @@
                         <td class="center-table unit"><span>دينار</span>
                             {{ $extraService->price * $extraService->quantity }}
                         </td>
-                        <td class="center-table unit">{{ $extraService->quantity }}</td>
-                        <td class="center-table desc"><span>دينار</span> {{ $extraService->price }} </td>
                         <td class="center-table service">{{ $extraService->name }}</td>
+
                         @php $totalExtraService += $extraService->price * $extraService->quantity; @endphp
                     </tr>
                 @endforeach
+        </table>
 
+        <br>
+        <br>
+        <br>
+
+        <h1>
+            <span>
+                المدفوعات * {{ $transactions->times_to_pay }} *
+            </span>
+        </h1>
+
+        @php
+            $totalPaid = 0;
+            $payments = $transactions;
+        @endphp
+
+        @php
+            $paymentsArray = json_decode($payments->payments, true);
+        @endphp
+
+        <table>
+            <thead>
                 <tr>
-                    <td class="center-table total text-bold"><span>دينار</span>
-                        {{ $totalService + $totalExtraService }}</td>
-                    <td class="center-table text-bold" colspan="3">المجـــموع الكلى</td>
+                    <th class="center-table text-bold service">تاريح الدفع</th>
+                    <th class="center-table text-bold service">باقي</th>
+                    <th class="center-table text-bold desc">من اصل</th>
+                    <th class="center-table text-bold">المدفوع</th>
                 </tr>
+            </thead>
 
+            <tbody>
+                @foreach ($paymentsArray as $payment)
+                    <tr>
+                        @if ($payment['amount'] != 0)
+                        <td  class="center-table">{{ $payment['date'] }}</td>
+                        @else
+                        <td  class="center-table">-</td>
+                        @endif
+
+                        <td class="center-table"><span>دينار</span> {{ ($totalService + $totalExtraService) * ( $payment['percentage'] / 100 ) - $payment['amount'] }}</td>
+                        <td class="center-table"><span>دينار</span> {{( $totalService + $totalExtraService) * ( $payment['percentage'] / 100 ) }}</td>
+                        <td class="center-table"><span>دينار</span> {{ $payment['amount'] }}</td>
+                    </tr>
+                @endforeach
             </tbody>
+        </table>
+
+        <br><br><br><br>
+
+        <h1>
+            <span>الحساب النهائي</span>
+        </h1>
+        <table>
+            <tr>
+                <td class="center-table"><span>دينار</span> {{ $totalService + $totalExtraService }}</td>
+                <td class="center-table">اجمالى الخدمات</td>
+            </tr>
+            <tr>
+                <td class="center-table"><span>دينار</span> {{ collect($paymentsArray)->sum('amount') }}</td>
+                <td class="center-table">اجمالى المدفوع</td>
+            <tr>
+                <td class="center-table"><span>دينار</span> {{ ($totalService + $totalExtraService) - collect($paymentsArray)->sum('amount') }}</td>
+                <td class="center-table">اجمالى الباقي</td>
+            </tr>
         </table>
     </main>
 </body>

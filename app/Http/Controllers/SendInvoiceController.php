@@ -22,9 +22,8 @@ class SendInvoiceController extends Controller
 
         $transactionId = $request->transactionId;
 
-        $transactions = Transaction::whereId($transactionId)->with('customer', 'employee', 'project')->get();
+        $transactions = Transaction::whereId($transactionId)->get();
 
-        $transactions = TransactionsAdminResource::collection($transactions);
         $services = $transactions
             ->map(function ($transaction) {
                 return $transaction->project->services;
@@ -37,7 +36,21 @@ class SendInvoiceController extends Controller
             })
             ->flatten();
 
-        $pdfContent = view('invoice.index', compact('services', 'extraServices', 'transactions'))->render();
+        $totalPaidAmount = $transactions->sum('paid_amount');
+
+        $transactions = TransactionsAdminResource::make($transactions->first());
+
+            // dd($transactions);
+
+
+        // dd($totalPaidAmount);
+        $pdfContent = view('invoice.index', [
+            'services' => $services,
+            'extraServices' => $extraServices,
+            'transactions' => $transactions,
+            // 'transactions' => $transactions,
+            // 'totalPaidAmount' => $totalPaidAmount,
+        ])->render();
 
         // return view('invoice.index', compact('services', 'extraServices', 'transactions'));
 
@@ -45,15 +58,15 @@ class SendInvoiceController extends Controller
 
         $pdf = PDF::loadHTML($pdfContent);
 
-        $directory = 'whatsappMedia/' . $customerPhone;
+        $directory = 'whatsappMedia/'.$customerPhone;
 
-        if (!Storage::disk('public')->exists($directory)) {
+        if (! Storage::disk('public')->exists($directory)) {
             Storage::disk('public')->makeDirectory($directory);
         }
 
-        $pdf = $pdf->save(storage_path('app/public/' . $directory . '/invoice.pdf'));
+        $pdf = $pdf->save(storage_path('app/public/'.$directory.'/invoice.pdf'));
 
-        $fileContents = Storage::disk('public')->get($directory . '/invoice.pdf');
+        $fileContents = Storage::disk('public')->get($directory.'/invoice.pdf');
 
         $info = WhatsApp::chat()->inRandomOrder()->first();
         $formData = [
@@ -68,7 +81,7 @@ class SendInvoiceController extends Controller
             'groupJid' => config('app.group_jid'),
         ])
             ->attach('attachment', $fileContents, 'invoice.pdf')
-            ->post(config('app.whats_app_url') . '/message/sendMediaFile/' . $info->instance_name, $formData);
+            ->post(config('app.whats_app_url').'/message/sendMediaFile/'.$info->instance_name, $formData);
 
         if ($httpRequest->successful()) {
             return redirect()

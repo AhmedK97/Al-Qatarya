@@ -14,7 +14,7 @@ class UpdateServicesAdminController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string',
-            'company_name' => 'required|string',
+            // 'company_name' => 'required|string',
             'additional_info' => 'sometimes|array',
             'additional_info.*.title' => 'string',
             'additional_info.*.description' => 'string',
@@ -28,8 +28,10 @@ class UpdateServicesAdminController extends Controller
         }
 
         unset($data['files']);
-
-        $service->update($data);
+        // company_name
+        $service->update(
+            $data + ['company_name' => 'qatarya']
+        );
 
         return redirect()
             ->route('index.services')

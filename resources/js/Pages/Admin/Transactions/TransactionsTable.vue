@@ -221,7 +221,6 @@ const customerPhone = computed(() => {
 
 const showMessagesWhatsapp = () => {
     axios.get(`/admin/getWhatsappChatMessages?customerPhone=${customerPhone.value}`).then((response) => {
-        console.log(response.data.messages);
         messages.value = response.data.messages.records;
     }).catch((error) => {
         console.log(error);
@@ -436,7 +435,7 @@ const deleteTransaction = (transaction) => {
                     :class="{ 'text-white': page.active, }" :color="page.active ? 'contrast' : 'whiteDark'" small
                     :as="page.url ? 'Link' : 'span'" :href="page.url" preserve-state :only="['transactions']" />
             </BaseButtons>
-            <small>Page {{ transactions.current_page }} of {{ transactions.total }}</small>
+            <!-- <small>Page {{ transactions.current_page }} of {{ transactions.total }}</small> -->
         </BaseLevel>
     </div>
 </template>

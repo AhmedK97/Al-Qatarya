@@ -17,7 +17,6 @@ class PaymentTransactionsController extends Controller
             'payments.*.date' => 'nullable',
             'payments.*.percentage' => 'nullable|numeric',
         ]);
-
         if (! $data) {
             $transaction->update([
                 'payments' => null,
@@ -37,7 +36,7 @@ class PaymentTransactionsController extends Controller
             return [
                 'amount' => $payment['amount'],
                 'percentage' => $payment['percentage'] ?? null,
-                'date' => $payment['date'] ?? now()->format('Y-m-d'),
+                'date' => $payment['amount'] ? now()->format('Y-m-d') : null,
             ];
         });
 

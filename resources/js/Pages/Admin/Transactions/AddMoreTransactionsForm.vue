@@ -86,8 +86,8 @@ const resetForm = () => {
     });
 };
 
-const removeExtraServices = (index) => {
-    form.extra_services.splice(index, 1);
+const removeExtraServices = (formItem) => {
+    form.extra_services = form.extra_services.filter(item => item !== formItem);
 };
 
 const addFormWorker = () => {
@@ -130,7 +130,6 @@ const submit = () => {
         preserveState: true,
         preserveScroll: true,
         onError: (errors) => {
-            // remove errors
             Object.keys(form.errors).forEach((key) => {
                 delete form.errors[key];
             });
@@ -138,13 +137,6 @@ const submit = () => {
             Object.assign(form.errors, errors);
         },
     };
-
-    // form.extra_services = form.extra_services.map((service) => {
-    //     return {
-    //         ...extra_services,
-    //         type: "service",
-    //     };
-    // });
 
     router.post(
         route("store.service.transactions", form.project_id),
@@ -198,27 +190,20 @@ const submit = () => {
     <CardBox v-if="openTab == 1" form @submit.prevent="submit" :customClass="'overflow-y-auto w-96'">
         <div>
             <div v-for="(service, id) in (form.services)" :key="id" class="mb-4">
-                <FormField :label="`اسم الخدمة : ${service.name}`">
+                <FormField  :label="`اسم الخدمة : ${service.name}`">
                     <FormControl v-model="service.price" placeholder="سعر المتر" />
-                    <FormControl v-model="service.quantity" placeholder="عدد الامتار" />
                 </FormField>
-                <base-divider />
 
 
                 <div v-if="form && form.errors">
-                    <!-- <span v-if=" form?.errors['services.' + id + '.price']" class="block text-sm text-red-600">
-                    {{ form?.errors['services.' + id + '.price'] }}
-                </span>
-                <span v-if="form?.errors['services.' + id + '.quantity']" class="block text-sm text-red-600">
-                    {{ form?.errors['services.' + id + '.quantity'] }}
-                </span> -->
-
                     <span
                         v-if="form?.errors['services.' + id + '.price'] || form?.errors['services.' + id + '.quantity']"
                         class="block text-sm text-red-600">
                         يجب التاكد من ملأ جميع البيانات بالشكل الصحيح
                     </span>
                 </div>
+                <base-divider />
+
             </div>
         </div>
         <template #footer>
@@ -237,9 +222,9 @@ const submit = () => {
                         <label class="block mb-2 font-bold">
                             الاســم
                         </label>
-                        <div class="flex justify-end">
+                         <div class="flex justify-end">
                             <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
-                                label="حــذف" @click="removeExtraServices(index)" />
+                                label="حــذف" @click="removeExtraServices(formItem)" />
                         </div>
                     </div>
 
@@ -248,17 +233,20 @@ const submit = () => {
                     </FormField>
                 </div>
 
-                <div class="gap-3 mt-5 grid !grid-cols-2">
+                <div class="gap-3 mt-5 grid !grid-cols-1">
                     <div>
                         <label class="block mb-2 font-bold">
                             السعر
                         </label>
                         <FormField>
-
                             <FormControl v-model="formItem.price" placeholder="السعر" />
                         </FormField>
+
+                        <span v-if="form.errors.length" class="block text-sm text-red-600">
+                           من فضلك تاكد من اضافه جميع الحقول بشكل صحيح
+                        </span>
                     </div>
-                    <div>
+                    <!-- <div>
                         <label class="block mb-2 font-bold">
                             الكمية
                         </label>
@@ -266,12 +254,12 @@ const submit = () => {
 
                             <FormControl v-model="formItem.quantity" placeholder="الكمية" />
                         </FormField>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <FormControl v-model="formItem.quantity" placeholder="الكمية" /> -->
 
                 <input type="hidden" v-bind:value="'service'">
-                <BaseDivider />
+                <BaseDivider  />
 
                 <div class="mb-5" v-if="form && form.errors">
                     <!-- <span v-if="form?.errors['extra_services.' + index + '.name']" class="block text-sm text-red-600">
@@ -319,7 +307,7 @@ const submit = () => {
                         </label>
                         <div class="flex justify-end">
                             <BaseButton type="button" class="w-24 h-0 mb-4" :icon="mdiMinus" color="danger"
-                                label="حــذف" @click="removeExtraServices(index)" />
+                                label="حــذف" @click="removeExtraServices(formItem)" />
                         </div>
                     </div>
 
@@ -353,7 +341,6 @@ const submit = () => {
 
                 <BaseDivider />
 
-                <!-- {{ form.errors }} -->
 
                 <div class="mb-5" v-if="form && form.errors">
                     <!-- <span v-if="form?.errors['extra_services.' + index + '.name']" class="block text-sm text-red-600">
