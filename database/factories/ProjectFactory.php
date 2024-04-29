@@ -76,19 +76,19 @@ class ProjectFactory extends Factory
      *
      * @return $this
      */
-    // public function configure()
-    // {
-    //     return $this->afterCreating(function (Project $project) {
-    //         // add project_image to project
+    public function configure()
+    {
+        return $this->afterCreating(function (Project $project) {
+            // add project_image to project
 
-    //         $image = 'https://picsum.photos/720.webp';
-    //         $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_MAIN_IMAGE);
+            $image = 'https://picsum.photos/720.webp';
+            $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_MAIN_IMAGE);
 
-    //         // add project_images to project
-    //         for ($i = 0; $i < 5; $i++) {
-    //             $image = 'https://picsum.photos/720.webp';
-    //             $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGES);
-    //         }
-    //     });
-    // }
+            // add project_images to project
+            for ($i = 0; $i < 5; $i++) {
+                $image = 'https://picsum.photos/720.webp';
+                $project->addMediaFromUrl($image)->toMediaCollection(Project::PROJECT_IMAGES);
+            }
+        });
+    }
 }
