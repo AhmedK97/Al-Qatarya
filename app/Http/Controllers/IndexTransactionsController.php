@@ -81,14 +81,14 @@ class IndexTransactionsController extends Controller
             ->through(function (Transaction $transaction) {
                 return new TransactionsAdminResource($transaction);
             });
-        dd($transactions);
+
         $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
 
-        $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
+        // $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
 
         $allWorkerCost = $costCalculationService->calculateAllWorkerCost($transactions);
 
-        $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
+        // $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
 
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
@@ -98,9 +98,9 @@ class IndexTransactionsController extends Controller
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),
             'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
             'projects' => ProjectsAlqataryaaResource::collection(Project::qatarya()->get()),
-            'profits' => $profits,
+            // 'profits' => $profits,
             'allServicesProfit' => $allServicesProfit,
-            'allExtraServicesProfit' => $allExtraServicesProfit,
+            // 'allExtraServicesProfit' => $allExtraServicesProfit,
             'allWorkerCosts' => $allWorkerCost,
         ]);
     }
