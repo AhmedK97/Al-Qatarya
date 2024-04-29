@@ -82,13 +82,13 @@ class IndexTransactionsController extends Controller
                 return new TransactionsAdminResource($transaction);
             });
 
-        // $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
+        $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
 
-        // $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
+        $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
 
-        // $allWorkerCost = $costCalculationService->calculateAllWorkerCost($transactions);
+        $allWorkerCost = $costCalculationService->calculateAllWorkerCost($transactions);
 
-        // $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
+        $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
 
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
@@ -98,10 +98,10 @@ class IndexTransactionsController extends Controller
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),
             'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
             'projects' => ProjectsAlqataryaaResource::collection(Project::qatarya()->get()),
-            // 'profits' => $profits,
-            // 'allServicesProfit' => $allServicesProfit,
-            // 'allExtraServicesProfit' => $allExtraServicesProfit,
-            // 'allWorkerCosts' => $allWorkerCost,
+            'profits' => $profits,
+            'allServicesProfit' => $allServicesProfit,
+            'allExtraServicesProfit' => $allExtraServicesProfit,
+            'allWorkerCosts' => $allWorkerCost,
         ]);
     }
 }
