@@ -81,7 +81,7 @@ class IndexTransactionsController extends Controller
             ->through(function (Transaction $transaction) {
                 return new TransactionsAdminResource($transaction);
             });
-
+        dd($transactions);
         $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
 
         $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
@@ -89,7 +89,6 @@ class IndexTransactionsController extends Controller
         $allWorkerCost = $costCalculationService->calculateAllWorkerCost($transactions);
 
         $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
-        dd($profits, $allServicesProfit, $allExtraServicesProfit, $allWorkerCost);
 
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
