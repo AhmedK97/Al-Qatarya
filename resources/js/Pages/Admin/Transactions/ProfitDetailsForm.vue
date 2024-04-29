@@ -437,9 +437,8 @@ const submit = () => {
 
                                         <th scope="col"
                                             class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
-                                            مجموع الخدمات المضافة
+                                           مجموع التكاليف
                                         </th>
-
 
                                         <th scope="col"
                                             class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50">
