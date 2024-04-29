@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->json('name');
-            $table->string('slug');
+            $table->string('name');
+            $table->string('lang')->nullable();
             $table->string('company_name')->nullable();
-            $table->json('body')->nullable();
-            $table->json('seo_title')->nullable();
-            $table->json('seo_description')->nullable();
-            $table->json('seo_keywords')->nullable();
+            $table->json('additional_info')->nullable();
+            $table->string('slug');
+            // $table->json('body')->nullable();
+            // $table->json('seo_title')->nullable();
+            // $table->json('seo_description')->nullable();
+            // $table->json('seo_keywords')->nullable();
             $table->timestamps();
         });
     }

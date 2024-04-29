@@ -24,7 +24,10 @@ class ShowProjectResource extends JsonResource
             'images' => $this->getMedia(Project::PROJECT_IMAGES)->map(function ($item) {
                 return $item->getFullUrl();
             }),
-            'agent' => $this->agent,
+            'videos' => $this->getMedia(Project::PROJECT_VIDEOS)->map(function ($item) {
+                return $item->getFullUrl();
+            }),
+            'agent' => $this->customer->name,
             'address' => $this->address,
             'date' => $this->created_at->format('d/m/Y'),
             'space_area' => $this->space_area,

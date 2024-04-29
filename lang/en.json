@@ -12,6 +12,8 @@
     "home.top.nav": "Pioneers in the field of thermal and water insulators",
     "home.call_us": "Call Us",
     "home.company_name": "Al-Qatarya",
+    "project.videos": "Videos",
+    "project.images": "Images",
     "(and :count more error)": "(and :count more error)",
     "(and :count more errors)": "(and :count more errors)",
     "A new verification link has been sent to the email address you provided in your profile settings.": "A new verification link has been sent to the email address you provided in your profile settings.",
@@ -253,8 +255,8 @@
     "footer.support": "Support",
     "footer.support-text": "Technical support is available to help you from 9 am to 7 pm",
     "footer.address-text": "Second Industrial Zone - 10th of Ramadan - Sharkia",
-    "footer.address-text1": "2301293231",
-    "footer.address-text2": "example@gmail.com",
+    "footer.address-text1": "+96599959053",
+    "footer.address-text2": "alqataryacom@gmail.com",
     "who.we.are-paragraph1": "An institution with extensive experience in the field of thermal insulation and water insulation in the Kingdom of Saudi Arabia, including...",
     "who.we.are-paragraph2": "A trained technical team, an organized administrative body, and modern equipment and machines.",
     "who.we.are-paragraph3": "General activity: maintenance and operation of buildings - installation, repair and maintenance of heat, water and sound insulation systems - construction of concrete buildings - maintenance and operation of precast buildings.",
@@ -294,5 +296,7 @@
     "agent": "Agent",
     "location": "Location",
     "project-date": "Date",
+    "payment.coupon.success": "Coupon applied successfully",
+    "payment.coupon.cancel": "Coupon canceled successfully",
     "space-area": "Space Area"
 }

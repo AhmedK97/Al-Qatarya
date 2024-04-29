@@ -40,29 +40,25 @@ const props = defineProps({
                 <div
                     class="container grid grid-cols-1 px-4 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3 gap-x-10 max-w-7xl gap-y-60 mb-60"
                 >
-                    <div
-                        v-for="(imageUrl, index) in service.images"
-                        :key="index"
-                    >
-                        <Link :href="route('service', service.slug)">
+                    <div v-for="(imageUrl, index) in service" :key="index">
+                        <Link :href="route('service', imageUrl.slug)">
                             <div class="relative">
                                 <div class="">
                                     <img
                                         class="w-full rounded-lg h-96"
                                         loading="lazy"
-                                        :src="imageUrl"
-                                        :alt="`Image ${index + 1}`"
+                                        :src="imageUrl.image"
                                     />
                                 </div>
 
                                 <div
-                                    class="absolute top-0 right-0 z-40 p-5 m-5 transition duration-300 ease-in-out bg-gray-100 rounded-lg shadow-lg hover:translate-y-2/3 h-80 shadow-blue-100 hover:shadow-rose-50 translate-y-3/4"
+                                    class="absolute top-[15rem] right-0 z-40 p-5 m-5 transition duration-300 ease-in-out bg-gray-100 rounded-lg shadow-lg hover:translate-y-2/3 shadow-blue-100 hover:shadow-rose-50 translate-y-3/4"
                                 >
                                     <p class="text-xl font-bold text-rose-900">
-                                        {{ service.name }}
+                                        {{ imageUrl.name }}
                                     </p>
                                     <p class="mt-4 text-lg">
-                                        {{ service.body }}
+                                        {{ imageUrl.body }}
                                     </p>
                                 </div>
                             </div>

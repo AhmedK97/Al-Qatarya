@@ -135,7 +135,7 @@ import { Link } from "@inertiajs/vue3";
                     <div class="flex space-x-4 rtl:space-x-reverse">
                         <img src="storage/images/phone-footer.svg" alt="" />
                         <p
-                            class="font-medium leading-relaxed text-gray-900 text-md"
+                            class="font-medium leading-relaxed text-gray-900 direction text-md"
                         >
                             {{ $t("footer.address-text1") }}
                         </p>
@@ -173,28 +173,6 @@ import { Link } from "@inertiajs/vue3";
             </div>
         </div>
 
-        <!-- <div
-            class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6 rtl:left-auto"
-        >
-            <div>
-                <a href="tel:+123456789" class="mr-2">
-                    <img
-                        src="/storage/images/phone-white.svg"
-                        alt="Call Us"
-                        class="w-12 h-12 p-2 bg-blue-500 rounded-full hover:bg-blue-600"
-                    />
-                </a>
-            </div>
-            <div>
-                <a href="https://wa.me/123456789" target="_blank">
-                    <img
-                        src="/storage/images/whatsapp-white.svg"
-                        alt="WhatsApp"
-                        class="w-12 h-12 p-2 bg-green-500 rounded-full hover:bg-green-600"
-                    />
-                </a>
-            </div>
-        </div> -->
 
         <div
             class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6 rtl:left-auto"
@@ -202,7 +180,8 @@ import { Link } from "@inertiajs/vue3";
             <!-- telephone icon -->
             <div class="w-16 h-16 bg-white rounded-full shadow-lg">
                 <a
-                    href="tel:01000000000"
+                :href="`tel:${$t('footer.address-text1')}`"
+
                     class="flex items-center justify-center w-full h-full"
                 >
                     <dotlottie-player
@@ -217,7 +196,7 @@ import { Link } from "@inertiajs/vue3";
             <!-- whatsapp icon -->
             <div class="w-16 h-16 mt-4 bg-white rounded-full shadow-lg">
                 <a
-                    href="https://wa.me/01000000000"
+                    href="https://wa.me/96599959053"
                     class="flex items-center justify-center w-full h-full"
                 >
                     <dotlottie-player
@@ -234,3 +213,13 @@ import { Link } from "@inertiajs/vue3";
         <MobileControllers />
     </footer>
 </template>
+
+<style scoped>
+/* html[dir="ltr"] .direction {
+    direction: rtl !important;
+} */
+
+html[dir="rtl"] .direction {
+    direction: ltr !important;
+}
+</style>

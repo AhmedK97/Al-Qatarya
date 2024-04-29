@@ -23,7 +23,7 @@
                         class="grid grid-cols-2 mt-4 md:grid-cols-3 lg:grid-cols-3 gap-y-10 md:mt-10"
                     >
                         <div
-                            class="flex space-x-2 rtl:space-x-reverse"
+                            class="flex m-auto space-x-2 rtl:space-x-reverse"
                             v-for="service in services"
                             :key="service.id"
                         >

@@ -1,4 +1,7 @@
 import "../css/app.css";
+// import "../css/admin/main.css";
+import "../css/Admin/main.css";
+import "vue-select/dist/vue-select.css";
 
 import { createApp, h } from "vue";
 import { createPinia } from "pinia";
@@ -9,10 +12,14 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { i18nVue } from "laravel-vue-i18n";
 import { MotionPlugin } from "@vueuse/motion";
+import vSelect from "vue-select";
+import CKEditor from "@ckeditor/ckeditor5-vue";
+import "@ebcom/dotlottie-player";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
-const appName =
-    window.document.getElementsByTagName("title")[0]?.innerText ||
-    "القطريه للعوازل";
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+const appName = "الشركه القطريه للمقاولات العامه للمباني";
 
 const pinia = createPinia();
 
@@ -27,14 +34,18 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18nVue, {
-                resolve: async (lang) => {
-                    const langs = import.meta.glob("../../lang/*.json");
+                resolve: async(lang) => {
+                    const langs =
+                        import.meta.glob("../../lang/*.json");
                     return await langs[`../../lang/${lang}.json`]();
                 },
             })
             .use(ZiggyVue, Ziggy)
             .use(pinia)
             .use(MotionPlugin)
+            .use(CKEditor)
+            .component("v-select", vSelect)
+            .component("VueDatePicker", VueDatePicker)
             .mount(el);
     },
     progress: {
@@ -45,7 +56,7 @@ createInertiaApp({
 const styleStore = useStyleStore(pinia);
 
 /* App style */
-styleStore.setStyle(localStorage[styleKey] ?? "basic");
+styleStore.setStyle(localStorage[styleKey]);
 
 /* Dark mode */
 if (

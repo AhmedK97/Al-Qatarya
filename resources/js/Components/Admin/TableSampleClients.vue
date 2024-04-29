@@ -180,7 +180,7 @@ const checked = (isChecked, client) => {
                     @click="currentPage = page"
                 />
             </BaseButtons>
-            <small>Page {{ currentPageHuman }} of {{ numPages }}</small>
+            <!-- <small>Page {{ currentPageHuman }} of {{ numPages }}</small> -->
         </BaseLevel>
     </div>
 </template>

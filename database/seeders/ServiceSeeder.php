@@ -219,24 +219,22 @@ class ServiceSeeder extends Seeder
             $seo_title = json_encode(Arr::only($servicesData['seo_title'], ['en', 'ar']));
             $seo_description = json_encode(Arr::only($servicesData['seo_description'], ['en', 'ar']));
             $seo_keywords = json_encode(Arr::only($servicesData['seo_keywords'], ['en', 'ar']));
-            $image = 'https://picsum.photos/720.webp';
+            // $image = 'https://picsum.photos/720.webp';
 
             $service = Service::create([
                 'name' => json_decode($name, true),
                 'body' => json_decode($body, true),
-                'seo_title' => json_decode($seo_title, true),
-                'seo_description' => json_decode($seo_description, true),
-                'seo_keywords' => json_decode($seo_keywords, true),
+                // 'seo_title' => json_decode($seo_title, true),
+                // 'seo_description' => json_decode($seo_description, true),
+                // 'seo_keywords' => json_decode($seo_keywords, true),
                 'company_name' => Arr::random(['qatarya', 'othman']),
-
             ]);
 
-            $service->addMediaFromUrl($image)->toMediaCollection('services_main_image');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-            $service->addMediaFromUrl($image)->toMediaCollection('services');
-
+            // $service->addMediaFromUrl($image)->toMediaCollection('services_main_image');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
+            // $service->addMediaFromUrl($image)->toMediaCollection('services');
         }
     }
 }

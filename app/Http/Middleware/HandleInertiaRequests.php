@@ -33,6 +33,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
         return array_merge(parent::share($request), [
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
@@ -42,10 +43,14 @@ class HandleInertiaRequests extends Middleware
 
             // services
             'services' => function () {
-                $services = Service::select('name', 'slug')->get();
+                $services = Service::select('name', 'slug')->where('lang', 'like', '%'.app()->getLocale().'%')->get();
 
                 return ServiceResource::collection($services);
             },
+            'flash' => [
+                'swalNotification' => fn () => $request->session()->get('swalNotification'),
+                'showFillInformationModal' => fn () => $request->session()->get('showFillInformationModal'),
+            ],
 
             'locale' => function () {
                 $locales = [];

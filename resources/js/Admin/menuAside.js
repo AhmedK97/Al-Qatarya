@@ -1,34 +1,61 @@
 import {
-    mdiAccountCircle,
     mdiMonitor,
-    mdiGithub,
-    mdiLock,
-    mdiAlertCircle,
+    mdiWhatsapp,
     mdiSquareEditOutline,
-    mdiTable,
     mdiViewList,
-    mdiTelevisionGuide,
-    mdiResponsive,
-    mdiPalette,
-    mdiReact,
+    mdiAccountMultipleOutline,
+    mdiAccountGroup,
+    mdiCashMultiple,
 } from "@mdi/js";
 
-export default [
-    {
+export default [{
         route: "dashboard",
         icon: mdiMonitor,
-        label: "Dashboard",
+        label: "لوحه التحكم",
     },
+    {
+        route: "index.employees",
+        label: "الموظفين",
+        icon: mdiAccountMultipleOutline,
+    },
+    {
+        route: "index.customers",
+        label: "العمــلاء",
+        icon: mdiAccountGroup,
+    },
+    {
+        route: "index.services",
+        label: "الخدمــات",
+        icon: mdiSquareEditOutline,
+    },
+    {
+        route: "index.projects",
+        label: "المشــاريع",
+        icon: mdiSquareEditOutline,
+    },
+    {
+        route: "index.transactions",
+        label: "المعــاملات المالية",
+        icon: mdiCashMultiple,
+    },
+    {
+        route: "index.whatsapp",
+        label: "WhatsApp",
+        icon: mdiWhatsapp,
+    },
+    {
+        route: "index.whatsapp.ads",
+        label: "WhatsApp Ads",
+        icon: mdiWhatsapp,
+    },
+
     // {
-    //     route: "/tables",
-    //     label: "Tables",
+    //     // Inventory
+    //     label: "Inventory",
     //     icon: mdiTable,
+    //     route: "index.inventory",
     // },
-    // {
-    //     route: "/forms",
-    //     label: "Forms",
-    //     icon: mdiSquareEditOutline,
-    // },
+
     // {
     //     route: "/ui",
     //     label: "UI",
@@ -59,28 +86,16 @@ export default [
     //     label: "Error",
     //     icon: mdiAlertCircle,
     // },
-    {
-        label: "Dropdown",
-        icon: mdiViewList,
-        menu: [
-            {
-                label: "Item One",
-            },
-            {
-                label: "Item Two",
-            },
-        ],
-    },
-    {
-        href: "https://github.com/justboil/admin-one-vue-tailwind",
-        label: "GitHub",
-        icon: mdiGithub,
-        target: "_blank",
-    },
-    {
-        href: "https://github.com/justboil/admin-one-react-tailwind",
-        label: "React version",
-        icon: mdiReact,
-        target: "_blank",
-    },
+    // {
+    //     label: "Dropdown",
+    //     icon: mdiViewList,
+    //     menu: [
+    //         {
+    //             label: "Item One",
+    //         },
+    //         {
+    //             label: "Item Two",
+    //         },
+    //     ],
+    // },
 ];

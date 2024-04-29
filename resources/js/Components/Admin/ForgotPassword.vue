@@ -7,7 +7,6 @@ import CardBox from "@/Components/Admin/CardBox.vue";
 import FormField from "@/Components/Admin/FormField.vue";
 import FormControl from "@/Components/Admin/FormControl.vue";
 import BaseDivider from "@/Components/Admin/BaseDivider.vue";
-import BaseButton from "@/Components/Admin/BaseButton.vue";
 import FormValidationErrors from "@/Components/Admin/FormValidationErrors.vue";
 import BaseLevel from "@/Components/Admin/BaseLevel.vue";
 import NotificationBarInCard from "@/Components/Admin/NotificationBarInCard.vue";
@@ -30,6 +29,7 @@ const submit = () => {
 
 <template>
     <LayoutGuest>
+
         <Head title="Forgot Password" />
 
         <SectionFullScreen v-slot="{ cardClass }" bg="purplePink">
@@ -49,25 +49,14 @@ const submit = () => {
                 </FormField>
 
                 <FormField label="Email" help="Please enter your email">
-                    <FormControl
-                        v-model="form.email"
-                        :icon="mdiEmail"
-                        autocomplete="email"
-                        type="email"
-                        required
-                    />
+                    <FormControl v-model="form.email" :icon="mdiEmail" autocomplete="email" type="email" required />
                 </FormField>
 
                 <BaseDivider />
 
                 <BaseLevel>
-                    <BaseButton
-                        type="submit"
-                        color="info"
-                        label="Email link"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                    />
+                    <BaseButton type="submit" color="info" label="Email link" :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing" />
                     <Link :href="route('login')"> Back to login </Link>
                 </BaseLevel>
             </CardBox>

@@ -4,7 +4,6 @@ import "vue3-carousel/dist/carousel.css";
 import BannerSlider from "@/Components/BannerSlider.vue";
 import WhyUs from "@/Components/WhyUs.vue";
 import WhoWeAre from "@/Components/WhoWeAre.vue";
-import "@ebcom/dotlottie-player";
 import PartnerSlider from "@/Components/PartnerSlider.vue";
 import HomeProjects from "@/Components/HomeProjects.vue";
 import StartPlanning from "@/Components/StartPlanning.vue";
@@ -19,15 +18,6 @@ const props = defineProps({
     project: Object,
 });
 
-const lottiePlayButton = onMounted(() => {
-    // Find the element by its ID
-    const lottiePlayButton = document.getElementById("lottie-play-button");
-
-    // Trigger a click event on the element
-    if (lottiePlayButton) {
-        lottiePlayButton.click();
-    }
-});
 
 const sponsors = [
     {

@@ -23,7 +23,7 @@ const props = defineProps({
 });
 
 const form = useForm({
-    email: "",
+    phone: "",
     password: "",
     remember: [],
 });
@@ -40,6 +40,7 @@ const submit = () => {
 
 <template>
     <LayoutGuest>
+
         <Head title="Login" />
 
         <SectionFullScreen v-slot="{ cardClass }" bg="purplePink">
@@ -50,62 +51,28 @@ const submit = () => {
                     {{ status }}
                 </NotificationBarInCard>
 
-                <FormField
-                    label="Email"
-                    label-for="email"
-                    help="Please enter your email"
-                >
-                    <FormControl
-                        v-model="form.email"
-                        :icon="mdiAccount"
-                        id="email"
-                        autocomplete="email"
-                        type="email"
-                        required
-                    />
+                <FormField label="phone" label-for="phone" help="Please enter your phone">
+                    <FormControl v-model="form.phone" :icon="mdiAccount" id="phone" autocomplete="phone" type="phone"
+                        required />
                 </FormField>
 
-                <FormField
-                    label="Password"
-                    label-for="password"
-                    help="Please enter your password"
-                >
-                    <FormControl
-                        v-model="form.password"
-                        :icon="mdiAsterisk"
-                        type="password"
-                        id="password"
-                        autocomplete="current-password"
-                        required
-                    />
+                <FormField label="Password" label-for="password" help="Please enter your password">
+                    <FormControl v-model="form.password" :icon="mdiAsterisk" type="password" id="password"
+                        autocomplete="current-password" required />
                 </FormField>
 
-                <FormCheckRadioGroup
-                    v-model="form.remember"
-                    name="remember"
-                    :options="{ remember: 'Remember' }"
-                />
+                <FormCheckRadioGroup v-model="form.remember" name="remember" :options="{ remember: 'Remember' }" />
 
                 <BaseDivider />
 
                 <BaseLevel>
                     <BaseButtons>
-                        <BaseButton
-                            type="submit"
-                            color="info"
-                            label="Login"
-                            :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing"
-                        />
-                        <BaseButton
-                            v-if="canResetPassword"
-                            route-name="password.request"
-                            color="info"
-                            outline
-                            label="Remind"
-                        />
+                        <BaseButton type="submit" color="info" label="Login" :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing" />
+                        <BaseButton v-if="canResetPassword" route-name="password.request" color="info" outline
+                            label="Remind" />
                     </BaseButtons>
-                    <Link :href="route('register')"> Register </Link>
+                    <!-- <Link :href="route('register')"> Register </Link> -->
                 </BaseLevel>
             </CardBox>
         </SectionFullScreen>

@@ -45,12 +45,7 @@ const submit = (event) => {
 </script>
 
 <template>
-    <component
-        :is="isForm ? 'form' : 'div'"
-        :class="componentClass"
-        class="flex bg-white"
-        @submit="submit"
-    >
+    <component :is="isForm ? 'form' : 'div'" :class="componentClass" class="flex bg-white" @submit="submit">
         <slot v-if="hasComponentLayout" />
         <template v-else>
             <CardBoxComponentBody :no-padding="hasTable">

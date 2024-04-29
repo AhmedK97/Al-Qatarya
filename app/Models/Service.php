@@ -8,16 +8,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Translatable\HasTranslations;
 
 class Service extends Model implements HasMedia
 {
     use HasSlug;
     use HasFactory;
-    use HasTranslations;
     use InteractsWithMedia;
 
-    public $translatable = ['name', 'body', 'seo_title', 'seo_description', 'seo_keywords'];
+    public const SERVICE_MAIN_IMAGE = 'service_main_image';
 
     protected $guarded = [];
 
@@ -26,5 +24,26 @@ class Service extends Model implements HasMedia
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class)->withPivot('price', 'quantity');
+
+    }
+
+    public function scopeQatarya()
+    {
+        return $this->where('company_name', 'qatarya');
+    }
+
+    // public function transactions()
+    // {
+    //     return $this->belongsToMany(Transaction::class, 'service_transaction');
+    // }
+
+    public function scopeOthman()
+    {
+        return $this->where('company_name', 'othman');
     }
 }

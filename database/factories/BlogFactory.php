@@ -40,11 +40,11 @@ class BlogFactory extends Factory
      *
      * @return $this
      */
-    public function configure()
-    {
-        return $this->afterCreating(function (Blog $blog) {
-            $image = 'https://picsum.photos/720.webp';
-            $blog->addMediaFromUrl($image)->toMediaCollection('blog_image');
-        });
-    }
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Blog $blog) {
+    //         $image = 'https://picsum.photos/720.webp';
+    //         $blog->addMediaFromUrl($image)->toMediaCollection('blog_image');
+    //     });
+    // }
 }

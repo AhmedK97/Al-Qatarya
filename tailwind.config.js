@@ -2,6 +2,7 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
+
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
@@ -10,6 +11,7 @@ module.exports = {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.vue",
+        "./resources/css/**/*.css",
         "./resources/js/**/*.js",
     ],
     darkMode: "class", // or 'media' or 'class'
@@ -42,11 +44,17 @@ module.exports = {
                     from: { opacity: 0 },
                     to: { opacity: 1 },
                 },
+                wiggle: {
+                    "0%, 100%": { transform: "rotate(-3deg)" },
+                    "50%": { transform: "rotate(3deg)" },
+                },
             },
             animation: {
                 "fade-out": "fade-out 250ms ease-in-out",
                 "fade-in": "fade-in 250ms ease-in-out",
+                "spin-slow": "spin 3s linear infinite",
             },
+
             fontFamily: {
                 sans: ["Cairo", ...defaultTheme.fontFamily.sans],
                 nunito: "Tajawal, sans-serif",

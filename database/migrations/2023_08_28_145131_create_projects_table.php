@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->json('title');
-            $table->json('agent');
-            $table->json('address');
-            $table->date('date');
-            $table->integer('space_area');
-            $table->json('description');
+            $table->json('title')->nullable();
             $table->string('slug');
+            $table->date('project_date');
+            $table->json('address')->nullable();
+            $table->string('space_area')->nullable();
+            $table->json('description')->nullable();
+            $table->text('notes')->nullable();
+            $table->string('cost')->nullable();
+            $table->string('status');
+            $table->string('company');
+            $table->foreignId('employee_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('customer_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
 
         });

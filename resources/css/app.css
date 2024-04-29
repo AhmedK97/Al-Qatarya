@@ -1,9 +1,57 @@
-@import "tailwindcss/base";
+@import 'ckeditor-tailwind-reset/ckeditor-tailwind-reset';
 
-@import "tailwindcss/components";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/utilities";
+@layer utilities {
+    .debug {
+        @apply border-2 border-red-500;
+    }
+}
 
-[x-cloak] {
-    display: none;
+td {
+    text-align: right !important;
+}
+
+th {
+    text-align: right !important;
+}
+
+.vuejs3-datepicker__value {
+    min-width: 18rem !important;
+    padding: 10px 15px !important;
+    border: 2px solid #adadad !important;
+
+}
+
+.vuejs3-datepicker__icon {
+    padding: 0 5px 0 5px !important;
+}
+
+.vuejs3-datepicker__content {
+    padding: 4px 5px 0 5px !important;
+}
+
+
+/* less than 767 */
+@media screen and (max-width: 768px) {
+    .vuejs3-datepicker__value {
+        min-width: 19rem !important;
+    }
+
+}
+
+
+.search-bar input,
+.message-active {
+    background-color: #323739;
+}
+
+.single-message {
+    background-color: #262d31;
+}
+
+.single-message.user {
+    background-color: #056162;
 }

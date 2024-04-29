@@ -18,7 +18,6 @@ const showDropDown = ref(false);
 
 const dropDownService = () => {
     showDropDown.value = !showDropDown.value;
-    console.log(showDropDown.value);
 };
 
 const showingNavigationDropdown = ref(false);
@@ -49,7 +48,7 @@ const logout = () => {
                     <p
                         class="pr-4 mt-1 text-xs font-normal text-gray-900 rtl:pr-0 rtl:pl-4 ltr:mt-2 sm:text-base"
                     >
-                        {{ $t("home.top.nav") }}
+                        {{ $t("home.top.nav") }}]
                     </p>
                 </div>
                 <!-- change language and social icons -->
@@ -185,8 +184,8 @@ const logout = () => {
                                 <p class="text-sm font-medium text-gray-300">
                                     {{ $t("home.phone_number") }}
                                 </p>
-                                <p class="font-medium text-md text-gray-50">
-                                    0123456789
+                                <p class="font-medium direction text-md text-gray-50 ">
+                                    +96599959053
                                 </p>
                             </div>
                         </div>
@@ -203,7 +202,7 @@ const logout = () => {
                                     {{ $t("home.email") }}
                                 </p>
                                 <p class="font-medium text-md text-gray-50">
-                                    info@alqatarya.com
+                                    alqataryacom@gmail.com
                                 </p>
                             </div>
                         </div>
@@ -482,6 +481,14 @@ const logout = () => {
 .slide-enter-active,
 .slide-leave-active {
     transition: all 0.3s ease-in-out;
+}
+
+/* html[dir="ltr"] .direction {
+    direction: rtl !important;
+} */
+
+html[dir="rtl"] .direction {
+    direction: ltr !important;
 }
 
 .slide-enter-from,

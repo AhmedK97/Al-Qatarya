@@ -8,7 +8,6 @@ const props = defineProps({
     blog: Object,
     blogs: Array,
 });
-// console.log(props.service);
 </script>
 
 <template>

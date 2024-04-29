@@ -16,10 +16,9 @@ class ServiceResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->getTranslation('name', currentLocale()),
+            'name' => $this->name,
             'slug' => $this->slug,
             'main_image' => $this->getFirstMediaUrl('services_main_image') ?? null,
-            'name' => $this->getTranslation('name', currentLocale()),
         ];
     }
 }
