@@ -82,9 +82,9 @@ class IndexTransactionsController extends Controller
                 return new TransactionsAdminResource($transaction);
             });
 
-        $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
+        // $allServicesProfit = $costCalculationService->calculateAllServicesProfit($transactions);
 
-        // $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
+        $allExtraServicesProfit = $costCalculationService->calculateAllExtraServicesProfit($transactions);
 
         $allWorkerCost = $costCalculationService->calculateAllWorkerCost($transactions);
 
@@ -99,8 +99,8 @@ class IndexTransactionsController extends Controller
             'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
             'projects' => ProjectsAlqataryaaResource::collection(Project::qatarya()->get()),
             // 'profits' => $profits,
-            'allServicesProfit' => $allServicesProfit,
-            // 'allExtraServicesProfit' => $allExtraServicesProfit,
+            // 'allServicesProfit' => $allServicesProfit,
+            'allExtraServicesProfit' => $allExtraServicesProfit,
             'allWorkerCosts' => $allWorkerCost,
         ]);
     }
