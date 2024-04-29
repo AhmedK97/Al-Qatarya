@@ -5,7 +5,7 @@
         >
             <Link :href="route('home')">
                 <div
-                    class="flex flex-col items-center justify-center px-3 py-2 space-y-2 hover:bg-rose-800"
+                    class="flex flex-col items-center justify-center px-3 py-2 space-y-2 rounded-2xl hover:bg-rose-800"
                 >
                     <img
                         src="/storage/images/mobile-controllers-house.svg"
@@ -19,7 +19,7 @@
             </Link>
             <a href="https://wa.me/123456789" target="_blank">
                 <div
-                    class="flex flex-col items-center justify-center px-3 py-2 space-y-1 hover:bg-rose-800"
+                    class="flex flex-col items-center justify-center px-3 py-2 space-y-1 hover:bg-rose-800 rounded-2xl"
                 >
                     <!-- <img
                         src="/storage/images/mobile-controllers-whatsapp.svg"
@@ -40,7 +40,7 @@
                 </div>
             </a>
             <div
-                class="relative flex flex-col items-center justify-center px-3 py-2 space-y-1 hover:bg-rose-800"
+                class="relative flex flex-col items-center justify-center px-3 py-2 space-y-1 hover:bg-rose-800 rounded-2xl"
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
             >
                 <!-- <img
@@ -102,7 +102,7 @@
             </div>
             <Link :href="route('services')">
                 <div
-                    class="flex flex-col items-center justify-center px-3 py-2 space-y-2 hover:bg-rose-800"
+                    class="flex flex-col items-center justify-center px-3 py-2 space-y-2 hover:bg-rose-800 rounded-2xl"
                 >
                     <img
                         src="/storage/images/mobile-controllers-services.svg"

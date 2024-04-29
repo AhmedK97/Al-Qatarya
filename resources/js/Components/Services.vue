@@ -6,7 +6,6 @@ import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 const props = defineProps({
     services: Object,
 });
-
 </script>
 
 <template>
