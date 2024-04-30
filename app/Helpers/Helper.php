@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-if (!function_exists('supportedLocales')) {
+if (! function_exists('supportedLocales')) {
     function supportedLocales()
     {
         return LaravelLocalization::getSupportedLocales();
@@ -11,14 +11,14 @@ if (!function_exists('supportedLocales')) {
 }
 
 // currentLocale
-if (!function_exists('currentLocale')) {
+if (! function_exists('currentLocale')) {
     function currentLocale()
     {
         return LaravelLocalization::getCurrentLocale();
     }
 }
 
-if (!function_exists('createHttpRequest')) {
+if (! function_exists('createHttpRequest')) {
 
     function HttpRequest($route, string $method, $headers, $formData)
     {
@@ -28,6 +28,6 @@ if (!function_exists('createHttpRequest')) {
             $request = $request->withHeaders($headers);
         }
 
-        return $request->$method(config('app.whats_app_url') . $route, $formData);
+        return $request->$method(config('app.whats_app_url').$route, $formData);
     }
 }

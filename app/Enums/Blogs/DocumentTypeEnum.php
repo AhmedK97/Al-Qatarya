@@ -12,7 +12,6 @@ enum DocumentTypeEnum: string
     case PPT = 'application/vnd.ms-powerpoint';
     case PPTX = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
 
-
     public static function getMimeTypes(): array
     {
         return [

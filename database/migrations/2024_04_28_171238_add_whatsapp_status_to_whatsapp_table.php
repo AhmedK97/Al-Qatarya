@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('whatsapp', function (Blueprint $table) {
-            if (!Schema::hasColumn('whatsapp', 'whatsapp_status')) {
+            if (! Schema::hasColumn('whatsapp', 'whatsapp_status')) {
                 $table->string('whatsapp_status')->nullable();
             }
         });

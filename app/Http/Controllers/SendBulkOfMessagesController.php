@@ -7,7 +7,6 @@ use App\Jobs\SendMessageJob;
 use App\Models\WhatsApp;
 use App\Models\WhatsAppAds;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class SendBulkOfMessagesController extends Controller
 {
@@ -43,14 +42,14 @@ class SendBulkOfMessagesController extends Controller
                 return \Str::contains($fileType, $value);
             });
 
-            if (!$matchingType) {
+            if (! $matchingType) {
                 return response()->json([
                     'message' => 'صيغة الملف غير مدعومة',
                 ], 422);
             }
             $file = $request->file('file');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = 'whatsappMedia/' . $fileName;
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $filePath = 'whatsappMedia/'.$fileName;
             $file->storeAs('public', $filePath);
         }
         $numbers = explode("\n", $request->numbers);
@@ -58,7 +57,6 @@ class SendBulkOfMessagesController extends Controller
         $numbers = array_map(function ($number) {
             return trim($number);
         }, $numbers);
-
 
         foreach ($numbers as $number) {
             WhatsAppAds::create([
@@ -72,7 +70,7 @@ class SendBulkOfMessagesController extends Controller
 
         // check whatsapp instance
         $whatsApp = WhatsApp::ads()->where('status', 'active')->first();
-        if (!$whatsApp) {
+        if (! $whatsApp) {
             return back()->with('swalNotification', [
                 'title' => __('common.error'),
                 'text' => __('whatsapp.no_active_instance'),

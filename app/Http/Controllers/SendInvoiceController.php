@@ -40,8 +40,7 @@ class SendInvoiceController extends Controller
 
         $transactions = TransactionsAdminResource::make($transactions->first());
 
-            // dd($transactions);
-
+        // dd($transactions);
 
         // dd($totalPaidAmount);
         $pdfContent = view('invoice.index', [

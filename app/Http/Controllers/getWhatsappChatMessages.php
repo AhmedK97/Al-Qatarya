@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WhatsApp;
 use Illuminate\Http\Request;
 
-class getWhatsappChatMessages extends Controller
+class GetWhatsappChatMessages extends Controller
 {
     /**
      * Handle the incoming request.
@@ -34,7 +34,7 @@ class getWhatsappChatMessages extends Controller
                 'page' => 1,
             ];
 
-        $messages = HttpRequest('/chat/findMessages/' . $info->instance_name, 'post', $header, $formData);
+        $messages = HttpRequest('/chat/findMessages/'.$info->instance_name, 'post', $header, $formData);
 
         return $messages->json();
     }

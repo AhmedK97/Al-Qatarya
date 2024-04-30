@@ -4,7 +4,6 @@ namespace App\Enums\Blogs;
 
 enum AudioTypeEnum: string
 {
-
     case MP3 = 'audio/mpeg';
     case WAV = 'audio/wav';
     case OGG = 'audio/ogg';

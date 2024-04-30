@@ -138,7 +138,7 @@ const submit = () => {
     };
 
     if (isUpdate.value) {
-        router.put(
+        router.post(
             route("update.transactions", transaction.id),
             form,
             Object.assign(sharedFormOptions, {

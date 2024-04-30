@@ -25,7 +25,6 @@ class IndexWhatsAppAdsController extends Controller
                 return new whatsAppAdsResource($whatsAppAds);
             });
 
-
         $whatsAppAdsActiveNumbers = WhatsApp::where('status', 'active')->count();
 
         return Inertia::render('Admin/WhatsAppAds/Index', [

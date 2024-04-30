@@ -26,7 +26,7 @@ class UpdateWhatsAppController extends Controller
                         }
                     }
                 },
-                Rule::in(WhatsAppTypeEnum::getValues())
+                Rule::in(WhatsAppTypeEnum::getValues()),
             ],
             'status' => 'nullable',
         ]);

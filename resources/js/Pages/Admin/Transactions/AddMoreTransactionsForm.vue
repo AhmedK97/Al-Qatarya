@@ -191,7 +191,7 @@ const submit = () => {
         <div>
             <div v-for="(service, id) in (form.services)" :key="id" class="mb-4">
                 <FormField  :label="`اسم الخدمة : ${service.name}`">
-                    <FormControl v-model="service.price" placeholder="سعر المتر" />
+                    <FormControl v-model="service.price" placeholder="السعر" />
                 </FormField>
 
 
