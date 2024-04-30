@@ -1,11 +1,5 @@
 <script setup>
-import {
-    computed,
-    ref,
-    watch,
-    reactive,
-    onMounted
-} from "vue";
+import { computed, ref, watch, reactive, onMounted } from "vue";
 import eventBus from "@/Composables/eventBus.js";
 
 import {
@@ -34,17 +28,11 @@ import CardBoxComponentEmpty from "@/Components/Admin/CardBoxComponentEmpty.vue"
 import TransactionsPayment from "@/Pages/Admin/Transactions/TransactionsPayment.vue";
 import WhatsAppMessages from "@/Pages/Admin/Transactions/WhatsAppMessages.vue";
 
-import {
-    router,
-    useForm
-} from "@inertiajs/vue3";
+import { router, useForm } from "@inertiajs/vue3";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const {
-    transactions,
-    filters,
-} = defineProps({
+const { transactions, filters } = defineProps({
     transactions: {
         type: Object,
         default: [],
@@ -70,7 +58,6 @@ const {
         default: {},
     },
 });
-
 
 onMounted(() => {
     eventBus.$on("openModal", (modalToOpen) => {
@@ -154,13 +141,19 @@ const currentShowProfitDetails = ref(null);
 
 const currentWhatsappTransaction = ref(null);
 
-const isShowWhatsappTransactionModalOpen = ref(false && currentWhatsappTransaction.value);
+const isShowWhatsappTransactionModalOpen = ref(
+    false && currentWhatsappTransaction.value
+);
 
 const isFormModalOpen = ref(false && currentlyEditedTransaction.value);
 
-const isAddMoreTransactionModalOpen = ref(false && currentAddMoreTransaction.value);
+const isAddMoreTransactionModalOpen = ref(
+    false && currentAddMoreTransaction.value
+);
 
-const isShowTransactionsPayment = ref(false && currentShowTransactionsPayment.value);
+const isShowTransactionsPayment = ref(
+    false && currentShowTransactionsPayment.value
+);
 
 const isProfitDetailsModalOpen = ref(false && currentShowProfitDetails.value);
 
@@ -190,23 +183,22 @@ const profitDetails = (transaction) => {
     isProfitDetailsModalOpen.value = true;
 };
 
-
 const formModalTitle = computed(() => {
-    return currentlyEditedTransaction.value?.id ?
-        `المعاملات المالية` :
-        "المعاملات المالية";
+    return currentlyEditedTransaction.value?.id
+        ? `المعاملات المالية`
+        : "المعاملات المالية";
 });
 
 const AddMoreTransactionModalTitle = computed(() => {
-    return currentAddMoreTransaction.value?.id ?
-        `اضافة وتعديل المعاملات المالية` :
-        "اضافة وتعديل المعاملات المالية` :";
+    return currentAddMoreTransaction.value?.id
+        ? `اضافة وتعديل المعاملات المالية`
+        : "اضافة وتعديل المعاملات المالية` :";
 });
 
 const ShowTransactionsPaymentModalTitle = computed(() => {
-    return currentShowTransactionsPayment.value?.id ?
-        `المعاملات  المالية وحساب الارباح` :
-        "المعاملات  المالية وحساب الارباح";
+    return currentShowTransactionsPayment.value?.id
+        ? `المعاملات  المالية وحساب الارباح`
+        : "المعاملات  المالية وحساب الارباح";
 });
 
 const openFormModal = () => {
@@ -216,17 +208,23 @@ const openFormModal = () => {
 const messages = ref(null);
 
 const customerPhone = computed(() => {
-    return currentWhatsappTransaction?.value?.customer?.phone + "@s.whatsapp.net";
+    return (
+        currentWhatsappTransaction?.value?.customer?.phone + "@s.whatsapp.net"
+    );
 });
 
 const showMessagesWhatsapp = () => {
-    axios.get(`/admin/getWhatsappChatMessages?customerPhone=${customerPhone.value}`).then((response) => {
-        messages.value = response.data.messages.records;
-    }).catch((error) => {
-        console.log(error);
-    });
+    axios
+        .get(
+            `/admin/getWhatsappChatMessages?customerPhone=${customerPhone.value}`
+        )
+        .then((response) => {
+            messages.value = response.data.messages.records;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };
-
 
 const deleteTransaction = (transaction) => {
     Swal.fire({
@@ -245,8 +243,8 @@ const deleteTransaction = (transaction) => {
                 replace: true,
                 onSuccess: () => {
                     Swal.fire({
-                        title: "Deleted!",
-                        text: `${transaction.name} has been deleted.`,
+                        title: "تم الحذف!",
+                        text: `تم حذف ${transaction.name}`,
                         icon: "success",
                         showConfirmButton: true,
                         timer: 2000,
@@ -259,35 +257,77 @@ const deleteTransaction = (transaction) => {
 </script>
 
 <template>
-    <CardBoxModal cardWidthClass="w-[80%] 2xl:w-4/12" scrollable :hasCancel="true" v-model="isFormModalOpen"
-        :title="formModalTitle">
-        <EditTransactionsForm :employees="employees" :customers="customers" :projects="projects"
-            :transaction="currentlyEditedTransaction" :services="services" />
+    <CardBoxModal
+        cardWidthClass="w-[80%] 2xl:w-4/12"
+        scrollable
+        :hasCancel="true"
+        v-model="isFormModalOpen"
+        :title="formModalTitle"
+    >
+        <EditTransactionsForm
+            :employees="employees"
+            :customers="customers"
+            :projects="projects"
+            :transaction="currentlyEditedTransaction"
+            :services="services"
+        />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isShowTransactionsPayment"
-        :title="ShowTransactionsPaymentModalTitle">
-        <TransactionsPayment :transaction="currentShowTransactionsPayment"
-            :payments="currentShowTransactionsPayment?.payments" :totalServicesPrice="totalServicesPrice"
-            :totalExtraServicesPrice="totalExtraServicesPrice" :totalPrice="totalPrice" />
+    <CardBoxModal
+        cardWidthClass="w-[80%] lg:w-7/12"
+        scrollable
+        :hasCancel="true"
+        v-model="isShowTransactionsPayment"
+        :title="ShowTransactionsPaymentModalTitle"
+    >
+        <TransactionsPayment
+            :transaction="currentShowTransactionsPayment"
+            :payments="currentShowTransactionsPayment?.payments"
+            :totalServicesPrice="totalServicesPrice"
+            :totalExtraServicesPrice="totalExtraServicesPrice"
+            :totalPrice="totalPrice"
+        />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true"
-        v-model="isAddMoreTransactionModalOpen" :title="AddMoreTransactionModalTitle">
-        <AddMoreTransactionsForm :project="currentAddMoreTransaction?.project.id"
-            :services="currentAddMoreTransaction?.services" :transaction="currentAddMoreTransaction" />
+    <CardBoxModal
+        cardWidthClass="w-[80%] lg:w-7/12"
+        scrollable
+        :hasCancel="true"
+        v-model="isAddMoreTransactionModalOpen"
+        :title="AddMoreTransactionModalTitle"
+    >
+        <AddMoreTransactionsForm
+            :project="currentAddMoreTransaction?.project.id"
+            :services="currentAddMoreTransaction?.services"
+            :transaction="currentAddMoreTransaction"
+        />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-[80%] lg:w-7/12" scrollable :hasCancel="true" v-model="isProfitDetailsModalOpen"
-        :title="ShowTransactionsPaymentModalTitle">
-        <ProfitDetailsForm :project="currentShowProfitDetails?.project.id"
-            :services="currentShowProfitDetails?.services" :transaction="currentShowProfitDetails" />
+    <CardBoxModal
+        cardWidthClass="w-[80%] lg:w-7/12"
+        scrollable
+        :hasCancel="true"
+        v-model="isProfitDetailsModalOpen"
+        :title="ShowTransactionsPaymentModalTitle"
+    >
+        <ProfitDetailsForm
+            :project="currentShowProfitDetails?.project.id"
+            :services="currentShowProfitDetails?.services"
+            :transaction="currentShowProfitDetails"
+        />
     </CardBoxModal>
 
-    <CardBoxModal cardWidthClass="w-100 lg:w-[40rem] !bg-gray-900 text-green-200 mb-10 pb-10" scrollable
-        :hasCancel="true" v-model="isShowWhatsappTransactionModalOpen" title="التواصل عن طريق الواتس اب">
-        <WhatsAppMessages :transaction="currentWhatsappTransaction" :messages="messages" />
-
+    <CardBoxModal
+        cardWidthClass="w-100 lg:w-[40rem] !bg-gray-900 text-green-200 mb-10 pb-10"
+        scrollable
+        :hasCancel="true"
+        v-model="isShowWhatsappTransactionModalOpen"
+        title="التواصل عن طريق الواتس اب"
+    >
+        <WhatsAppMessages
+            :transaction="currentWhatsappTransaction"
+            :messages="messages"
+        />
     </CardBoxModal>
 
     <table>
@@ -315,45 +355,54 @@ const deleteTransaction = (transaction) => {
             <tr key="filters">
                 <td></td>
                 <td data-label="Filter project Name">
-                    <input placeholder="الاسـم" v-model="activeFilters.filteredBy.project_name"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                    <input
+                        placeholder="الاسـم"
+                        v-model="activeFilters.filteredBy.project_name"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100"
+                    />
                 </td>
 
                 <td data-label="Filter Customer Name">
-                    <input placeholder="العميل" v-model="activeFilters.filteredBy.customer_name"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                    <input
+                        placeholder="العميل"
+                        v-model="activeFilters.filteredBy.customer_name"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100"
+                    />
                 </td>
 
                 <td data-label="Filter Phone Number">
-                    <input placeholder="الموبايل" v-model="activeFilters.filteredBy.phone"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                    <input
+                        placeholder="الموبايل"
+                        v-model="activeFilters.filteredBy.phone"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100"
+                    />
                 </td>
 
                 <td data-label="Filter Employee Name">
-                    <input placeholder="الموظف" v-model="activeFilters.filteredBy.employee_name"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                    <input
+                        placeholder="الموظف"
+                        v-model="activeFilters.filteredBy.employee_name"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100"
+                    />
                 </td>
                 <td data-label="Address">
-                    <input placeholder="العنوان" v-model="activeFilters.filteredBy.address"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100" />
+                    <input
+                        placeholder="العنوان"
+                        v-model="activeFilters.filteredBy.address"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100"
+                    />
                 </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
-
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-
-                </td>
-                <td>
-                    <select v-model="activeFilters.filteredBy.status"
-                        class="w-full h-8 px-2 py-1 border rounded border-primary-100">
+                    <select
+                        v-model="activeFilters.filteredBy.status"
+                        class="w-full h-8 px-2 py-1 border rounded border-primary-100"
+                    >
                         <option :value="null">فلترة</option>
                         <option value="Paid">مدفوع</option>
                         <option value="Pending">لم يكتمل الدفع</option>
@@ -367,73 +416,148 @@ const deleteTransaction = (transaction) => {
 
             <tr v-if="transactions?.data?.length === 0">
                 <td colspan="12">
-                    <CardBoxComponentEmpty title="No Users Found, Click here to add new user"
-                        description="You can add new user by clicking on the button below" @click="openFormModal" />
+                    <CardBoxComponentEmpty
+                        title="No Users Found, Click here to add new user"
+                        description="You can add new user by clicking on the button below"
+                        @click="openFormModal"
+                    />
                 </td>
             </tr>
             <tr v-for="transaction in transactions.data" :key="transaction.id">
                 <td data-label="ID">{{ transaction.id }}</td>
-                <td data-label="Project Name">{{ transaction.project.title }}</td>
-                <td data-label="Customer Name">{{ transaction.customer.name }}</td>
-                <td data-label="Phone Number">{{ transaction.customer.phone }}</td>
-                <td data-label="Customer Employee">{{ transaction.employee.name }}</td>
+                <td data-label="Project Name">
+                    {{ transaction.project.title }}
+                </td>
+                <td data-label="Customer Name">
+                    {{ transaction.customer.name }}
+                </td>
+                <td data-label="Phone Number">
+                    {{ transaction.customer.phone }}
+                </td>
+                <td data-label="Customer Employee">
+                    {{ transaction.employee.name }}
+                </td>
                 <td data-label="Address">{{ transaction.address.address }}</td>
-                <td data-label="Total Project Cost">{{ transaction.all_services_cost }} دينار</td>
-                <td data-label="Total Paid">{{ transaction.total_paid }} دينار</td>
-                <td data-label="all payments">{{ transaction.materials_cost }} دينار</td>
-                <td data-label="all payments">{{ transaction.worker_cost }} دينار</td>
-                <td data-label=" Net profit" class="font-bold"
-                    :class="{ 'text-green-500': transaction.profit > 0, 'text-red-500': transaction.profit < 0 }">
-
+                <td data-label="Total Project Cost">
+                    {{ transaction.all_services_cost }} دينار
+                </td>
+                <td data-label="Total Paid">
+                    {{ transaction.total_paid }} دينار
+                </td>
+                <td data-label="all payments">
+                    {{ transaction.materials_cost }} دينار
+                </td>
+                <td data-label="all payments">
+                    {{ transaction.worker_cost }} دينار
+                </td>
+                <td
+                    data-label=" Net profit"
+                    class="font-bold"
+                    :class="{
+                        'text-green-500': transaction.profit > 0,
+                        'text-red-500': transaction.profit < 0,
+                    }"
+                >
                     <span v-if="transaction.profit > 0">
                         {{ transaction.profit }} دينار
                     </span>
-                    <span v-else>
-                        لم تيم حساب الربح
-                    </span>
+                    <span v-else> لم تيم حساب الربح </span>
                 </td>
-                <td data-label="Times To Pay">{{ transaction.times_to_pay }} مــرات</td>
+                <td data-label="Times To Pay">
+                    {{ transaction.times_to_pay }} مــرات
+                </td>
                 <td data-label="Status">
-                    <PillTag v-if="transaction.status === 'Paid'" color="success" class="text-center" label="مدفوع" />
-                    <PillTag v-if="transaction.status === 'Pending'" color="danger" class="text-center"
-                        label="لم يكتمل الدفع" />
+                    <PillTag
+                        v-if="transaction.status === 'Paid'"
+                        color="success"
+                        class="text-center"
+                        label="مدفوع"
+                    />
+                    <PillTag
+                        v-if="transaction.status === 'Pending'"
+                        color="danger"
+                        class="text-center"
+                        label="لم يكتمل الدفع"
+                    />
                 </td>
-                <td data-label="Created At" class="p-0">{{ transaction.created_at }}</td>
-                <td data-label="Action" class="before:hidden lg:w-1 whitespace-nowrap">
+                <td data-label="Created At" class="p-0">
+                    {{ transaction.created_at }}
+                </td>
+                <td
+                    data-label="Action"
+                    class="before:hidden lg:w-1 whitespace-nowrap"
+                >
                     <BaseButtons type="justify-start lg:justify-end" no-wrap>
                         <div>
-                            <BaseButton color="success" :icon="mdiCashMultiple" small
-                                @click="addMoreTransaction(transaction)" />
+                            <BaseButton
+                                color="success"
+                                :icon="mdiCashMultiple"
+                                small
+                                @click="addMoreTransaction(transaction)"
+                            />
 
-                            <BaseButton color="success" :icon="mdiCashSync" small @click="profitDetails(transaction)" />
+                            <BaseButton
+                                color="success"
+                                :icon="mdiCashSync"
+                                small
+                                @click="profitDetails(transaction)"
+                            />
 
-                            <BaseButton color="success" :icon="mdiSend" small
-                                @click="showTransactionsPayment(transaction)" />
+                            <BaseButton
+                                color="success"
+                                :icon="mdiSend"
+                                small
+                                @click="showTransactionsPayment(transaction)"
+                            />
 
                             <br />
-                            <BaseButton color="success" :icon="mdiWhatsapp" small
-                                @click="whatsappTransaction(transaction)" />
+                            <BaseButton
+                                color="success"
+                                :icon="mdiWhatsapp"
+                                small
+                                @click="whatsappTransaction(transaction)"
+                            />
 
-                            <BaseButton color="info" :icon="mdiSquareEditOutline" small
-                                @click="editTransaction(transaction)" />
+                            <BaseButton
+                                color="info"
+                                :icon="mdiSquareEditOutline"
+                                small
+                                @click="editTransaction(transaction)"
+                            />
 
-                            <BaseButton color="danger" :icon="mdiTrashCan" small
-                                @click="deleteTransaction(transaction)" />
+                            <BaseButton
+                                color="danger"
+                                :icon="mdiTrashCan"
+                                small
+                                @click="deleteTransaction(transaction)"
+                            />
                         </div>
-
                     </BaseButtons>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <div v-if="transactions?.data?.length" class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800">
+    <div
+        v-if="transactions?.data?.length"
+        class="p-3 mt-5 border-t border-gray-100 pt-7 lg:px-6 dark:border-slate-800"
+    >
         <BaseLevel>
             <BaseButtons>
-                <BaseButton v-for="(    page, index    ) in     transactions.links    " :key="index"
-                    :active="page.active" :label="page.label" :render-label-as-html="true"
-                    :class="{ 'text-white': page.active, }" :color="page.active ? 'contrast' : 'whiteDark'" small
-                    :as="page.url ? 'Link' : 'span'" :href="page.url" preserve-state :only="['transactions']" />
+                <BaseButton
+                    v-for="(page, index) in transactions.links"
+                    :key="index"
+                    :active="page.active"
+                    :label="page.label"
+                    :render-label-as-html="true"
+                    :class="{ 'text-white': page.active }"
+                    :color="page.active ? 'contrast' : 'whiteDark'"
+                    small
+                    :as="page.url ? 'Link' : 'span'"
+                    :href="page.url"
+                    preserve-state
+                    :only="['transactions']"
+                />
             </BaseButtons>
             <!-- <small>Page {{ transactions.current_page }} of {{ transactions.total }}</small> -->
         </BaseLevel>

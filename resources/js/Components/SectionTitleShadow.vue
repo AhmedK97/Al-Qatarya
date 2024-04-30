@@ -3,7 +3,9 @@
         <slot name="upper-title" />
     </p> -->
     <div>
-        <h1 class="text-2xl text-center capitalize  font-black text-gray-900 underline underline-offset-[10px]">
+        <h1
+            class="text-2xl capitalize font-black text-gray-900 underline underline-offset-[10px]"
+        >
             <slot name="title" />
         </h1>
     </div>
@@ -12,7 +14,7 @@
 </template>
 
 <script>
-    export default {};
+export default {};
 </script>
 
 <style></style>

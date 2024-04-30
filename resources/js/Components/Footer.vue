@@ -100,7 +100,7 @@ import { Link } from "@inertiajs/vue3";
                         <div>
                             <div class="">
                                 <Link
-                                    href="#contact-us"
+                                    href="/contact-us"
                                     :active="route().current('profile.show')"
                                 >
                                     {{ $t("home.contact") }}
@@ -173,15 +173,13 @@ import { Link } from "@inertiajs/vue3";
             </div>
         </div>
 
-
         <div
             class="fixed z-50 hidden sm:block rtl:space-y-4 bottom-4 left-6 rtl:right-6 rtl:left-auto"
         >
             <!-- telephone icon -->
             <div class="w-16 h-16 bg-white rounded-full shadow-lg">
                 <a
-                :href="`tel:${$t('footer.address-text1')}`"
-
+                    :href="`tel:${$t('footer.address-text1')}`"
                     class="flex items-center justify-center w-full h-full"
                 >
                     <dotlottie-player

@@ -1,17 +1,7 @@
 <script setup>
-import {
-    computed,
-    ref,
-    watch,
-    reactive,
-    toRef,
-    onMounted
-} from "vue";
+import { computed, ref, watch, reactive, toRef, onMounted } from "vue";
 import cloneDeep from "lodash/cloneDeep";
-import {
-    router,
-    useForm
-} from "@inertiajs/vue3";
+import { router, useForm } from "@inertiajs/vue3";
 import FormControl from "@/Components/Admin/FormControl.vue";
 import InputError from "@/Components/InputError.vue";
 import FormField from "@/Components/Admin/FormField.vue";
@@ -21,24 +11,19 @@ import BaseButtons from "@/Components/Admin/BaseButtons.vue";
 import BaseButton from "@/Components/Admin/BaseButton.vue";
 import BaseDivider from "@/Components/Admin/BaseDivider.vue";
 import FormFilePicker from "@/Components/Admin/FormFilePicker.vue";
-import {
-    mdiPlus,
-    mdiMinus
-} from "@mdi/js";
+import { mdiPlus, mdiMinus } from "@mdi/js";
 import "vue-select/dist/vue-select.css";
 import eventBus from "@/Composables/eventBus.js";
 import Swal from "sweetalert2";
 
-
-
 const form = useForm({
-    numbers: '',
+    numbers: "",
 });
 
 const resetForm = () => {
-    form.numbers = '';
-    form.message = '';
-    form.file = '';
+    form.numbers = "";
+    form.message = "";
+    form.file = "";
 };
 
 const submit = () => {
@@ -79,7 +64,6 @@ const submit = () => {
             },
         })
     );
-
 };
 </script>
 <template>
@@ -98,15 +82,24 @@ const submit = () => {
 
         {{ form.errors.message }}
 
-        <br>
-        <br>
+        <br />
+        <br />
 
-        <FormFilePicker label="اختر الملف" multi v-model="form.file"
-            accept="image/*,video/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+        <FormFilePicker
+            label="اختر الملف"
+            multi
+            v-model="form.file"
+            accept="image/*,video/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        />
 
         <template #footer>
             <BaseButtons>
-                <BaseButton @click="submit" type="submit" color="info" label="Submit" />
+                <BaseButton
+                    @click="submit"
+                    type="submit"
+                    color="info"
+                    label="حفظ"
+                />
             </BaseButtons>
         </template>
     </CardBox>

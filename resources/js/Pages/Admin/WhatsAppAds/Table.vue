@@ -68,7 +68,9 @@ watch(activeFilters, (filledFilters) => {
 const AddWhatsAppAds = ref(null);
 
 const formModalTitle = computed(() => {
-    return AddWhatsAppAds.value?.id ? `Send WhatsApp Ads` : "Send WhatsApp Ads";
+    return AddWhatsAppAds.value?.id
+        ? `ارسال اعلانات الواتساب`
+        : "ارسال اعلانات الواتساب";
 });
 
 const isFormModalOpen = ref(false && AddWhatsAppAds.value);
@@ -88,11 +90,11 @@ const isFormModalOpen = ref(false && AddWhatsAppAds.value);
     <table>
         <thead>
             <tr>
-                <th>Number</th>
-                <th>Message</th>
-                <th>File Type</th>
-                <th>Status</th>
-                <th>Created At</th>
+                <th>الرقم</th>
+                <th>الرسائل</th>
+                <th>نوع الملف</th>
+                <th>الحالة</th>
+                <th>تم الانشاء في</th>
             </tr>
         </thead>
 
@@ -105,16 +107,15 @@ const isFormModalOpen = ref(false && AddWhatsAppAds.value);
                     <PillTag
                         v-if="whatsAppAd.status == 'pending'"
                         color="warning"
-                        label="Pending"
+                        label="جاري"
                     />
                     <PillTag
                         v-if="whatsAppAd.status == 'sent'"
                         color="success"
-                        label="Sent"
+                        label="ارسال"
                     />
                 </td>
                 <td>{{ whatsAppAd.created_at }}</td>
-
             </tr>
         </tbody>
 

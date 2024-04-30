@@ -1,17 +1,7 @@
 <script setup>
-import {
-    computed,
-    ref,
-    watch,
-    reactive,
-    toRef,
-    onMounted
-} from "vue";
+import { computed, ref, watch, reactive, toRef, onMounted } from "vue";
 import cloneDeep from "lodash/cloneDeep";
-import {
-    router,
-    useForm
-} from "@inertiajs/vue3";
+import { router, useForm } from "@inertiajs/vue3";
 import FormControl from "@/Components/Admin/FormControl.vue";
 import InputError from "@/Components/InputError.vue";
 import FormField from "@/Components/Admin/FormField.vue";
@@ -21,10 +11,7 @@ import BaseButtons from "@/Components/Admin/BaseButtons.vue";
 import BaseButton from "@/Components/Admin/BaseButton.vue";
 import BaseDivider from "@/Components/Admin/BaseDivider.vue";
 
-import {
-    mdiAccount,
-    mdiMail
-} from "@mdi/js";
+import { mdiAccount, mdiMail } from "@mdi/js";
 import "vue-select/dist/vue-select.css";
 import eventBus from "@/Composables/eventBus.js";
 import Swal from "sweetalert2";
@@ -33,26 +20,24 @@ import vSelect from "vue-select";
 const props = defineProps({
     transaction: {
         type: Object,
-        default: () => { },
+        default: () => {},
     },
     customers: {
         type: Array,
-        default: () => { },
+        default: () => {},
     },
     employees: {
         type: Array,
-        default: () => { },
+        default: () => {},
     },
     services: {
         type: Array,
-        default: () => { },
+        default: () => {},
     },
     projects: {
         type: Array,
-        default: () => { },
+        default: () => {},
     },
-
-
 });
 
 onMounted(() => {
@@ -82,26 +67,24 @@ const form = useForm({
     service_id: transaction.service_id,
     project_id: transaction.project,
     services_id: transaction.services,
-
 });
-
 
 const resetForm = () => {
     form.reset();
     Object.keys(form.errors).forEach((key) => {
         delete form.errors[key];
     });
-
 };
 
-const statues = [{
-    id: "Pending",
-    name: "Pending",
-},
-{
-    id: "Paid",
-    name: "Paid",
-},
+const statues = [
+    {
+        id: "Pending",
+        name: "Pending",
+    },
+    {
+        id: "Paid",
+        name: "Paid",
+    },
 ];
 
 watch(
@@ -122,7 +105,6 @@ watch(
         form.services_id = transaction.services;
     }
 );
-
 
 const submit = () => {
     const sharedFormOptions = {
@@ -146,8 +128,8 @@ const submit = () => {
                     eventBus.$emit("closeModal", "transaction::update");
                     Swal.fire({
                         icon: "success",
-                        title: "Success",
-                        text: "Transition updated successfully",
+                        title: "تم بنجاح",
+                        text: "تم تحديث المعاملات بنجاح",
                         timer: 3000,
                         timerProgressBar: true,
                     });
@@ -167,8 +149,8 @@ const submit = () => {
                 eventBus.$emit("closeModal", "transaction::create");
                 Swal.fire({
                     icon: "success",
-                    title: "Success",
-                    text: "Transaction created successfully",
+                    title: "تم بنجاح",
+                    text: "تم انشاء المعاملات بنجاح",
                     timer: 3000,
                     timerProgressBar: true,
                 });
@@ -180,72 +162,96 @@ const submit = () => {
 
 <template>
     <CardBox form @submit.prevent="submit">
+        <label class="block mb-2 font-bold"> اختر المشروع </label>
+        <v-select
+            :options="projects"
+            label="title"
+            v-model="form.project_id"
+            :reduce="(option) => option.id"
+        ></v-select>
 
-
-        <label class="block mb-2 font-bold">
-            اختر المشروع
-        </label>
-        <v-select :options="projects" label="title" v-model="form.project_id" :reduce="option => option.id"></v-select>
-
-        <span v-if="form.errors.project_id" class="text-sm text-red-600">{{ form.errors.project_id }}</span>
+        <span v-if="form.errors.project_id" class="text-sm text-red-600">{{
+            form.errors.project_id
+        }}</span>
 
         <BaseDivider />
         <div v-if="isUpdate">
-            <label class="block mb-2 font-bold">
-                الموظف
-            </label>
+            <label class="block mb-2 font-bold"> الموظف </label>
 
-            <v-select :options="customers" label="name" v-model="form.customer_id"
-                :reduce="option => option.id"></v-select>
+            <v-select
+                :options="customers"
+                label="name"
+                v-model="form.customer_id"
+                :reduce="(option) => option.id"
+            ></v-select>
 
-            <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{ form.errors.customer_id }}</span>
-
-            <BaseDivider />
-
-            <label class="block mb-2 font-bold">
-                العميل
-            </label>
-            <v-select :options="employees" label="name" v-model="form.employee_id"
-                :reduce="option => option.id"></v-select>
-            <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{ form.errors.employee_id }}</span>
+            <span v-if="form.errors.customer_id" class="text-sm text-red-600">{{
+                form.errors.customer_id
+            }}</span>
 
             <BaseDivider />
 
-
-            <label class="block mb-2 font-bold">
-                الخدمات
-            </label>
-            <v-select :options="services" label="name" v-model="form.services_id" :reduce="option => option"
-                multiple></v-select>
-            <span v-if="form.errors.services_id" class="text-sm text-red-600">{{ form.errors.services_id }}</span>
+            <label class="block mb-2 font-bold"> العميل </label>
+            <v-select
+                :options="employees"
+                label="name"
+                v-model="form.employee_id"
+                :reduce="(option) => option.id"
+            ></v-select>
+            <span v-if="form.errors.employee_id" class="text-sm text-red-600">{{
+                form.errors.employee_id
+            }}</span>
 
             <BaseDivider />
 
+            <label class="block mb-2 font-bold"> الخدمات </label>
+            <v-select
+                :options="services"
+                label="name"
+                v-model="form.services_id"
+                :reduce="(option) => option"
+                multiple
+            ></v-select>
+            <span v-if="form.errors.services_id" class="text-sm text-red-600">{{
+                form.errors.services_id
+            }}</span>
 
-            <label class="block mb-2 font-bold">
-                عدد مرات الدفع
-            </label>
-            <FormControl :errorMessage="form.errors.times_to_pay" v-model="form.times_to_pay" />
+            <BaseDivider />
+
+            <label class="block mb-2 font-bold"> عدد مرات الدفع </label>
+            <FormControl
+                :errorMessage="form.errors.times_to_pay"
+                v-model="form.times_to_pay"
+            />
             <BaseDivider />
 
             <FormField label="الحالة">
-                <select-field :errorMessage="form.errors.status"
+                <select-field
+                    :errorMessage="form.errors.status"
                     class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                    v-model="form.status" :items="statues" />
+                    v-model="form.status"
+                    :items="statues"
+                />
             </FormField>
 
             <BaseDivider />
 
             <FormField label="العنوان">
-                <FormControl :errorMessage="form.errors.address" v-model="form.address" />
+                <FormControl
+                    :errorMessage="form.errors.address"
+                    v-model="form.address"
+                />
             </FormField>
-
         </div>
-
 
         <template #footer>
             <BaseButtons>
-                <BaseButton @click="submit" type="submit" color="info" label="Submit" />
+                <BaseButton
+                    @click="submit"
+                    type="submit"
+                    color="info"
+                    label="حفظ"
+                />
             </BaseButtons>
         </template>
     </CardBox>

@@ -227,7 +227,7 @@ const submit = () => {
                     @click="submit"
                     type="submit"
                     color="info"
-                    label="Submit"
+                    label="حفظ"
                 />
             </BaseButtons>
         </template>
@@ -343,7 +343,7 @@ const submit = () => {
                     @click="submit"
                     type="submit"
                     color="info"
-                    label="Submit"
+                    label="حفظ"
                 />
             </BaseButtons>
         </template>
@@ -448,7 +448,7 @@ const submit = () => {
                     @click="submit"
                     type="submit"
                     color="info"
-                    label="Submit"
+                    label="حفظ"
                 />
             </BaseButtons>
         </template>
