@@ -77,6 +77,10 @@
 import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 import Counter from "@/Components/Counter.vue";
 import { Link } from "@inertiajs/vue3";
+
+const props = defineProps({
+    projects: Object,
+});
 </script>
 
 <style></style>

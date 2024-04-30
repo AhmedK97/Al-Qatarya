@@ -40,7 +40,6 @@ const submit = () => {
 
 <template>
     <LayoutGuest>
-
         <Head title="Login" />
 
         <SectionFullScreen v-slot="{ cardClass }" bg="purplePink">
@@ -51,26 +50,60 @@ const submit = () => {
                     {{ status }}
                 </NotificationBarInCard>
 
-                <FormField label="phone" label-for="phone" help="Please enter your phone">
-                    <FormControl v-model="form.phone" :icon="mdiAccount" id="phone" autocomplete="phone" type="phone"
-                        required />
+                <FormField
+                    label="رقم الهاتف"
+                    label-for="phone"
+                    help="ادخل رقم الهاتف"
+                >
+                    <FormControl
+                        v-model="form.phone"
+                        :icon="mdiAccount"
+                        id="phone"
+                        autocomplete="phone"
+                        type="phone"
+                        required
+                    />
                 </FormField>
 
-                <FormField label="Password" label-for="password" help="Please enter your password">
-                    <FormControl v-model="form.password" :icon="mdiAsterisk" type="password" id="password"
-                        autocomplete="current-password" required />
+                <FormField
+                    label="كلمة المرور"
+                    label-for="password"
+                    help="ادخل كلمة المرور"
+                >
+                    <FormControl
+                        v-model="form.password"
+                        :icon="mdiAsterisk"
+                        type="password"
+                        id="password"
+                        autocomplete="current-password"
+                        required
+                    />
                 </FormField>
 
-                <FormCheckRadioGroup v-model="form.remember" name="remember" :options="{ remember: 'Remember' }" />
+                <FormCheckRadioGroup
+                    v-model="form.remember"
+                    name="remember"
+                    :options="{ remember: 'تذكرني' }"
+                />
 
                 <BaseDivider />
 
                 <BaseLevel>
                     <BaseButtons>
-                        <BaseButton type="submit" color="info" label="Login" :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing" />
-                        <BaseButton v-if="canResetPassword" route-name="password.request" color="info" outline
-                            label="Remind" />
+                        <BaseButton
+                            type="submit"
+                            color="info"
+                            label="تسجيل"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                        />
+                        <BaseButton
+                            v-if="canResetPassword"
+                            route-name="password.request"
+                            color="info"
+                            outline
+                            label="نسيت كلمة المرور؟"
+                        />
                     </BaseButtons>
                     <!-- <Link :href="route('register')"> Register </Link> -->
                 </BaseLevel>
