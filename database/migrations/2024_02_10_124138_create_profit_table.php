@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('profit', function (Blueprint $table) {
             $table->id();
-            // Employment (json) // transaction_id // 
+            // Employment (json) // transaction_id //
             $table->timestamps();
         });
     }

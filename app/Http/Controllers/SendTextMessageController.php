@@ -38,6 +38,6 @@ class SendTextMessageController extends Controller
                 ],
             ];
 
-        $httpRequest = HttpRequest('/message/sendText/' . $info->instance_name, 'post', $header, $formData);
+        $httpRequest = HttpRequest('/message/sendText/'.$info->instance_name, 'post', $header, $formData);
     }
 }

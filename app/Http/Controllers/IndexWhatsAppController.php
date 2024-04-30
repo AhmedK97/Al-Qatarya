@@ -19,7 +19,7 @@ class IndexWhatsAppController extends Controller
         $result = DB::connection('external_db')
             ->table('auth')
             ->join('instance', 'auth.instanceId', '=', 'instance.id')
-            ->select('auth.token', 'instance.name', 'ownerJid' ,'connectionStatus')
+            ->select('auth.token', 'instance.name', 'ownerJid', 'connectionStatus')
             ->get();
 
         foreach ($result as $row) {
@@ -36,7 +36,6 @@ class IndexWhatsAppController extends Controller
         }
 
         $whatsAppData = WhatsApp::whereNotNull('ownerJid')->get();
-
 
         return Inertia::render('Admin/WhatsApp/Index', [
             'whatsAppData' => IndexWhatsAppResource::collection($whatsAppData),

@@ -10,11 +10,10 @@ use App\Http\Controllers\DeleteTransactionsController;
 use App\Http\Controllers\DeleteWhatsAppController;
 use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
-use App\Http\Controllers\getWhatsappChatMessages;
-use App\Http\Controllers\getWhatsappMedia;
+use App\Http\Controllers\GetWhatsappChatMessages;
+use App\Http\Controllers\GetWhatsappMedia;
 use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
-use App\Http\Controllers\IndexInventoryController;
 use App\Http\Controllers\IndexProjectsAdminController;
 use App\Http\Controllers\IndexServicesAdminController;
 use App\Http\Controllers\IndexTransactionsController;
@@ -103,15 +102,15 @@ Route::get('/transactions', IndexTransactionsController::class)->name('index.tra
 
 Route::post('/transactions', StoreTransactionsController::class)->name('store.transactions');
 
-Route::put('/transactions/{transaction}', UpdateTransactionsController::class)->name('update.transactions');
+Route::post('/transactions/{transaction}', UpdateTransactionsController::class)->name('update.transactions');
 
 Route::delete('/transactions/{transaction}', DeleteTransactionsController::class)->name('delete.transactions');
 
 Route::post('/transactions/{transaction}/payments', PaymentTransactionsController::class)->name('store.payments.transactions');
 
-Route::get('/getWhatsappChatMessages', getWhatsappChatMessages::class)->name('showWhatsappClientMessages');
+Route::get('/getWhatsappChatMessages', GetWhatsappChatMessages::class)->name('showWhatsappClientMessages');
 
-Route::get('/getWhatsappMedia', getWhatsappMedia::class)->name('showWhatsappMedia');
+Route::get('/getWhatsappMedia', GetWhatsappMedia::class)->name('showWhatsappMedia');
 
 Route::post('/message/sendText', SendTextMessageController::class)->name('send.text.message');
 
@@ -139,6 +138,7 @@ Route::post('/whatsapp/sendBulkMessages', SendBulkOfMessagesController::class)->
 // start send message job
 Route::post('/whatsapp/sendMessageJob', function () {
     dispatch(new SendMessageJob());
+
     return back()
         ->with('swalNotification', [
             'title' => __('common.success'),
@@ -147,8 +147,6 @@ Route::post('/whatsapp/sendMessageJob', function () {
             'timer' => 5000,
         ]);
 })->name('send.message.job');
-
-
 
 // --------------- service transaction -----------------//
 

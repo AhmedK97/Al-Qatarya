@@ -79,10 +79,11 @@ watch(
 );
 
 const calculateServiceProfit = (service) => {
-    return (
-        service.price * service.quantity -
-        service.details["originPrice"] * service.quantity
-    );
+    let total = 0;
+    service.details.forEach((detail) => {
+        total += parseInt(detail.originPrice);
+    });
+    return service.price - total;
 };
 
 const calculateExtraServiceProfit = (service) => {
@@ -145,30 +146,72 @@ const newDetailWorker = ref({
     created_at: "",
 });
 
-const NewDetailService = ref({
+const NewDetailExtraService = ref({
     title: "",
     originPrice: "",
 });
 
-const validateOriginPriceService = ref("");
+const newDetailsService = ref({
+    title: "",
+    originPrice: "",
+    created_at: "",
+});
 
+const validateOriginPriceService = ref("");
 const addNewServiceDetail = (id) => {
-    if (!NewDetailService.value.originPrice) {
+    if (!newDetailsService.value.originPrice) {
         validateOriginPriceService.value = "السعر مطلوب";
+        // check if the origin price is number
+    }
+
+    if (isNaN(newDetailsService.value.originPrice)) {
+        validateOriginPriceService.value = "السعر يجب ان يكون رقم";
         return;
     }
+
+    const newId = parseInt(id);
+    const service = form.services.find((service) => service.id === newId);
+
+    if (service) {
+        service.details.push({
+            originPrice: newDetailsService.value.originPrice,
+            title: newDetailsService.value.title,
+            created_at: currentDate,
+        });
+    }
+
+    newDetailsService.value = {
+        title: "",
+        originPrice: "",
+        created_at: "",
+    };
+};
+
+const validateOriginPriceExtraService = ref("");
+
+const addNewExtraServiceDetail = (id) => {
+    if (!NewDetailExtraService.value.originPrice) {
+        validateOriginPriceExtraService.value = "السعر مطلوب";
+        return;
+    }
+
+    if (isNaN(NewDetailExtraService.value.originPrice)) {
+        validateOriginPriceExtraService.value = "السعر يجب ان يكون رقم";
+        return;
+    }
+
     const newId = parseInt(id);
     const service = form.extra_services.find((service) => service.id === newId);
 
     if (service) {
         service.details.push({
-            originPrice: NewDetailService.value.originPrice,
-            title: NewDetailService.value.title,
+            originPrice: NewDetailExtraService.value.originPrice,
+            title: NewDetailExtraService.value.title,
             created_at: currentDate,
         });
     }
 
-    NewDetailService.value = {
+    NewDetailExtraService.value = {
         title: "",
         originPrice: "",
         created_at: "",
@@ -182,6 +225,11 @@ const addNewDetail = (id) => {
         validateOriginPriceWorker.value = "اليومية مطلوبة";
         return;
     }
+    if (isNaN(newDetailsService.value.originPrice)) {
+        validateOriginPriceService.value = "السعر يجب ان يكون رقم";
+        return;
+    }
+
     const newId = parseInt(id);
     const service = form.extra_services.find((service) => service.id === newId);
 
@@ -202,6 +250,15 @@ const addNewDetail = (id) => {
     };
 };
 
+// deleteServiceDetail
+const deleteServiceDetail = (id, index) => {
+    const newId = parseInt(id);
+    const service = form.services.find((service) => service.id === newId);
+    if (service) {
+        service.details.splice(index, 1);
+    }
+};
+
 const deleteDetail = (id, index) => {
     const newId = parseInt(id);
     const service = form.extra_services.find((service) => service.id === newId);
@@ -210,7 +267,7 @@ const deleteDetail = (id, index) => {
     }
 };
 
-const deleteServiceDetail = (id, index) => {
+const deleteExtraServiceDetail = (id, index) => {
     const newId = parseInt(id);
     const service = form.extra_services.find((service) => service.id === newId);
     if (service) {
@@ -321,13 +378,7 @@ const submit = () => {
                                                     scope="col"
                                                     class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50"
                                                 >
-                                                    سعر المتر
-                                                </th>
-                                                <th
-                                                    scope="col"
-                                                    class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50"
-                                                >
-                                                    عدد الامتار
+                                                    السعر
                                                 </th>
                                                 <th
                                                     scope="col"
@@ -335,6 +386,14 @@ const submit = () => {
                                                 >
                                                     المجموع
                                                 </th>
+                                                <!-- الربح -->
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50"
+                                                >
+                                                    الربح
+                                                </th>
+
                                                 <th
                                                     scope="col"
                                                     class="px-6 py-3 text-xs font-semibold tracking-wider text-gray-500 uppercase bg-gray-50"
@@ -352,12 +411,7 @@ const submit = () => {
                                                 >
                                                     {{ service.price }} دينار
                                                 </td>
-                                                <td
-                                                    class="px-6 py-4 whitespace-nowrap"
-                                                >
-                                                    {{ service.quantity }} متر
-                                                </td>
-                                                <!-- total -->
+
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap"
                                                 >
@@ -367,6 +421,25 @@ const submit = () => {
                                                     }}
                                                     دينار
                                                 </td>
+
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap"
+                                                    :class="
+                                                        calculateServiceProfit(
+                                                            service
+                                                        ) > 0
+                                                            ? 'text-green-500 font-bold'
+                                                            : 'text-red-500 font-bold'
+                                                    "
+                                                >
+                                                    {{
+                                                        calculateServiceProfit(
+                                                            service
+                                                        )
+                                                    }}
+                                                    دينار
+                                                </td>
+
                                                 <!-- created at -->
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap"
@@ -376,108 +449,147 @@ const submit = () => {
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <br />
-                                    <h1 class="font-bold text-cyan-700">
-                                        حساب الارباح :
-                                    </h1>
-                                    <div class="grid grid-flow-row grid-cols-2">
+                                    <BaseDivider />
+
+                                    <table
+                                        class="min-w-full divide-y divide-gray-200"
+                                    >
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50"
+                                                >
+                                                    #
+                                                </th>
+
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50"
+                                                >
+                                                    اسم الخدمة
+                                                </th>
+
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50"
+                                                >
+                                                    السعر
+                                                </th>
+
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50"
+                                                >
+                                                    التاريخ
+                                                </th>
+
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase bg-gray-50"
+                                                >
+                                                    اجراء
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody
+                                            class="bg-white divide-y divide-gray-200"
+                                        >
+                                            <tr
+                                                v-for="(
+                                                    details, index
+                                                ) in service.details"
+                                                :key="details.id"
+                                            >
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap"
+                                                >
+                                                    {{ index + 1 }}
+                                                </td>
+
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap"
+                                                >
+                                                    {{ details.title }}
+                                                </td>
+
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap"
+                                                >
+                                                    {{ details.originPrice }}
+                                                    دينار
+                                                </td>
+
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap"
+                                                >
+                                                    {{ details.created_at }}
+                                                </td>
+
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap"
+                                                >
+                                                    <button
+                                                        @click="
+                                                            deleteServiceDetail(
+                                                                service.id,
+                                                                index
+                                                            )
+                                                        "
+                                                        class="text-red-600"
+                                                    >
+                                                        حذف
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <!-- add services -->
+                                    <div class="grid grid-flow-row grid-cols-3">
                                         <FormField
-                                            :label="'سعر المتر في المادة الخام :'"
+                                            class="mx-2"
+                                            :label="'الخدمه :'"
                                         >
                                             <FormControl
                                                 v-model="
-                                                    service.details[
-                                                        'originPrice'
-                                                    ]
+                                                    newDetailsService.title
                                                 "
-                                                placeholder="سعر المتر في المادة الخام"
+                                                placeholder="اسم الخدمه"
                                             />
                                         </FormField>
 
-                                        <p
-                                            class="m-auto"
-                                            v-if="
-                                                calculateServiceProfit(
-                                                    service
-                                                ) > 0
-                                            "
+                                        <FormField
+                                            class="mx-2"
+                                            :label="'سعر الخدمة :'"
                                         >
-                                            <span class="block">
-                                                المجموع : (سعر المتر الخام * عدد
-                                                الامتار)=
-                                                <strong
-                                                    class="font-bold text-red-700"
-                                                >
-                                                    {{
-                                                        service.details[
-                                                            "originPrice"
-                                                        ] * service.quantity
-                                                    }}
-                                                    دينار
-                                                </strong>
-                                            </span>
-                                            <span
-                                                v-if="
-                                                    service.details[
-                                                        'originPrice'
-                                                    ]
+                                            <FormControl
+                                                v-model="
+                                                    newDetailsService.originPrice
                                                 "
-                                                class="block font-bold text-green-700"
-                                            >
-                                                الربح :
-                                                {{
-                                                    calculateServiceProfit(
-                                                        service
-                                                    )
-                                                }}
-                                                دينار
-                                            </span>
-                                        </p>
+                                                placeholder="السعر"
+                                            />
+                                        </FormField>
 
-                                        <p
-                                            class="m-auto"
-                                            v-else-if="
-                                                calculateServiceProfit(
-                                                    service
-                                                ) === 0
-                                            "
-                                        >
-                                            <span
-                                                class="block font-bold text-red-700"
-                                            >
-                                                لا يوجد ربح
-                                            </span>
-                                        </p>
-
-                                        <p class="m-auto" v-else>
-                                            <span class="block">
-                                                المجموع : (سعر المتر الخام * عدد
-                                                الامتار)=
-                                                <strong
-                                                    class="font-bold text-red-700"
-                                                >
-                                                    <!-- {{ service }} -->
-                                                    {{
-                                                        service.details[
-                                                            "originPrice"
-                                                        ] * service.quantity
-                                                    }}
-                                                    دينار
-                                                </strong>
-                                            </span>
-                                            <span
-                                                class="block font-bold text-red-700"
-                                            >
-                                                الخسارة :
-                                                {{
-                                                    calculateServiceProfit(
-                                                        service
+                                        <BaseButtons class="mx-2 mt-5">
+                                            <BaseButton
+                                                @click="
+                                                    addNewServiceDetail(
+                                                        service.id
                                                     )
-                                                }}
-                                                دينار
-                                            </span>
+                                                "
+                                                type="submit"
+                                                color="info"
+                                                label="اضافة"
+                                            />
+                                        </BaseButtons>
+
+                                        <p class="text-red-600">
+                                            {{ validateOriginPriceService }}
                                         </p>
                                     </div>
+
                                     <div v-if="form && form.errors">
                                         <span
                                             v-if="
@@ -723,7 +835,7 @@ const submit = () => {
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <button
                                                 @click="
-                                                    deleteServiceDetail(
+                                                    deleteExtraServiceDetail(
                                                         formItem.id,
                                                         index
                                                     )
@@ -744,14 +856,16 @@ const submit = () => {
                             <div class="grid grid-flow-row grid-cols-3">
                                 <FormField class="mx-2" :label="'الخدمه :'">
                                     <FormControl
-                                        v-model="NewDetailService.title"
+                                        v-model="NewDetailExtraService.title"
                                         placeholder="اسم الخدمه"
                                     />
                                 </FormField>
 
                                 <FormField class="mx-2" :label="'سعر الخدمة :'">
                                     <FormControl
-                                        v-model="NewDetailService.originPrice"
+                                        v-model="
+                                            NewDetailExtraService.originPrice
+                                        "
                                         placeholder="السعر"
                                     />
                                 </FormField>
@@ -759,7 +873,9 @@ const submit = () => {
                                 <BaseButtons class="mx-2 mt-5">
                                     <BaseButton
                                         @click="
-                                            addNewServiceDetail(formItem.id)
+                                            addNewExtraServiceDetail(
+                                                formItem.id
+                                            )
                                         "
                                         type="submit"
                                         color="info"
@@ -768,7 +884,7 @@ const submit = () => {
                                 </BaseButtons>
 
                                 <p class="text-red-600">
-                                    {{ validateOriginPriceService }}
+                                    {{ validateOriginPriceExtraService }}
                                 </p>
                             </div>
                         </div>
@@ -839,9 +955,7 @@ const submit = () => {
             </span>
         </label>
         <div v-if="filteredWorkers?.length > 0">
-            <ul
-                class="flex flex-row flex-wrap pt-3 pb-4 mb-0 list-none gap-y-4"
-            >
+            <ul class="flex flex-row flex-wrap pt-3 pb-4 mb-0 list-none">
                 <li
                     v-for="(formWorker, index) in filteredWorkers"
                     :key="index"

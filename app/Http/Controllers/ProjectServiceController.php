@@ -32,12 +32,10 @@ class ProjectServiceController extends Controller
         // extra_services.*.quantity  will be 1 by default
         // services.*.quantity will be 1 by default
 
-
-
-        if (!empty($data['services'])) {
+        if (! empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
                 if ($serviceData['details']['originPrice'] == 0) {
-                    $serviceData['details'] = Null;
+                    $serviceData['details'] = null;
                     // remove originPrice from details
                     // unset($serviceData['details']['originPrice']);
                 }
@@ -50,7 +48,7 @@ class ProjectServiceController extends Controller
             });
         }
 
-        if (!empty($data['extra_services'])) {
+        if (! empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
                 ->pluck('id')
                 ->filter();

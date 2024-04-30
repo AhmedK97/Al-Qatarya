@@ -19,9 +19,7 @@ class ServicesResource extends JsonResource
             'name' => $this->name,
             'price' => $this->pivot->price,
             'quantity' => $this->pivot->quantity,
-            'details' => [
-                'originPrice' => json_decode($this->pivot->details)->originPrice ?? 0,
-            ],
+            'details' => json_decode($this->pivot->details),
             'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }
