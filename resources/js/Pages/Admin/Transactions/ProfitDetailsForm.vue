@@ -159,11 +159,11 @@ const newDetailsService = ref({
 
 const validateOriginPriceService = ref("");
 const addNewServiceDetail = (id) => {
+    console.log(newDetailsService.value.originPrice);
     if (!newDetailsService.value.originPrice) {
         validateOriginPriceService.value = "السعر مطلوب";
-        // check if the origin price is number
+        return
     }
-
     if (isNaN(newDetailsService.value.originPrice)) {
         validateOriginPriceService.value = "السعر يجب ان يكون رقم";
         return;
@@ -296,8 +296,8 @@ const submit = () => {
                 eventBus.$emit("closeModal", "transaction::ShowProfitDetails");
                 Swal.fire({
                     icon: "success",
-                    title: "Success",
-                    text: "Payment Updated successfully",
+                    title: "عملية ناجحة",
+                    text: "تم تحديث الحسابات بنجاح",
                     timer: 3000,
                     timerProgressBar: true,
                 });
@@ -1266,12 +1266,18 @@ const submit = () => {
                         {{ transaction?.worker_cost }} دينار
                     </td>
                     <td
-                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap"
+                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" :class="
+                           transaction?.service_profit > 0
+                                ? 'text-green-500 font-bold'
+                                : 'text-red-500 font-bold'"
                     >
                         {{ transaction?.service_profit }} دينار
                     </td>
                     <td
-                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap"
+                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" :class="
+                           transaction?.extra_service_profit > 0
+                                ? 'text-green-500 font-bold'
+                                : 'text-red-500 font-bold'"
                     >
                         {{ transaction?.extra_service_profit }} دينار
                     </td>
@@ -1283,14 +1289,13 @@ const submit = () => {
                                 transaction?.extra_service_profit -
                                 transaction?.worker_cost >
                             0
-                                ? 'text-green-500'
-                                : 'text-red-500'
-                        "
+                                ? 'text-green-500 font-bold'
+                                : 'text-red-500 font-bold'"
                     >
                         {{
                             transaction?.service_profit +
-                            transaction?.extra_service_profit -
-                            transaction?.worker_cost
+                                transaction?.extra_service_profit -
+                                transaction?.worker_cost
                         }}
                         دينار
                     </td>

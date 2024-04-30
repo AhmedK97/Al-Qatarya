@@ -31,7 +31,7 @@
 <template>
     <div>
         <img
-            src="/storage/1/720.webp"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/59/User-avatar.svg"
             class="block w-full h-auto max-w-full bg-gray-100 rounded-full dark:bg-slate-800"
         />
         <slot />

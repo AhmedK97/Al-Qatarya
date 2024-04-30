@@ -13,10 +13,12 @@ class IndexBlogController extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        $blogs = Blog::published()->orderBy('created_at', 'DESC')->paginate(9)->through(function (Blog $blog) {
+            return new BlogResource($blog);
+        });
         return inertia('Blog/Index', [
-            'blogs' => Blog::published()->orderBy('created_at', 'DESC')->paginate(9)->through(function (Blog $blog) {
-                return new BlogResource($blog);
-            }),
+            'blogs' => $blogs,
         ]);
     }
 }

@@ -61,8 +61,8 @@ styleStore.setStyle(localStorage[styleKey]);
 /* Dark mode */
 if (
     (!localStorage[darkModeKey] &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches) ||
+        window.matchMedia("(prefers-color-scheme: light)").matches) ||
     localStorage[darkModeKey] === "1"
 ) {
-    styleStore.setDarkMode(true);
+    styleStore.setDarkMode(false);
 }

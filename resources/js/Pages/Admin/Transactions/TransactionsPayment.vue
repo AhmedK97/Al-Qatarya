@@ -63,13 +63,13 @@ const addFormItem = () => {
     if (form.payments == null) {
         form.payments = [{
             date: "",
-            amount: "",
+            amount: "0",
             percentage: "",
         },];
     } else {
         form.payments.push({
             date: "",
-            amount: "",
+            amount: "0",
             percentage: "",
         });
     }
@@ -165,8 +165,8 @@ const submit = () => {
                 eventBus.$emit("closeModal", "transaction::ShowTransactionsPayment");
                 Swal.fire({
                     icon: "success",
-                    title: "Success",
-                    text: "Transaction created successfully",
+                    title: "عملية ناجحة",
+                    text: "تم التحديث بنجاح",
                     timer: 3000,
                     timerProgressBar: true,
                 });

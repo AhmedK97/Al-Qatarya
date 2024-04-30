@@ -20,6 +20,7 @@ class SendInvoiceController extends Controller
     {
         $customerPhone = $request->customerPhone;
 
+        // $transactionId = 2;
         $transactionId = $request->transactionId;
 
         $transactions = Transaction::whereId($transactionId)->get();
@@ -39,10 +40,7 @@ class SendInvoiceController extends Controller
         $totalPaidAmount = $transactions->sum('paid_amount');
 
         $transactions = TransactionsAdminResource::make($transactions->first());
-
-        // dd($transactions);
-
-        // dd($totalPaidAmount);
+            // return view('invoice.index', compact('services', 'extraServices', 'transactions'));
         $pdfContent = view('invoice.index', [
             'services' => $services,
             'extraServices' => $extraServices,

@@ -27,7 +27,7 @@ const props = defineProps({
                         </div>
                         <div class="container max-w-5xl mx-auto">
                             <img
-                                class="object-cover w-full object-center m-auto max-h-[25rem] rounded"
+                                class="object-contain w-full  m-auto max-h-[25rem] rounded"
                                 alt="hero"
                                 :src="blog.image"
                             />

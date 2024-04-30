@@ -2,6 +2,7 @@
 import { computed, ref, watch, reactive, onMounted } from "vue";
 import eventBus from "@/Composables/eventBus.js";
 
+// Name of the component is TransactionsTable
 import {
     mdiSquareEditOutline,
     mdiTrashCan,
@@ -244,7 +245,7 @@ const deleteTransaction = (transaction) => {
                 onSuccess: () => {
                     Swal.fire({
                         title: "تم الحذف!",
-                        text: `تم حذف ${transaction.name}`,
+                        text: `تم حذف بنجاح`,
                         icon: "success",
                         showConfirmButton: true,
                         timer: 2000,
@@ -324,6 +325,7 @@ const deleteTransaction = (transaction) => {
         v-model="isShowWhatsappTransactionModalOpen"
         title="التواصل عن طريق الواتس اب"
     >
+    <!-- {{ currentWhatsappTransaction }} -->
         <WhatsAppMessages
             :transaction="currentWhatsappTransaction"
             :messages="messages"
@@ -461,10 +463,11 @@ const deleteTransaction = (transaction) => {
                     <span v-if="transaction.profit > 0">
                         {{ transaction.profit }} دينار
                     </span>
-                    <span v-else> لم تيم حساب الربح </span>
+                    <span v-else> {{ transaction.profit }}</span>
                 </td>
                 <td data-label="Times To Pay">
-                    {{ transaction.times_to_pay }} مــرات
+                    {{ transaction.times_to_pay }}
+                    <span v-if="transaction.times_to_pay">مرات</span>
                 </td>
                 <td data-label="Status">
                     <PillTag

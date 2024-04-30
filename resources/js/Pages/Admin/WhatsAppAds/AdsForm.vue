@@ -47,7 +47,7 @@ const submit = () => {
                 eventBus.$emit("closeModal", "whatsAppAds::create");
                 Swal.fire({
                     icon: "success",
-                    title: "Success",
+                    title: "عملية ناجحة",
                     text: "جار ارسالل الرسائل الى الارقام المدخلة",
                     timer: 3000,
                     timerProgressBar: true,

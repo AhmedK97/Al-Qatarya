@@ -18,9 +18,9 @@ class withoutLanguageMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        App::setLocale('en');
-        Carbon::setLocale('en');
-        Date::setLocale('en');
+        App::setLocale('ar');
+        Carbon::setLocale('ar');
+        Date::setLocale('ar');
 
         return $next($request);
     }

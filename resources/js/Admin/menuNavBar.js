@@ -17,39 +17,11 @@ export default [
         isCurrentUser: true,
         menu: [
             {
-                icon: mdiAccount,
-                label: "الملف الشخصي",
-                to: "/profile",
-            },
-            {
                 icon: mdiCogOutline,
                 label: "الاعدادات",
-            },
-            {
-                icon: mdiEmail,
-                label: "الرسائل",
-            },
-            {
-                isDivider: true,
-            },
-            {
-                icon: mdiLogout,
-                label: "تسجيل الخروج",
-                isLogout: true,
+                to: "/user/profile",
+                route: "profile.show",
             },
         ],
-    },
-    {
-        icon: mdiThemeLightDark,
-        label: "Light/Dark",
-        isDesktopNoLabel: true,
-        isToggleLightDark: true,
-    },
-
-    {
-        icon: mdiLogout,
-        label: "تسجيل الخروج",
-        isDesktopNoLabel: true,
-        isLogout: true,
     },
 ];

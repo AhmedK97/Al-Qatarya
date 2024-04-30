@@ -139,13 +139,24 @@
                 openTab === 2
                 "
                 class="container m-auto max-w-4xl mt-6 mx-auto w-[92%]">
-                <div class="flex flex-wrap rtl:space-x-reverse">
+                <div class="flex flex-wrap justify-center rtl:space-x-reverse">
+                    <!-- if there is vedios -->
+                    <div v-if="project.videos.length > 0" class="flex flex-wrap rtl:space-x-reverse">
                     <div v-for="video in project.videos" :key="video" class="w-full p-2 sm:w-1/2 lg:w-1/3">
                         <video class="h-72" width="320" height="240" controls>
                             <source :src="video" type="video/mp4">
                             <source :src="video" type="video/ogg">
                             Your browser does not support the video tag.
                         </video>
+                    </div>
+                    </div>
+                    <!-- else -->
+                    <div v-else class="flex flex-wrap rtl:space-x-reverse">
+                        <div class="w-full p-2 sm:w-1/2 lg:w-1/3">
+                            <p style="width: max-content;" class="text-lg font-medium text-center text-gray-500">
+                                {{ $t('project.no-videos') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

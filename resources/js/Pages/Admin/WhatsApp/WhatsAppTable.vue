@@ -65,7 +65,7 @@ const deleteWhatsApp = (whatsapp) => {
                 onSuccess: () => {
                     Swal.fire({
                         icon: "success",
-                        title: "Success",
+                        title: "عملية ناجحة",
                         text: "WhatsApp deleted successfully",
                         timer: 3000,
                         timerProgressBar: true,
@@ -93,7 +93,7 @@ const updateWhatsAppType = (whatsapp) => {
         onSuccess: () => {
             Swal.fire({
                 icon: "success",
-                title: "Success",
+                title: "عملية ناجحة",
                 text: "WhatsApp type updated successfully",
                 timer: 3000,
                 timerProgressBar: true,

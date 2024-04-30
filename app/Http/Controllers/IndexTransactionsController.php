@@ -90,6 +90,8 @@ class IndexTransactionsController extends Controller
 
         $profits = $allServicesProfit + $allExtraServicesProfit - $allWorkerCost;
 
+        $projects = ProjectsAlqataryaaResource::collection(Project::qatarya()->whereDoesntHave('transaction')->get());
+
         return Inertia::render('Admin/Transactions/Index', [
             'transactions' => $transactions,
             'filters' => $request->all('search'),
@@ -97,7 +99,7 @@ class IndexTransactionsController extends Controller
             'customers' => UsersProjectsResource::collection(User::Customers()->get()),
             'employees' => UsersProjectsResource::collection(User::Employees()->get()),
             'services' => ServicesAlqataryaaResource::collection(Service::qatarya()->get()),
-            'projects' => ProjectsAlqataryaaResource::collection(Project::qatarya()->get()),
+            'projects' => $projects,
             'profits' => $profits,
             'allServicesProfit' => $allServicesProfit,
             'allExtraServicesProfit' => $allExtraServicesProfit,

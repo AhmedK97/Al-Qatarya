@@ -4,7 +4,7 @@ namespace App\Services;
 
 class CalculationService
 {
-    public function calculateTotalCost($transactions)
+    public function calculateTotalServicesCost($transactions)
     {
         $totalCost = 0;
         foreach ($transactions->project->services as $service) {
@@ -19,19 +19,20 @@ class CalculationService
 
     public function calculateMaterialsCost($transaction)
     {
-        $materialsCost = 0;
+        $materialsServiceCost = 0;
+        $materialsExtraServiceCost = 0;
+        // the sum of service originPrice
+        // the sum of  and extraService originPrice
+
         foreach ($transaction->project->services as $service) {
             if (! json_decode($service->pivot->details)) {
                 return 0;
             }
-
             $totalOriginPrice = 0;
             foreach (json_decode($service->pivot->details) as $price) {
                 $totalOriginPrice += $price->originPrice;
             }
-
-            $originPrice = $totalOriginPrice ? $totalOriginPrice : 0;
-            $materialsCost += $originPrice * $service->pivot->quantity ?? 0;
+            $materialsServiceCost += $totalOriginPrice * $service->pivot->quantity;
         }
 
         foreach ($transaction->project->extraServices as $extraService) {
@@ -39,13 +40,16 @@ class CalculationService
                 if (! json_decode($extraService->details)) {
                     return 0;
                 }
-                foreach (json_decode($extraService->details) as $service) {
-                    $materialsCost += $service->originPrice * $extraService->quantity;
+                $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : 0;
+                $sumOriginPrice = 0;
+                foreach ($originPrice as $price) {
+                    $sumOriginPrice += $price->originPrice;
                 }
-                $originPrice = $materialsCost ? $materialsCost : 0;
-                $materialsCost += $originPrice * $extraService->quantity ?? 0;
+                $materialsExtraServiceCost += $sumOriginPrice * $extraService->quantity;
             }
         }
+
+        $materialsCost = $materialsServiceCost + $materialsExtraServiceCost;
 
         return $materialsCost;
     }
@@ -56,8 +60,6 @@ class CalculationService
         foreach ($transaction->project->extraServices as $extraService) {
             if ($extraService->type == 'worker') {
                 foreach (json_decode($extraService->details) as $worker) {
-                    // $totalProfit += $worker->originPrice - $worker->tips - $worker->discount;
-
                     $workerCost += $worker->originPrice + $worker->tips - $worker->discount;
                 }
             }
@@ -69,43 +71,18 @@ class CalculationService
     public function calculateProfit($transaction)
     {
         $totalProfit = 0;
-        foreach ($transaction->project->services as $service) {
-            if (! json_decode($service->pivot?->details)) {
-                return 0;
-            }
 
-            $totalOriginPrice = 0;
-            foreach (json_decode($service->pivot->details) as $price) {
-                $totalOriginPrice += $price->originPrice;
-            }
+        $totalMaterialsCost = $this->calculateMaterialsCost($transaction);
 
-            $originPrice = $totalOriginPrice ? $totalOriginPrice : 0;
-            $totalProfit += $originPrice * $service->pivot?->quantity ?? 0;
-        }
+        $totalWorkerCost = $this->calculateWorkerCost($transaction);
 
-        foreach ($transaction->project->extraServices as $extraService) {
-            if (! json_decode($extraService->details)) {
-                return 0;
-            }
-            if ($extraService->type == 'service') {
+        $totalCost = $totalMaterialsCost + $totalWorkerCost;
 
-                foreach (json_decode($extraService->details) as $service) {
-                    $totalProfit += $service->originPrice * $extraService->quantity;
-                }
-                $originPrice = $totalProfit ? $totalProfit : 0;
-                $totalProfit += $originPrice * $extraService->quantity ?? 0;
-            }
-            if ($extraService->type == 'worker') {
-                foreach (json_decode($extraService->details) as $worker) {
-                    $totalProfit += $worker->originPrice - $worker->tips - $worker->discount;
-                }
-            }
-        }
+        $totalPaid = $this->calculateTotalPaid($transaction);
 
-        $totalCost = $this->calculateTotalCost($transaction);
-        $profit = $totalCost - $totalProfit;
+        $totalProfit = $totalPaid - $totalCost;
 
-        return $profit;
+        return $totalProfit;
     }
 
     public function calculateServicesCost($transactions)
@@ -163,7 +140,7 @@ class CalculationService
                 foreach ($originPrice as $price) {
                     $sumOriginPrice += $price->originPrice;
                 }
-                $totalProfit += $extraService->quantity - $sumOriginPrice * $extraService->quantity;
+                $totalProfit += intval($extraService->price) * $extraService->quantity - $sumOriginPrice * $extraService->quantity;
             }
         }
 

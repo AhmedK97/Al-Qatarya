@@ -72,7 +72,7 @@ const closeModal = () => {
                             ref="passwordInput"
                             v-model="form.password"
                             type="password"
-                            class="mt-1 block w-3/4"
+                            class="block w-3/4 mt-1"
                             placeholder="Password"
                             autocomplete="current-password"
                             @keyup.enter="deleteUser"

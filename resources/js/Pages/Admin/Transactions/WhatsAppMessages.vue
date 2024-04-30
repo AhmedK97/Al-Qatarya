@@ -90,6 +90,22 @@ const getWhatsappMedia = (keyId, customerPhone) => {
 
 
 const sendInvoicePDF = (transactionId, customerPhone) => {
+
+    // if transaction.payments.length ==  transaction.times_to_pay
+    // then send invoice
+
+    if (form?.transaction?.payments?.length !== form?.transaction?.times_to_pay) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "عدد الدفعات غير متطابق مع عدد الدفعات المطلوبة",
+            timer: 3000,
+            timerProgressBar: true,
+        });
+        return;
+    }
+
+
     Swal.fire({
         title: "هل انت متاكد ؟",
         text: `سيتم ارسال الفاتورة الى العميل`,
@@ -113,7 +129,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
                 onSuccess: () => {
                     Swal.fire({
                         icon: "success",
-                        title: "Success",
+                        title: "عملية ناجحة",
                         text: "Invoice sent successfully",
                         timer: 3000,
                         timerProgressBar: true,
@@ -122,6 +138,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
                     eventBus.$emit("closeModal", "transaction::showMessagesWhatsapp");
                 },
                 onError: () => {
+                    PDFLoader.value = false;
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
@@ -129,10 +146,11 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
                         timer: 3000,
                         timerProgressBar: true,
                     });
-                    PDFLoader.value = false;
                 },
             });
         }
+        PDFLoader.value = false;
+
     });
 }
 
@@ -317,8 +335,7 @@ const messageTime = (timestamp) => {
                 </div>
             </div>
 
-            <BaseButton v-if="!PDFLoader
-        " color="info" :icon="mdiInvoiceCheck" @click="sendInvoicePDF(transaction.id, transaction.customer.phone)" />
+            <BaseButton v-if="!PDFLoader " color="info" :icon="mdiInvoiceCheck" @click="sendInvoicePDF(transaction.id, transaction.customer.phone)" />
 
             <div v-else
                 class="inline-flex items-center justify-center px-3 py-2 mx-2 text-white transition-colors duration-150 bg-blue-700 border rounded cursor-pointer whitespace-nowrap focus:outline-none focus:ring border-emerald-600 dark:border-emerald-500 ring-emerald-300 dark:ring-emerald-700 dark:bg-blue-700 hover:bg-emerald-700 hover:border-emerald-700 hover:dark:bg-emerald-600 hover:dark:border-emerald-600">

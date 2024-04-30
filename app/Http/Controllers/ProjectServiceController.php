@@ -15,6 +15,7 @@ class ProjectServiceController extends Controller
     public function __invoke(Request $request, Project $project)
     {
         // $request->dd();
+
         $data = $request->validate([
             'services.*.id' => 'required|integer|min:0',
             'services.*.price' => 'required|numeric|min:1',
@@ -32,19 +33,18 @@ class ProjectServiceController extends Controller
         // extra_services.*.quantity  will be 1 by default
         // services.*.quantity will be 1 by default
 
+
         if (! empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
-                if ($serviceData['details']['originPrice'] == 0) {
-                    $serviceData['details'] = null;
-                    // remove originPrice from details
-                    // unset($serviceData['details']['originPrice']);
-                }
-                $service = $serviceData['id'];
-                $project->services()->updateExistingPivot($service, [
-                    'price' => $serviceData['price'],
-                    'quantity' => 1,
-                    'details' => json_encode(Arr::get($serviceData, 'details', [])),
-                ]);
+                // we need to shore or update data in the pivot table
+                $project->services()->updateExistingPivot(
+                    $serviceData['id'],
+                    [
+                        'price' => $serviceData['price'],
+                        'quantity' => 1,
+                        'details' => json_encode(Arr::get($serviceData, 'details', [])),
+                    ],
+                );
             });
         }
 

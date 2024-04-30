@@ -140,8 +140,8 @@ const submit = () => {
                 );
                 Swal.fire({
                     icon: "success",
-                    title: "Success",
-                    text: "Payment Updated successfully",
+                    title: "عملية ناجحة",
+                    text: "تم تحديث الحسابات بنجاح",
                     timer: 3000,
                     timerProgressBar: true,
                 });

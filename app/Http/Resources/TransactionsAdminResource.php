@@ -18,7 +18,7 @@ class TransactionsAdminResource extends JsonResource
         $costCalculationService = resolve(CalculationService::class);
 
         $allServicesCost = $this->whenLoaded('project', function () use ($costCalculationService) {
-            return $costCalculationService->calculateTotalCost($this->resource);
+            return $costCalculationService->calculateTotalServicesCost($this->resource);
         });
 
         $materialsCost = $this->whenLoaded('project', function () use ($costCalculationService) {
