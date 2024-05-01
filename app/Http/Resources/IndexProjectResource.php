@@ -21,7 +21,7 @@ class IndexProjectResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'images' => $this->getFirstMediaUrl(Project::PROJECT_IMAGES) ?? null,
-            'main_image' => $this->getFirstMediaUrl(Project::PROJECT_MAIN_IMAGE) ?? null,
+            'main_image' => $this->getFirstMediaUrl(Project::PROJECT_IMAGES) ?? null,
             'agent' => $this->agent,
             'address' => $this->address,
             'slug' => $this->slug,
