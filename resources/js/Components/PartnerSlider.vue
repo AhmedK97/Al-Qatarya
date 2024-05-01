@@ -109,9 +109,7 @@ export default {
                 {{ $t("partners") }}
             </template>
         </SectionTitleShadow>
-        <p class="mt-8 text-lg font-medium text-gray-500">
-            {{ $t("partners-desc") }}
-        </p>
+  
         <div
             class="mb-40 mt-20 flex bg-sidewhite flex-col items-center overflow-hidden select-none rtl:xl:flex-row-reverse xl:items-center xl:h-[5rem] ltr:xl:flex-row-reverse xl:space-x-20 ltr:xl:space-x-reverse xl:px-4"
         >

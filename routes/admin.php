@@ -79,6 +79,7 @@ Route::delete('/blogs/{blog}', DeleteBlogsController::class)->name('delete.blogs
 
 
 
+
 //--------------- Employees -----------------//
 Route::get('/customers', IndexCustomersAdminController::class)->name('index.customers');
 
@@ -100,6 +101,20 @@ Route::put('/projects/{project}', UpdateProjectsAdminController::class)->name('u
 Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name('delete.projects');
 
 Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
+
+// DeleteMediaProject
+Route::delete('/projects/deleteMedia/{media}', function (\App\Models\Project $project, \Spatie\MediaLibrary\MediaCollections\Models\Media $media) {
+    $media->delete();
+
+    return redirect()
+        ->route('index.projects')
+        ->with('swalNotification', [
+            'title' => __('common.success'),
+            'text' => __('common.deleted'),
+            'icon' => 'success',
+            'timer' => 5000,
+        ]);
+})->name('deleteMedia.projects');
 
 // --------------- Services -----------------//
 Route::get('/services', IndexServicesAdminController::class)->name('index.services');

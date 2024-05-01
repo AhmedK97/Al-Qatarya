@@ -33,7 +33,13 @@ class ProjectAdminResource extends JsonResource
             'services_id' => $this?->services?->pluck('id'),
             'services_name' => $this?->services?->pluck('name'),
             'created_at' => $this?->created_at->diffForHumans(),
-            // 'media_files' => MediaFilesResource::collection($this->getMedia("*")),
+            'media' => $this?->getMedia('*')->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'url' => $item->getFullUrl(),
+                    'type' => $item->mime_type,
+                ];
+            }),
         ];
     }
 }

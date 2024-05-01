@@ -2,18 +2,17 @@
     import {
         useForm,
     } from '@inertiajs/vue3'
+
     import {
         defineProps,
-
         ref,
-
         defineEmits
     } from 'vue'
-
 
     import {
         mdiPlus,
     } from '@mdi/js'
+
     import BaseButton from "@/Components/Admin/BaseButton.vue";
     import Swal from 'sweetalert2'
     import eventBus from "@/Composables/eventBus.js";
@@ -29,8 +28,6 @@
         files: null,
         project: props.project,
     })
-
-    //
 
     const file = ref(null);
 
@@ -63,9 +60,6 @@
                 }).then(() => {
                     emit('uploading', false);
                     file.value.value = null;
-
-                    // close modal
-                    // eventBus.$emit('closeModal', 'project::uploadMedia');
                 })
             },
             onError: () => {
@@ -80,12 +74,57 @@
             }
         })
     }
+
+    // deleteMedia
+    function deleteMedia(id) {
+        Swal.fire({
+            title: 'هل انت متاكد ؟',
+            text: 'لن تتمكن من التراجع عن هذا الاجراء!',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم، احذفه!',
+            cancelButtonText: 'الغاء',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.delete(route('deleteMedia.projects', id), {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        Swal.fire({
+                            title: 'تم الحذف!',
+                            text: `تم حذف الملف`,
+                            icon: 'success',
+                            showConfirmButton: true,
+                            timer: 2000,
+                        });
+                    },
+                });
+            }
+        }).finally(() => {
+            eventBus.$emit("closeModal", "project::create");
+        });
+    }
 </script>
 
 <template>
+
+<div class="container max-w-3xl mx-auto">
+    <div class="flex flex-wrap">
+        <div class="w-2/4 p-4" v-for="media in project?.media">
+            <img v-if="media?.type.includes('image')" :src="media.url" alt="media" class="w-64 h-56 rounded-lg shadow-lg " />
+            <video v-else :src="media.url" controls class="w-64 h-56 rounded shadow-lg"></video>
+
+            <button @click="deleteMedia(media.id)" class="p-2 mt-2 text-white bg-red-500 rounded">حذف</button>
+        </div>
+    </div>
+</div>
+
+
     <progress class="w-full" v-if="form.progress" :value="form.progress.percentage" max="100">
         Progress : {{ form . progress . percentage }}%
     </progress>
+
     <form @submit.prevent="submit">
         <input ref="file" type="file" multiple @input="form.files = $event.target.files" :disabled="form.progress"
             accept=".jpg, .jpeg, .png, .mkv, .mp4" />
