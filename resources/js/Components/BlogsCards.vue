@@ -38,8 +38,8 @@
                         {{ blog . title }}
                         </Link>
                     </h2>
-                    <p class="mb-5 font-normal text-gray-900">
-                        {{ blog . description }}
+                    <p v-html="blog.description" class="mb-5 font-normal text-gray-900">
+
                     </p>
 
                     <div class="flex items-center space-x-2 rtl:space-x-reverse">

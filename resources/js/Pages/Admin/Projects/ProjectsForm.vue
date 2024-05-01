@@ -195,13 +195,7 @@ const submit = () => {
         </FormField>
         <BaseDivider />
 
-        <!-- <FormField label="Company">
-            <select-field :errorMessage="form.errors.company"
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.company" :items="companies" />
-        </FormField> -->
-        <!-- <BaseDivider /> -->
-
+    
         <label class="block mb-2 font-bold"> العميل </label>
         <v-select
             :options="customers"

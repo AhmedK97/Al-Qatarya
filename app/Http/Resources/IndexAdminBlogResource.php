@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class IndexBlogResource extends JsonResource
+class IndexAdminBlogResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,13 +17,11 @@ class IndexBlogResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'seo_title' => $this->seo_title,
-            'seo_description' => $this->seo_description,
-            'seo_keywords' => $this->seo_keywords,
-            'description' => $this->description,
             'image' => $this->getFirstMediaUrl('blog_image') ?? null,
-            'slug' => $this->slug,
-            'local' => $this->local,
+            'status' => $this->status,
+            'language' => $this->locale,
+            'description' => $this->description,
+            'created_at' => $this->created_at->format('Y-m-d '), // '2021-09-01 00:00:00'
         ];
     }
 }

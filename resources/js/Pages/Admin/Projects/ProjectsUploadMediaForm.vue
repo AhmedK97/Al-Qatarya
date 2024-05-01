@@ -56,8 +56,8 @@
             onSuccess: () => {
                 eventBus.$emit("closeModal", "project::create");
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'File uploaded successfully!',
+                    title: 'عملية ناجحة',
+                    text: 'تم اضافة الملفات بنجاح',
                     icon: 'success',
                     confirmButtonText: 'OK',
                 }).then(() => {

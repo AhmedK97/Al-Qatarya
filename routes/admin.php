@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CreateWhatsAppQrCodeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeleteBlogsController;
 use App\Http\Controllers\DeleteCustomersAdminController;
 use App\Http\Controllers\DeleteEmployeesAdminController;
 use App\Http\Controllers\DeleteProjectsAdminController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ExportCustomersAdminController;
 use App\Http\Controllers\ExportEmployeesAdminController;
 use App\Http\Controllers\GetWhatsappChatMessages;
 use App\Http\Controllers\GetWhatsappMedia;
+use App\Http\Controllers\IndexBlogsAdminController;
 use App\Http\Controllers\IndexCustomersAdminController;
 use App\Http\Controllers\IndexEmployeesAdminController;
 use App\Http\Controllers\IndexProjectsAdminController;
@@ -25,11 +27,13 @@ use App\Http\Controllers\ProjectUploadMediaController;
 use App\Http\Controllers\SendBulkOfMessagesController;
 use App\Http\Controllers\SendInvoiceController;
 use App\Http\Controllers\SendTextMessageController;
+use App\Http\Controllers\StoreBlogsController;
 use App\Http\Controllers\StoreCustomersAdminController;
 use App\Http\Controllers\StoreEmployeesAdminController;
 use App\Http\Controllers\StoreProjectsAdminController;
 use App\Http\Controllers\StoreServicesAdminController;
 use App\Http\Controllers\StoreTransactionsController;
+use App\Http\Controllers\UpdateBlogsController;
 use App\Http\Controllers\UpdateCustomersAdminController;
 use App\Http\Controllers\UpdateEmployeesAdminController;
 use App\Http\Controllers\UpdateProjectsAdminController;
@@ -64,6 +68,16 @@ Route::Put('employees/{user}', UpdateEmployeesAdminController::class)->name('upd
 Route::delete('employees/{user}', DeleteEmployeesAdminController::class)->name('delete.employees');
 
 Route::get('/employees/export', ExportEmployeesAdminController::class)->name('export.employees');
+
+//--------------- Blogs -----------------//
+// index // store // update // delete
+Route::get('/blogs', IndexBlogsAdminController::class)->name('index.blogs');
+Route::post('/blogs', StoreBlogsController::class)->name('store.blogs');
+Route::put('/blogs/{blog}', UpdateBlogsController::class)->name('update.blogs');
+Route::delete('/blogs/{blog}', DeleteBlogsController::class)->name('delete.blogs');
+
+
+
 
 //--------------- Employees -----------------//
 Route::get('/customers', IndexCustomersAdminController::class)->name('index.customers');

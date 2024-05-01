@@ -44,10 +44,15 @@ export default [{
         icon: mdiWhatsapp,
     },
     {
-        route: "index.whatsapp.ads",
-        label: "WhatsApp Ads",
-        icon: mdiWhatsapp,
-    },
+        route: "index.blogs",
+        label: "المدونة",
+        icon: mdiViewList,
+    }
+    // {
+    //     route: "index.whatsapp.ads",
+    //     label: "WhatsApp Ads",
+    //     icon: mdiWhatsapp,
+    // },
 
     // {
     //     // Inventory
