@@ -4,7 +4,7 @@
             <img
                 :src="project.main_image"
                 :alt="project.title"
-                class="object-cover w-full h-auto duration-300 rounded-lg cursor-pointer hover:opacity-80"
+                class="object-cover w-full duration-300 rounded-lg cursor-pointer h-96 hover:opacity-80"
             />
             <!-- <div
                 class="absolute flex justify-center px-5 py-4 text-white rounded-full cursor-pointer right-5 bottom-10 bg-rose-900 hover:bg-rose-800"

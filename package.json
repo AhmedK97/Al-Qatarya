@@ -47,6 +47,7 @@
         "vue-numerals": "^4.0.6",
         "vue-select": "^4.0.0-beta.6",
         "vue-slick-carousel": "^1.0.6",
+        "vue-video-player": "^6.0.0",
         "vue3-carousel": "^0.3.1"
     }
 }
