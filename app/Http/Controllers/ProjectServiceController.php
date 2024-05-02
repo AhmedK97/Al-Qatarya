@@ -30,9 +30,6 @@ class ProjectServiceController extends Controller
             'extra_services.*.type' => 'required|string|in:service,worker',
             'extra_services.*.details' => 'nullable',
         ]);
-        // extra_services.*.quantity  will be 1 by default
-        // services.*.quantity will be 1 by default
-
 
         if (! empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
@@ -42,7 +39,7 @@ class ProjectServiceController extends Controller
                     [
                         'price' => $serviceData['price'],
                         'quantity' => 1,
-                        'details' => json_encode(Arr::get($serviceData, 'details', [])),
+                        'details' => json_encode(Arr::get($serviceData, 'details', [])) == 'null' ? '[]' : json_encode(Arr::get($serviceData, 'details', [])),
                     ],
                 );
             });
@@ -67,7 +64,7 @@ class ProjectServiceController extends Controller
                         'price' => $extraServiceData['price'],
                         'quantity' => 1,
                         'type' => $extraServiceData['type'], // 'service' or 'employee'
-                        'details' => json_encode(Arr::get($extraServiceData, 'details', [])),
+                        'details' => json_encode(Arr::get($extraServiceData, 'details', [])) ?? '[]',
                     ],
                 );
             });

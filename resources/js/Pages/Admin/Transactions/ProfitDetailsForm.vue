@@ -173,7 +173,7 @@ const addNewServiceDetail = (id) => {
 
     const newId = parseInt(id);
     const service = form.services.find((service) => service.id === newId);
-
+    console.log(service.details );
     if (service) {
         service.details.push({
             originPrice: newDetailsService.value.originPrice,
