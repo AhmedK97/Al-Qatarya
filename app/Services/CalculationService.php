@@ -60,7 +60,7 @@ class CalculationService
         foreach ($transaction->project->extraServices as $extraService) {
             if ($extraService->type == 'worker') {
                 foreach (json_decode($extraService->details) as $worker) {
-                    $workerCost += $worker->originPrice + $worker->tips - $worker->discount;
+                    $workerCost += intval($worker->originPrice) + intval($worker->tips) - intval($worker->discount);
                 }
             }
         }
