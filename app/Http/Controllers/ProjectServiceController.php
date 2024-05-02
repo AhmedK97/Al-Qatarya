@@ -39,12 +39,11 @@ class ProjectServiceController extends Controller
                     [
                         'price' => $serviceData['price'],
                         'quantity' => 1,
-                        'details' => json_encode(Arr::get($serviceData, 'details', [])) == 'null' ? '[]' : json_encode(Arr::get($serviceData, 'details', [])),
+                        'details' => json_encode(Arr::get($serviceData, 'details', [])),
                     ],
                 );
             });
         }
-
         if (! empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
                 ->pluck('id')
@@ -55,7 +54,7 @@ class ProjectServiceController extends Controller
                 ->whereNotIn('id', $receivedIds)
                 ->delete();
 
-            collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
+                collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
                 $id = Arr::get($extraServiceData, 'id');
                 $project->extraServices()->updateOrCreate(
                     ['id' => $id],
@@ -69,7 +68,7 @@ class ProjectServiceController extends Controller
                 );
             });
         } else {
-            // $project->extraServices()->delete();
+            $project->extraServices()->delete();
         }
 
         return redirect()
