@@ -80,10 +80,12 @@ watch(
 
 const calculateServiceProfit = (service) => {
     let total = 0;
-    service.details.forEach((detail) => {
-        total += parseInt(detail.originPrice);
-    });
-    return service.price - total;
+    if (service.details?.length > 0) {
+        service.details.forEach((detail) => {
+            total += parseInt(detail.originPrice);
+        });
+    }
+    return service.price * service.quantity - total
 };
 
 const calculateExtraServiceProfit = (service) => {
@@ -220,13 +222,22 @@ const addNewExtraServiceDetail = (id) => {
 
 const validateOriginPriceWorker = ref("");
 
-const addNewDetail = (id) => {
+const addNewWorkerDetail = (id) => {
     if (!newDetailWorker.value.originPrice) {
         validateOriginPriceWorker.value = "اليومية مطلوبة";
         return;
     }
     if (isNaN(newDetailsService.value.originPrice)) {
         validateOriginPriceService.value = "السعر يجب ان يكون رقم";
+        return;
+    }
+    if (newDetailWorker.value.tips && isNaN(newDetailWorker.value.tips)) {
+        validateOriginPriceWorker.value = "الاكرامية يجب ان تكون رقم";
+        return;
+    }
+
+    if (newDetailWorker.value.discount && isNaN(newDetailWorker.value.discount)) {
+        validateOriginPriceWorker.value = "الخصم يجب ان يكون رقم";
         return;
     }
 
@@ -1155,7 +1166,7 @@ const submit = () => {
                                     </div>
                                     <BaseButtons class="mx-2 mt-5">
                                         <BaseButton
-                                            @click="addNewDetail(formWorker.id)"
+                                            @click="addNewWorkerDetail(formWorker.id)"
                                             type="submit"
                                             color="info"
                                             label="اضافة يومية"
