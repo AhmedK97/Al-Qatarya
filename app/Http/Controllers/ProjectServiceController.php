@@ -30,9 +30,6 @@ class ProjectServiceController extends Controller
             'extra_services.*.type' => 'required|string|in:service,worker',
             'extra_services.*.details' => 'nullable',
         ]);
-        // extra_services.*.quantity  will be 1 by default
-        // services.*.quantity will be 1 by default
-
 
         if (! empty($data['services'])) {
             collect($data['services'])->each(function ($serviceData) use ($project) {
@@ -47,7 +44,6 @@ class ProjectServiceController extends Controller
                 );
             });
         }
-
         if (! empty($data['extra_services'])) {
             $receivedIds = collect($data['extra_services'])
                 ->pluck('id')
@@ -58,7 +54,7 @@ class ProjectServiceController extends Controller
                 ->whereNotIn('id', $receivedIds)
                 ->delete();
 
-            collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
+                collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
                 $id = Arr::get($extraServiceData, 'id');
                 $project->extraServices()->updateOrCreate(
                     ['id' => $id],
@@ -67,12 +63,12 @@ class ProjectServiceController extends Controller
                         'price' => $extraServiceData['price'],
                         'quantity' => 1,
                         'type' => $extraServiceData['type'], // 'service' or 'employee'
-                        'details' => json_encode(Arr::get($extraServiceData, 'details', [])),
+                        'details' => json_encode(Arr::get($extraServiceData, 'details', [])) ?? '[]',
                     ],
                 );
             });
         } else {
-            // $project->extraServices()->delete();
+            $project->extraServices()->delete();
         }
 
         return redirect()
