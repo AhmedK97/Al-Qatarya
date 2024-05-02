@@ -67,7 +67,7 @@ const currentlyEditedCustomer = ref(null);
 
 const formModalTitle = computed(() => {
     return currentlyEditedCustomer.value?.id
-        ? `Edit ${currentlyEditedCustomer.value?.name} Customer`
+        ? `تعديل العميل/ ${currentlyEditedCustomer.value?.name}`
         : "اضافة عميل جديد";
 });
 
@@ -104,8 +104,8 @@ const deleteCustomer = (customer) => {
                 replace: true,
                 onSuccess: () => {
                     Swal.fire({
-                        title: "Deleted!",
-                        text: `${customer.name} has been deleted.`,
+                        title: "تم الحذف!",
+                        text: `تم حذف ${customer.name}`,
                         icon: "success",
                         showConfirmButton: true,
                         timer: 2000,
