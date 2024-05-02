@@ -18,7 +18,6 @@ const props = defineProps({
     project: Object,
 });
 
-
 const sponsors = [
     {
         title: "alfanar",

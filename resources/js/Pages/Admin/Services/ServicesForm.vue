@@ -94,11 +94,11 @@ const resetForm = () => {
 const lang = [
     {
         id: "en",
-        name: "English",
+        name: "انجليزي",
     },
     {
         id: "ar",
-        name: "Arabic",
+        name: "عربي",
     },
 ];
 

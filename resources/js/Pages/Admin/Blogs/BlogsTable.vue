@@ -153,7 +153,6 @@ const openformModal = () => {
                 <th>الحالة</th>
                 <th>التاريخ</th>
                 <th>اجراء</th>
-
             </tr>
         </thead>
         <tbody>
@@ -209,16 +208,22 @@ const openformModal = () => {
                 <td data-label="ID">{{ blog.id }}</td>
                 <td data-label="Name">{{ blog.title }}</td>
                 <!-- <td data-label="Description">{{ blog.description }}</td> -->
-                <td >
+                <td>
                     <PillTag
-                        :label="blog.language == 'ar' ? 'العربية' : 'الانجليزية'"
+                        :label="
+                            blog.language == 'ar' ? 'العربية' : 'الانجليزية'
+                        "
                         :color="blog.language == 'ar' ? 'success' : 'danger'"
                     />
                 </td>
                 <td data-label="Status">
                     <PillTag
-                        :color="blog.status == 'published' ? 'success' : 'danger'"
-                        :label="blog.status"
+                        :color="
+                            blog.status == 'published' ? 'success' : 'danger'
+                        "
+                        :label="
+                            blog.status == 'published' ? 'منشور' : 'غير منشور'
+                        "
                     />
                 </td>
 

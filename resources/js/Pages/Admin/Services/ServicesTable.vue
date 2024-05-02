@@ -158,8 +158,8 @@ const openFormModal = () => {
                         class="w-full h-8 px-2 py-1 border rounded border-primary-100"
                     >
                         <option :value="null">فلترة</option>
-                        <option value="ar">Arabic</option>
-                        <option value="en">English</option>
+                        <option value="ar">عربي</option>
+                        <option value="en">انجليزي</option>
                     </select>
                 </td>
                 <td></td>
@@ -186,7 +186,7 @@ const openFormModal = () => {
                 <td data-label="Name">{{ service.name }}</td>
 
                 <td data-label="Language">
-                    {{ service.lang == "ar" ? "Arabic" : "English" }}
+                    {{ service.lang == "ar" ? "عربي" : "انجليزي" }}
                 </td>
                 <td data-label="Created At">{{ service.created_at }}</td>
                 <td

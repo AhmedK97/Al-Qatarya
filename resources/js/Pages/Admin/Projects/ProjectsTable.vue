@@ -274,7 +274,7 @@ const uploading = (value) => {
                         </span>
                     </span>
                     <span v-else>
-                        <span class="text-red-500">No Services</span>
+                        <span class="text-red-500">لا يوجد</span>
                     </span>
                 </td>
                 <td data-label="Address">{{ project.space_area }}</td>
@@ -303,7 +303,9 @@ const uploading = (value) => {
                         class="inline-flex px-2 text-xs font-semibold leading-5 text-center text-red-800 bg-red-100 rounded-full"
                     />
                 </td>
-                <td data-label="project_date">{{ project.project_date }}</td>
+                <td data-label="project_date" class="whitespace-nowrap">
+                    {{ project.project_date }}
+                </td>
                 <td data-label="About">{{ project.address }}</td>
                 <td data-label="notes">
                     <span v-if="project?.notes?.length > 50">

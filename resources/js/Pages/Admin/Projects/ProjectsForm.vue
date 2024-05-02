@@ -195,7 +195,6 @@ const submit = () => {
         </FormField>
         <BaseDivider />
 
-    
         <label class="block mb-2 font-bold"> العميل </label>
         <v-select
             :options="customers"
