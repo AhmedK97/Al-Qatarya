@@ -208,7 +208,9 @@ const openformModal = () => {
                 <td data-label="ID">{{ employee.id }}</td>
                 <td data-label="Name">{{ employee.name }}</td>
                 <td data-label="Phone">{{ employee.phone }}</td>
-                <td data-label="Phone">{{ employee.status }}</td>
+                <td data-label="Phone">
+                    {{ employee.status == "Active" ? "نشط" : "غير نشط" }}
+                </td>
                 <!-- <td data-label="Status" v-if="employee . status == 'Active'">نشظ</td> -->
                 <!-- <td data-label="Status" v-else-if="employee . status == 'Inactive'">غير نشط</td> -->
                 <td data-label="Address">{{ employee.address }}</td>
