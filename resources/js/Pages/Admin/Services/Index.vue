@@ -44,8 +44,8 @@ const props = defineProps({
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
                 <CardBoxWidget :icon="mdiBriefcase" :number="servicesCountQatarya" label="خدمات شركة قطرية"
                     color="text-blue-500" />
-                <CardBoxWidget :icon="mdiBriefcase" :number="servicesCountOthman" label="خدمات شركة عثمان"
-                    color="text-blue-500" />
+                <!-- <CardBoxWidget :icon="mdiBriefcase" :number="servicesCountOthman" label="خدمات شركة عثمان"
+                    color="text-blue-500" /> -->
             </div>
             <SectionTitleLineWithButton :icon="mdiDomain" title="الخدمات">
                 <div class="flex items-center">
