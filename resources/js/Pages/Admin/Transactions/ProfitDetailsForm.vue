@@ -171,6 +171,11 @@ const addNewServiceDetail = (id) => {
         return;
     }
 
+    if (newDetailsService.value.originPrice < 0) {
+        validateOriginPriceService.value = "السعر يجب ان يكون اكبر من صفر";
+        return;
+    }
+
     const newId = parseInt(id);
     const service = form.services.find((service) => service.id === newId);
     if (service) {
@@ -201,6 +206,11 @@ const addNewExtraServiceDetail = (id) => {
 
     if (isNaN(NewDetailExtraService.value.originPrice)) {
         validateOriginPriceExtraService.value = "السعر يجب ان يكون رقم";
+        return;
+    }
+
+    if (NewDetailExtraService.value.originPrice < 0) {
+        validateOriginPriceExtraService.value = "السعر يجب ان يكون اكبر من صفر";
         return;
     }
 
@@ -286,6 +296,15 @@ const deleteExtraServiceDetail = (id, index) => {
     if (service) {
         service.details.splice(index, 1);
     }
+};
+
+const calculateTotal = (transaction) => {
+                               // if transaction?.extra_service_profit > 0 then transaction?.extra_service_profit else transaction?.extra_services_cost
+                            // if transaction?.service_profit > 0 then transaction?.service_profit else transaction?.services_cost
+    console.log(transaction);
+                            // transaction?.service_profit +
+                            //     transaction?.extra_service_profit -
+                            //     transaction?.worker_cost
 };
 
 const submit = () => {
@@ -748,15 +767,7 @@ const submit = () => {
                                         <td
                                             class="px-6 py-4whitespace-nowrap"
                                             :class="
-                                                formItem.price -
-                                                    calculateExtraServiceDetailsProfit(
-                                                        formItem
-                                                    ) >
-                                                0
-                                                    ? 'text-green-500 font-bold'
-                                                    : 'text-red-500 font-bold'
-                                            "
-                                        >
+                                                formItem.price - calculateExtraServiceDetailsProfit(formItem ) > 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'" >
                                             {{
                                                 formItem.price -
                                                 calculateExtraServiceDetailsProfit(
@@ -1279,35 +1290,52 @@ const submit = () => {
                         {{ transaction?.worker_cost }} دينار
                     </td>
                     <td
-                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" :class="
-                           transaction?.service_profit > 0
+                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" >
+                        <span v-if="transaction?.service_profit > 0" :class="
+                            transaction?.service_profit > 0
                                 ? 'text-green-500 font-bold'
-                                : 'text-red-500 font-bold'"
-                    >
-                        {{ transaction?.service_profit }} دينار
+                                : 'text-red-500 font-bold'" >
+                            {{ transaction?.service_profit }} دينار
+                        </span>
+                        <span v-else class="font-bold text-green-500" >
+                            {{ transaction?.services_cost }}
+                        </span>
                     </td>
-                    <td
-                        class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" :class="
+                    <td class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" >
+                      <span v-if="transaction?.extra_service_profit > 0" :class="
                            transaction?.extra_service_profit > 0
                                 ? 'text-green-500 font-bold'
-                                : 'text-red-500 font-bold'"
-                    >
+                                : 'text-red-500 font-bold'" >
                         {{ transaction?.extra_service_profit }} دينار
+                    </span>
+                    <span v-else class="font-bold text-green-500" >
+                        {{ transaction?.extra_services_cost }}
+
+                    </span>
                     </td>
 
                     <td
                         class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap"
                         :class="
-                            transaction?.service_profit +
-                                transaction?.extra_service_profit -
-                                transaction?.worker_cost >
-                            0
+                             (transaction?.service_profit > 0
+                                    ? transaction?.service_profit
+                                    : transaction?.services_cost)
+                            +
+                                (transaction?.extra_service_profit > 0
+                                    ? transaction?.extra_service_profit
+                                    : transaction?.extra_services_cost) -
+                                transaction?.worker_cost > 0
                                 ? 'text-green-500 font-bold'
                                 : 'text-red-500 font-bold'"
                     >
                         {{
-                            transaction?.service_profit +
-                                transaction?.extra_service_profit -
+                                (transaction?.service_profit > 0
+                                    ? transaction?.service_profit
+                                    : transaction?.services_cost)
+                            +
+                                (transaction?.extra_service_profit > 0
+                                    ? transaction?.extra_service_profit
+                                    : transaction?.extra_services_cost) -
                                 transaction?.worker_cost
                         }}
                         دينار

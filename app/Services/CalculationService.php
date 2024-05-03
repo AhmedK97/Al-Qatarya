@@ -21,26 +21,22 @@ class CalculationService
     {
         $materialsServiceCost = 0;
         $materialsExtraServiceCost = 0;
-        // the sum of service originPrice
-        // the sum of  and extraService originPrice
 
         foreach ($transaction->project->services as $service) {
-            if (! json_decode($service->pivot->details)) {
-                return 0;
+            // if (is_null( json_decode($service->pivot->details))) {
+            //     return 0;
+            // }
+            $totalOriginPrice = json_decode($service->pivot->details) ? json_decode($service->pivot->details) : [];
+            $sumOriginPrice = 0;
+            foreach ($totalOriginPrice as $price) {
+                $sumOriginPrice += $price->originPrice;
             }
-            $totalOriginPrice = 0;
-            foreach (json_decode($service->pivot->details) as $price) {
-                $totalOriginPrice += $price->originPrice;
-            }
-            $materialsServiceCost += $totalOriginPrice * $service->pivot->quantity;
+            $materialsServiceCost += $sumOriginPrice * $service->pivot->quantity;
         }
 
         foreach ($transaction->project->extraServices as $extraService) {
             if ($extraService->type == 'service') {
-                if (! json_decode($extraService->details)) {
-                    return 0;
-                }
-                $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : 0;
+                $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : [];
                 $sumOriginPrice = 0;
                 foreach ($originPrice as $price) {
                     $sumOriginPrice += $price->originPrice;
@@ -48,7 +44,6 @@ class CalculationService
                 $materialsExtraServiceCost += $sumOriginPrice * $extraService->quantity;
             }
         }
-
         $materialsCost = $materialsServiceCost + $materialsExtraServiceCost;
 
         return $materialsCost;

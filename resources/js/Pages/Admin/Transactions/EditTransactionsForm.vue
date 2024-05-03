@@ -79,11 +79,11 @@ const resetForm = () => {
 const statues = [
     {
         id: "Pending",
-        name: "Pending",
+        name: "في انتظار الدفع",
     },
     {
         id: "Paid",
-        name: "Paid",
+        name: "تم الدفع",
     },
 ];
 

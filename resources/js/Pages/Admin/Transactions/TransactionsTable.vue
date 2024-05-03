@@ -343,8 +343,8 @@ const deleteTransaction = (transaction) => {
                 <th class="text-center">العنوان</th>
                 <th class="text-center">التكلفة الكلية للمشروع</th>
                 <th class="text-center">اجمالى دفعات العميل</th>
-                <th class="text-center">تكلفة المواد الخام</th>
-                <th class="text-center">تكلفة العمال</th>
+                <th class="text-center">اجمالى التكاليف بالعمالة</th>
+                <!-- <th class="text-center">تكلفة العمال</th> -->
                 <th class="text-center">صافي الربح</th>
                 <th class="text-center">عدد مرات الدفع</th>
                 <th class="text-center">الحاله</th>
@@ -399,7 +399,6 @@ const deleteTransaction = (transaction) => {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>
                     <select
                         v-model="activeFilters.filteredBy.status"
@@ -447,11 +446,12 @@ const deleteTransaction = (transaction) => {
                     {{ transaction.total_paid }} دينار
                 </td>
                 <td data-label="all payments">
-                    {{ transaction.materials_cost }} دينار
+                    <!-- {{ transaction }} دينار -->
+                    {{ transaction.materials_cost + transaction.worker_cost}} دينار
                 </td>
-                <td data-label="all payments">
+                <!-- <td data-label="all payments">
                     {{ transaction.worker_cost }} دينار
-                </td>
+                </td> -->
                 <td
                     data-label=" Net profit"
                     class="font-bold"
