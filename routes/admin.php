@@ -76,10 +76,6 @@ Route::post('/blogs', StoreBlogsController::class)->name('store.blogs');
 Route::put('/blogs/{blog}', UpdateBlogsController::class)->name('update.blogs');
 Route::delete('/blogs/{blog}', DeleteBlogsController::class)->name('delete.blogs');
 
-
-
-
-
 //--------------- Employees -----------------//
 Route::get('/customers', IndexCustomersAdminController::class)->name('index.customers');
 
@@ -103,7 +99,7 @@ Route::delete('/projects/{project}', DeleteProjectsAdminController::class)->name
 Route::post('/projects/{project}/uploadMedia', ProjectUploadMediaController::class)->name('uploadMedia.projects');
 
 // DeleteMediaProject
-Route::delete('/projects/deleteMedia/{media}', function (\App\Models\Project $project, \Spatie\MediaLibrary\MediaCollections\Models\Media $media) {
+Route::delete('/projects/deleteMedia/{media}', function (App\Models\Project $project, Spatie\MediaLibrary\MediaCollections\Models\Media $media) {
     $media->delete();
 
     return redirect()

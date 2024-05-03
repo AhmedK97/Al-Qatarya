@@ -32,7 +32,7 @@ class ProjectAdminResource extends JsonResource
             'address' => $this?->address,
             'services_id' => $this?->services?->pluck('id'),
             'services_name' => $this?->services?->pluck('name'),
-            'created_at' => $this?->created_at->diffForHumans(),
+            'created_at' => $this?->created_at,
             'media' => $this?->getMedia('*')->map(function ($item) {
                 return [
                     'id' => $item->id,

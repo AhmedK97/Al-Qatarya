@@ -21,7 +21,7 @@ class ServiceAdminResource extends JsonResource
             'additional_info' => json_decode($this->additional_info),
             'is_used' => $this->projects()->exists(),
             'lang' => $this->lang,
-            'created_at' => optional($this->created_at)->format('Y-m-d H:i:s'),
+            'created_at' => $this->created_at,
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Resources\ServiceResource;
+use App\Models\Project;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -41,12 +41,16 @@ class HandleInertiaRequests extends Middleware
                 ]);
             },
 
-            // services
             'services' => function () {
-                $services = Service::select('name', 'slug')->where('lang', 'like', '%'.app()->getLocale().'%')->get();
+                $services = Service::where('lang', 'like', '%'.app()->getLocale().'%')->get();
 
-                return ServiceResource::collection($services);
+                return $services;
             },
+
+            'ProjectsCount' => function () {
+                return Project::count();
+            },
+
             'flash' => [
                 'swalNotification' => fn () => $request->session()->get('swalNotification'),
                 'showFillInformationModal' => fn () => $request->session()->get('showFillInformationModal'),

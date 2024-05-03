@@ -10,7 +10,7 @@ class UpdateBlogsController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request , Blog $blog)
+    public function __invoke(Request $request, Blog $blog)
     {
         $request->validate([
             'title' => 'required',
@@ -19,7 +19,6 @@ class UpdateBlogsController extends Controller
             'language' => 'required',
             'files' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
 
         $blog->update([
             'title' => $request->title,
@@ -34,14 +33,13 @@ class UpdateBlogsController extends Controller
         }
 
         return redirect()
-        ->route('index.blogs')
-        ->with('swalNotification', [
-            'title' => __('common.success'),
-            'text' => __('common.created'),
-            'icon' => 'success',
-            'timer' => 5000,
-        ]);
-
+            ->route('index.blogs')
+            ->with('swalNotification', [
+                'title' => __('common.success'),
+                'text' => __('common.created'),
+                'icon' => 'success',
+                'timer' => 5000,
+            ]);
 
     }
 }

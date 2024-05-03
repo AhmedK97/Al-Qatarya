@@ -12,12 +12,12 @@ class StoreServicesAdminController extends Controller
      */
     public function __invoke(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string',
-            // 'company_name' => 'required|string',
-            'additional_info' => 'sometimes|array',
-            'additional_info.*.title' => 'string',
-            'additional_info.*.description' => 'string',
+            'additional_info' => 'required|array',
+            'additional_info.*.title' => 'string|required',
+            'additional_info.*.description' => 'string|required',
             'files' => 'required|image',
             'lang' => 'required|string',
         ]);

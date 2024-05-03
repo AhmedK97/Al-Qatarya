@@ -42,32 +42,12 @@
                 </p>
 
                 <div class="mt-10">
-                    <Counter :targetNumber="100" :intervalSpeed="10">
+                    <Counter :targetNumber="100 + $page.props.ProjectsCount" :intervalSpeed="10">
                         <template #title>
                             {{ $t("who.we.are-counter") }}
                         </template>
                     </Counter>
                 </div>
-
-                <!-- <div class="flex flex-wrap justify-center gap-8 mt-10 md:mt-16">
-                    <div class="flex gap-x-8">
-                        <Counter :targetNumber="100" :intervalSpeed="10">
-                            <template #title>
-                                {{ $t("who.we.are-counter") }}
-                            </template>
-                        </Counter>
-                        <Counter :targetNumber="500" :intervalSpeed="0.1">
-                            <template #title>
-                                {{ $t("who.we.are-counter") }}
-                            </template>
-                        </Counter>
-                    </div>
-                    <Counter :targetNumber="139" :intervalSpeed="10">
-                        <template #title>
-                            {{ $t("who.we.are-counter") }}
-                        </template>
-                    </Counter>
-                </div> -->
             </div>
         </div>
     </section>

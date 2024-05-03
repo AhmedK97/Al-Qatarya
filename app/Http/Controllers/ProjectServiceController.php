@@ -54,7 +54,7 @@ class ProjectServiceController extends Controller
                 ->whereNotIn('id', $receivedIds)
                 ->delete();
 
-                collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
+            collect($data['extra_services'])->each(function ($extraServiceData) use ($project) {
                 $id = Arr::get($extraServiceData, 'id');
                 $project->extraServices()->updateOrCreate(
                     ['id' => $id],

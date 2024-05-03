@@ -29,7 +29,7 @@ class ShowProjectResource extends JsonResource
             }),
             'agent' => $this->customer->name,
             'address' => $this->address,
-            'date' => $this->created_at->format('d/m/Y'),
+            'date' => $this->created_at,
             'space_area' => $this->space_area,
         ];
     }

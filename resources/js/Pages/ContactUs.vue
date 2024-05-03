@@ -78,100 +78,69 @@
                     <form action="">
                         <div class="flex w-full space-x-8 rtl:space-x-reverse">
                             <div class="w-full mb-6">
-                                <label
-                                    for="name"
-                                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                                >
-                                    {{ $t("contact.name") }}
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
+                                <!-- FormField -->
+                                <FormField :label="$t('Name')">
+                                    <FormControl
+                                        :errorMessage="form.errors.name"
+                                        v-model="form.name"
+                                    />
+                                </FormField>
                             </div>
                             <div class="w-full mb-6">
-                                <label
-                                    for="email"
-                                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                                >
-                                    {{ $t("contact.email") }}
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                                    required
-                                />
+                                <!-- FormField -->
+                                <FormField :label="$t('Phone')">
+                                    <FormControl
+                                        :errorMessage="form.errors.phone"
+                                        v-model="form.phone"
+                                    />
+                                </FormField>
                             </div>
                         </div>
                         <div class="w-full mb-6">
-                            <label
-                                for="subject"
-                                class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                            >
-                                {{ $t("contact.subject") }}
-                            </label>
-                            <input
-                                type="text"
-                                id="subject"
-                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                                required
+                            <FormField :label="$t('Subject')">
+                                <FormControl
+                                    :errorMessage="form.errors.subject"
+                                    v-model="form.subject"
+                                />
+                            </FormField>
+                        </div>
+
+                        <FormField :label="$t('Service')">
+                            <select-field
+                                :errorMessage="form.errors.service_id"
+                                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
+                                v-model="form.service_id"
+                                :items="services"
                             />
-                        </div>
+                        </FormField>
+
                         <div class="w-full mb-6">
-                            <label
-                                for="fields"
-                                class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                            >
-                                {{ $t("contact.fields") }}
-                            </label>
-                            <select
-                                id="fields"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            >
-                                <option selected>
-                                    {{ $t("contact.choose-fields") }}
-                                </option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
-                            </select>
+                            <FormField :label="$t('Message')">
+                                <FormControl
+                                    :errorMessage="form.errors.message"
+                                    v-model="form.message"
+                                />
+                            </FormField>
                         </div>
+
                         <div class="w-full mb-6">
-                            <label
-                                for="message"
-                                class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                            >
-                                {{ $t("contact.message") }}
-                            </label>
-                            <textarea
-                                id="message"
-                                rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            ></textarea>
+                            <FormField :label="$t('Send Image')">
+                                <FormFilePicker
+                                    :errorMessage="form.errors.file"
+                                    accept="image/*"
+                                    class="mt-5 text-center"
+                                    v-model="form.file"
+                                />
+                            </FormField>
                         </div>
-                        <div class="w-full mb-6">
-                            <label
-                                class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
-                                for="file_input"
-                            >
-                                {{ $t("contact.file") }}
-                            </label>
-                            <input
-                                class="block w-full px-4 text-sm text-center text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                aria-describedby="file_input_help"
-                                id="file_input"
-                                type="file"
+
+                        <BaseButtons>
+                            <BaseButton
+                                @click="submit"
+                                color="info"
+                                :label="$t('Send')"
                             />
-                        </div>
-                        <button
-                            type="submit"
-                            class="text-white bg-rose-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm w-full sm:w-auto px-11 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800"
-                        >
-                            {{ $t("contact.send") }}
-                        </button>
+                        </BaseButtons>
                     </form>
                 </div>
             </div>
@@ -198,10 +167,77 @@ import NavBar from "@/Components/NavBar.vue";
 import Footer from "@/Components/Footer.vue";
 import SectionTitleShadow from "@/Components/SectionTitleShadow.vue";
 import { computed } from "@vue/reactivity";
+import { router, useForm, usePage } from "@inertiajs/vue3";
+import { reactive } from "vue";
+import { ref } from "vue";
+import FormField from "@/Components/Admin/FormField.vue";
+import FormControl from "@/Components/Admin/FormControl.vue";
+import selectField from "@/Components/Admin/SelectField.vue";
+import FormFilePicker from "@/Components/Admin/FormFilePicker.vue";
+import BaseButton from "@/Components/Admin/BaseButton.vue";
+import BaseButtons from "@/Components/Admin/BaseButtons.vue";
+import Swal from "sweetalert2";
 
 const mapSrc = computed(() => {
     return `https://maps.google.com/maps?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA%2094043,%20USA&output=embed`;
 });
+
+const page = usePage();
+const services = page.props.services;
+
+const serviceId = ref(null);
+
+const form = useForm({
+    name: "",
+    phone: "",
+    subject: "",
+    service_id: "",
+    message: "",
+    file: "",
+});
+
+const submit = () => {
+    // send.phone
+    // Route::post('/send-phone', SendphoneController::class)->name('send.phone');
+    // form.post(route("send.contact"))
+    const sharedFormOptions = {
+        preserveState: true,
+        preserveScroll: true,
+        onError: (errors) => {
+            // remove errors
+            Object.keys(form.errors).forEach((key) => {
+                delete form.errors[key];
+            });
+
+            Object.assign(form.errors, errors);
+        },
+    };
+    const resetForm = () => {
+    // form reset
+    form.reset();
+    // remove errors
+    Object.keys(form.errors).forEach((key) => {
+        delete form.errors[key];
+    });
+};
+
+    router.post(
+        route("send.contact"),
+        form,
+        Object.assign(sharedFormOptions, {
+            onSuccess: () => {
+                resetForm();
+                Swal.fire({
+                    icon: "success",
+                    title: "تم بنجاح",
+                    text: "تم انشاء المدونه بنجاح",
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            },
+        })
+    );
+};
 </script>
 
 <style></style>

@@ -21,15 +21,11 @@ class Transaction extends Model
         return $this->belongsTo(User::class, 'employee_id');
     }
 
-    // public function services()
-    // {
-    //     return $this->belongsToMany(Service::class);
-    // }
-
-    // public function payments()
-    // {
-    //     return $this->hasMany(Payment::class);
-    // }
+    public function getCreatedAtAttribute($value)
+    {
+        // Convert the timestamp to the desired format
+        return \Carbon\Carbon::parse($value)->format('d-m-y  h:i A');
+    }
 
     public function project()
     {

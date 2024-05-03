@@ -40,7 +40,7 @@ class SendInvoiceController extends Controller
         $totalPaidAmount = $transactions->sum('paid_amount');
 
         $transactions = TransactionsAdminResource::make($transactions->first());
-            // return view('invoice.index', compact('services', 'extraServices', 'transactions'));
+        // return view('invoice.index', compact('services', 'extraServices', 'transactions'));
         $pdfContent = view('invoice.index', [
             'services' => $services,
             'extraServices' => $extraServices,

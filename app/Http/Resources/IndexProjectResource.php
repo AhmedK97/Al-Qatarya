@@ -25,6 +25,7 @@ class IndexProjectResource extends JsonResource
             'agent' => $this->agent,
             'address' => $this->address,
             'slug' => $this->slug,
+            'created_at' => $this->created_at,
         ];
     }
 }

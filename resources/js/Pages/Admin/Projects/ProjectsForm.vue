@@ -99,16 +99,6 @@ const statues = [
     },
 ];
 
-// const companies = [{
-//         'id': 'othman',
-//         'name': 'othman'
-//     },
-//     {
-//         'id': 'qatarya',
-//         'name': 'qatarya'
-//     }
-// ];
-
 watch(
     () => cloneDeep(props),
     (newProps) => {

@@ -25,6 +25,10 @@ class StoreEmployeesAdminController extends Controller
             'password' => ['required', 'string', 'min:5'],
         ]);
 
+        // 096
+        // merge the country code with the phone number
+        $data['phone'] = '096'.$data['phone'];
+
         $data['role'] = UserRoleEnum::EMPLOYEE->value;
 
         if ($request->has('password')) {

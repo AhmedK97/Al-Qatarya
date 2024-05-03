@@ -21,6 +21,10 @@ class StoreCustomersAdminController extends Controller
             'about' => ['required', 'string', 'max:255'],
         ]);
 
+        // 096
+        // merge the country code with the phone number
+        $data['phone'] = '096'.$data['phone'];
+
         $data['role'] = UserRoleEnum::CUSTOMER->value;
 
         User::create($data + [

@@ -36,10 +36,11 @@ class Service extends Model implements HasMedia
         return $this->where('company_name', 'qatarya');
     }
 
-    // public function transactions()
-    // {
-    //     return $this->belongsToMany(Transaction::class, 'service_transaction');
-    // }
+    public function getCreatedAtAttribute($value)
+    {
+        // Convert the timestamp to the desired format
+        return \Carbon\Carbon::parse($value)->format('d-m-y / h:i A');
+    }
 
     public function scopeOthman()
     {

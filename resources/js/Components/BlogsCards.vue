@@ -45,7 +45,7 @@
                     <div class="flex items-center space-x-2 rtl:space-x-reverse">
                         <Link :href="route('show.blogs', blog.slug)"
                             class="inline-flex items-center font-medium text-rose-900 hover:underline">
-                        اقرأ المزيد
+                        {{ $t('read.more') }}
                         </Link>
                         <svg class="w-4 h-4 rtl:rotate-180 text-rose-900" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">

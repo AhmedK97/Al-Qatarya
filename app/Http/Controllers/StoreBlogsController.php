@@ -20,7 +20,7 @@ class StoreBlogsController extends Controller
             'files' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $blog =  Blog::create([
+        $blog = Blog::create([
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,
@@ -30,12 +30,12 @@ class StoreBlogsController extends Controller
         $blog->addMedia($request->file('files'))->toMediaCollection('blog_image');
 
         return redirect()
-        ->route('index.blogs')
-        ->with('swalNotification', [
-            'title' => __('common.success'),
-            'text' => __('common.created'),
-            'icon' => 'success',
-            'timer' => 5000,
-        ]);
+            ->route('index.blogs')
+            ->with('swalNotification', [
+                'title' => __('common.success'),
+                'text' => __('common.created'),
+                'icon' => 'success',
+                'timer' => 5000,
+            ]);
     }
 }

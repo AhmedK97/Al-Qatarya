@@ -103,8 +103,7 @@ class TransactionsAdminResource extends JsonResource
             'service_profit' => $ServiceProfit,
             'extra_service_profit' => $ExtraServiceProfit,
             'profit' => $profit,
-
-            'created_at' => $this->created_at->format('Y-m-d'),
+            'created_at' => $this->created_at,
         ];
     }
 }

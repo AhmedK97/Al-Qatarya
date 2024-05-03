@@ -113,7 +113,6 @@ watch(
     }
 );
 
-// submitService
 
 const submit = () => {
     const sharedFormOptions = {

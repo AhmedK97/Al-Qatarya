@@ -21,7 +21,7 @@ class extraServicesResource extends JsonResource
             'quantity' => $this->quantity,
             'type' => $this->type,
             'details' => json_decode($this->details),
-            'created_at' => $this->created_at->format('Y-m-d'),
+            'created_at' => $this->created_at,
         ];
     }
 }

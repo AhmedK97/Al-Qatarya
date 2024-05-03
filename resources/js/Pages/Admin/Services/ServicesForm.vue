@@ -48,6 +48,7 @@ const formItems = reactive([
 ]);
 
 const addFormItem = () => {
+
     formItems.push({
         title: "",
         description: "",
@@ -81,15 +82,6 @@ const resetForm = () => {
     });
 };
 
-// const companies = [{
-//     id: "qatarya",
-//     name: "القطرية",
-// },
-// {
-//     id: "othman",
-//     name: "عثمان",
-// },
-// ];
 
 const lang = [
     {
@@ -179,11 +171,7 @@ const submit = () => {
         </FormField>
 
         <BaseDivider />
-        <!-- <FormField label="الشركة">
-            <select-field :errorMessage="form.errors.company_name"
-                class="flex w-full py-2 border rounded-md border-fieldgray rtl:text-right placeholder:text-black"
-                v-model="form.company_name" :items="companies" />
-        </FormField> -->
+
 
         <FormField label="صورة الخدمة">
             <FormFilePicker
@@ -194,15 +182,12 @@ const submit = () => {
                 v-model="form.files"
             />
 
-            <!-- <span v-if="form.errors.files" class="text-red-500 ">
-                {{ form . errors . files }}
-            </span> -->
         </FormField>
 
         <BaseDivider />
         <div v-if="!isUpdate">
             <div v-for="(formItem, index) in formItems" :key="index">
-                <div class="flex justify-end">
+                <div class="flex justify-end" v-if="index > 0">
                     <BaseButton
                         type="button"
                         class="w-24 h-0"
@@ -243,7 +228,7 @@ const submit = () => {
                 v-for="(formItem, index) in service.additional_info"
                 :key="index"
             >
-                <div class="flex justify-end">
+                <div class="flex justify-end" v-if="index > 0">
                     <BaseButton
                         type="button"
                         class="w-24 h-0"

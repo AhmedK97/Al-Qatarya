@@ -51,6 +51,12 @@ class Project extends Model implements HasMedia
         return $this->hasOne(Transaction::class);
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        // Convert the timestamp to the desired format
+        return \Carbon\Carbon::parse($value)->format('d-m-y / h:i A');
+    }
+
     public function scopeQatarya()
     {
         return $this->where('company', 'qatarya');

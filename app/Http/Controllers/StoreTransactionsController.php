@@ -33,7 +33,6 @@ class StoreTransactionsController extends Controller
             'project_id' => $request->project_id,
             'status' => 'Pending',
         ]);
-        
 
         return redirect()
             ->route('index.transactions')

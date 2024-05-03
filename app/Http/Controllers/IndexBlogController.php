@@ -15,10 +15,11 @@ class IndexBlogController extends Controller
     {
 
         $blogs = Blog::published()
-        ->where('locale', app()->getLocale())
-        ->latest()->paginate(10)->through(function (Blog $blog) {
-            return new BlogResource($blog);
-        });
+            ->where('locale', app()->getLocale())
+            ->latest()->paginate(10)->through(function (Blog $blog) {
+                return new BlogResource($blog);
+            });
+
         return inertia('Blog/Index', [
             'blogs' => $blogs,
         ]);

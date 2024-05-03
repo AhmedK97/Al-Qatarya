@@ -198,7 +198,7 @@ const uploading = (value) => {
                 <th>الحالة</th>
                 <th>تاريخ البدء</th>
                 <th>العنوان</th>
-                <th>ملاحظات</th>
+                <!-- <th>ملاحظات</th> -->
                 <th>تاريخ الاضافة</th>
                 <th>اجراء</th>
             </tr>
@@ -307,15 +307,15 @@ const uploading = (value) => {
                     {{ project.project_date }}
                 </td>
                 <td data-label="About">{{ project.address }}</td>
-                <td data-label="notes">
+                <!-- <td data-label="notes">
                     <span v-if="project?.notes?.length > 50">
                         {{ project?.notes.substring(0, 50) }}...
                     </span>
                     <span v-else>
                         {{ project?.notes }}
                     </span>
-                </td>
-                <td data-label="Created At">{{ project.created_at }}</td>
+                </td> -->
+                <td data-label="Created At" class="whitespace-nowrap">{{ project.created_at }}</td>
                 <td
                     data-label="Action"
                     class="before:hidden lg:w-1 whitespace-nowrap"

@@ -12,7 +12,6 @@ class GetWhatsappChatMessages extends Controller
      */
     public function __invoke(Request $request)
     {
-
         $customerPhone = $request->customerPhone;
 
         $info = WhatsApp::chat()->inRandomOrder()->first();
