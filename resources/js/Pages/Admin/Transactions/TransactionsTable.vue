@@ -341,7 +341,7 @@ const deleteTransaction = (transaction) => {
                 <th class="text-center">موبايل</th>
                 <th class="text-center">الموظف</th>
                 <th class="text-center">العنوان</th>
-                <th class="text-center">التكلفة الكلية للمشروع</th>
+                <th class="text-center">قيمة المشروع</th>
                 <th class="text-center">اجمالى دفعات العميل</th>
                 <th class="text-center">اجمالى التكاليف بالعمالة</th>
                 <!-- <th class="text-center">تكلفة العمال</th> -->

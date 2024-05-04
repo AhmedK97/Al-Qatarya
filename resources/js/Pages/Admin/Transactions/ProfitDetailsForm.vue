@@ -239,10 +239,11 @@ const addNewWorkerDetail = (id) => {
         validateOriginPriceWorker.value = "اليومية مطلوبة";
         return;
     }
-    if (isNaN(newDetailsService.value.originPrice)) {
-        validateOriginPriceService.value = "السعر يجب ان يكون رقم";
+    if (isNaN(newDetailWorker.value.originPrice)) {
+        validateOriginPriceWorker.value = "السعر يجب ان يكون رقم";
         return;
     }
+
     if (newDetailWorker.value.tips && isNaN(newDetailWorker.value.tips)) {
         validateOriginPriceWorker.value = "الاكرامية يجب ان تكون رقم";
         return;
@@ -672,7 +673,7 @@ const submit = () => {
         :customClass="'overflow-y-auto w-96'"
     >
         <label class="block mb-2 font-bold">
-            الخدمات الاضافية :
+            التكاليف الاضافية :
             <span class="text-red-700">
                 {{ filteredExtraServices?.length }}
             </span>
@@ -875,17 +876,17 @@ const submit = () => {
 
                             <br />
                             <h1 class="font-bold text-cyan-700">
-                                الخدمات الاضافيه :
+                                التكلفة الاضافيه :
                             </h1>
                             <div class="grid grid-flow-row grid-cols-3">
-                                <FormField class="mx-2" :label="'الخدمه :'">
+                                <FormField class="mx-2" :label="'التكلفة :'">
                                     <FormControl
                                         v-model="NewDetailExtraService.title"
-                                        placeholder="اسم الخدمه"
+                                        placeholder="اسم التكلفة"
                                     />
                                 </FormField>
 
-                                <FormField class="mx-2" :label="'سعر الخدمة :'">
+                                <FormField class="mx-2" :label="'سعر التكلفة :'">
                                     <FormControl
                                         v-model="
                                             NewDetailExtraService.originPrice
