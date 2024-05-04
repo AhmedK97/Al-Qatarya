@@ -220,7 +220,7 @@ const showMessagesWhatsapp = () => {
             `/admin/getWhatsappChatMessages?customerPhone=${customerPhone.value}`
         )
         .then((response) => {
-            messages.value = response.data.messages.records;
+            messages.value = response?.data?.messages?.records;
         })
         .catch((error) => {
             console.log(error);

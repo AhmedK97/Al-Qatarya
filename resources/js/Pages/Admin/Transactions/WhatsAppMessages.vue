@@ -157,7 +157,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
 const showMessagesWhatsapp = (customerPhone) => {
     axios.get(`/admin/getWhatsappChatMessages?customerPhone=${customerPhone}`).then((response) => {
         form.messages = '';
-        form.messages = response.data.messages.records;
+        form.messages = response?.data?.messages?.records;
     }).catch((error) => {
         console.log(error);
     });
