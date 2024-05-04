@@ -194,6 +194,8 @@ const addNewServiceDetail = (id) => {
         originPrice: "",
         created_at: "",
     };
+
+    validateOriginPriceService.value = "";
 };
 
 const validateOriginPriceExtraService = ref("");
@@ -230,6 +232,8 @@ const addNewExtraServiceDetail = (id) => {
         originPrice: "",
         created_at: "",
     };
+
+    validateOriginPriceExtraService.value = "";
 };
 
 const validateOriginPriceWorker = ref("");
@@ -272,6 +276,8 @@ const addNewWorkerDetail = (id) => {
         discount: "",
         created_at: "",
     };
+
+    validateOriginPriceWorker.value = "";
 };
 
 // deleteServiceDetail
@@ -1299,7 +1305,8 @@ const submit = () => {
                             {{ transaction?.service_profit }} دينار
                         </span>
                         <span v-else class="font-bold text-green-500" >
-                            {{ transaction?.services_cost }}
+                            <!-- {{ transaction?.services_cost }} -->
+                            {{ transaction?.service_profit }}
                         </span>
                     </td>
                     <td class="px-6 py-4 text-2xl font-extrabold text-center whitespace-nowrap" >

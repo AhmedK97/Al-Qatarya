@@ -104,15 +104,12 @@ class CalculationService
     {
         $totalProfit = 0;
         foreach ($transaction->project->services as $service) {
-            // if originPrice is not set, return 0
-            if (! json_decode($service->pivot->details)) {
-                return 0;
-            }
+            $originPrice = json_decode($service->pivot->details) ? json_decode($service->pivot->details) : [];
             $totalOriginPrice = 0;
-            foreach (json_decode($service->pivot->details) as $price) {
+            foreach ($originPrice as $price) {
                 $totalOriginPrice += $price->originPrice;
             }
-            $originPrice = $totalOriginPrice ? $totalOriginPrice : 0;
+            $originPrice = $totalOriginPrice;
             $price = $service->pivot->price ?? 0;
             $totalProfit += $price * $service->pivot->quantity - $originPrice * $service->pivot->quantity;
         }
@@ -126,14 +123,14 @@ class CalculationService
 
         foreach ($transaction->project->extraServices as $extraService) {
             if ($extraService->type == 'service') {
-                if (! json_decode($extraService->details)) {
-                    return 0;
-                }
-                $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : 0;
+                // if (! json_decode($extraService->details)) {
+                //     continue;
+                // }
+                $originPrice = json_decode($extraService->details) ? json_decode($extraService->details) : [];
                 $price = $extraService->price ?? 0;
                 $sumOriginPrice = 0;
                 foreach ($originPrice as $price) {
-                    $sumOriginPrice += $price->originPrice;
+                    $sumOriginPrice += intval($price->originPrice);
                 }
                 $totalProfit += intval($extraService->price) * $extraService->quantity - $sumOriginPrice * $extraService->quantity;
             }

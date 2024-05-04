@@ -41,9 +41,7 @@ class TransactionsAdminResource extends JsonResource
             return $costCalculationService->calculateExtraServicesCost($this->resource);
         });
 
-        $ServiceProfit = $this->whenLoaded('project', function () use ($costCalculationService) {
-            return $costCalculationService->calculateServicesProfit($this->resource);
-        });
+        $ServiceProfit = $costCalculationService->calculateServicesProfit($this->resource);
 
         $ExtraServiceProfit = $this->whenLoaded('project', function () use ($costCalculationService) {
             return $costCalculationService->calculateExtraServiceProfit($this->resource);
