@@ -18,7 +18,7 @@ class StoreCustomersAdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')],
             'address' => ['required', 'string', 'max:255'],
-            'about' => ['required', 'string', 'max:255'],
+            'about' => ['nullable', 'string', 'max:255'],
         ]);
 
         // 096

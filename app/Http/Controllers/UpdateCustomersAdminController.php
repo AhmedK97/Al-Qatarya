@@ -17,7 +17,7 @@ class UpdateCustomersAdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')->ignore($user->id)],
             'address' => ['required', 'string', 'max:255'],
-            'about' => ['required', 'string', 'max:255'],
+            'about' => ['nullable', 'string', 'max:255'],
         ]);
 
         $user->update($data);

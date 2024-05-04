@@ -20,7 +20,7 @@ class UpdateEmployeesAdminController extends Controller
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')->ignore($user->id)],
             'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
-            'about' => ['required', 'string', 'max:255'],
+            'about' => ['nullable', 'string', 'max:255'],
         ]);
 
         $user->update($data);

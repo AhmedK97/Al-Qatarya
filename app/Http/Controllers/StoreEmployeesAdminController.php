@@ -21,7 +21,7 @@ class StoreEmployeesAdminController extends Controller
             'phone' => ['required', 'numeric', RUle::unique('users', 'phone')],
             'status' => ['required', 'string', 'max:255', new Enum(EmployeeStatusEnum::class)],
             'address' => ['required', 'string', 'max:255'],
-            'about' => ['required', 'string', 'max:255'],
+            'about' => ['nullable', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:5'],
         ]);
 
