@@ -24,7 +24,7 @@ class SendEmailController extends Controller
         ]);
 
         // send whatsapp message
-        $info = WhatsApp::chat()->inRandomOrder()->whereWhatsappStatus('ONLINE')->first()
+        $info = WhatsApp::chat()->inRandomOrder()->whereWhatsappStatus('ONLINE')->first();
         $nubmer = WhatsApp::select('ownerJid')->whereNotNull('ownerJid')->whereStatus('active')->first();
         $nubmer = explode('@', $nubmer->ownerJid)[0];
         if ($request->hasFile('file')) {
