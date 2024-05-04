@@ -52,7 +52,7 @@ const props = defineProps({
                                 </div>
 
                                 <div
-                                    class="absolute top-[15rem] right-0 z-40 p-5 m-5 transition duration-300 ease-in-out bg-gray-100 rounded-lg shadow-lg hover:translate-y-2/3 shadow-blue-100 hover:shadow-rose-50 translate-y-3/4"
+                                    class="absolute -right-0.5 -translate-y-16 hover:-translate-y-20 z-40 p-5 m-5 transition duration-300 ease-in-out bg-gray-100 rounded-lg shadow-lg shadow-blue-100 hover:shadow-rose-50 w-11/12"
                                 >
                                     <p class="text-xl font-bold text-rose-900">
                                         {{ imageUrl.name }}
