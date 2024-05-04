@@ -14,13 +14,13 @@ class CreateWhatsAppQrCodeController extends Controller
     {
 
         // just add one instance
-        $instanceCount = WhatsApp::count();
+        $instanceCount = WhatsApp::chat()->whereWhatsappStatus('ONLINE')->count();
         if ($instanceCount > 0) {
             return response()->json([
                 'message' => 'You can only add one instance',
             ], 500);
         }
-        
+
         $fromData = [
             'instanceName' => 'alqatarya'.rand(1, 999999999),
         ];
