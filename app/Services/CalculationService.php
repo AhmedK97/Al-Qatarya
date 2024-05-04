@@ -86,7 +86,7 @@ class CalculationService
         foreach ($transactions->project->services as $service) {
             $totalCost += $service->pivot->price * $service->pivot->quantity;
         }
-
+        dd($totalCost);
         return $totalCost;
     }
 

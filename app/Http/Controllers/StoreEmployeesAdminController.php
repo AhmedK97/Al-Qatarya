@@ -27,7 +27,7 @@ class StoreEmployeesAdminController extends Controller
 
         // 096
         // merge the country code with the phone number
-        $data['phone'] = '096'.$data['phone'];
+        // $data['phone'] = '965'.$data['phone'];
 
         $data['role'] = UserRoleEnum::EMPLOYEE->value;
 
