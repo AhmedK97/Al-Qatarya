@@ -13,8 +13,14 @@ class SendTextMessageController extends Controller
     public function __invoke(Request $request)
     {
 
-        $info = WhatsApp::chat()->inRandomOrder()->first();
+        $info = WhatsApp::chat()->inRandomOrder()->whereWhatsappStatus('ONLINE')->first();
 
+        if (! $info) {
+            return response()->json([
+                'message' => 'No online chat available',
+            ], 500);
+        }
+        
         $header = [
             'Content-Type: application/json',
             'Accept: application/json',

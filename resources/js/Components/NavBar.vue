@@ -79,21 +79,21 @@ const logout = () => {
                     </div>
                     <!-- social icons -->
                     <div class="hidden space-x-6 sm:flex rtl:space-x-reverse">
-                        <a href="#">
+                        <a href="https://www.facebook.com" target="_blank">
                             <img
                                 src="/storage/images/facebook-upper.svg"
                                 class="w-4 h-4"
                                 alt=""
                             />
                         </a>
-                        <a href="#">
+                        <a href="https://www.facebook.com" target="_blank">
                             <img
                                 src="/storage/images/instagram-upper.svg"
                                 class="w-4 h-4"
                                 alt=""
                             />
                         </a>
-                        <a href="#">
+                        <a href="https://www.facebook.com" target="_blank">
                             <img
                                 src="/storage/images/twitter-upper.svg"
                                 class="w-4 h-4"
@@ -211,21 +211,21 @@ const logout = () => {
                 <div
                     class="flex items-center justify-center mt-4 space-x-20 sm:hidden rtl:space-x-reverse"
                 >
-                    <a href="#">
+                    <a href="https://www.facebook.com" target="_blank">
                         <img
                             src="/storage/images/facebook-mobile.svg"
                             class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
-                    <a href="#">
+                    <a href="https://www.facebook.com" target="_blank">
                         <img
                             src="/storage/images/instagram-mobile.svg"
                             class="w-5 h-5 icon rotate"
                             alt=""
                         />
                     </a>
-                    <a href="#">
+                    <a href="https://www.facebook.com" target="_blank">
                         <img
                             src="/storage/images/twitter-mobile.svg"
                             class="w-5 h-5 icon rotate"

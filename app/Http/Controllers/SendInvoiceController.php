@@ -65,7 +65,14 @@ class SendInvoiceController extends Controller
 
         $fileContents = Storage::disk('public')->get($directory.'/invoice.pdf');
 
-        $info = WhatsApp::chat()->inRandomOrder()->first();
+        $info = WhatsApp::chat()->inRandomOrder()->whereWhatsappStatus('ONLINE')->first();
+
+        if (! $info) {
+            return response()->json([
+                'message' => 'No available WhatsApp account to send the invoice',
+            ], 500);
+        }
+
         $formData = [
             'number' => $customerPhone,
             'mediatype' => 'document',

@@ -66,7 +66,7 @@ const deleteWhatsApp = (whatsapp) => {
                     Swal.fire({
                         icon: "success",
                         title: "عملية ناجحة",
-                        text: "WhatsApp deleted successfully",
+                        text: "تم حذف الواتساب بنجاح",
                         timer: 3000,
                         timerProgressBar: true,
                     });
@@ -75,7 +75,7 @@ const deleteWhatsApp = (whatsapp) => {
                     Swal.fire({
                         icon: "error",
                         title: "Error",
-                        text: "WhatsApp not deleted",
+                        text: "حدث خطأ ما",
                         timer: 3000,
                         timerProgressBar: true,
                     });

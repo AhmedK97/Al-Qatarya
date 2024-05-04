@@ -39,27 +39,28 @@ import { Link } from "@inertiajs/vue3";
                     </div>
                 </Link>
                 <div class="flex p-5 space-x-6 rtl:space-x-reverse">
-                    <Link href="https://www.facebook.com/">
+                    <a href="https://www.facebook.com/"
+                    target="_blank">
                         <img
                             src="/storage/images/facebook-ham.svg"
                             class="w-5 h-5"
                             alt=""
                         />
-                    </Link>
-                    <Link href="https://instagram.com/">
+                    </a>
+                    <a href="https://instagram.com/" target="_blank">
                         <img
                             src="/storage/images/instagram-ham.svg"
                             class="w-5 h-5"
                             alt=""
                         />
-                    </Link>
-                    <Link href="https://twitter.com/">
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
                         <img
                             src="/storage/images/twitter-ham.svg"
                             class="w-5 h-5"
                             alt=""
                         />
-                    </Link>
+                    </a>
                 </div>
             </div>
 

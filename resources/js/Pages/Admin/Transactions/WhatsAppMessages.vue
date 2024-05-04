@@ -130,7 +130,7 @@ const sendInvoicePDF = (transactionId, customerPhone) => {
                     Swal.fire({
                         icon: "success",
                         title: "عملية ناجحة",
-                        text: "Invoice sent successfully",
+                        text: "تم ارسال الفاتورة بنجاح",
                         timer: 3000,
                         timerProgressBar: true,
                     });

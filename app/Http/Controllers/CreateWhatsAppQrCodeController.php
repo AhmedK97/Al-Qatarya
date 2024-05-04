@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WhatsApp;
 use Illuminate\Http\Request;
 
 class CreateWhatsAppQrCodeController extends Controller
@@ -11,6 +12,15 @@ class CreateWhatsAppQrCodeController extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        // just add one instance
+        $instanceCount = WhatsApp::count();
+        if ($instanceCount > 0) {
+            return response()->json([
+                'message' => 'You can only add one instance',
+            ], 500);
+        }
+        
         $fromData = [
             'instanceName' => 'alqatarya'.rand(1, 999999999),
         ];

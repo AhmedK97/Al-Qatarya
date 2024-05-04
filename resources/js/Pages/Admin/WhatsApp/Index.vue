@@ -50,6 +50,11 @@ const getQrCode = async () => {
         }, 15000);
     } catch (error) {
         console.log(error);
+        Swal.fire({
+            icon: "error",
+            title: "حدث خطأ ما",
+            text: "لا يمكن اضافه اكثر من رقم واتساب في نفس الوقت",
+        });
     } finally {
         qrLoading.value = false;
     }
