@@ -29,6 +29,10 @@ const props = defineProps({
         type: Object,
         default: [],
     },
+    servicesCountQatarya:{
+        type: Number,
+        default: 0,
+    },
 
 });
 
