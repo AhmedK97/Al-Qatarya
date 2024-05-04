@@ -36,10 +36,10 @@ const {
 });
 
 
-const type = {
-    'ads': 'اعلانات',
-    'chat': 'تواصل وفواتير',
-};
+// const type = {
+//     'ads': 'اعلانات',
+//     'chat': 'تواصل وفواتير',
+// };
 
 const status = {
     'active': 'مفعل',
@@ -110,7 +110,7 @@ const updateWhatsAppType = (whatsapp) => {
                 <th>#</th>
                 <th>رقم الموبايل</th>
                 <th>الاسم</th>
-                <th>النوع</th>
+                <!-- <th>النوع</th> -->
                 <th>الحاله</th>
                 <th>حاله الاتصال للواتس</th>
                 <th>تاريخ الاضافه</th>
@@ -124,13 +124,12 @@ const updateWhatsAppType = (whatsapp) => {
                 <td>{{ whatsapp.id }}</td>
                 <td>{{ whatsapp.ownerJid }}</td>
                 <td>{{ whatsapp.instance_name }}</td>
-                <td>
-                    <!-- type -->
+                <!-- <td>
                     <select v-model="whatsapp.type" class="form-select" @change="() => updateWhatsAppType(whatsapp)">
                         <option v-for="(value, key) in type" :value="key">{{ value }}</option>
                     </select>
 
-                </td>
+                </td> -->
 
                 <td>
                     {{ whatsapp.whatsapp_status}}
