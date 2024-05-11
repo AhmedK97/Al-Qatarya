@@ -177,7 +177,6 @@ import FormFilePicker from "@/Components/Admin/FormFilePicker.vue";
 import BaseButton from "@/Components/Admin/BaseButton.vue";
 import BaseButtons from "@/Components/Admin/BaseButtons.vue";
 import Swal from "sweetalert2";
-import axios from "axios";
 
 const mapSrc = computed(() => {
     return `https://maps.google.com/maps?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA%2094043,%20USA&output=embed`;
@@ -222,39 +221,22 @@ const submit = () => {
     });
 };
 
-    // router.post(
-    //     route("send.contact"),
-    //     form,
-    //     Object.assign(sharedFormOptions, {
-    //         onSuccess: () => {
-    //             resetForm();
-    //             Swal.fire({
-    //                 icon: "success",
-    //                 title: "شكرا لك",
-    //                 text: "تم ارسال الرسالة بنجاح",
-    //                 timer: 3000,
-    //                 timerProgressBar: true,
-    //             });
-    //         },
-    //     })
-    // );
-
-    // use axios
-    axios
-        .post(route("send.contact"), form)
-        .then((response) => {
-            resetForm();
-            Swal.fire({
-                icon: "success",
-                title: "شكرا لك",
-                text: "تم ارسال الرسالة بنجاح",
-                timer: 3000,
-                timerProgressBar: true,
-            });
+    router.post(
+        route("send.contact"),
+        form,
+        Object.assign(sharedFormOptions, {
+            onSuccess: () => {
+                resetForm();
+                Swal.fire({
+                    icon: "success",
+                    title: "شكرا لك",
+                    text: "تم ارسال الرسالة بنجاح",
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            },
         })
-        .catch((error) => {
-            console.log(error);
-        });
+    );
 };
 </script>
 
