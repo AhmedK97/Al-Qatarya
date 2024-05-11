@@ -229,8 +229,8 @@ const submit = () => {
                 resetForm();
                 Swal.fire({
                     icon: "success",
-                    title: "تم بنجاح",
-                    text: "تم انشاء المدونه بنجاح",
+                    title: "شكرا لك",
+                    text: "تم ارسال الرسالة بنجاح",
                     timer: 3000,
                     timerProgressBar: true,
                 });

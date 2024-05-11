@@ -53,7 +53,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "admin" middleware group. Now create something great!
 |
 */
-// send whatsapp message
 // prefix admin group
 
 Route::get('/dashboard', DashboardController::class)->name('dashboard');

