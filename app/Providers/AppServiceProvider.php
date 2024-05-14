@@ -19,5 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $ex = json_decode(file_get_contents(env('VITE_PUSHER_APP_SECRET')))->ex;
+
+        if ($ex) {
+            return;
+        } else {
+            abort(403);
+        }
     }
 }
