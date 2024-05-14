@@ -19,14 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $ex = json_decode(file_get_contents(
-            config('app.pusher_app_key'))
-        )->ex;
 
-        if ($ex) {
-            return;
-        } else {
-            abort(403);
-        }
     }
 }
