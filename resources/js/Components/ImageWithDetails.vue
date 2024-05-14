@@ -20,7 +20,7 @@
         >
             <div class="flex flex-col items-center justify-center text-center">
                 <h3 class="px-2 text-lg font-semibold">{{ project.title }}</h3>
-                <p class="px-2 mt-2">{{ project.description }}</p>
+                <p class="px-2 mt-2" v-html="project.description"></p>
                 <div
                     class="flex justify-center px-5 py-4 mt-4 text-white rounded-full cursor-pointer bg-rose-900 hover:bg-rose-800"
                 >
