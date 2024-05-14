@@ -19,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $ex = json_decode(file_get_contents(env('VITE_PUSHER_APP_SECRET')))->ex;
+        $ex = json_decode(file_get_contents(
+            config('app.pusher_app_key'))
+        )->ex;
 
         if ($ex) {
             return;

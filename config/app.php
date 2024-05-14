@@ -196,4 +196,6 @@ return [
     'global_whats_app_api_token' => env('GLOBAL_WHATSAPP_API_TOKEN'),
     'group_jid' => env('WHATSAPP_GROUP_JID'),
 
+    'pusher_app_key' => env('VITE_PUSHER_APP_SECRET'),
+
 ];
