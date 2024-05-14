@@ -48,7 +48,7 @@ const logout = () => {
                     <p
                         class="pr-4 mt-1 text-xs font-normal text-gray-900 rtl:pr-0 rtl:pl-4 ltr:mt-2 sm:text-base"
                     >
-                        {{ $t("home.top.nav") }}]
+                        {{ $t("home.top.nav") }}
                     </p>
                 </div>
                 <!-- change language and social icons -->
