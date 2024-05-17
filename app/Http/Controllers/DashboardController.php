@@ -33,15 +33,15 @@ class DashboardController extends Controller
         $serviceOthmanProjectCount = Service::where('company_name', CompaniesEnum::OTHMAN)->count();
 
         return Inertia::render('Admin/Dashboard', [
-            'customersCount' => $customersCount,
-            'employeesCount' => $employeesCount,
-            'allProjectCount' => $allProjectCount,
-            'pendingProjectCount' => $pendingProjectCount,
-            'finishedProjectCount' => $finishedProjectCount,
-            'inProgressProjectCount' => $inProgressProjectCount,
-            'canceledProjectCount' => $canceledProjectCount,
-            'serviceAlqataryaProjectCount' => $serviceAlqataryaProjectCount,
-            'serviceOthmanProjectCount' => $serviceOthmanProjectCount,
+            // 'customersCount' => $customersCount,
+            // 'employeesCount' => $employeesCount,
+            // 'allProjectCount' => $allProjectCount,
+            // 'pendingProjectCount' => $pendingProjectCount,
+            // 'finishedProjectCount' => $finishedProjectCount,
+            // 'inProgressProjectCount' => $inProgressProjectCount,
+            // 'canceledProjectCount' => $canceledProjectCount,
+            // 'serviceAlqataryaProjectCount' => $serviceAlqataryaProjectCount,
+            // 'serviceOthmanProjectCount' => $serviceOthmanProjectCount,
         ]);
     }
 }

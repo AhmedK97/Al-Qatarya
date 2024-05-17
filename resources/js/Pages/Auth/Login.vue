@@ -97,13 +97,13 @@ const submit = () => {
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                         />
-                        <BaseButton
+                        <!-- <BaseButton
                             v-if="canResetPassword"
                             route-name="password.request"
                             color="info"
                             outline
                             label="نسيت كلمة المرور؟"
-                        />
+                        /> -->
                     </BaseButtons>
                     <!-- <Link :href="route('register')"> Register </Link> -->
                 </BaseLevel>
